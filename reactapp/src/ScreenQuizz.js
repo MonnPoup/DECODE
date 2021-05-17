@@ -10,7 +10,7 @@ function Quizz() {
 
     return (
         <div> 
-         <div className= 'navbar'>
+         <div className= 'navbarNormal'>
         <h1 style={{marginLeft: '30px'}}>DÉCODE.</h1> 
     
         <div className= 'icon'>  
