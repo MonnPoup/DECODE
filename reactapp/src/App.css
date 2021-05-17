@@ -11,21 +11,17 @@
 h1 {
   font-family: 'Abril Fatface', cursive;
   font-size: 70px;
-<<<<<<< HEAD
-=======
   font-weight: normal;
 }
 
 h2 {
   font-family: 'Abril Fatface', cursive;
   font-size: 50px;
->>>>>>> 1b0a7e980db2229d1c51c21fd8040f38982d9892
   font-weight: normal;
 }
 
 h3 {
-<<<<<<< HEAD
-position: absolute;
+position: relative;
 width: 700px;
 height: 118px;
 right: 1px;
@@ -57,14 +53,6 @@ color: #203126;
 }
 
 .navbar {
-=======
-  font-family: 'Montserrat';
-  font-size: 35px;
-  font-weight: 800;
-}
-
-.navbarFixed {
->>>>>>> 1b0a7e980db2229d1c51c21fd8040f38982d9892
   position: fixed;
   top: 0;
   left: 0;
