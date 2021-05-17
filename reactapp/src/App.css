@@ -29,16 +29,14 @@ background-repeat: no-repeat;
 
 .h3home {
   
-  font-family: 'Montserrat', cursive;
+  font-family: 'Montserrat';
   font-style:normal;
-  font-weight: 900;
+  font-weight:bold;
   font-size: 30px;
   line-height: 59px;
   letter-spacing: -1.5px;
   padding-top: 27vh;
   margin-left: 2vw;
-  
-  
   color: #203126;
   
   }
