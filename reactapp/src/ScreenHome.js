@@ -8,10 +8,10 @@ function Home() {
   return (
     <div>
       <Nav className="navbarHome">
-        <div className="">
+        <div>
         <h1>DÉCODE.</h1> 
         </div>
-        <div>
+        <div className="ok">
         <NavItem>
           <NavLink href="#">
             <img src="palette.svg" alt="icon palette de couleur" style={{width: "30px"}}/>
