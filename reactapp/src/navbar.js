@@ -1,8 +1,8 @@
 
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import { Nav, NavItem, NavLink } from "reactstrap";
+import {BrowserRouter as Link} from 'react-router-dom';
+
 
 
 
