@@ -17,10 +17,10 @@ function Home() {
           <Link to = '/allpalettes'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
         </div>
       </div>
-      <div>
+      <div className="imageBackground">
         <h3>DÉCOUVREZ L'INTÉRIEUR 
         DONT VOUS AVEZ TOUJOURS RÊVÉ</h3>
-        <img className='imageBackground' src="background.png" alt='image de fond'/>
+        {/* <img className='imageBackground' src="background.png" alt='image de fond'/> */}
       </div>
     </div>
   
