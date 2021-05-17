@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import App from './App.css'; 
 
 
@@ -6,7 +6,16 @@ import App from './App.css';
 
 
 function Quizz() {
+    const [progressBarWidth, setProgressBarWidth] = useState(185)
 
+    var  handleClickIncreaseWidth = () => {
+        console.log('click')
+        setProgressBarWidth(progressBarWidth+185)
+    }
+
+    var handleClickDecreaseWidth = () => {
+        setProgressBarWidth(progressBarWidth-185)
+    } 
 
     return (
         <div> 
@@ -32,11 +41,13 @@ function Quizz() {
             </div>
 
             <div className="ProgressBar" style={{ height:"20px", display:'flex', justifyContent:'center'}} > 
-                <div style={{borderBottom:'1px solid #FCFBF6', width:'60px'}}> </div>
+                <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
              </div>
             <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
-            <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}}/>
-            <img src='arrow-right.png' alt='arrow left' style={{width: '40px', margin: '30px'}}/>
+            <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
+            onClick={() => handleClickDecreaseWidth()}/>
+            <img src='arrow-right.png' alt='arrow left' style={{width: '40px', margin: '30px'}}
+            onClick={() => handleClickIncreaseWidth()}/>
             </div>
         </div>
      </div>
