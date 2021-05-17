@@ -16,10 +16,11 @@ function Home() {
         </div>
       </div>
       <div className="imageBackground">
-        <div className="h3home">
-          <h3 >DÉCOUVREZ L'INTÉRIEUR </h3>
-          <h3>DONT VOUS AVEZ TOUJOURS RÊVÉ</h3>
+        <div className="titreHome">
+          <p className="pHome">DÉCOUVREZ L'INTÉRIEUR </p>
+          <p className="pHome">DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
+          <input type="submit" value="Je découvre" className='inputHome'/>
       </div>
     </div>
   
