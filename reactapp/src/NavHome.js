@@ -1,15 +1,28 @@
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+import { Nav, NavItem, NavLink } from "reactstrap";
+import "./App.css";
 
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+function NavHome() {
+  return (
+    <div>
+      <Nav>
+        <NavItem>
+          <NavLink href="#">Link</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="#">Link</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="#">Another Link</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink disabled href="#">Disabled Link</NavLink>
+        </NavItem>
+      </Nav>
+    </div>
+  );
+}
 
-function Nav() {
-    return (
-       <div>
-         <img src="https://static.lacapsule.academy/wks2/burger_1.png" />
-         <h4>nom du burger</h4>
-         <p>description de la recette</p>
-       </div>
-    )
-   }
-   
-   export default Burger;
+export default NavHome;
