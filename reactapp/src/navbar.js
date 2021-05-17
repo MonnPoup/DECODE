@@ -5,9 +5,8 @@ import {BrowserRouter as Link} from 'react-router-dom';
 
 
 
-
-
 function NavBar() {
+  
   return (
     <div className= 'navbar'>
     <div><h2 style={{marginLeft: '20px'}}>DÉCODE.</h2> </div>
