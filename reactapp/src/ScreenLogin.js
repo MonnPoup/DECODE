@@ -1,9 +1,46 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from 'react';
+import { Link, Redirect} from "react-router-dom";
 import "./App.css";
 
 
 function Login() {
+
+    const [signUpUsername, setSignUpUsername] = useState('')
+    const [signUpEmail, setSignUpEmail] = useState('')
+    const [signUpPassword, setSignUpPassword] = useState('')
+
+    const [userExists, setUserExists] = useState(false)
+    const [listErrorsSignup, setErrorsSignup] = useState([])
+    
+
+    var handleSubmitSignup = async () => {
+    
+        const data = await fetch('/signUp', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passswordFromFront=${signUpPassword}`
+        })
+    
+        const body = await data.json()
+    
+
+        if(body.result == true){
+            setUserExists(true)
+            
+          } else {
+            setErrorsSignup(body.error)
+          }
+        }
+
+        if(userExists){
+            return <Redirect to='/' />
+          }
+
+        var tabErrorsSignup = listErrorsSignup.map((error,i) => {
+            return(<p>{error}</p>)
+          })
+
+
   return (
     <div className='background'>
         <div className= 'navbarNormal'>
@@ -26,9 +63,9 @@ function Login() {
                     <form>
                         <label className='formLogin'>
                             <input type="text" name="emailFromFront" placeholder='Email' className='input' />
-                            <input type="text" name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <input type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
                         </label>
-                            <input type="submit" value="Connexion" className='inputValider'/>
+                        <input type="submit" value="Connexion" className='inputValider'/>
                     </form>
                 </div>
 
@@ -38,11 +75,12 @@ function Login() {
                     Inscription
                     <form>
                         <label className='formLogin'>
-                            <input type="text" name="nameFromFront" placeholder='Prénom' className='input' />
-                            <input type="text" name="emailFromFront" placeholder='Email' className='input'/>
-                            <input type="text" name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input' />
+                            <input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input'/>
+                            <input onChange={(e) => setSignUpPassword(e.target.value)} type="password" name="passwordFromFront" placeholder='Mot de passe' className='input'/>
                         </label>
-                            <input type="submit" value="Connexion" className='inputValider'/>
+                        {tabErrorsSignup}
+                        <input onClick={() => handleSubmitSignup()} type="submit" value="Connexion" className='inputValider'/>
                     </form>
                 </div>
 

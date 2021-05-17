@@ -19,9 +19,17 @@ h2 {
   font-weight: normal;
 }
 
+h3 {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 35px;
+  margin-left: 10px;
+}
+
+/* 
 .imageBackground {
  background-image: url(/background.png);
-}
+} */
 /* 
 .h3home {
   position: absolute;
@@ -137,8 +145,7 @@ h2 {
 .containerLogin {
   height: 65vh;
   width: 70vw;
-  background-color : #FCFBF6;
-  color: #203126;
+  background-color : #fcfbf6;
   border-radius: 10px;
   margin-left: 220px;
 }
