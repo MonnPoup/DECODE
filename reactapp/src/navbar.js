@@ -1,6 +1,7 @@
 
 import React from 'react';
-
+import './App.css';
+import {BrowserRouter as Link} from 'react-router-dom';
 
 
 
@@ -9,16 +10,13 @@ import React from 'react';
 function NavBar() {
   return (
     <div className= 'navbar'>
-    <h1 style={{marginLeft: '20px'}}>DÉCODE.</h1> 
-    
+    <div><h1 style={{marginLeft: '20px'}}>DÉCODE.</h1> </div>
     <div className= 'icon'>  
-    <img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/>
-    <img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/>
-    <img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/>
+    <Link to = '/login'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
+    <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+    <Link to = '/allpalettes'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
     </div>
-        
-
-  </div>
+    </div>
   
 
   

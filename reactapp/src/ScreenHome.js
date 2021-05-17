@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Nav, NavItem, NavLink } from "reactstrap";
 import "./App.css";
 
-function Login() {
+function Home() {
   return (
     <div>
       <Nav className="navbarHome">
@@ -36,4 +36,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Home;
