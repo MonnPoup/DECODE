@@ -2,7 +2,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-import Home from './ScreenNavHome';
+import Home from './ScreenHome';
 import Quizz from './ScreenQuizz';
 import MyPalette from './ScreenMyPalette';
 import ShoppingList from './ScreenShoppingList';
