@@ -6,33 +6,24 @@ import "./App.css";
 
 function Home() {
   return (
-    <div>
-      <Nav className="navbarHome">
-        <div className="">
-        <h1>DÉCODE.</h1> 
-        </div>
+    <div className="container">
+      <div className= 'navbarHome'>
         <div>
-        <NavItem>
-          <NavLink href="#">
-            <img src="palette.svg" alt="icon palette de couleur" style={{width: "30px"}}/>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">
-            <img src="heart.svg" alt="icon coeur" style={{width: "30px"}}/>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">
-            <img src="user.svg" alt="icon utilisateur" style={{width: "30px"}}/>
-          </NavLink>
-        </NavItem>
+          <h1 style={{marginLeft: '20px', marginTop: '70px'}}>DÉCODE.</h1> 
         </div>
-      </Nav>
+        <div className= 'icon'>  
+          <Link to = '/login'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
+          <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+          <Link to = '/allpalettes'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
+        </div>
+      </div>
       <div>
-      <img src="palette.svg" alt="icon palette de couleur" style={{width: "30px"}}/>
+        <h3>DÉCOUVREZ L'INTÉRIEUR 
+        DONT VOUS AVEZ TOUJOURS RÊVÉ</h3>
+        <img className='imageBackground' src="background.png" alt='image de fond'/>
       </div>
     </div>
+  
   );
 }
 

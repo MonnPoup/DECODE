@@ -8,14 +8,18 @@ import App from './App.css';
 function Quizz() {
     const [progressBarWidth, setProgressBarWidth] = useState(185)
 
-    var  handleClickChangeWidth = () => {
+    var  handleClickIncreaseWidth = () => {
         console.log('click')
         setProgressBarWidth(progressBarWidth+185)
     }
-    
+
+    var handleClickDecreaseWidth = () => {
+        setProgressBarWidth(progressBarWidth-185)
+    } 
+
     return (
         <div> 
-         <div className= 'navbar'>
+         <div className= 'navbarNormal'>
         <h1 style={{marginLeft: '30px'}}>DÉCODE.</h1> 
     
         <div className= 'icon'>  
@@ -40,9 +44,10 @@ function Quizz() {
                 <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
              </div>
             <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
-            <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}}/>
+            <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
+            onClick={() => handleClickDecreaseWidth()}/>
             <img src='arrow-right.png' alt='arrow left' style={{width: '40px', margin: '30px'}}
-            onClick={() => handleClickChangeWidth()}/>
+            onClick={() => handleClickIncreaseWidth()}/>
             </div>
         </div>
      </div>

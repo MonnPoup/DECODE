@@ -4,34 +4,29 @@ import { Link } from "react-router-dom";
 import { Nav, NavItem, NavLink } from "reactstrap";
 import "./App.css";
 
+
 function Login() {
   return (
-    <div>
-      <Nav className="navbarHome">
-        <div className="">
-        <h1>DÉCODE.</h1> 
+    <div className='background'>
+        <div className= 'navbarNormal'>
+            <div>
+                <h2 style={{marginLeft: '20px', marginTop: '25px'}}>DÉCODE.</h2> 
+            </div>
+                <div style={{marginTop: '25px'}}>  
+                <Link to = '/login'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
+                <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+                <Link to = '/allpalettes'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
+                </div>
         </div>
-        <div>
-        <NavItem>
-          <NavLink href="#">
-            <img src="palette.svg" alt="icon palette de couleur" style={{width: "30px"}}/>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">
-            <img src="heart.svg" alt="icon coeur" style={{width: "30px"}}/>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">
-            <img src="user.svg" alt="icon utilisateur" style={{width: "30px"}}/>
-          </NavLink>
-        </NavItem>
+
+        <div className= 'containerLogin' style={{marginTop: '80px'}}>
+            <h3>Connexion / Inscription</h3>
+            <div className='login'>
+                <div className='connexion'>Connexion</div>
+                <div className='inscription'>Inscription</div>
+            </div>
         </div>
-      </Nav>
-      <div>
-      <img src="palette.svg" alt="icon palette de couleur" style={{width: "30px"}}/>
-      </div>
+
     </div>
   );
 }
