@@ -55,7 +55,7 @@ function Login() {
         </div>
 
         <div className= 'containerLogin' style={{marginTop: '80px'}}>
-            <h3 style={{paddingTop: '15px'}}>Connexion / Inscription</h3>
+            <h3 className='h3title'>Connexion / Inscription</h3>
             <div className='trait2'></div>
             <div className='login'>
                 <div className='connexion'>
