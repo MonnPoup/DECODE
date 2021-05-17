@@ -20,32 +20,45 @@ h2 {
 }
 
 .imageBackground {
- background-image: url(background.png);
- height: 100vh;
-width: 100vw;
-background-repeat: no-repeat;
-  background-size: 100vw;
+  background-image: url(background.png);
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: 100%
 }
 
-.h3home {
-  
-  font-family: 'Montserrat';
-  font-style:normal;
-  font-weight:bold;
-  font-size: 30px;
-  line-height: 59px;
-  letter-spacing: -1.5px;
+.pHome {
+  margin: 0;
+}
+
+.titreHome {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
   padding-top: 27vh;
   margin-left: 2vw;
   color: #203126;
-  
-  }
+}
+
+.inputHome{
+  border-radius: 50px;
+  opacity: 80%;
+  border: 1px solid #203126;
+  margin-top: 10px;
+  margin-left: 155px;
+  height: 45px;
+  width: 100;
+  font-size: 15px;
+  color: white;
+  background-color: #203126;
+}
 
 .mycontainer {
-    height: 100vh;
-    max-width: 100vw;
-    padding: 0;
-  }
+  height: 100vh;
+  max-width: 100vw;
+  padding: 0;
+}
 
 .navbarFixed {
   position: fixed;
@@ -122,7 +135,7 @@ background-repeat: no-repeat;
 .containerLogin {
   height: 65vh;
   width: 70vw;
-  background-color : #FCFBF6;
+  background-color: #fcfbf6;
   color: #203126;
   border-radius: 10px;
   margin-left: 220px;
@@ -152,18 +165,18 @@ background-repeat: no-repeat;
 }
 
 .trait {
-margin-top: 80px;
-width: 180px;
-transform: rotate(-180deg);
-margin-left: 60px;
-margin-right: 60px;
+  margin-top: 80px;
+  width: 180px;
+  transform: rotate(-180deg);
+  margin-left: 60px;
+  margin-right: 60px;
 }
 
 .trait2 {
   width: 100%;
   height: 3px;
-  background-color : #203126;
-  }
+  background-color: #203126;
+}
 
 .ProgressBar {
   width: 100%;
@@ -177,7 +190,7 @@ margin-right: 60px;
   border-radius: 50px;
   border: 1px solid #203126;
   opacity: 50%;
-  margin-top:10px;
+  margin-top: 10px;
   height: 45px;
   font-size: 15px;
   padding-left: 10px;
@@ -188,20 +201,11 @@ margin-right: 60px;
   border-radius: 50px;
   opacity: 80%;
   border: 1px solid #203126;
-  margin-top:10px; 
-  margin-left: 155px; 
+  margin-top: 10px;
+  margin-left: 155px;
   height: 45px;
   width: 100;
-  font-size: 15px; 
+  font-size: 15px;
   color: white;
-  background-color: #203126
+  background-color: #203126;
 }
-
-
-
-
-
-
-
-
-
