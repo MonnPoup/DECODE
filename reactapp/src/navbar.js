@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 function NavBar() {
   return (
     <div className= 'navbar'>
-    <h1 style={{marginLeft: '20px'}}>DÉCODE.</h1> 
+    <div><h1 style={{marginLeft: '20px'}}>DÉCODE.</h1> </div>
     
     <div className= 'icon'>  
     <img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/>
