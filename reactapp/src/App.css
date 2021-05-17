@@ -3,8 +3,7 @@
 
 h1 {
   font-family: 'Abril Fatface', cursive;
-  align-items: right
-  ;
+  align-items: right;
 }
 
 .navbar {
@@ -21,6 +20,12 @@ h1 {
   color: #203126;
   display : flex ;
 }
+
+.icon {
+  margin-right: 10px;
+  display : flex 
+}
+
 
 
 
