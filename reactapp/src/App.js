@@ -9,6 +9,7 @@ import ShoppingList from './ScreenShoppingList';
 import Login from './ScreenLogin';
 import Wishlist from './ScreenWishlist'
 import AllPalettes from './ScreenAllPalettes'
+import navbar from './navbar'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route path="/login" component={Login}  />
       <Route path="/wishlist" component={Wishlist}  />
       <Route path="/allpalettes" component={AllPalettes}  />
+      <Route path="/navbar" component={navbar}  />
     </Switch>
   </Router>
   );
