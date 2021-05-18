@@ -145,15 +145,19 @@ function Quizz() {
 
     var handleClickValider = async () => {
         console.log('click valider')
-        var copy = answersArray 
-    
-        copy.push(answer)
+        if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto3Selected === true ) {
+            var copy = answersArray 
+            copy.push(answer)
+            console.log('valider : ', copy)
+            await fetch('/myPalette', {
+                method: 'POST',
+                headers: {'Content-Type':'application/x-www-form-urlencoded'},
+                body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}` 
+            });
 
-        await fetch('/myPalette', {
-            method: 'POST',
-            headers: {'Content-Type':'application/x-www-form-urlencoded'},
-            body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}`
-        });
+        } else  { setError('Merci de sélectionner une réponse') }
+        
+       
         console.log('fetch done')
 }
 

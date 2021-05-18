@@ -102,8 +102,8 @@ router.post('/signIn', async (req, res) => {
 
 router.post('/myPalette', async  (req, res,next) => {
   
- console.log('hello', req.body.rep1)
- /* 
+ (console.log('body', req.body))
+ 
  var result = false; 
   var rep1 = req.body.rep1; 
   var rep2 = req.body.rep2; 
@@ -113,14 +113,14 @@ router.post('/myPalette', async  (req, res,next) => {
   var rep6 = req.body.rep6;
   var rep7 = req.body.rep7;
 
-  var resultquizz = 'nomdelapalette' 
+ /*  var resultquizz = 'nomdelapalette' 
 
   var UserPalette = await paletteModel.findOne({
     name: resultquizz
   })
 
   if (UserPalette) {result = true; res.json({result, UserPalette})} 
-  else  {res.json({result})} */
+  else  {res.json({result})}  */
 
 
 });
