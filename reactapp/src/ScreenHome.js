@@ -68,7 +68,8 @@ function Home() {
         </a>
       </div>
       <div id="section2" className="background">
-        <a href="#section1">
+        <a href="#section1" >
+          
           <img
             className="chevronBlanc2"
             src="doubleChevron.svg"
