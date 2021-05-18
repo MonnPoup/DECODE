@@ -1,51 +1,54 @@
 var express = require('express');
 var router = express.Router();
+
+var uid2 = require('uid2')
+var bcrypt = require('bcrypt');
+
+
 var userModel = require('../models/users');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+
+router.get('/', async (req, res, next) => {
+  res.json()
 });
 
-var express = require('express');
-var router = express.Router();
-
-
-router.post('/signUp', async (req, res) => {
+router.post('/signUp', async (req, res, next) => {
   var error = []
-  var result = false
   var saveUser = null
+  var result = false
   var token = null
 
 
   const data = await userModel.findOne({
     email: req.body.emailFromFront
   })
-console.log(data);
+
+  console.log("retour bdd", data)
+
   if(data != null){
-    error.push('utilisateur déjà présent')
+    error.push('Utilisateur déjà présent')
   }
 
   if(req.body.usernameFromFront == ''
   || req.body.emailFromFront == ''
   || req.body.passwordFromFront == ''
   ){
-    error.push('champs vides')
+    error.push('Champs vides')
   }
 
   if(error.length == 0){
 
-/*     var hash = bcrypt.hashSync(req.body.passwordFromFront, 10);
- */   var newUser = new userModel({
+      var hash = bcrypt.hashSync(req.body.passwordFromFront, 10);
+      var newUser = new userModel({
       firstName: req.body.usernameFromFront,
       email: req.body.emailFromFront,
-      password: req.body.passswordFromFront,
-/*       token: uid2(32),
- */      palette: [], 
+      password: hash,
+      token: uid2(32),
+      palette: [], 
       wishlist: [], 
     })
   
-    saveUser = await newUser.save()
+    saveUser = await newUser.save();
   
     
     if(saveUser){
@@ -53,8 +56,7 @@ console.log(data);
       token = saveUser.token
     }
   }
-  
- console.log(result)
+ /*  console.log(result, error, saveUser, token) */
   res.json({result, error, saveUser, token})
 });
 
@@ -68,7 +70,7 @@ router.post('/signIn', async (req, res) => {
   if(req.body.emailFromFront == ''
   || req.body.passwordFromFront == ''
   ){
-    error.push('champs vides')
+    error.push('Champs vides')
   }
 
   if(error.length == 0){
@@ -83,11 +85,11 @@ router.post('/signIn', async (req, res) => {
         token = user.token
       } else {
         result = false
-        error.push('mot de passe incorrect')
+        error.push('Mot de passe incorrect')
       }
       
     } else {
-      error.push('email incorrect')
+      error.push('Email incorrect')
     }
   }
   

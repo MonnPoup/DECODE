@@ -9,19 +9,27 @@ function Login() {
     const [signUpEmail, setSignUpEmail] = useState('')
     const [signUpPassword, setSignUpPassword] = useState('')
 
+    const [signInEmail, setSignInEmail] = useState('')
+    const [signInPassword, setSignInPassword] = useState('')
+  
     const [userExists, setUserExists] = useState(false)
+
     const [listErrorsSignup, setErrorsSignup] = useState([])
+    const [listErrorsSignin, setErrorsSignin] = useState([])
     
 
     var handleSubmitSignup = async () => {
     
+        console.log('fetch')
         const data = await fetch('/signUp', {
           method: 'POST',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passswordFromFront=${signUpPassword}`
+          body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}`
         })
     
         const body = await data.json()
+
+        console.log('body', body)
     
 
         if(body.result == true){
@@ -32,12 +40,35 @@ function Login() {
           }
         }
 
+
+        var handleSubmitSignin = async () => {
+ 
+            const data2 = await fetch('/signIn', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+              body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`
+            })
+        
+            const body2 = await data2.json()
+        
+            if(body2.result == true){
+              setUserExists(true)
+              
+            }  else {
+              setErrorsSignin(body2.error)
+            }
+          }
+
         if(userExists){
             return <Redirect to='/' />
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
-            return(<p>{error}</p>)
+            return(<p style={{fontSize: '15px'}}>{error}</p>)
+          })
+
+        var tabErrorsSignin = listErrorsSignin.map((error,i) => {
+            return(<p style={{fontSize: '15px'}}>{error}</p>)
           })
 
 
@@ -55,33 +86,30 @@ function Login() {
         </div>
 
         <div className= 'containerLogin' style={{marginTop: '80px'}}>
-            <h3 className='h3title'>Connexion / Inscription</h3>
+            <h3 className="h3title">Connexion / Inscription</h3>
             <div className='trait2'></div>
             <div className='login'>
                 <div className='connexion'>
                 Connexion
-                    <form>
-                        <label className='formLogin'>
-                            <input type="text" name="emailFromFront" placeholder='Email' className='input' />
-                            <input type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
-                        </label>
-                        <input type="submit" value="Connexion" className='inputValider'/>
-                    </form>
+                        <div className='formLogin'>
+                            <input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input' />
+                            <input onChange={(e) => setSignInPassword(e.target.value)} type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                        </div>
+                        {tabErrorsSignin}
+                        <input onClick={() => handleSubmitSignin()} type="submit" value="Connexion" className='inputValider'/>
                 </div>
 
 
                 <div className='trait'><img src='line.png'/></div>
                 <div className='inscription'>
                     Inscription
-                    <form>
-                        <label className='formLogin'>
+                        <div className='formLogin'>
                             <input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input' />
                             <input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input'/>
                             <input onChange={(e) => setSignUpPassword(e.target.value)} type="password" name="passwordFromFront" placeholder='Mot de passe' className='input'/>
-                        </label>
+                        </div>
                         {tabErrorsSignup}
                         <input onClick={() => handleSubmitSignup()} type="submit" value="Connexion" className='inputValider'/>
-                    </form>
                 </div>
 
             </div>
