@@ -129,6 +129,7 @@ function Quizz() {
         else if (answersArray[clickCount]) {                // si revient en arrière modifie la valeur 
             answersArray[clickCount] = answer 
         }
+        console.log(answersArray)
         setCount(clickCount+1)
         setProgressBarWidth(progressBarWidth+185)           //  barre de progression    
         set_isPhoto1Selected(false); set_isPhoto2Selected(false);set_isPhoto3Selected(false);set_isPhoto4Selected(false)
@@ -159,6 +160,10 @@ function Quizz() {
     var clickPhoto1 = async () => {
         if (isPhoto1Selected === false){
             set_isPhoto1Selected(true)
+            set_isPhoto2Selected(false)
+            set_isPhoto3Selected(false)
+            set_isPhoto4Selected(false)
+
         } else {
             set_isPhoto1Selected(false)
         }
@@ -170,6 +175,9 @@ function Quizz() {
     var clickPhoto2 = async () => {
         if (isPhoto2Selected === false){
             set_isPhoto2Selected(true)
+            set_isPhoto1Selected(false)
+            set_isPhoto3Selected(false)
+            set_isPhoto4Selected(false)
         } else {
             set_isPhoto2Selected(false)
         }
@@ -181,6 +189,9 @@ function Quizz() {
     var clickPhoto3 = async () => {
         if (isPhoto3Selected === false){
             set_isPhoto3Selected(true)
+            set_isPhoto2Selected(false)
+            set_isPhoto1Selected(false)
+            set_isPhoto4Selected(false)
         } else {
             set_isPhoto3Selected(false)
         }
@@ -192,6 +203,9 @@ function Quizz() {
     var clickPhoto4 = async () => {
         if (isPhoto4Selected === false){
             set_isPhoto4Selected(true)
+            set_isPhoto2Selected(false)
+            set_isPhoto3Selected(false)
+            set_isPhoto1Selected(false)
         } else {
             set_isPhoto4Selected(false)
         }
@@ -212,7 +226,7 @@ function Quizz() {
     buttons = 
     <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
     <img src='arrow-left.png' alt='arrow left'  className='arrow-button' onClick={() => handleClickDecreaseWidth()}/>
-    <button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
+    <Link to='/mypalette'><button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button></Link>
     </div> } 
 
     else if (clickCount === 0) {
@@ -226,7 +240,7 @@ function Quizz() {
     return (
         <div> 
           <NavBar/>
-        <div style={{backgroundColor: '#203126', height:'100vh', width:'100vw', justifyContent:'center'}}> 
+        <div style={{backgroundColor: '#203126', height:'85vh', width:'100vw', justifyContent:'center'}}> 
             <div className='ScreenQuestion'> 
             <p  className='questions'> {currentQuestion.question} </p>
 

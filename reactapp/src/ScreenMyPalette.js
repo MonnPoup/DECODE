@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
+import NavBar from "./navbar"
 
-function mypalettes() {
+function mypalette() {
   
     return (
-      <div className= 'navbar'>
-      <div><h2 style={{marginLeft: '20px'}}>DÉCODE.</h2> </div>
-      <div className= 'icon'>  
+      <div className='background'>
+       <NavBar/>
       </div>
-      </div>
+    
     
   
     
     );
   }
   
-  export default mypalettes;
+  export default mypalette;
