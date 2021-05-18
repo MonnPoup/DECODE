@@ -21,6 +21,11 @@ function Home() {
           <p className="pHome">DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
           <input type="submit" value="Je découvre" className='inputHome'/>
+            <div className="paletteNoire"></div>
+            <div className="paletteBrune"></div>
+            <div className="paletteBleue"></div>
+            <div className="paletteOr"></div>
+            <div className="paletteBlanc"></div>
       </div>
     </div>
   
