@@ -122,7 +122,7 @@ function Quizz() {
  
 
     var  handleClickIncreaseWidth = () => {
-        if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto3Selected === true ) {
+        if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto4Selected === true ) {
         if (answersArray[clickCount] === undefined ){        // si premier clic 
         var copy = answersArray 
         copy.push(answer)}
@@ -145,7 +145,7 @@ function Quizz() {
 
     var handleClickValider = async () => {
         console.log('click valider')
-        if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto3Selected === true ) {
+        if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto4Selected === true ) {
             var copy = answersArray 
             copy.push(answer)
             console.log('valider : ', copy)
