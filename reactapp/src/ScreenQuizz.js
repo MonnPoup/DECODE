@@ -4,11 +4,41 @@ import App from './App.css';
 
 function Quizz() {
   const [progressBarWidth, setProgressBarWidth] = useState(185)
+  const [clickCount, setCount] = useState(0)
+  const [questionData, setQuestionData] = useState()
 
+  var dataQuestions = [
+      {question : 'Première question', 
+        photo1: 'url1',
+        photo2: 'url2',
+        photo3: 'url3',
+        photo4: 'url4'},
+        {question : 'Deuxième question', 
+        photo1: 'url1',
+        photo2: 'url2',
+        photo3: 'url3',
+        photo4: 'url4',},
+        {question : 'Troisième question', 
+        photo1: 'url1',
+        photo2: 'url2',
+        photo3: 'url3',
+        photo4: 'url4',},
+        {question : 'Quatrième question', 
+        photo1: 'url1',
+        photo2: 'url2',
+        photo3: 'url3',
+        photo4: 'url4',}
+  ]
+
+  useEffect(()=>{
+    setQuestionData(dataQuestions[clickCount])
+
+  }, [clickCount])
 
     var  handleClickIncreaseWidth = () => {
         console.log('click')
         setProgressBarWidth(progressBarWidth+185)
+
     }
 
     var handleClickDecreaseWidth = () => {
@@ -29,7 +59,10 @@ function Quizz() {
         </div>
 
         <div style={{backgroundColor: '#203126', height:'100vh', width:'100vw', justifyContent:'center'}}> 
-            <p  className='questions'> Parmis les styles de décoration suivants lesquels préférez-vous ? </p>
+
+        questionData.map((data, i) { 
+            <div className='ScreenQuestion'> 
+            <p  className='questions'> {data.question} </p>
 
             <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center'}} >  
             <img src='image35.png' alt='ethnique' style={{width: '300px', margin: '20px'}}/>
@@ -47,8 +80,12 @@ function Quizz() {
             <img src='arrow-right.png' alt='arrow left' style={{width: '40px', margin: '30px'}}
             onClick={() => handleClickIncreaseWidth()}/>
             </div>
+            
+            </div>
+            })
         </div>
      </div>
+
     );
   }
   

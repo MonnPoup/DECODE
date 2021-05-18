@@ -9,7 +9,7 @@
 
 h1 {
   font-family: "Abril Fatface", cursive;
-  font-size: 70px;
+  font-size: 40px;
   font-weight: normal;
 }
 
@@ -19,46 +19,58 @@ h2 {
   font-weight: normal;
 }
 
-/* .imageBackground {
- background-image: url(/background.png);
-} */
-/* 
-.h3home {
-  position: absolute;
-  width: 700px;
-  height: 118px;
-  right: 1px;
-  top: 160px;
-  
-  font-family: 'Montserrat', cursive;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 30px;
-  line-height: 59px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -1.5px;
-  
-  color: #203126;
-  
-  } */
-
-/* .container {
-    height: 100vh;
-    max-width: 100vw;
-    padding: 0;
-  } */
-
-/* .imageBackground {
-    width:100vw;
-    height:100vh;
-    object-fit:cover;
-  } */
-
-.h3home {
+h3 {
   font-family: "Montserrat";
+  font-weight: 600;
   font-size: 35px;
-  font-weight: 800;
+  margin-left: 10px;
+}
+
+.h3title {
+  padding-top: 15px;
+  margin-bottom: 10px;
+}
+
+
+.imageBackground {
+  background-image: url(background.png);
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: 100%
+}
+
+.pHome {
+  margin: 0;
+}
+
+.titreHome {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  padding-top: 27vh;
+  margin-left: 2vw;
+  color: #203126;
+}
+
+.inputHome{
+  border-radius: 50px;
+  opacity: 80%;
+  border: 1px solid #203126;
+  margin-top: 10px;
+  margin-left: 155px;
+  height: 45px;
+  width: 100;
+  font-size: 15px;
+  color: white;
+  background-color: #203126;
+}
+
+.mycontainer {
+  height: 100vh;
+  max-width: 100vw;
+  padding: 0;
 }
 
 .navbarFixed {
@@ -94,7 +106,7 @@ h2 {
   letter-spacing: 0.15px;
 
   color: #fcfbf6;
-}
+} 
 
 .questionsPhoto {
   display: flex;
@@ -135,10 +147,10 @@ h2 {
 
 .containerLogin {
   height: 65vh;
-  width: 80vw;
-  background-color: #fcfbf6;
-  color: #203126;
+  width: 70vw;
+  background-color : #fcfbf6;
   border-radius: 10px;
+  margin-left: 220px;
 }
 
 .login {
@@ -151,7 +163,9 @@ h2 {
   font-size: 25px;
   font-weight: normal;
   margin-top: 60px;
-  margin-left: 100px;
+  margin-left: 180px;
+  display: flex;
+  flex-direction: column;
 }
 
 .inscription {
@@ -159,9 +173,51 @@ h2 {
   font-size: 25px;
   font-weight: normal;
   margin-top: 60px;
-  margin-right: 300px;
+  margin-right: 180px;
+}
+
+.trait {
+  margin-top: 80px;
+  width: 180px;
+  transform: rotate(-180deg);
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.trait2 {
+  width: 100%;
+  height: 3px;
+  background-color: #203126;
 }
 
 .ProgressBar {
   width: 100%;
+}
+
+.formLogin {
+  border-radius: 30px;
+}
+
+.input {
+  border-radius: 50px;
+  border: 1px solid #203126;
+  opacity: 50%;
+  margin-top: 10px;
+  height: 45px;
+  font-size: 15px;
+  padding-left: 10px;
+  width: 250px;
+}
+
+.inputValider {
+  border-radius: 50px;
+  opacity: 80%;
+  border: 1px solid #203126;
+  margin-top: 10px;
+  margin-left: 178px;
+  height: 45px;
+  width: 100;
+  font-size: 15px;
+  color: white;
+  background-color: #203126;
 }
