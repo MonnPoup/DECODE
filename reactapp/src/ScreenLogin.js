@@ -32,7 +32,7 @@ function Login() {
         console.log('body', body)
     
 
-        if(body.result == true){
+        if(body.result === true){
             setUserExists(true)
             
           } else {
@@ -51,7 +51,7 @@ function Login() {
         
             const body2 = await data2.json()
         
-            if(body2.result == true){
+            if(body2.result === true){
               setUserExists(true)
               
             }  else {
