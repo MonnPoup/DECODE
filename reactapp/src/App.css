@@ -5,6 +5,11 @@ html {
   scroll-behavior: smooth;
 }
 
+Link {
+    color: none;
+    text-decoration: none;
+}
+
 .background {
   background-color: #203126;
   height: 100vh;

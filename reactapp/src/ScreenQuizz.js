@@ -1,4 +1,3 @@
-import { Button } from 'antd';
 import React, {useState, useEffect} from 'react';
 import { Link, Redirect} from "react-router-dom";
 import NavBar from "./navbar"
@@ -8,44 +7,109 @@ import App from './App.css';
 function Quizz() {
   const [progressBarWidth, setProgressBarWidth] = useState(185)
   const [clickCount, setCount] = useState(0)
-
+  const [answer, setAnswer ] = useState()
+  const [answersArray, setAnswersArray] = useState([])
+  const [isSelected, setIsSelected] = useState(false)
+  
 
   var dataQuestions = [
       {question : 'Première question', 
-        photo1: 'image35.png',
-        photo2: 'image36.png',
-        photo3: 'image37.png',
-        photo4: 'image38.png'},
+        photo1: {
+            url: 'image35.png', 
+            name: 'ethnique'},
+        photo2:{
+            url: 'image36.png',
+            name: 'artDeco'},
+        photo3: {
+            url: 'image37.png',
+            name: 'boheme'},
+        photo4: {
+            url: 'image38.png',
+            name: 'minimalModern'}
+        },
         {question : 'Deuxième question', 
-        photo1: 'image35.png',
-        photo2: 'image36.png',
-        photo3: 'image37.png',
-        photo4: 'image38.png'},
+        photo1: {
+            url: 'image35.png', 
+            name: 'ethnique'},
+        photo2:{
+            url: 'image36.png',
+            name: 'artDeco'},
+        photo3: {
+            url: 'image37.png',
+            name: 'boheme'},
+        photo4: {
+            url: 'image38.png',
+            name: 'minimalModern'}
+        },
         {question : 'Troisième question', 
-        photo1: 'image35.png',
-        photo2: 'image36.png',
-        photo3: 'image37.png',
-        photo4: 'image38.png'},
+        photo1: {
+            url: 'image35.png', 
+            name: 'ethnique'},
+        photo2:{
+            url: 'image36.png',
+            name: 'artDeco'},
+        photo3: {
+            url: 'image37.png',
+            name: 'boheme'},
+        photo4: {
+            url: 'image38.png',
+            name: 'minimalModern'}
+        },
         {question : 'Quatrième question', 
-        photo1: 'image35.png',
-        photo2: 'image36.png',
-        photo3: 'image37.png',
-        photo4: 'image38.png'}, 
+        photo1: {
+            url: 'image35.png', 
+            name: 'ethnique'},
+        photo2:{
+            url: 'image36.png',
+            name: 'artDeco'},
+        photo3: {
+            url: 'image37.png',
+            name: 'boheme'},
+       photo4: {
+            url: 'image38.png',
+            name: 'minimalModern'}
+        }, 
         {question : 'Cinquième question', 
-        photo1: 'image35.png',
-        photo2: 'image36.png',
-        photo3: 'image37.png',
-        photo4: 'image38.png'},
+        photo1: {
+            url: 'image35.png', 
+            name: 'ethnique'},
+        photo2:{
+            url: 'image36.png',
+            name: 'artDeco'},
+        photo3: {
+            url: 'image37.png',
+            name: 'boheme'},
+        photo4: {
+            url: 'image38.png',
+            name: 'minimalModern'}
+        },
         {question : 'Sixième question', 
-        photo1: 'image35.png',
-        photo2: 'image36.png',
-        photo3: 'image37.png',
-        photo4: 'image38.png'},
-        {question : 'Septième question', 
-        photo1: 'image35.png',
-        photo2: 'image36.png',
-        photo3: 'image37.png',
-        photo4: 'image38.png'},
+        photo1: {
+            url: 'image35.png', 
+            name: 'ethnique'},
+        photo2:{
+            url: 'image36.png',
+            name: 'artDeco'},
+        photo3: {
+            url: 'image37.png',
+            name: 'boheme'},
+        photo4: {
+            url: 'image38.png',
+            name: 'minimalModern'}
+        },
+        { photo1: {
+            url: 'image35.png', 
+            name: 'ethnique'},
+        photo2:{
+            url: 'image36.png',
+            name: 'artDeco'},
+        photo3: {
+            url: 'image37.png',
+            name: 'boheme'},
+        photo4: {
+            url: 'image38.png',
+            name: 'minimalModern'}
+        },
   ]
 
   
@@ -54,89 +118,75 @@ function Quizz() {
 
     var  handleClickIncreaseWidth = () => {
         console.log('click')
+        console.log(answer)
+        var copy = answersArray 
+        copy.push(answer)
+       
+        console.log('array', answersArray)
         setProgressBarWidth(progressBarWidth+185)
         if (clickCount < 6 ) {
-        setCount(clickCount+1)}
+        setCount(clickCount+1)
+        
+    }  
     }
 
     var handleClickDecreaseWidth = () => {
         setProgressBarWidth(progressBarWidth-185)
         if (clickCount !== 0 ) {
-            setCount(clickCount-1)}
-        
+            setCount(clickCount-1)} 
     } 
 
-    if (clickCount !== 6 ) { 
+    var handleClickValider = async () => {
+        console.log(answer)
+        var copy = answersArray 
+        copy.push(answer)
+
+       
+    }
+
+
+
+    var buttons = <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
+    <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
+    onClick={() => handleClickDecreaseWidth()}/>
+    <img src='arrow-right.png' alt='arrow left' style={{width: '40px', margin: '30px'}}
+    onClick={() => handleClickIncreaseWidth()}/>
+    </div>; 
+
+    if (clickCount === 6 ) {  buttons = <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
+    <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
+    onClick={() => handleClickDecreaseWidth()}/>
+   <button  type='button' value="Valider"  style={{ margin: '30px'}} className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
+    </div>} 
+
+  
+
     return (
         <div> 
           <NavBar/>
         <div style={{backgroundColor: '#203126', height:'100vh', width:'100vw', justifyContent:'center'}}> 
             <div className='ScreenQuestion'> 
-            <p  className='questions'> {currentQuestion.question} {clickCount} </p>
+            <p  className='questions'> {currentQuestion.question} </p>
 
             <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center'}} >  
-            <img src={currentQuestion.photo1} alt='ethnique' style={{width: '300px', margin: '20px'}}/>
-            <img src={currentQuestion.photo2} alt='boho' style={{width: '300px', margin: '20px'}}/>
-            <img src={currentQuestion.photo3} alt='artdeco' style={{width: '300px', margin: '20px'}}/>
-            <img src={currentQuestion.photo4} alt='minimal' style={{width: '300px', margin: '20px'}}/>
+            <img key='1' src={currentQuestion.photo1.url} alt='ethnique'  style={{width: '300px', margin: '20px'}} onClick={()=> {setAnswer('ethnique')}} / >
+            <img key='2' src={currentQuestion.photo2.url} alt='boho' style={{width: '300px', margin: '20px'}} onClick={()=> {setAnswer('boho')}}/>
+            <img key='3' src={currentQuestion.photo3.url} alt='artdeco' style={{width: '300px', margin: '20px'}} onClick={()=> {setAnswer('artDeco')}}/>
+            <img key='4' src={currentQuestion.photo4.url} alt='minimal' style={{width: '300px', margin: '20px'}} onClick={()=> {setAnswer('minimal')}}/>
             </div>
 
             <div className="ProgressBar" style={{ height:"20px", display:'flex', justifyContent:'center'}} > 
                 <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
             </div>
 
-        
-            <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
-            <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
-            onClick={() => handleClickDecreaseWidth()}/>
-            <img src='arrow-right.png' alt='arrow left' style={{width: '40px', margin: '30px'}}
-            onClick={() => handleClickIncreaseWidth()}/>
-            </div>
+            {buttons}
+            
             
             </div>
         </div>
      </div> 
 
-    )} 
-    else { 
-        return (
-            <div> 
-             <div className= 'navbarNormal'>
-            <h1 style={{marginLeft: '30px'}}>DÉCODE.</h1> 
-        
-            <div className= 'icon'>  
-            <img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/>
-            <img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/>
-            <img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/>
-            </div>
-    
-            </div>
-            <div style={{backgroundColor: '#203126', height:'100vh', width:'100vw', justifyContent:'center'}}> 
-                <div className='ScreenQuestion'> 
-                <p  className='questions'> {currentQuestion.question} {clickCount} </p>
-    
-                <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center'}} >  
-                <img src={currentQuestion.photo1} alt='ethnique' style={{width: '300px', margin: '20px'}}/>
-                <img src={currentQuestion.photo2} alt='boho' style={{width: '300px', margin: '20px'}}/>
-                <img src={currentQuestion.photo3} alt='artdeco' style={{width: '300px', margin: '20px'}}/>
-                <img src={currentQuestion.photo4} alt='minimal' style={{width: '300px', margin: '20px'}}/>
-                </div>
-    
-                <div className="ProgressBar" style={{ height:"20px", display:'flex', justifyContent:'center'}} > 
-                    <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
-                </div>
-    
-            
-                <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
-                <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
-                onClick={() => handleClickDecreaseWidth()}/>
-               <input type="submit" value="Valider"  style={{ margin: '30px'}} className='ButtonQuestionnaire'/> 
-                </div>
-                
-                </div>
-            </div>
-         </div> 
-        )}
+    )
   }
   
   export default Quizz;

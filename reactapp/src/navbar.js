@@ -13,7 +13,7 @@ function NavBar() {
   return (
     <div className= 'navbarNormal'>
         <div>
-          <Link to ="/">
+          <Link style={{textDecoration:"none", color:"#203126"}} to ="/">
           <h2 style={{marginLeft: '20px'}}>DÉCODE.</h2> 
           </Link>
         </div>

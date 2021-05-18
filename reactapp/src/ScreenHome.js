@@ -7,7 +7,7 @@ function Home() {
     <div className="mycontainer" style={{ scrollBehavior: "smooth" }}>
       <div className="navbarHome">
         <div>
-          <Link to="/">
+          <Link style={{textDecoration:"none", color:"#203126"}} to="/">
             <h1
               style={{
                 marginLeft: "20px",

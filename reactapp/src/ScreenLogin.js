@@ -34,8 +34,7 @@ function Login(props) {
         console.log('body', body)
     
 
-        if(body.result == true){
-            props.addToken(body.token)
+        if(body.result === true){
             setUserExists(true)
             
           } else {
@@ -54,9 +53,8 @@ function Login(props) {
         
             const body = await data.json()
         
-            if(body.result == true){
-                props.addToken(body.token)
-                setUserExists(true)
+            if(body2.result === true){
+              setUserExists(true)
               
             }  else {
               setErrorsSignin(body.error)
