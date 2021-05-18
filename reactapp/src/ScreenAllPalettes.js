@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
+import NavBar from "./navbar"
 
-function allpalettes() {
+function allPalettes() {
   
     return (
-      <div className= 'navbar'>
-      <div><h2 style={{marginLeft: '20px'}}>DÉCODE.</h2> </div>
-      <div className= 'icon'>  
-      </div>
+      <div className='background'>
+      <NavBar/>
       </div>
     
   
@@ -14,4 +13,4 @@ function allpalettes() {
     );
   }
   
-  export default allpalettes;
+  export default allPalettes;

@@ -39,6 +39,7 @@ function Login(props) {
 
         if(body.result === true){
             setUserExists(true)
+            props.addToken(body.token)
             
           } else {
             setErrorsSignup(body.error)
@@ -58,27 +59,13 @@ function Login(props) {
         
             if(body.result === true){
               setUserExists(true)
+              props.addToken(body.token)
               
             }  else {
               setErrorsSignin(body.error)
             }
           }
 
-          const text = <span>Mon compte</span>;
-          const content = (
-            <div>
-              <Link to ='/mypalette'><p>Ma palette</p></Link>
-              <Link to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
-            </div>
-          );
-
-          if(props.userToken != null){
-              var popover = <Popover placement="bottomRight" title={text} content={content} trigger="click">
-              <img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/>
-              </Popover>
-          } else {
-              popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
-          }
         
          if(userExists){
             return <Redirect to='/' />
