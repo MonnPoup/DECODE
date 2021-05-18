@@ -16,7 +16,6 @@ function NavBar() {
     <div className= 'icon'>  
     <Link to = '/login'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
     <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
-    {userPictoLink}
 
     
     </div>
