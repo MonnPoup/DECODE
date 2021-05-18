@@ -9,21 +9,6 @@ import { Popover, Button } from 'antd';
 
 
 function NavBar() {
-  const [username, setUsername] = useState()
-
- 
-  var userPictoLink = '';  
-
-  useEffect (() => {
-    if (!username) { 
-        userPictoLink =  return <Link to = '/login'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
-    } else {
-      userPictoLink =   <Popover content='coucou' title="Title" trigger="click">
-     <img src="user.svg" alt="palette icon" style={{width: "30px", margin: "20px"}}/>
-    </Popover>
-    }
-
-}, []) 
   
   return (
     <div className= 'navbar'>
