@@ -1,16 +1,22 @@
 import React, {useState} from 'react';
 import { Link, Redirect} from "react-router-dom";
 import "./App.css";
+import {connect} from 'react-redux'
 
 
-function Login() {
+function Login(props) {
 
     const [signUpUsername, setSignUpUsername] = useState('')
     const [signUpEmail, setSignUpEmail] = useState('')
     const [signUpPassword, setSignUpPassword] = useState('')
 
+    const [signInEmail, setSignInEmail] = useState('')
+    const [signInPassword, setSignInPassword] = useState('')
+  
     const [userExists, setUserExists] = useState(false)
+
     const [listErrorsSignup, setErrorsSignup] = useState([])
+    const [listErrorsSignin, setErrorsSignin] = useState([])
     
 
     var handleSubmitSignup = async () => {
@@ -28,6 +34,7 @@ function Login() {
     
 
         if(body.result == true){
+            props.addToken(body.token)
             setUserExists(true)
             
           } else {
@@ -35,11 +42,35 @@ function Login() {
           }
         }
 
+
+        var handleSubmitSignin = async () => {
+ 
+            const data = await fetch('/signIn', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+              body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`
+            })
+        
+            const body = await data.json()
+        
+            if(body.result == true){
+                props.addToken(body.token)
+                setUserExists(true)
+              
+            }  else {
+              setErrorsSignin(body.error)
+            }
+          }
+
         if(userExists){
             return <Redirect to='/' />
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
+            return(<p style={{fontSize: '15px'}}>{error}</p>)
+          })
+
+        var tabErrorsSignin = listErrorsSignin.map((error,i) => {
             return(<p style={{fontSize: '15px'}}>{error}</p>)
           })
 
@@ -64,10 +95,11 @@ function Login() {
                 <div className='connexion'>
                 Connexion
                         <div className='formLogin'>
-                            <input type="text" name="emailFromFront" placeholder='Email' className='input' />
-                            <input type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input' />
+                            <input onChange={(e) => setSignInPassword(e.target.value)} type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
                         </div>
-                        <input type="submit" value="Connexion" className='inputValider'/>
+                        {tabErrorsSignin}
+                        <input onClick={() => handleSubmitSignin()} type="submit" value="Connexion" className='inputValider'/>
                 </div>
 
 
@@ -90,4 +122,16 @@ function Login() {
   );
 }
 
-export default Login;
+
+function mapDispatchToProps(dispatch){
+    return {
+      addToken: function(token){
+        dispatch({type: 'addToken', token: token})
+      }
+    }
+  }
+  
+  export default connect(
+    null,
+    mapDispatchToProps
+  )(Login)
