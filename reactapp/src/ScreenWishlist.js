@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import NavBar from "./navbar"
 
-import NavBar from "./navbar"
+
 
 function wishList() {
   
