@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import { Link, Redirect} from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import {connect} from 'react-redux'
+import { Button, Popover } from 'antd';
+import "antd/dist/antd.css";
+
 
 
 function Login(props) {
@@ -62,7 +65,23 @@ function Login(props) {
             }
           }
 
-        if(userExists){
+          const text = <span>Mon compte</span>;
+          const content = (
+            <div>
+              <Link to ='/mypalette'><p>Ma palette</p></Link>
+              <Link to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
+            </div>
+          );
+
+          if(props.userToken != null){
+              var popover = <Popover placement="bottomRight" title={text} content={content} trigger="click">
+              <img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/>
+              </Popover>
+          } else {
+              popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+          }
+        
+         if(userExists){
             return <Redirect to='/' />
           }
 
@@ -74,17 +93,18 @@ function Login(props) {
             return(<p style={{fontSize: '15px'}}>{error}</p>)
           })
 
+        
 
-  return (
+    return (
     <div className='background'>
         <div className= 'navbarNormal'>
             <div>
-                <h2 style={{marginLeft: '20px', marginTop: '25px'}}>DÉCODE.</h2> 
+            <h2 style={{marginLeft: '20px', marginTop: '25px'}}>DÉCODE.</h2>
             </div>
                 <div style={{marginTop: '25px'}}>  
                 <Link to = '/allpalettes'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
                 <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
-                <Link to = '/login'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
+                {popover}
                 </div>
         </div>
 
@@ -123,15 +143,24 @@ function Login(props) {
 }
 
 
+function mapStateToProps(state){
+    return {userToken: state.token}
+  }
+  
 function mapDispatchToProps(dispatch){
     return {
       addToken: function(token){
         dispatch({type: 'addToken', token: token})
+      }, 
+      suppressionToken: function(){
+          dispatch({type: 'deconnexion'})
       }
     }
   }
+
+
   
   export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(Login)

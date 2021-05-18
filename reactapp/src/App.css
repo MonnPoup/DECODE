@@ -29,6 +29,7 @@ h3 {
 .h3title {
   padding-top: 15px;
   margin-bottom: 10px;
+  color: #203126;
 }
 
 .icon {
@@ -227,8 +228,7 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   font-weight: normal;
   margin-top: 60px;
   margin-left: 180px;
-  display: flex;
-  flex-direction: column;
+  color: #203126;
 }
 
 .inscription {
@@ -237,6 +237,7 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   font-weight: normal;
   margin-top: 60px;
   margin-right: 180px;
+  color: #203126;
 }
 
 .trait {
@@ -277,7 +278,7 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   opacity: 80%;
   border: 1px solid #203126;
   margin-top: 10px;
-  margin-left: 178px;
+  margin-left: 155px;
   height: 45px;
   width: 100;
   font-size: 15px;
