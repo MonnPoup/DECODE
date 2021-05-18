@@ -139,7 +139,7 @@ function Quizz() {
         var copy = answersArray 
         copy.push(answer)
 
-       await fetch{ ('/myPalette') 
+       
     }
 
     }
