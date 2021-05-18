@@ -58,14 +58,14 @@ h3 {
   margin: 0;
 }
 
-/* .pHome1 {
+.pHome1 {
   font-family: "Montserrat";
   width: 70vw;
-  font-size: 28px;
+  font-size: 25px;
   margin-left: 10px;
   color: white;
 }
- */
+
 .chevronBlanc {
   position: absolute;
   width: 64.36px;
@@ -81,6 +81,7 @@ h3 {
   left: 47vw;
   top: 105vh;
   transform: rotate(180deg);
+  margin-top: 20vh
 }
 
 .paletteNoire {
@@ -159,6 +160,7 @@ h3 {
   margin-left: 18vw;
   color: #fdfcf7;
   width: 70vw;
+  padding-top: 40vh;
 }
 
 .inputHome1 {
@@ -337,13 +339,14 @@ h3 {
   border-radius: 50px;
   color: #203126;
   border: 0.5px solid #fcfbf6;
-  width: 20vw;
+  width: 15vw;
   height: 5vh;
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 28px;
+  margin-top: 4vh;
 }
 
 .photo {

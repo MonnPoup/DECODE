@@ -162,7 +162,7 @@ function Quizz() {
     buttons = 
     <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
     <img src='arrow-left.png' alt='arrow left'  className='arrow-button' onClick={() => handleClickDecreaseWidth()}/>
-    <button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
+    <Link to='/mypalette'><button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button></Link>
     </div> } 
 
     else if (clickCount === 0) {
@@ -192,7 +192,7 @@ if (border === true) {
     return (
         <div> 
           <NavBar/>
-        <div style={{backgroundColor: '#203126', height:'100vh', width:'100vw', justifyContent:'center'}}> 
+        <div style={{backgroundColor: '#203126', height:'85vh', width:'100vw', justifyContent:'center'}}> 
             <div className='ScreenQuestion'> 
             <p  className='questions'> {currentQuestion.question} </p>
 
