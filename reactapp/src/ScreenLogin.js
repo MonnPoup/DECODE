@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import { Link, Redirect} from "react-router-dom";
 import "./App.css";
+import {connect} from 'react-redux'
 
 
-function Login() {
+function Login(props) {
 
     const [signUpUsername, setSignUpUsername] = useState('')
     const [signUpEmail, setSignUpEmail] = useState('')
@@ -33,6 +34,7 @@ function Login() {
     
 
         if(body.result == true){
+            props.addToken(body.token)
             setUserExists(true)
             
           } else {
@@ -43,19 +45,20 @@ function Login() {
 
         var handleSubmitSignin = async () => {
  
-            const data2 = await fetch('/signIn', {
+            const data = await fetch('/signIn', {
               method: 'POST',
               headers: {'Content-Type': 'application/x-www-form-urlencoded'},
               body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`
             })
         
-            const body2 = await data2.json()
+            const body = await data.json()
         
-            if(body2.result == true){
-              setUserExists(true)
+            if(body.result == true){
+                props.addToken(body.token)
+                setUserExists(true)
               
             }  else {
-              setErrorsSignin(body2.error)
+              setErrorsSignin(body.error)
             }
           }
 
@@ -119,4 +122,16 @@ function Login() {
   );
 }
 
-export default Login;
+
+function mapDispatchToProps(dispatch){
+    return {
+      addToken: function(token){
+        dispatch({type: 'addToken', token: token})
+      }
+    }
+  }
+  
+  export default connect(
+    null,
+    mapDispatchToProps
+  )(Login)

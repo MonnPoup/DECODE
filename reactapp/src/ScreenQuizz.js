@@ -3,8 +3,6 @@ import App from './App.css';
 
 
 
-
-
 function Quizz() {
     const [progressBarWidth, setProgressBarWidth] = useState(185)
 
