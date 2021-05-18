@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import {BrowserRouter as Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { Popover, Button } from 'antd';
 
 
@@ -11,13 +11,17 @@ import { Popover, Button } from 'antd';
 function NavBar() {
   
   return (
-    <div className= 'navbar'>
-    <div><h2 style={{marginLeft: '20px'}}>DÉCODE.</h2> </div>
-    <div className= 'icon'>  
-    <Link to = '/allpalettes'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
-    <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
-    <Link to = '/login'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
-    </div>
+    <div className= 'navbarNormal'>
+        <div>
+          <Link to ="/">
+          <h2 style={{marginLeft: '20px'}}>DÉCODE.</h2> 
+          </Link>
+        </div>
+      <div className= 'icon'>  
+        <Link to = '/allpalettes'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
+        <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+        <Link to = '/login'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
+      </div>
     </div>
   
 

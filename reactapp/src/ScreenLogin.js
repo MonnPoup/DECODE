@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Link, Redirect} from "react-router-dom";
 import "./App.css";
+import NavBar from "./navbar"
 import {connect} from 'react-redux'
 
 
@@ -77,16 +78,7 @@ function Login(props) {
 
   return (
     <div className='background'>
-        <div className= 'navbarNormal'>
-            <div>
-                <h2 style={{marginLeft: '20px', marginTop: '25px'}}>DÉCODE.</h2> 
-            </div>
-                <div style={{marginTop: '25px'}}>  
-                <Link to = '/allpalettes'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
-                <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
-                <Link to = '/login'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
-                </div>
-        </div>
+        <NavBar/>
 
         <div className= 'containerLogin' style={{marginTop: '80px'}}>
             <h3 className="h3title">Connexion / Inscription</h3>

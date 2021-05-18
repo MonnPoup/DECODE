@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import React, {useState, useEffect} from 'react';
-
+import { Link, Redirect} from "react-router-dom";
+import NavBar from "./navbar"
 import App from './App.css'; 
 
 
@@ -68,16 +69,7 @@ function Quizz() {
     if (clickCount !== 6 ) { 
     return (
         <div> 
-         <div className= 'navbarNormal'>
-        <h1 style={{marginLeft: '30px'}}>DÉCODE.</h1> 
-    
-        <div className= 'icon'>  
-        <img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/>
-        <img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/>
-        <img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/>
-        </div>
-
-        </div>
+          <NavBar/>
         <div style={{backgroundColor: '#203126', height:'100vh', width:'100vw', justifyContent:'center'}}> 
             <div className='ScreenQuestion'> 
             <p  className='questions'> {currentQuestion.question} {clickCount} </p>

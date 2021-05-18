@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300;400;500;600;800&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
+
 .background {
   background-color: #203126;
   height: 100vh;
@@ -33,7 +37,6 @@ h3 {
 
 .icon {
   margin-right: 30px;
-
 }
 
 .imageBackground {
@@ -41,91 +44,98 @@ h3 {
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
-  background-size: 100%
+  background-size: 100%;
+  z-index: 20;
 }
 
 .pHome {
   margin: 0;
 }
 
+/* .pHome1 {
+  font-family: "Montserrat";
+  width: 70vw;
+  font-size: 28px;
+  margin-left: 10px;
+  color: white;
+}
+ */
 .chevronBlanc {
   position: absolute;
-width: 64.36px;
-height: 86.73px;
-left: 47vw;
-top: 85vh;
-
+  width: 64.36px;
+  height: 86.73px;
+  left: 47vw;
+  top: 85vh;
 }
 
 .chevronBlanc2 {
   position: absolute;
-width: 64.36px;
-height: 86.73px;
-left: 47vw;
-top: 105vh;
-transform: rotate(180deg);
-
+  width: 64.36px;
+  height: 86.73px;
+  left: 47vw;
+  top: 105vh;
+  transform: rotate(180deg);
 }
 
 .paletteNoire {
   position: absolute;
-width: 60px;
-height: 60px;
-top: 32vh;
-right: 3vw;
+  width: 60px;
+  height: 60px;
+  top: 32vh;
+  right: 3vw;
 
-background: #2F2F31;
-border-radius: 20px;
-transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  background: #2f2f31;
+  border-radius: 20px;
+  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
 }
 
 .paletteBrune {
   position: absolute;
-width: 60px;
-height: 60px;
-top: 45vh;
+  width: 60px;
+  height: 60px;
+  top: 45vh;
   right: 3vw;
 
-background: #9D7D61;
-border-radius: 20px;
-transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  background: #9d7d61;
+  border-radius: 20px;
+  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
 }
 .paletteBleue {
   position: absolute;
-width: 60px;
-height: 60px;
-top: 58vh;
+  width: 60px;
+  height: 60px;
+  top: 58vh;
   right: 3vw;
 
-background: #2C324B;
-border-radius: 20px;
-transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  background: #2c324b;
+  border-radius: 20px;
+  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
 }
 .paletteOr {
   position: absolute;
-width: 60px;
-height: 60px;
-top: 71vh;
+  width: 60px;
+  height: 60px;
+  top: 71vh;
   right: 3vw;
 
-background: #BB9A4D;
-border-radius: 20px;
-transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  background: #bb9a4d;
+  border-radius: 20px;
+  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
 }
 .paletteBlanc {
   position: absolute;
-width: 60px;
-height: 60px;
-top: 84vh;
+  width: 60px;
+  height: 60px;
+  top: 84vh;
   right: 3vw;
+  z-index: 25;
 
-background: #E6E7EB;
-border-radius: 20px;
-transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  background: #e6e7eb;
+  border-radius: 20px;
+  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
 }
 
-
-.titreHome {
+.titreHomeSection1 {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
@@ -135,40 +145,49 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   color: #203126;
 }
 
-.inputHome{
+.titreHomeSection2 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 25px;
+  padding-top: 30vh;
+  margin-left: 18vw;
+  color: #fdfcf7;
+  width: 70vw;
+}
+
+.inputHome1 {
   border-radius: 50px;
   opacity: 80%;
   border: 1px solid #203126;
   position: absolute;
-  left: 500px;
+  left: 510px;
   top: 450px;
   height: 45px;
   width: 250px;
   font-size: 15px;
   color: white;
   background-color: #203126;
+  cursor: pointer;
+}
+.inputHome2 {
+  border-radius: 50px;
+  border: 0px solid #203126;
+  position: absolute;
+  left: 510px;
+  top: 170vh;
+  height: 45px;
+  width: 250px;
+  font-size: 15px;
+  color: #203126;
+  background-color: #fdfcf7;
+  cursor: pointer;
 }
 
 .mycontainer {
   height: 100vh;
   max-width: 100vw;
   padding: 0;
-  scroll-behavior: smooth
-}
-
-.navbarFixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 120px;
-  background-color: #fcfbf6;
-  padding: 5px;
-  padding-left: 5px;
-  padding-top: 0;
-  color: #203126;
-  display: flex;
+  scroll-behavior: smooth;
 }
 
 .questions {
@@ -189,7 +208,7 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   letter-spacing: 0.15px;
 
   color: #fcfbf6;
-} 
+}
 
 .questionsPhoto {
   display: flex;
@@ -211,6 +230,7 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   color: #203126;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 }
 
 .navbarNormal {
@@ -226,12 +246,13 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   color: #203126;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .containerLogin {
   height: 65vh;
   width: 70vw;
-  background-color : #fcfbf6;
+  background-color: #fcfbf6;
   border-radius: 10px;
   margin-left: 220px;
 }
@@ -305,11 +326,11 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   background-color: #203126;
 }
 
-.ButtonQuestionnaire{
-  background: #FCFBF6;
+.ButtonQuestionnaire {
+  background: #fcfbf6;
   border-radius: 50px;
-  color:  #203126;
-  border: 0.5px solid  #FCFBF6;
+  color: #203126;
+  border: 0.5px solid #fcfbf6;
   width: 200px;
   font-family: Montserrat;
   font-style: normal;
