@@ -81,7 +81,7 @@ h3 {
   left: 47vw;
   top: 105vh;
   transform: rotate(180deg);
-  margin-top: 20vh
+  margin-top: 20vh;
 }
 
 .paletteNoire {
@@ -156,7 +156,6 @@ h3 {
   font-family: "Montserrat";
   font-style: normal;
   font-size: 25px;
-  padding-top: 30vh;
   margin-left: 18vw;
   color: #fdfcf7;
   width: 70vw;

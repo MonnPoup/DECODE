@@ -152,6 +152,10 @@ function Quizz() {
     var clickPhoto1 = async () => {
         if (isPhoto1Selected === false){
             set_isPhoto1Selected(true)
+            set_isPhoto2Selected(false)
+            set_isPhoto3Selected(false)
+            set_isPhoto4Selected(false)
+
         } else {
             set_isPhoto1Selected(false)
         }
@@ -163,6 +167,9 @@ function Quizz() {
     var clickPhoto2 = async () => {
         if (isPhoto2Selected === false){
             set_isPhoto2Selected(true)
+            set_isPhoto1Selected(false)
+            set_isPhoto3Selected(false)
+            set_isPhoto4Selected(false)
         } else {
             set_isPhoto2Selected(false)
         }
@@ -174,6 +181,9 @@ function Quizz() {
     var clickPhoto3 = async () => {
         if (isPhoto3Selected === false){
             set_isPhoto3Selected(true)
+            set_isPhoto2Selected(false)
+            set_isPhoto1Selected(false)
+            set_isPhoto4Selected(false)
         } else {
             set_isPhoto3Selected(false)
         }
@@ -185,6 +195,9 @@ function Quizz() {
     var clickPhoto4 = async () => {
         if (isPhoto4Selected === false){
             set_isPhoto4Selected(true)
+            set_isPhoto2Selected(false)
+            set_isPhoto3Selected(false)
+            set_isPhoto1Selected(false)
         } else {
             set_isPhoto4Selected(false)
         }
