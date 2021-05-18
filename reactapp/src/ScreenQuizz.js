@@ -10,6 +10,7 @@ function Quizz() {
   const [answer, setAnswer ] = useState()
   const [answersArray, setAnswersArray] = useState([])
   const [isSelected, setIsSelected] = useState(false)
+  const [border, setBorder] = useState(false)
   
 
   var dataQuestions = [
@@ -172,6 +173,22 @@ function Quizz() {
     </div>; }
   
 
+  var clickPhoto = async () => {
+
+    {setAnswer('minimal')}
+    if (border === false){
+        setBorder(true)
+    } else {
+        setBorder(false)
+    }
+
+}
+
+if (border === true) {
+    var border2 = '2px solid white'
+}
+  
+
     return (
         <div> 
           <NavBar/>
@@ -183,7 +200,7 @@ function Quizz() {
             <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   onClick={()=> {setAnswer('ethnique')}} / >
             <img className='photo' src={currentQuestion.photo2.url} alt='boho'  onClick={()=> {setAnswer('boho')}}/>
             <img className='photo' src={currentQuestion.photo3.url} alt='artdeco'  onClick={()=> {setAnswer('artDeco')}}/>
-            <img className='photo' src={currentQuestion.photo4.url} alt='minimal' onClick={()=> {setAnswer('minimal')}}/>
+            <img className='photo' src={currentQuestion.photo4.url} alt='minimal' style={{border: border2}} onClick={()=> clickPhoto()}/>
             </div>
 
             <div className="ProgressBar" style={{ height:"20px", display:'flex', justifyContent:'center'}} > 
