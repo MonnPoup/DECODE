@@ -142,7 +142,7 @@ function Quizz() {
        
     }
 
-    }
+
 
     var buttons = <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
     <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
