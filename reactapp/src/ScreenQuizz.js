@@ -9,8 +9,10 @@ function Quizz() {
   const [clickCount, setCount] = useState(0)
   const [answer, setAnswer ] = useState()
   const [answersArray, setAnswersArray] = useState([])
-  const [isSelected, setIsSelected] = useState(false)
-  const [border, setBorder] = useState(false)
+  const [isPhoto1Selected, set_isPhoto1Selected] = useState(false)
+  const [isPhoto2Selected, set_isPhoto2Selected] = useState(false)
+  const [isPhoto3Selected, set_isPhoto3Selected] = useState(false)
+  const [isPhoto4Selected, set_isPhoto4Selected] = useState(false)
   
 
   var dataQuestions = [
@@ -127,13 +129,12 @@ function Quizz() {
         else if (answersArray[clickCount]) { 
             answersArray[clickCount] = answer 
         }
-        
         console.log('array', answersArray)
         setProgressBarWidth(progressBarWidth+185)
         if (clickCount < 6 ) {
         setCount(clickCount+1)
-        
-    }  
+        }  
+        set_isPhoto1Selected(false); set_isPhoto2Selected(false);set_isPhoto3Selected(false);set_isPhoto4Selected(false)
     }
 
     var handleClickDecreaseWidth = () => {
@@ -148,6 +149,50 @@ function Quizz() {
         copy.push(answer)
 
        
+    }
+
+    var clickPhoto1 = async () => {
+        if (isPhoto1Selected === false){
+            set_isPhoto1Selected(true)
+        } else {
+            set_isPhoto1Selected(false)
+        }
+    }
+    if (isPhoto1Selected === true) {
+        var selectBorder1 = '2px solid white'
+    }
+
+    var clickPhoto2 = async () => {
+        if (isPhoto2Selected === false){
+            set_isPhoto2Selected(true)
+        } else {
+            set_isPhoto2Selected(false)
+        }
+    }
+    if (isPhoto2Selected === true) {
+        var selectBorder2 = '2px solid white'
+    }
+
+    var clickPhoto3 = async () => {
+        if (isPhoto3Selected === false){
+            set_isPhoto3Selected(true)
+        } else {
+            set_isPhoto3Selected(false)
+        }
+    }
+    if (isPhoto3Selected === true) {
+        var selectBorder3 = '2px solid white'
+    }
+
+    var clickPhoto4 = async () => {
+        if (isPhoto4Selected === false){
+            set_isPhoto4Selected(true)
+        } else {
+            set_isPhoto4Selected(false)
+        }
+    }
+    if (isPhoto4Selected === true) {
+        var selectBorder4 = '2px solid white'
     }
 
 
@@ -197,10 +242,10 @@ if (border === true) {
             <p  className='questions'> {currentQuestion.question} </p>
 
             <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'65vh'}} >  
-            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   onClick={()=> {setAnswer('ethnique')}} / >
-            <img className='photo' src={currentQuestion.photo2.url} alt='boho'  onClick={()=> {setAnswer('boho')}}/>
-            <img className='photo' src={currentQuestion.photo3.url} alt='artdeco'  onClick={()=> {setAnswer('artDeco')}}/>
-            <img className='photo' src={currentQuestion.photo4.url} alt='minimal' style={{border: border2}} onClick={()=> clickPhoto()}/>
+            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{border: selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} / >
+            <img className='photo' src={currentQuestion.photo2.url} alt='boho'   style={{border: selectBorder2}} onClick={()=> {setAnswer('boho');clickPhoto2()}}/>
+            <img className='photo' src={currentQuestion.photo3.url} alt='artdeco' style={{border: selectBorder3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
+            <img className='photo' src={currentQuestion.photo4.url} alt='minimal' style={{border: selectBorder4}} onClick={()=> {setAnswer('minimal');clickPhoto4()}}/>
             </div>
 
             <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 

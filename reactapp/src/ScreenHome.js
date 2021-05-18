@@ -83,7 +83,8 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
         </a>
       </div>
       <div id="section2" className="background">
-        <a href="#section1">
+        <a href="#section1" >
+          
           <img
             className="chevronBlanc2"
             src="doubleChevron.svg"
