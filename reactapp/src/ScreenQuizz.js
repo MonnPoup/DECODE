@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import App from './App.css'; 
 
 
-
-
-
 function Quizz() {
-    const [progressBarWidth, setProgressBarWidth] = useState(185)
+  const [progressBarWidth, setProgressBarWidth] = useState(185)
+
 
     var  handleClickIncreaseWidth = () => {
         console.log('click')
@@ -30,7 +28,7 @@ function Quizz() {
 
         </div>
 
-        <div style={{backgroundColor: '#203126', marginTop:'120px', height:'100vh', width:'100vw', justifyContent:'center'}}> 
+        <div style={{backgroundColor: '#203126', height:'100vh', width:'100vw', justifyContent:'center'}}> 
             <p  className='questions'> Parmis les styles de décoration suivants lesquels préférez-vous ? </p>
 
             <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center'}} >  
