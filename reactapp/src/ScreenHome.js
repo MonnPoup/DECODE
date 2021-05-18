@@ -4,19 +4,19 @@ import "./App.css";
 
 function Home() {
   return (
-    <div className="mycontainer">
+    <div className="mycontainer" style={{scrollBehavior: "smooth"}}>
       <div className= 'navbarHome'>
         <div>
           <h1 style={{marginLeft: '20px', marginTop: '70px', fontSize: "70px"}}>DÉCODE.</h1> 
         </div>
         <div className= 'icon'>  
-          <Link to = '/login'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
+          <Link to = '/allpalettes'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
           <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
-          <Link to = '/allpalettes'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
+          <Link to = '/login'><img src='user.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
         </div>
       </div>
       <div className="imageBackground">
-        <div className="titreHome">
+        <div id="section1" className="titreHome">
           <p className="pHome">DÉCOUVREZ L'INTÉRIEUR </p>
           <p className="pHome">DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
@@ -26,6 +26,13 @@ function Home() {
             <div className="paletteBleue"></div>
             <div className="paletteOr"></div>
             <div className="paletteBlanc"></div>
+          <a href="#section2"><img className="chevronBlanc" src="doubleChevron.svg" alt="double chevron"/></a>
+      </div>
+      <div id="section2" className="background">
+        <p style={{}}>DÉCODE vous offre des conseils de décoration personnalisés et gratuits.</p>
+        <p >Répondez au questionnaire pour dévouvrir votre palette et accéder à la shopping list !</p>
+        <a href="#section1"><img className="chevronBlanc2" src="doubleChevron.svg" alt="double chevron"/></a>
+
       </div>
     </div>
   
