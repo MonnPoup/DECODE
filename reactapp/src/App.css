@@ -365,3 +365,11 @@ cursor: pointer
   height: 45px;
   margin: 30px
 }
+
+.ErrorQuiz{
+  font-family: 'Montserrat'; 
+  font-size: 15px; 
+  color: #fcfbf6; 
+  text-align: center;
+  margin-top: 5px;
+}

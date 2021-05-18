@@ -100,9 +100,11 @@ router.post('/signIn', async (req, res) => {
 
 
 
-router.post('/myPalette', async (req, res) => {
-  var result = false; 
-
+router.post('/myPalette', async  (req, res,next) => {
+  
+ console.log('hello', req.body.rep1)
+ /* 
+ var result = false; 
   var rep1 = req.body.rep1; 
   var rep2 = req.body.rep2; 
   var rep3 = req.body.rep3; 
@@ -118,7 +120,7 @@ router.post('/myPalette', async (req, res) => {
   })
 
   if (UserPalette) {result = true; res.json({result, UserPalette})} 
-  else  {res.json({result})}
+  else  {res.json({result})} */
 
 
 });

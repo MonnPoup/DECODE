@@ -13,6 +13,7 @@ function Quizz() {
   const [isPhoto2Selected, set_isPhoto2Selected] = useState(false)
   const [isPhoto3Selected, set_isPhoto3Selected] = useState(false)
   const [isPhoto4Selected, set_isPhoto4Selected] = useState(false)
+  const [error, setError] = useState('')
   
 
   var dataQuestions = [
@@ -121,21 +122,19 @@ function Quizz() {
  
 
     var  handleClickIncreaseWidth = () => {
-        console.log('click')
-        console.log(answer)
-        if (answersArray[clickCount] === undefined ){
+        if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto3Selected === true ) {
+        if (answersArray[clickCount] === undefined ){        // si premier clic 
         var copy = answersArray 
         copy.push(answer)}
-        else if (answersArray[clickCount]) { 
+        else if (answersArray[clickCount]) {                // si revient en arrière modifie la valeur 
             answersArray[clickCount] = answer 
         }
-        console.log('array', answersArray)
-        setProgressBarWidth(progressBarWidth+185)
-        if (clickCount < 6 ) {
         setCount(clickCount+1)
-        }  
+        setProgressBarWidth(progressBarWidth+185)           //  barre de progression    
         set_isPhoto1Selected(false); set_isPhoto2Selected(false);set_isPhoto3Selected(false);set_isPhoto4Selected(false)
-    }
+        setError('')
+    } else  { setError('Merci de sélectionner une réponse') }
+}
 
     var handleClickDecreaseWidth = () => {
         setProgressBarWidth(progressBarWidth-185)
@@ -144,12 +143,18 @@ function Quizz() {
     } 
 
     var handleClickValider = async () => {
-        console.log(answer)
+        console.log('click valider')
         var copy = answersArray 
+    
         copy.push(answer)
 
-       
-    }
+        await fetch('/myPalette', {
+            method: 'POST',
+            headers: {'Content-Type':'application/x-www-form-urlencoded'},
+            body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}`
+        });
+        console.log('fetch done')
+}
 
     var clickPhoto1 = async () => {
         if (isPhoto1Selected === false){
@@ -234,8 +239,9 @@ function Quizz() {
 
             <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 
                 <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
+               
             </div>
-
+            <p className="ErrorQuiz"> {error}</p> 
             {buttons}
             
             
