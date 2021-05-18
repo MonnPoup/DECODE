@@ -9,8 +9,13 @@ function Login() {
     const [signUpEmail, setSignUpEmail] = useState('')
     const [signUpPassword, setSignUpPassword] = useState('')
 
+    const [signInEmail, setSignInEmail] = useState('')
+    const [signInPassword, setSignInPassword] = useState('')
+  
     const [userExists, setUserExists] = useState(false)
+
     const [listErrorsSignup, setErrorsSignup] = useState([])
+    const [listErrorsSignin, setErrorsSignin] = useState([])
     
 
     var handleSubmitSignup = async () => {
@@ -35,11 +40,34 @@ function Login() {
           }
         }
 
+
+        var handleSubmitSignin = async () => {
+ 
+            const data2 = await fetch('/signIn', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+              body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`
+            })
+        
+            const body2 = await data2.json()
+        
+            if(body2.result == true){
+              setUserExists(true)
+              
+            }  else {
+              setErrorsSignin(body2.error)
+            }
+          }
+
         if(userExists){
             return <Redirect to='/' />
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
+            return(<p style={{fontSize: '15px'}}>{error}</p>)
+          })
+
+        var tabErrorsSignin = listErrorsSignin.map((error,i) => {
             return(<p style={{fontSize: '15px'}}>{error}</p>)
           })
 
@@ -64,10 +92,11 @@ function Login() {
                 <div className='connexion'>
                 Connexion
                         <div className='formLogin'>
-                            <input type="text" name="emailFromFront" placeholder='Email' className='input' />
-                            <input type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input' />
+                            <input onChange={(e) => setSignInPassword(e.target.value)} type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
                         </div>
-                        <input type="submit" value="Connexion" className='inputValider'/>
+                        {tabErrorsSignin}
+                        <input onClick={() => handleSubmitSignin()} type="submit" value="Connexion" className='inputValider'/>
                 </div>
 
 
