@@ -317,3 +317,23 @@ transform: matrix(0.01, -1, -1, -0.01, 0, 0);
   font-size: 20px;
   line-height: 28px;
 }
+
+.photo {
+  width: 300px; 
+  margin: 20px
+}
+.photo:hover{
+width: 320px;
+cursor: pointer
+
+}
+
+.arrow-button {
+  width: 40px;
+  height: 40px;
+  margin: 30px;
+}
+.arrow-button:hover{
+  height: 45px;
+  margin: 30px
+}

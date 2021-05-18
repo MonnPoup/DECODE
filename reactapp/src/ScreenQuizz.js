@@ -95,7 +95,8 @@ function Quizz() {
             url: 'image38.png',
             name: 'minimalModern'}
         },
-        { photo1: {
+        { question: 'Septième question',
+            photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
         photo2:{
@@ -117,9 +118,13 @@ function Quizz() {
     var  handleClickIncreaseWidth = () => {
         console.log('click')
         console.log(answer)
+        if (answersArray[clickCount] === undefined ){
         var copy = answersArray 
-        copy.push(answer)
-       
+        copy.push(answer)}
+        else if (answersArray[clickCount]) { 
+            answersArray[clickCount] = answer 
+        }
+        
         console.log('array', answersArray)
         setProgressBarWidth(progressBarWidth+185)
         if (clickCount < 6 ) {
@@ -144,19 +149,25 @@ function Quizz() {
 
 
 
-    var buttons = <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
-    <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
-    onClick={() => handleClickDecreaseWidth()}/>
-    <img src='arrow-right.png' alt='arrow left' style={{width: '40px', margin: '30px'}}
-    onClick={() => handleClickIncreaseWidth()}/>
+    var buttons = 
+    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center', height:'80px'}}> 
+    <img   className='arrow-button' src='arrow-left.png' alt='arrow left' onClick={() => handleClickDecreaseWidth()}/>
+    <img  className='arrow-button' src='arrow-right.png' alt='arrow right' onClick={() => handleClickIncreaseWidth()}/>
     </div>; 
 
-    if (clickCount === 6 ) {  buttons = <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
-    <img src='arrow-left.png' alt='arrow left' style={{width: '40px', margin: '30px'}} 
-    onClick={() => handleClickDecreaseWidth()}/>
-   <button  type='button' value="Valider"  style={{ margin: '30px'}} className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
-    </div>} 
+    if (clickCount === 6 ) {  
+    buttons = 
+    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
+    <img src='arrow-left.png' alt='arrow left'  className='arrow-button' onClick={() => handleClickDecreaseWidth()}/>
+    <button type='button' style={{ margin: '30px'}} className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
+    </div> } 
 
+    else if (clickCount === 0) {
+    buttons = 
+    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
+    <img className="arrow-button" src='arrow-right.png' alt='arrow left' 
+    onClick={() => handleClickIncreaseWidth()}/>
+    </div>; }
   
 
     return (
@@ -175,11 +186,11 @@ function Quizz() {
             <div className='ScreenQuestion'> 
             <p  className='questions'> {currentQuestion.question} </p>
 
-            <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center'}} >  
-            <img key='1' src={currentQuestion.photo1.url} alt='ethnique'  style={{width: '300px', margin: '20px'}} onClick={()=> {setAnswer('ethnique')}} / >
-            <img key='2' src={currentQuestion.photo2.url} alt='boho' style={{width: '300px', margin: '20px'}} onClick={()=> {setAnswer('boho')}}/>
-            <img key='3' src={currentQuestion.photo3.url} alt='artdeco' style={{width: '300px', margin: '20px'}} onClick={()=> {setAnswer('artDeco')}}/>
-            <img key='4' src={currentQuestion.photo4.url} alt='minimal' style={{width: '300px', margin: '20px'}} onClick={()=> {setAnswer('minimal')}}/>
+            <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height: '390px'}} >  
+            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   onClick={()=> {setAnswer('ethnique')}} / >
+            <img className='photo' src={currentQuestion.photo2.url} alt='boho'  onClick={()=> {setAnswer('boho')}}/>
+            <img className='photo' src={currentQuestion.photo3.url} alt='artdeco'  onClick={()=> {setAnswer('artDeco')}}/>
+            <img className='photo' src={currentQuestion.photo4.url} alt='minimal' onClick={()=> {setAnswer('minimal')}}/>
             </div>
 
             <div className="ProgressBar" style={{ height:"20px", display:'flex', justifyContent:'center'}} > 

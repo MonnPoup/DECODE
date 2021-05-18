@@ -52,7 +52,7 @@ function Login(props) {
         
             const body = await data.json()
         
-            if(body2.result === true){
+            if(body.result === true){
               setUserExists(true)
               
             }  else {
