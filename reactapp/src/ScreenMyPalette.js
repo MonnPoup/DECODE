@@ -5,8 +5,9 @@ function mypalette() {
   
     return (
       <div className='background'>
-      <NavBar/>
+       <NavBar/>
       </div>
+    
     
   
     

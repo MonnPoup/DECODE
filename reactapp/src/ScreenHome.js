@@ -59,8 +59,8 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
           {popover}
         </div>
       </div>
-      <div className="imageBackground">
-        <div id="section1" className="titreHomeSection1">
+      <div id="section1" className="imageBackground">
+        <div  className="titreHomeSection1">
           <p className="pHome">DÉCOUVREZ L'INTÉRIEUR </p>
           <p className="pHome">DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
