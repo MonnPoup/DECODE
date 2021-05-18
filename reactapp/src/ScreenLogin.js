@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Link, Redirect} from "react-router-dom";
-// import "./App.css";
+import "./App.css";
+import NavBar from "./navbar"
 import {connect} from 'react-redux'
 import { Button, Popover } from 'antd';
 import "antd/dist/antd.css";
@@ -36,8 +37,7 @@ function Login(props) {
         console.log('body', body)
     
 
-        if(body.result == true){
-            props.addToken(body.token)
+        if(body.result === true){
             setUserExists(true)
             
           } else {
@@ -56,9 +56,8 @@ function Login(props) {
         
             const body = await data.json()
         
-            if(body.result == true){
-                props.addToken(body.token)
-                setUserExists(true)
+            if(body.result === true){
+              setUserExists(true)
               
             }  else {
               setErrorsSignin(body.error)
@@ -97,17 +96,7 @@ function Login(props) {
 
     return (
     <div className='background'>
-        <div className= 'navbarNormal'>
-            <div>
-            <h2 style={{marginLeft: '20px', marginTop: '25px'}}>DÉCODE.</h2>
-            </div>
-                <div style={{marginTop: '25px'}}>  
-                <Link to = '/allpalettes'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
-                <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
-                {popover}
-                </div>
-        </div>
-
+        <NavBar/>
         <div className= 'containerLogin' style={{marginTop: '80px'}}>
             <h3 className="h3title">Connexion / Inscription</h3>
             <div className='trait2'></div>
