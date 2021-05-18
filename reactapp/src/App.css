@@ -58,7 +58,6 @@ h3 {
   background-repeat: no-repeat;
   background-size: 100%;
   z-index: 20;
-  margin-top: 20vh;
 }
 
 .pHome {
@@ -86,7 +85,7 @@ h3 {
   width: 64.36px;
   height: 86.73px;
   left: 47vw;
-  top: 145vh;
+  top: 105vh;
   transform: rotate(180deg);
   margin-top: 20vh
 }
@@ -163,7 +162,6 @@ h3 {
   font-family: "Montserrat";
   font-style: normal;
   font-size: 25px;
-  padding-top: 42vh;
   margin-left: 18vw;
   color: #fdfcf7;
   width: 70vw;
@@ -189,7 +187,7 @@ h3 {
   border: 0px solid #203126;
   position: absolute;
   left: 40vw;
-  top: 200vh;
+  top: 170vh;
   height: 45px;
   width: 250px;
   font-size: 15px;
