@@ -312,22 +312,22 @@ h3 {
   border-radius: 50px;
   border: 1px solid #203126;
   opacity: 50%;
-  margin-top: 10px;
-  height: 45px;
+  margin-top: 2vh;
+  height: 5.5vh;
   font-size: 15px;
-  padding-left: 10px;
-  width: 250px;
+  padding-left: 0.5vw;
+  width: 18vw;
 }
 
 .inputValider {
   border-radius: 50px;
   opacity: 80%;
   border: 1px solid #203126;
-  margin-top: 10px;
-  margin-left: 155px;
-  height: 45px;
-  width: 100;
-  font-size: 15px;
+  margin-top: 2vh;
+  margin-left: 11.5vw;
+  height: 5vh;
+  width: 6.5vw;
+  font-size: 13px;
   color: white;
   background-color: #203126;
 }
