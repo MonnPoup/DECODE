@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import NavBar from "./navbar"
+import {connect} from 'react-redux'
 
-import NavBar from "./navbar"
 
-function wishList() {
+function wishList(props) {
   
+/* useEffect(() => {
+
+},[]) */
+
     return (
-      <div className='background'>
-      <NavBar/>
+      <div className='backgroundWishlist'>
+       <NavBar/>
+       <div className='traitWishlist'></div>
       </div>
     
   

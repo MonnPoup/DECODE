@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 
+
 function Home() {
   return (
     <div className="mycontainer" style={{ scrollBehavior: "smooth" }}>
@@ -44,8 +45,8 @@ function Home() {
           </Link>
         </div>
       </div>
-      <div className="imageBackground">
-        <div id="section1" className="titreHomeSection1">
+      <div id="section1" className="imageBackground">
+        <div  className="titreHomeSection1">
           <p className="pHome">DÉCOUVREZ L'INTÉRIEUR </p>
           <p className="pHome">DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
