@@ -147,8 +147,6 @@ function Quizz() {
         console.log(answer)
         var copy = answersArray 
         copy.push(answer)
-
-       
     }
 
     var clickPhoto1 = async () => {
@@ -216,22 +214,6 @@ function Quizz() {
     <img className="arrow-button" src='arrow-right.png' alt='arrow left' 
     onClick={() => handleClickIncreaseWidth()}/>
     </div>; }
-  
-
-  var clickPhoto = async () => {
-
-    {setAnswer('minimal')}
-    if (border === false){
-        setBorder(true)
-    } else {
-        setBorder(false)
-    }
-
-}
-
-if (border === true) {
-    var border2 = '2px solid white'
-}
   
 
     return (
