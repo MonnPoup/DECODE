@@ -15,13 +15,16 @@ function Login() {
 
     var handleSubmitSignup = async () => {
     
+        console.log('fetch')
         const data = await fetch('/signUp', {
           method: 'POST',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passswordFromFront=${signUpPassword}`
+          body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}`
         })
     
         const body = await data.json()
+
+        console.log('body', body)
     
 
         if(body.result == true){
@@ -37,7 +40,7 @@ function Login() {
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
-            return(<p>{error}</p>)
+            return(<p style={{fontSize: '15px'}}>{error}</p>)
           })
 
 
@@ -55,33 +58,29 @@ function Login() {
         </div>
 
         <div className= 'containerLogin' style={{marginTop: '80px'}}>
-            <h3 className='h3title'>Connexion / Inscription</h3>
+            <h3 className="h3title">Connexion / Inscription</h3>
             <div className='trait2'></div>
             <div className='login'>
                 <div className='connexion'>
                 Connexion
-                    <form>
-                        <label className='formLogin'>
+                        <div className='formLogin'>
                             <input type="text" name="emailFromFront" placeholder='Email' className='input' />
                             <input type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
-                        </label>
+                        </div>
                         <input type="submit" value="Connexion" className='inputValider'/>
-                    </form>
                 </div>
 
 
                 <div className='trait'><img src='line.png'/></div>
                 <div className='inscription'>
                     Inscription
-                    <form>
-                        <label className='formLogin'>
+                        <div className='formLogin'>
                             <input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input' />
                             <input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input'/>
                             <input onChange={(e) => setSignUpPassword(e.target.value)} type="password" name="passwordFromFront" placeholder='Mot de passe' className='input'/>
-                        </label>
+                        </div>
                         {tabErrorsSignup}
                         <input onClick={() => handleSubmitSignup()} type="submit" value="Connexion" className='inputValider'/>
-                    </form>
                 </div>
 
             </div>
