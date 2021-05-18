@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
-function wish() {
+import NavBar from "./navbar"
+
+function wishList() {
   
     return (
-      <div className= 'navbar'>
-      <div><h2 style={{marginLeft: '20px'}}>DÉCODE.</h2> </div>
-      <div className= 'icon'>  
-      </div>
+      <div className='background'>
+      <NavBar/>
       </div>
     
   
@@ -14,4 +14,4 @@ function wish() {
     );
   }
   
-  export default wish;
+  export default wishList;

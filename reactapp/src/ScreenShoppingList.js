@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
+import NavBar from "./navbar"
 
-function shopping() {
+
+function shoppingList() {
   
-    return (
-      <div className= 'navbar'>
-      <div><h2 style={{marginLeft: '20px'}}>DÉCODE.</h2> </div>
-      <div className= 'icon'>  
-      </div>
-      </div>
-    
+  return (
+    <div className='background'>
+    <NavBar/>
+    </div>
   
-    
-    );
-  }
+
   
-  export default shopping;
+  );
+}
+
+export default shoppingList;
