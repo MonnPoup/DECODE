@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import NavBar from "./navbar"
 
-function mypalettes() {
+function mypalette() {
   
     return (
       <div className='background'>
@@ -14,4 +14,4 @@ function mypalettes() {
     );
   }
   
-  export default mypalettes;
+  export default mypalette;

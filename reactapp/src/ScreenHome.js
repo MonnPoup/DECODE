@@ -1,9 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
+import {connect} from 'react-redux';
+import { Popover, Button } from 'antd';
 
 
-function Home() {
+function Home(props) {
+
+  const text = <span>Mon compte</span>;
+  const content = (
+    <div>
+      <Link to ='/mypalette'><p>Ma palette</p></Link>
+      <Link to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
+    </div>
+  );
+
+if(props.userToken != null){
+var popover = <Popover placement="bottomRight" title={text} content={content} trigger="click">
+<img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/>
+</Popover>
+} else {
+popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+}
+
+
   return (
     <div className="mycontainer" style={{ scrollBehavior: "smooth" }}>
       <div className="navbarHome">
@@ -36,13 +56,7 @@ function Home() {
               style={{ width: "30px", margin: "20px" }}
             />
           </Link>
-          <Link to="/login">
-            <img
-              src="user.svg"
-              alt="palette icon"
-              style={{ width: "30px", margin: "20px" }}
-            />
-          </Link>
+          {popover}
         </div>
       </div>
       <div id="section1" className="imageBackground">
@@ -69,7 +83,8 @@ function Home() {
         </a>
       </div>
       <div id="section2" className="background">
-        <a href="#section1">
+        <a href="#section1" >
+          
           <img
             className="chevronBlanc2"
             src="doubleChevron.svg"
@@ -96,4 +111,20 @@ function Home() {
   );
 }
 
-export default Home;
+function mapStateToProps(state){
+  return {userToken: state.token}
+  }
+  
+  function mapDispatchToProps(dispatch){
+    return {
+      suppressionToken: function(){
+          dispatch({type: 'deconnexion'})
+      }
+    }
+  }
+  
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Home)
