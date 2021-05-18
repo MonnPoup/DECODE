@@ -153,7 +153,7 @@ function Quizz() {
 
 
     var buttons = 
-    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center', height:'80px'}}> 
+    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
     <img   className='arrow-button' src='arrow-left.png' alt='arrow left' onClick={() => handleClickDecreaseWidth()}/>
     <img  className='arrow-button' src='arrow-right.png' alt='arrow right' onClick={() => handleClickIncreaseWidth()}/>
     </div>; 
@@ -162,7 +162,7 @@ function Quizz() {
     buttons = 
     <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
     <img src='arrow-left.png' alt='arrow left'  className='arrow-button' onClick={() => handleClickDecreaseWidth()}/>
-    <button type='button' style={{ margin: '30px'}} className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
+    <button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
     </div> } 
 
     else if (clickCount === 0) {
@@ -196,14 +196,14 @@ if (border === true) {
             <div className='ScreenQuestion'> 
             <p  className='questions'> {currentQuestion.question} </p>
 
-            <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height: '390px'}} >  
+            <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'65vh'}} >  
             <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   onClick={()=> {setAnswer('ethnique')}} / >
             <img className='photo' src={currentQuestion.photo2.url} alt='boho'  onClick={()=> {setAnswer('boho')}}/>
             <img className='photo' src={currentQuestion.photo3.url} alt='artdeco'  onClick={()=> {setAnswer('artDeco')}}/>
             <img className='photo' src={currentQuestion.photo4.url} alt='minimal' style={{border: border2}} onClick={()=> clickPhoto()}/>
             </div>
 
-            <div className="ProgressBar" style={{ height:"20px", display:'flex', justifyContent:'center'}} > 
+            <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 
                 <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
             </div>
 
