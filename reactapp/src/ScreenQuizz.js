@@ -250,7 +250,12 @@ function Quiz(props) {
     <img className="arrow-button" src='arrow-right.png' alt='arrow left' 
     onClick={() => handleClickIncreaseWidth()}/>
     </div>; }
-  
+
+  if (error !== null) {
+    <p className="ErrorQuiz"> {error}</p> 
+} else {
+   <div style={{height:"50vh"}}></div>
+}
 
     return (
         <div className='background'> 

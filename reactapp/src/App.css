@@ -10,15 +10,25 @@ Link {
     text-decoration: none;
 }
 
+body {
+  height: 100%;
+  background-color: #203126
+}
+
+#root {
+  height: 100%;
+  background-color: #203126
+}
+
 .background {
   background-color: #203126;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
 .backgroundWishlist {
   background-color: #fdfcf7;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -42,9 +52,20 @@ h3 {
 }
 
 .h3title {
+  font-family: "Montserrat";
   padding-top: 15px;
   margin-bottom: 10px;
   color: #203126;
+  letter-spacing: -1.5px;
+}
+
+.h3Mypalette {
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: #203126;
+  letter-spacing: -1.5px;
+  padding-top: 1vh;
+  margin: 0 0 0 1vw;
 }
 
 .icon {
@@ -99,7 +120,7 @@ h3 {
 
   background: #2f2f31;
   border-radius: 20px;
-  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  transform: matrix(0, -1, -1, -0, 0, 0);
 }
 
 .paletteBrune {
@@ -111,7 +132,7 @@ h3 {
 
   background: #9d7d61;
   border-radius: 20px;
-  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  transform: matrix(0, -1, -1, -0, 0, 0);
 }
 .paletteBleue {
   position: absolute;
@@ -122,7 +143,7 @@ h3 {
 
   background: #2c324b;
   border-radius: 20px;
-  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  transform: matrix(0, -1, -1, -0, 0, 0);
 }
 .paletteOr {
   position: absolute;
@@ -133,7 +154,7 @@ h3 {
 
   background: #bb9a4d;
   border-radius: 20px;
-  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  transform: matrix(0, -1, -1, -0, 0, 0);
 }
 .paletteBlanc {
   position: absolute;
@@ -145,7 +166,7 @@ h3 {
 
   background: #e6e7eb;
   border-radius: 20px;
-  transform: matrix(0.01, -1, -1, -0.01, 0, 0);
+  transform: matrix(0, -1, -1, -0, 0, 0);
 }
 
 .titreHomeSection1 {
@@ -153,7 +174,7 @@ h3 {
   font-style: normal;
   font-weight: 700;
   font-size: 25px;
-  padding-top: 10vh;
+  padding-top: 25vh;
   margin-left: 2vw;
   color: #203126;
 }
@@ -270,6 +291,89 @@ h3 {
   margin-left: 220px;
 }
 
+.containerMypalette {
+  height: 40vh;
+  width: 70vw;
+  background-color: #fcfbf6;
+  border-radius: 10px;
+  margin-left: 15vw;
+  margin-top: 15vh;
+}
+
+.descriptionMypalette {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 20px;
+  margin-left: 15vw;
+  margin-top: 5vh;
+  color: #fdfcf7;
+  width: 70vw;
+  text-align: justify;
+ 
+}
+
+.palette1 {
+  width: 140px;
+  height: 140px;
+  margin-top: 4.5vh;
+  margin-left: 4.5vw;
+
+  background: #2c324b;
+  transform: matrix(0, -1, -1, 0, 0, 0);
+}
+
+.palette2 {
+  width: 140px;
+  height: 140px;
+  margin-top: 4.5vh;
+  margin-left: 3vw;
+
+  background: #2c324b;
+  transform: matrix(0, -1, -1, 0, 0, 0);
+}
+
+.palette3 {
+  width: 140px;
+  height: 140px;
+  margin-top: 4.5vh;
+  margin-left: 3vw;
+
+  background: #2c324b;
+  transform: matrix(0, -1, -1, 0, 0, 0);
+}
+
+.palette4 {
+  width: 140px;
+  height: 140px;
+  margin-top: 4.5vh;
+  margin-left: 3vw;
+
+  background: #2c324b;
+  transform: matrix(0, -1, -1, 0, 0, 0);
+}
+
+.palette5 {
+  width: 140px;
+  height: 140px;
+  margin-top: 4.5vh;
+  margin-left: 3vw;
+
+  background: #2c324b;
+  transform: matrix(0, -1, -1, 0, 0, 0);
+}
+
+.inputMypalette {
+  border-radius: 50px;
+  border: 0px solid #203126;
+  height: 45px;
+  width: 250px;
+  font-size: 15px;
+  color: #203126;
+  background-color: #fdfcf7;
+  cursor: pointer;
+  margin-left: 42vw;
+}
+
 .login {
   display: flex;
   justify-content: space-between;
@@ -310,6 +414,12 @@ h3 {
 .traitWishlist {
   width: 100%;
   height: 5px;
+  background-color: #203126;
+}
+
+.traitMypalette {
+  width: 100%;
+  height: 3px;
   background-color: #203126;
 }
 
@@ -373,11 +483,11 @@ cursor: pointer
 .arrow-button {
   width: 40px;
   height: 40px;
-  margin-left: 15px;
-  margin-right: 15px;
+  cursor: pointer;
 }
 .arrow-button:hover{
   height: 45px;
+  cursor: pointer;
 }
 
 .ErrorQuiz{

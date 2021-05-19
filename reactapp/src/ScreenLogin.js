@@ -39,10 +39,10 @@ function Login(props) {
 
         if(body.result === true){
             setUserExists(true)
-            props.addToken(body.token)
+            props.addToken(body.token) // envoi au store du token utilisateur 
             
           } else {
-            setErrorsSignup(body.error)
+            setErrorsSignup(body.error) // si erreur avec sign-up, renvoie une erreur 
           }
         }
 
@@ -68,7 +68,7 @@ function Login(props) {
 
         
          if(userExists){
-            return <Redirect to='/' />
+            return <Redirect to='/' /> 
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
