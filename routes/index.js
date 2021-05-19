@@ -24,7 +24,6 @@ router.post('/signUp', async (req, res, next) => {
     email: req.body.emailFromFront
   })
 
-  console.log("retour bdd", data)
 
   if(data != null){
     error.push('Utilisateur déjà présent')
@@ -57,7 +56,7 @@ router.post('/signUp', async (req, res, next) => {
       token = saveUser.token
     }
   }
- /*  console.log(result, error, saveUser, token) */
+
   res.json({result, error, saveUser, token})
 });
 
@@ -114,7 +113,6 @@ router.post('/myPalette', async  (req, res,next) => {
   
 
   for (var i=0; i < responses.length;i++) {
-    console.log('un tour de boucle')
     if (responses[i] === 'ethnique') {palette1++} 
     else if (responses[i] === 'bohème') {palette2++}
     else if (responses[i] === 'artDeco') {palette3++}
@@ -126,7 +124,6 @@ router.post('/myPalette', async  (req, res,next) => {
   else if (responses[2] === 'artDeco') {palette3 +=2}
   else if (responses[2] === 'modernMinimal') {palette4 +=2} 
 
-  console.log(palette1, palette2, palette3, palette4)
 
   var compteursArray = [
     { palette: 'ethnique', compteur : palette1},
@@ -145,19 +142,16 @@ router.post('/myPalette', async  (req, res,next) => {
 
  console.log('Votre palette est ', sortedResults[sortedResults.length-1].palette)   
 
-  var resultquizz = sortedResults[sortedResults.length-1].palette
-  console.log('result quizz', resultquizz)
+ var resultquizz = sortedResults[sortedResults.length-1].palette
 
-  var userPalette = await paletteModel.findOne({
-    name: 'ethnique'
-  })
-  console.log('userPalette = ', userPalette);
-
+  var userPalette = await paletteModel.find(
+  {name: resultquizz})
+  console.log('userpalette ', userPalette)
+  
   if (userPalette) {result = true; res.json({result, userPalette})} 
   else  {res.json({result})}  
-
-
 });
+
 
 
 router.get('/myShoppingList', async (req, res) => {
