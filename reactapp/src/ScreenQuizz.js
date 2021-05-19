@@ -161,11 +161,11 @@ function Quiz(props) {
             console.log(body)
 
             props.addPalette(body.userPalette)
+            console.log('add to ', body.userPalette)
+           
 
-        } else  { setError('Merci de sélectionner une réponse') }
-        
-       
-        console.log('fetch done', props.userPalette2)
+        } else  { setError('Merci de sélectionner une réponse') } 
+      
     }
 
     if (buttonValider === true) {return <Redirect to='/mypalette' />}
@@ -257,7 +257,7 @@ function Quiz(props) {
             <p  className='questions'> {currentQuestion.question} </p>
 
             <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'65vh'}} >  
-            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{border: selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} / >
+            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{border: selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} />
             <img className='photo' src={currentQuestion.photo2.url} alt='bohème'   style={{border: selectBorder2}} onClick={()=> {setAnswer('bohème');clickPhoto2()}}/>
             <img className='photo' src={currentQuestion.photo3.url} alt='artDeco' style={{border: selectBorder3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
             <img className='photo' src={currentQuestion.photo4.url} alt='modernMinimal' style={{border: selectBorder4}} onClick={()=> {setAnswer('modernMinimal');clickPhoto4()}}/>
@@ -277,14 +277,15 @@ function Quiz(props) {
   }
 
 
-  function mapStateToProps(state){
-    return {userPalette2: state.palette}
+  function mapStateToProps(state)
+   {  return {userPaletteFromStore: state.palette}
   }
 
   
   function mapDispatchToProps(dispatch){
     return {
       addPalette: function(palette){
+          console.log('dispatch' , palette )
         dispatch({type: 'addPalette', palette: palette})
       }
     }
