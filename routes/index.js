@@ -119,18 +119,39 @@ var responses = [rep1, rep2, rep3, rep4, rep5,rep6,rep7]
   console.log('responses : ', responses)
 
   for (var i=0; i < responses.length;i++) {
-
+    console.log('un tour de boucle')
     if (responses[i] === 'ethnique') {palette1++, console.log('compt ethnique')} 
     else if (responses[i] === 'boho') {palette2++, console.log('compt boho')}
     else if (responses[i] === 'artDeco') {palette3++, console.log('compt artDeco')}
     else if (responses[i] === 'minimal') {palette4++, console.log('compt minimal')}
 
-    if (responses[2] === 'ethnique') {palette1 = palette + 2, console.log('compt ethnique')} 
-    else if (responses[2] === 'boho') {palette2 = palette + 2, console.log('compt boho')}
-    else if (responses[2] === 'artDeco') {palette3= palette + 2, console.log('compt artDeco')}
-    else if (responses[2] === 'minimal') {palette4= palette + 2, console.log('compt minimal')}
+    console.log('reponse2 ', responses[2])
   }
+
+  if (responses[2] === 'ethnique') {palette1 += 2, console.log('compt ethnique')} 
+  else if (responses[2] === 'boho') {palette2 += 2, console.log('compt boho')}
+  else if (responses[2] === 'artDeco') {palette3 +=2 , console.log('compt artDeco')}
+  else if (responses[2] === 'minimal') {palette4 +=2, console.log('compt minimal')} 
+
   console.log(palette1, palette2, palette3, palette4)
+
+  var compteursArray = [
+    { palette: 'ethnique', compteur : palette1},
+    { palette: 'boho', compteur : palette2},
+    { palette: 'artDeco', compteur : palette3},
+    { palette: 'minimal', compteur : palette4}
+  ]
+
+  var resultquizz = compteursArray.sort(function compare(a, b) {
+    if (a.compteur < b.compteur)
+       return -1;
+    if (a.compteur > b.compteur )
+       return 1;
+    return 0;}
+    )
+
+ console.log('Votre palette est ', resultquizz[resultquizz.length-1].palette)   
+  
 
  /*  var resultquizz = 'nomdelapalette' 
 
