@@ -7,6 +7,6 @@ var paletteSchema = mongoose.Schema({
     colors: Array,
  });
  
- var paletteModel = mongoose.model('palette', paletteSchema);
+ var paletteModel = mongoose.model('palettes', paletteSchema);
 
  module.exports = paletteModel

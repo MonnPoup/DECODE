@@ -164,7 +164,7 @@ function Quiz(props) {
         } else  { setError('Merci de sélectionner une réponse') }
         
        
-        console.log('fetch done')
+        console.log('fetch done', props.userPalette2)
     }
 
     if (buttonValider === true) {return <Redirect to='/mypalette' />}
@@ -277,7 +277,7 @@ function Quiz(props) {
 
 
   function mapStateToProps(state){
-    return {userToken: state.token}
+    return {userPalette2: state.palette}
   }
 
   

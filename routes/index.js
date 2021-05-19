@@ -19,7 +19,6 @@ router.post('/signUp', async (req, res, next) => {
   var result = false
   var token = null
 
-
   const data = await userModel.findOne({
     email: req.body.emailFromFront
   })
@@ -148,9 +147,10 @@ router.post('/myPalette', async  (req, res,next) => {
   var resultquizz = sortedResults[sortedResults.length-1].palette
   console.log('result quizz', resultquizz)
 
-  var userPalette = await paletteModel.findOne({
-    name: 'ethnique'
-  })
+
+  var userPalette = await paletteModel.find(
+    {description: 'Salut'}
+    )
   console.log('userPalette = ', userPalette);
 
   if (userPalette) {result = true; res.json({result, userPalette})} 
