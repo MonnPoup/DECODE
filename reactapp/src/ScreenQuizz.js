@@ -161,11 +161,11 @@ function Quiz(props) {
             console.log(body)
 
             props.addPalette(body.userPalette)
+            console.log('add to ', body.userPalette)
+           
 
-        } else  { setError('Merci de sélectionner une réponse') }
-        
-       
-        console.log('fetch done', props.userPalette2)
+        } else  { setError('Merci de sélectionner une réponse') } 
+      
     }
 
     if (buttonValider === true) {return <Redirect to='/mypalette' />}
@@ -277,8 +277,8 @@ function Quiz(props) {
   }
 
 
-  function mapStateToProps(state){
-    return {userPalette2: state.palette}
+  function mapStateToProps(state)
+   {  return {userPaletteFromStore: state.palette}
   }
 
   
@@ -290,7 +290,6 @@ function Quiz(props) {
     }
   }
 
-  
   export default connect(
     mapStateToProps,
     mapDispatchToProps

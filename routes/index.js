@@ -157,7 +157,7 @@ router.get('/myShoppingList', async (req, res) => {
   var result = false 
   var paletteFromFront = req.body.paletteName 
 
-  var shoppingList = await articlesModel.find({
+  var shoppingList = await articlesModel.findOne({
     paletteName : paletteFromFront }
   )
   // filtrer les objets par palette name 
