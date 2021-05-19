@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { Link, Redirect} from "react-router-dom";
-import NavBar from "./navbar"
+import NavBar from "./navbar";
+import {connect} from 'react-redux';
 import App from './App.css'; 
 
 
-function Quizz() {
+function Quiz(props) {
   const [progressBarWidth, setProgressBarWidth] = useState(185)
   const [clickCount, setCount] = useState(0)
   const [answer, setAnswer ] = useState()
@@ -27,10 +28,10 @@ function Quizz() {
             name: 'artDeco'},
         photo3: {
             url: 'image37.png',
-            name: 'boheme'},
+            name: 'bohème'},
         photo4: {
             url: 'image38.png',
-            name: 'minimalModern'}
+            name: 'modernMinimal'}
         },
         {question : 'Deuxième question', 
         photo1: {
@@ -41,10 +42,10 @@ function Quizz() {
             name: 'artDeco'},
         photo3: {
             url: 'image37.png',
-            name: 'boheme'},
+            name: 'bohème'},
         photo4: {
             url: 'image38.png',
-            name: 'minimalModern'}
+            name: 'modernMinimal'}
         },
         {question : 'Troisième question', 
         photo1: {
@@ -55,10 +56,10 @@ function Quizz() {
             name: 'artDeco'},
         photo3: {
             url: 'image37.png',
-            name: 'boheme'},
+            name: 'bohème'},
         photo4: {
             url: 'image38.png',
-            name: 'minimalModern'}
+            name: 'modernMinimal'}
         },
         {question : 'Quatrième question', 
         photo1: {
@@ -69,10 +70,10 @@ function Quizz() {
             name: 'artDeco'},
         photo3: {
             url: 'image37.png',
-            name: 'boheme'},
+            name: 'bohème'},
        photo4: {
             url: 'image38.png',
-            name: 'minimalModern'}
+            name: 'modernMinimal'}
         }, 
         {question : 'Cinquième question', 
         photo1: {
@@ -83,10 +84,10 @@ function Quizz() {
             name: 'artDeco'},
         photo3: {
             url: 'image37.png',
-            name: 'boheme'},
+            name: 'bohème'},
         photo4: {
             url: 'image38.png',
-            name: 'minimalModern'}
+            name: 'modernMinimal'}
         },
         {question : 'Sixième question', 
         photo1: {
@@ -97,10 +98,10 @@ function Quizz() {
             name: 'artDeco'},
         photo3: {
             url: 'image37.png',
-            name: 'boheme'},
+            name: 'bohème'},
         photo4: {
             url: 'image38.png',
-            name: 'minimalModern'}
+            name: 'modernMinimal'}
         },
         { question: 'Septième question',
             photo1: {
@@ -111,10 +112,10 @@ function Quizz() {
             name: 'artDeco'},
         photo3: {
             url: 'image37.png',
-            name: 'boheme'},
+            name: 'bohème'},
         photo4: {
             url: 'image38.png',
-            name: 'minimalModern'}
+            name: 'modernMinimal'}
         },
   ]
 
@@ -135,7 +136,7 @@ function Quizz() {
         set_isPhoto1Selected(false); set_isPhoto2Selected(false);set_isPhoto3Selected(false);set_isPhoto4Selected(false)
         setError('')
     } else  { setError('Merci de sélectionner une réponse') }
-}
+    }
 
     var handleClickDecreaseWidth = () => {
         setProgressBarWidth(progressBarWidth-185)
@@ -151,17 +152,20 @@ function Quizz() {
             copy.push(answer)
             setButtonValider(true)
             console.log('valider : ', copy)
-            await fetch('/myPalette', {
+            const data = await fetch('/myPalette', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}` 
             });
-                    
+            const body = await data.json()
+
+            props.addPalette(body.userPalette)
+
         } else  { setError('Merci de sélectionner une réponse') }
         
        
         console.log('fetch done')
-}
+    }
 
     if (buttonValider === true) {return <Redirect to='/mypalette' />}
 
@@ -253,9 +257,9 @@ function Quizz() {
 
             <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'65vh'}} >  
             <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{border: selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} / >
-            <img className='photo' src={currentQuestion.photo2.url} alt='boho'   style={{border: selectBorder2}} onClick={()=> {setAnswer('boho');clickPhoto2()}}/>
-            <img className='photo' src={currentQuestion.photo3.url} alt='artdeco' style={{border: selectBorder3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
-            <img className='photo' src={currentQuestion.photo4.url} alt='minimal' style={{border: selectBorder4}} onClick={()=> {setAnswer('minimal');clickPhoto4()}}/>
+            <img className='photo' src={currentQuestion.photo2.url} alt='bohème'   style={{border: selectBorder2}} onClick={()=> {setAnswer('bohème');clickPhoto2()}}/>
+            <img className='photo' src={currentQuestion.photo3.url} alt='artDeco' style={{border: selectBorder3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
+            <img className='photo' src={currentQuestion.photo4.url} alt='modernMinimal' style={{border: selectBorder4}} onClick={()=> {setAnswer('modernMinimal');clickPhoto4()}}/>
             </div>
 
             <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 
@@ -270,7 +274,25 @@ function Quizz() {
        
      </div> 
 
-    )
+    );
   }
+
+
+  function mapStateToProps(state){
+    return {userToken: state.token}
+  }
+
   
-  export default Quizz;
+  function mapDispatchToProps(dispatch){
+    return {
+      addPalette: function(palette){
+        dispatch({type: 'addPalette', palette: palette})
+      }
+    }
+  }
+
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Quiz)
