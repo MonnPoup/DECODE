@@ -143,7 +143,7 @@ router.post('/myPalette', async  (req, res,next) => {
 
  var resultquizz = sortedResults[sortedResults.length-1].palette
 
-  var userPalette = await paletteModel.find(
+  var userPalette = await paletteModel.findOne(
   {name: resultquizz})
   console.log('userpalette ', userPalette)
   
