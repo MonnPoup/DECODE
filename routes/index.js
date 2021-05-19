@@ -100,9 +100,11 @@ router.post('/signIn', async (req, res) => {
 
 
 
-router.post('/myPalette', async (req, res) => {
-  var result = false; 
-
+router.post('/myPalette', async  (req, res,next) => {
+  
+ (console.log('body', req.body))
+ 
+ var result = false; 
   var rep1 = req.body.rep1; 
   var rep2 = req.body.rep2; 
   var rep3 = req.body.rep3; 
@@ -111,14 +113,27 @@ router.post('/myPalette', async (req, res) => {
   var rep6 = req.body.rep6;
   var rep7 = req.body.rep7;
 
-  var resultquizz = 'nomdelapalette' 
+var responses = [rep1, rep2, rep3, rep4, rep5,rep6,rep7]  
+  var palette1= 0; var palette2= 0;  var palette3= 0; var palette4= 0; 
+  
+  console.log('responses : ', responses)
+
+  for (var i=0; i < responses.length;i++) {
+    if (responses[i] === 'ethnique') {palette1++, console.log('compt ethnique')} 
+    else if (responses[i] === 'boho') {palette2++, console.log('compt boho')}
+    else if (responses[i] === 'artDeco') {palette3++, console.log('compt artDeco')}
+    else if (responses[i] === 'minimal') {palette4++, console.log('compt minimal')}
+  }
+  console.log(palette1, palette2, palette3, palette4)
+
+ /*  var resultquizz = 'nomdelapalette' 
 
   var UserPalette = await paletteModel.findOne({
     name: resultquizz
   })
 
   if (UserPalette) {result = true; res.json({result, UserPalette})} 
-  else  {res.json({result})}
+  else  {res.json({result})}  */
 
 
 });
