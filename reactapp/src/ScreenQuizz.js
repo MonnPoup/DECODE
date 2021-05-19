@@ -155,13 +155,15 @@ function Quiz(props) {
             const data = await fetch('/myPalette', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
-                body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}` 
+                body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}&token=${props.userToken}` 
             });
             const body = await data.json()
             console.log(body)
 
             props.addPalette(body.userPalette)
             console.log('add to ', body.userPalette)
+
+
            
 
         } else  { setError('Merci de sélectionner une réponse') } 
@@ -283,7 +285,8 @@ function Quiz(props) {
 
 
   function mapStateToProps(state)
-   {  return {userPaletteFromStore: state.palette}
+   {  return {userPaletteFromStore: state.palette},
+    {userToken: state.token}
   }
 
   
