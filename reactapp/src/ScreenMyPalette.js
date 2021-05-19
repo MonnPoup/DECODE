@@ -30,7 +30,6 @@ function mypalette(props) {
 function mapStateToProps(state){
   return {userPaletteFromStore: state.palette}
 }
-console.log(state.palette);
   
 
 export default connect(
