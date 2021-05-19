@@ -5,9 +5,10 @@ import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
 
 import token from './reducers/token'
+import palette from './reducers/palette'
 
 import Home from './ScreenHome';
-import Quizz from './ScreenQuizz';
+import Quiz from './ScreenQuizz';
 import MyPalette from './ScreenMyPalette';
 import ShoppingList from './ScreenShoppingList';
 import Login from './ScreenLogin';
@@ -15,7 +16,7 @@ import Wishlist from './ScreenWishlist'
 import AllPalettes from './ScreenAllPalettes'
 import navbar from './navbar'
 
-const store = createStore(combineReducers({token}))
+const store = createStore(combineReducers({token, palette}))
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
     <Router>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/quizz" component={Quizz}  />
+      <Route path="/quiz" component={Quiz}  />
       <Route path="/mypalette" component={MyPalette}  />
       <Route path="/shoppinglist" component={ShoppingList}  />
       <Route path="/login" component={Login}  />
