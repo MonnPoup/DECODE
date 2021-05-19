@@ -14,6 +14,7 @@ function Quizz() {
   const [isPhoto3Selected, set_isPhoto3Selected] = useState(false)
   const [isPhoto4Selected, set_isPhoto4Selected] = useState(false)
   const [error, setError] = useState('')
+  const [buttonValider, setButtonValider] = useState(false)
   
 
   var dataQuestions = [
@@ -140,25 +141,29 @@ function Quizz() {
         setProgressBarWidth(progressBarWidth-185)
         if (clickCount !== 0 ) {
             setCount(clickCount-1)} 
+            setError('')
     } 
 
     var handleClickValider = async () => {
         if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto4Selected === true ) {
             console.log('condition remplie')
             var copy = answersArray 
-            copy.push(answer); 
-
+            copy.push(answer)
+            setButtonValider(true)
+            console.log('valider : ', copy)
             await fetch('/myPalette', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}` 
             });
-          
+                    
         } else  { setError('Merci de sélectionner une réponse') }
         
        
         console.log('fetch done')
 }
+
+    if (buttonValider === true) {return <Redirect to='/mypalette' />}
 
     var clickPhoto1 = async () => {
         if (isPhoto1Selected === false){
@@ -241,9 +246,8 @@ function Quizz() {
   
 
     return (
-        <div> 
+        <div className='background'> 
           <NavBar/>
-        <div style={{backgroundColor: '#203126', height:'85vh', width:'100vw', justifyContent:'center'}}> 
             <div className='ScreenQuestion'> 
             <p  className='questions'> {currentQuestion.question} </p>
 
@@ -263,7 +267,7 @@ function Quizz() {
             
             
             </div>
-        </div>
+       
      </div> 
 
     )
