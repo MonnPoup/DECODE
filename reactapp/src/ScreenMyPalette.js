@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./navbar";
 import {connect} from 'react-redux';
 
 
 
-function mypalette(props) {
+function MyPalette(props) {
+
+
+  const data = await fetch('/myPalette')
+  const body = await data.json()
+
 
   return (
     <div style ={{height:"110vh"}} className="background">
@@ -35,4 +40,4 @@ function mapStateToProps(state){
 export default connect(
   mapStateToProps,
   null
-)(mypalette)
+)(MyPalette)
