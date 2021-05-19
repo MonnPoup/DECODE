@@ -264,8 +264,6 @@ function Quizz() {
             </div>
             <p className="ErrorQuiz"> {error}</p> 
             {buttons}
-            
-            
             </div>
        
      </div> 
@@ -273,4 +271,4 @@ function Quizz() {
     )
   }
   
-  export default Quizz;
+  export default Quizz 

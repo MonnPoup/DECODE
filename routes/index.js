@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt');
 
 
 var userModel = require('../models/users');
+var paletteModel = require('../models/palettes')
 
 
 router.get('/', async (req, res, next) => {
@@ -102,47 +103,39 @@ router.post('/signIn', async (req, res) => {
 
 router.post('/myPalette', async  (req, res,next) => {
   
- (console.log('body', req.body))
+  var result = false; 
  
- var result = false; 
-  var rep1 = req.body.rep1; 
-  var rep2 = req.body.rep2; 
-  var rep3 = req.body.rep3; 
-  var rep4 = req.body.rep4;
-  var rep5 = req.body.rep5;
-  var rep6 = req.body.rep6;
-  var rep7 = req.body.rep7;
+  var responses = [req.body.rep1, req.body.rep2, req.body.rep3, req.body.rep4, req.body.rep5, req.body.rep6, req.body.rep7]  
 
-var responses = [rep1, rep2, rep3, rep4, rep5,rep6,rep7]  
-  var palette1= 0; var palette2= 0;  var palette3= 0; var palette4= 0; 
+  var palette1 = 0;
+  var palette2 = 0;
+  var palette3 = 0; 
+  var palette4 = 0; 
   
-  console.log('responses : ', responses)
 
   for (var i=0; i < responses.length;i++) {
     console.log('un tour de boucle')
-    if (responses[i] === 'ethnique') {palette1++, console.log('compt ethnique')} 
-    else if (responses[i] === 'boho') {palette2++, console.log('compt boho')}
-    else if (responses[i] === 'artDeco') {palette3++, console.log('compt artDeco')}
-    else if (responses[i] === 'minimal') {palette4++, console.log('compt minimal')}
-
-    console.log('reponse2 ', responses[2])
+    if (responses[i] === 'ethnique') {palette1++} 
+    else if (responses[i] === 'bohème') {palette2++}
+    else if (responses[i] === 'artDeco') {palette3++}
+    else if (responses[i] === 'modernMinimal') {palette4++}
   }
 
-  if (responses[2] === 'ethnique') {palette1 += 2, console.log('compt ethnique')} 
-  else if (responses[2] === 'boho') {palette2 += 2, console.log('compt boho')}
-  else if (responses[2] === 'artDeco') {palette3 +=2 , console.log('compt artDeco')}
-  else if (responses[2] === 'minimal') {palette4 +=2, console.log('compt minimal')} 
+  if (responses[2] === 'ethnique') {palette1 += 2} 
+  else if (responses[2] === 'bohème') {palette2 += 2}
+  else if (responses[2] === 'artDeco') {palette3 +=2}
+  else if (responses[2] === 'modernMinimal') {palette4 +=2} 
 
   console.log(palette1, palette2, palette3, palette4)
 
   var compteursArray = [
     { palette: 'ethnique', compteur : palette1},
-    { palette: 'boho', compteur : palette2},
+    { palette: 'bohème', compteur : palette2},
     { palette: 'artDeco', compteur : palette3},
-    { palette: 'minimal', compteur : palette4}
+    { palette: 'modernMinimal', compteur : palette4}
   ]
 
-  var resultquizz = compteursArray.sort(function compare(a, b) {
+  var sortedResults = compteursArray.sort(function compare(a, b) {
     if (a.compteur < b.compteur)
        return -1;
     if (a.compteur > b.compteur )
@@ -150,20 +143,22 @@ var responses = [rep1, rep2, rep3, rep4, rep5,rep6,rep7]
     return 0;}
     )
 
- console.log('Votre palette est ', resultquizz[resultquizz.length-1].palette)   
-  
+ console.log('Votre palette est ', sortedResults[sortedResults.length-1].palette)   
 
- /*  var resultquizz = 'nomdelapalette' 
+  var resultquizz = sortedResults[sortedResults.length-1].palette
+  console.log('result quizz', resultquizz)
 
-  var UserPalette = await paletteModel.findOne({
-    name: resultquizz
+  var userPalette = await paletteModel.findOne({
+    name: 'ethnique'
   })
+  console.log('userPalette = ', userPalette);
 
-  if (UserPalette) {result = true; res.json({result, UserPalette})} 
-  else  {res.json({result})}  */
+  if (userPalette) {result = true; res.json({result, userPalette})} 
+  else  {res.json({result})}  
 
 
 });
+
 
 router.get('/myShoppingList', async (req, res) => {
   var result = false 
