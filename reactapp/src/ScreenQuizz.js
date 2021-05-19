@@ -285,13 +285,11 @@ function Quiz(props) {
   function mapDispatchToProps(dispatch){
     return {
       addPalette: function(palette){
-          console.log('dispatch' , palette )
         dispatch({type: 'addPalette', palette: palette})
       }
     }
   }
 
-  
   export default connect(
     mapStateToProps,
     mapDispatchToProps
