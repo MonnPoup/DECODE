@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./navbar";
 import {connect} from 'react-redux';
 
 
 
-function mypalette(props) {
+function MyPalette(props) {
+const[token, setToken] = useState(props.token)
+
+  useEffect(async()=> {
+    
+    if (token) {
+    const data = await fetch(`/myPalette/:${token}`)
+    const body = await data.json()}
+    else {
+      props.userPaletteFromStore
+    }
+   
+    console.log('hello lucas',body);
+  })
 
   return (
     <div style ={{height:"110vh"}} className="background">
       <NavBar />
       <div className="containerMypalette">
-        <h3 className="h3Mypalette">VOTRE PALETTE</h3>
+        <h3 className="h3Mypalette">VOTRE PALETTE : {props.userPaletteFromStore.name}</h3>
         <div className="traitMypalette"></div>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div className="palette1"></div>
@@ -28,12 +41,11 @@ function mypalette(props) {
 }
 
 function mapStateToProps(state){
-  return {userPaletteFromStore: state.palette}
+  return {userPaletteFromStore: state.palette, token: state.token }
 }
-
   
 
 export default connect(
   mapStateToProps,
   null
-)(mypalette)
+)(MyPalette)

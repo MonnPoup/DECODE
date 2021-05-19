@@ -102,6 +102,7 @@ router.post('/signIn', async (req, res) => {
 router.post('/myPalette', async  (req, res,next) => {
   
   var result = false; 
+  var userPalette = null;
  
   var responses = [req.body.rep1, req.body.rep2, req.body.rep3, req.body.rep4, req.body.rep5, req.body.rep6, req.body.rep7]  
 
@@ -144,14 +145,30 @@ router.post('/myPalette', async  (req, res,next) => {
  var resultquizz = sortedResults[sortedResults.length-1].palette
 
   var userPalette = await paletteModel.findOne(
-  {name: resultquizz})
-  console.log('userpalette ', userPalette)
+    {name: resultquizz})
+    console.log('userpalette ', userPalette)
+  
   
   if (userPalette) {result = true; res.json({result, userPalette})} 
   else  {res.json({result})}  
 });
 
 
+router.get('/myPalette', async  (req, res,next) => {
+
+  
+    var userConnected = await userModel.findOne(
+      {token: req.body.token}
+    )
+    var ajoutPalette = await userConnected.updateOne(
+      {palette: userPalette}
+    )
+
+    var userPalette = await ajoutPalette.populate('palette')
+  
+    if (userPalette) {result = true; res.json({result, userPalette})} 
+    else  {res.json({result})}  
+});
 
 router.get('/myShoppingList', async (req, res) => {
   var result = false 
