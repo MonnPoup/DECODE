@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./navbar";
 import {connect} from 'react-redux';
@@ -7,11 +7,15 @@ import {connect} from 'react-redux';
 
 function mypalette(props) {
 
+  useEffect(() => {
+    var paletteName = props.userPaletteFromStore.name
+  })
+
   return (
     <div style ={{height:"110vh"}} className="background">
       <NavBar />
       <div className="containerMypalette">
-        <h3 className="h3Mypalette">VOTRE PALETTE</h3>
+        <h3 className="h3Mypalette">VOTRE PALETTE : {paletteName}</h3>
         <div className="traitMypalette"></div>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div className="palette1"></div>
@@ -28,9 +32,9 @@ function mypalette(props) {
 }
 
 function mapStateToProps(state){
-  return {userPaletteFromStore: state.palette}
+  return {userPaletteFromStore: state.palette }
 }
-console.log(state.palette);
+
   
 
 export default connect(
