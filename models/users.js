@@ -5,7 +5,7 @@ var userSchema = mongoose.Schema({
     email: String,
     password: String,
     token: String,
-    palette: [{ type: mongoose.Schema.Types.ObjectId, ref: 'palette' }], 
+    palette: [{ type: mongoose.Schema.Types.ObjectId, ref: 'palettes' }], 
     wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'articles' }],
  });
  
