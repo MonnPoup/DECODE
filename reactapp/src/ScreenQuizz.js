@@ -129,7 +129,6 @@ function Quizz() {
         else if (answersArray[clickCount]) {                // si revient en arrière modifie la valeur 
             answersArray[clickCount] = answer 
         }
-        console.log(answersArray)
         setCount(clickCount+1)
         setProgressBarWidth(progressBarWidth+185)           //  barre de progression    
         set_isPhoto1Selected(false); set_isPhoto2Selected(false);set_isPhoto3Selected(false);set_isPhoto4Selected(false)
@@ -144,17 +143,17 @@ function Quizz() {
     } 
 
     var handleClickValider = async () => {
-        console.log('click valider')
         if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto4Selected === true ) {
+            console.log('condition remplie')
             var copy = answersArray 
-            copy.push(answer)
-            console.log('valider : ', copy)
+            copy.push(answer); 
+
             await fetch('/myPalette', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}` 
             });
-
+          
         } else  { setError('Merci de sélectionner une réponse') }
         
        
@@ -230,7 +229,7 @@ function Quizz() {
     buttons = 
     <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
     <img src='arrow-left.png' alt='arrow left'  className='arrow-button' onClick={() => handleClickDecreaseWidth()}/>
-    <Link to='/mypalette'><button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button></Link>
+    <button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
     </div> } 
 
     else if (clickCount === 0) {
