@@ -158,13 +158,14 @@ function Quiz(props) {
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}` 
             });
             const body = await data.json()
+            console.log(body)
 
             props.addPalette(body.userPalette)
 
         } else  { setError('Merci de sélectionner une réponse') }
         
        
-        console.log('fetch done')
+        console.log('fetch done', props.userPalette2)
     }
 
     if (buttonValider === true) {return <Redirect to='/mypalette' />}
@@ -277,7 +278,7 @@ function Quiz(props) {
 
 
   function mapStateToProps(state){
-    return {userToken: state.token}
+    return {userPalette2: state.palette}
   }
 
   
