@@ -237,7 +237,7 @@ function Quiz(props) {
 
     if (clickCount === 6 ) {  
     buttons = 
-    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
+    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center', alignItems:'center'}}> 
     <img src='arrow-left.png' alt='arrow left'  className='arrow-button' onClick={() => handleClickDecreaseWidth()}/>
     <button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
     </div> } 
@@ -248,12 +248,7 @@ function Quiz(props) {
     <img className="arrow-button" src='arrow-right.png' alt='arrow left' 
     onClick={() => handleClickIncreaseWidth()}/>
     </div>; }
-
-  if (error !== null) {
-    <p className="ErrorQuiz"> {error}</p> 
-} else {
-   <div style={{height:"50vh"}}></div>
-}
+  
 
     return (
         <div className='background'> 
@@ -261,7 +256,7 @@ function Quiz(props) {
             <div className='ScreenQuestion'> 
             <p  className='questions'> {currentQuestion.question} </p>
 
-            <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'65vh'}} >  
+            <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'60vh'}} >  
             <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{border: selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} />
             <img className='photo' src={currentQuestion.photo2.url} alt='bohème'   style={{border: selectBorder2}} onClick={()=> {setAnswer('bohème');clickPhoto2()}}/>
             <img className='photo' src={currentQuestion.photo3.url} alt='artDeco' style={{border: selectBorder3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
@@ -272,8 +267,12 @@ function Quiz(props) {
                 <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
                
             </div>
+
+            <div style={{height:"3vh"}}> 
             <p className="ErrorQuiz"> {error}</p> 
+            </div>
             {buttons}
+            
             </div>
        
      </div> 
@@ -290,11 +289,13 @@ function Quiz(props) {
   function mapDispatchToProps(dispatch){
     return {
       addPalette: function(palette){
+         
         dispatch({type: 'addPalette', palette: palette})
       }
     }
   }
 
+  
   export default connect(
     mapStateToProps,
     mapDispatchToProps
