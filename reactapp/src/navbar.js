@@ -20,11 +20,11 @@ function NavBar(props) {
           );
 
   if(props.userToken != null){
-    var popover = <Popover placement="bottomRight" title={text} content={content} trigger="click">
-    <img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/>
+    var userNav = <Popover placement="bottomRight" title={text} content={content} trigger="click">
+    <img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/>
     </Popover>
 } else {
-    popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+    userNav =  <Link to='/login'><img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
 }
   
   return (
@@ -35,9 +35,9 @@ function NavBar(props) {
           </Link>
         </div>
       <div className= 'icon'>  
-        <Link to = '/allpalettes'><img src='palette.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
+        <Link to = '/allpalettes'><img src='palette.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
         <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
-        {popover}
+        {userNav}
       </div>
     </div>
   

@@ -149,11 +149,12 @@ function Quizz() {
             var copy = answersArray 
             copy.push(answer)
             console.log('valider : ', copy)
+
             await fetch('/myPalette', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}` 
-            });
+            }); 
 
         } else  { setError('Merci de sélectionner une réponse') }
         
@@ -239,7 +240,12 @@ function Quizz() {
     <img className="arrow-button" src='arrow-right.png' alt='arrow left' 
     onClick={() => handleClickIncreaseWidth()}/>
     </div>; }
-  
+
+  if (error !== null) {
+    <p className="ErrorQuiz"> {error}</p> 
+} else {
+   <div style={{height:"50vh"}}></div>
+}
 
     return (
         <div> 
@@ -270,4 +276,4 @@ function Quizz() {
     )
   }
   
-  export default Quizz;
+  export default Quizz; 
