@@ -125,10 +125,10 @@ var responses = [rep1, rep2, rep3, rep4, rep5,rep6,rep7]
     else if (responses[i] === 'artDeco') {palette3++, console.log('compt artDeco')}
     else if (responses[i] === 'minimal') {palette4++, console.log('compt minimal')}
 
-    if (responses[2] === 'ethnique') {palette1 = palette + 2, console.log('compt ethnique')} 
-    else if (responses[2] === 'boho') {palette2 = palette + 2, console.log('compt boho')}
-    else if (responses[2] === 'artDeco') {palette3= palette + 2, console.log('compt artDeco')}
-    else if (responses[2] === 'minimal') {palette4= palette + 2, console.log('compt minimal')}
+    if (responses[2] === 'ethnique') {palette1 = palette1 + 2, console.log('compt ethnique')} 
+    else if (responses[2] === 'boho') {palette2 = palette2 + 2, console.log('compt boho')}
+    else if (responses[2] === 'artDeco') {palette3= palette3 + 2, console.log('compt artDeco')}
+    else if (responses[2] === 'minimal') {palette4= palette4 + 2, console.log('compt minimal')}
   }
   console.log(palette1, palette2, palette3, palette4)
 
