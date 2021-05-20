@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 function MyPalette(props) {
 const[token, setToken] = useState(props.token)
 
-  useEffect(async()=> {
+ /*  useEffect(async()=> {
     
     if (token) {
     const data = await fetch(`/myPalette/:${token}`)
@@ -18,7 +18,7 @@ const[token, setToken] = useState(props.token)
     }
    
     console.log('hello lucas',body);
-  })
+  }) */
 
   return (
     <div style ={{height:"110vh"}} className="background">
