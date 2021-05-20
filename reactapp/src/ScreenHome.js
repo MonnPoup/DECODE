@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import {connect} from 'react-redux';
-import { Popover, Button } from 'antd';
+import { Popover } from 'antd';
 
 
 function Home(props) {

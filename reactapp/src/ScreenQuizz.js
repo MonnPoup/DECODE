@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import { Link, Redirect} from "react-router-dom";
+import React, {useState, } from 'react';
+import {Redirect} from "react-router-dom";
 import NavBar from "./navbar";
 import {connect} from 'react-redux';
-import App from './App.css'; 
+
 
 
 function Quiz(props) {
@@ -158,7 +158,8 @@ function Quiz(props) {
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}&token=${props.userToken}` 
             });
             const body = await data.json()
-            console.log(body)
+
+            console.log('post fetch', body)
 
             props.addPalette(body.userPalette)
             console.log('add to ', body.userPalette)
@@ -292,7 +293,9 @@ function Quiz(props) {
   
   function mapDispatchToProps(dispatch){
     return {
+       
       addPalette: function(palette){
+        console.log('page quizz to store: ', palette)
         dispatch({type: 'addPalette', palette: palette})
       }
     }

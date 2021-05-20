@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import { Link, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import "./App.css";
 import NavBar from "./navbar"
 import {connect} from 'react-redux'
-import { Button, Popover } from 'antd';
 import "antd/dist/antd.css";
 
 
@@ -99,7 +98,7 @@ function Login(props) {
                 </div>
 
 
-                <div className='trait'><img src='line.png'/></div>
+                <div className='trait'><img src='line.png' alt="line"/></div>
                 <div className='inscription'>
                     Inscription
                         <div className='formLogin'>
@@ -120,7 +119,7 @@ function Login(props) {
 
 
 function mapStateToProps(state){
-    return {userToken: state.token}
+    return {userToken: state.token, userPaletteFromStore : state.userPalette}
   }
   
 function mapDispatchToProps(dispatch){

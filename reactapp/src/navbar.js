@@ -1,9 +1,9 @@
 
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
-import { Popover, Button } from 'antd';
+import { Popover } from 'antd';
 
 
 

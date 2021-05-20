@@ -104,6 +104,8 @@ router.post('/validerQuiz', async  (req, res,next) => {
   ///////////////// QUESTIONNAIRE ////////////
   var result = false; 
   var userPalette = null;
+  var isConnected = false
+  if (req.body.token === null ) { isConnected = true} 
  
   var responses = [req.body.rep1, req.body.rep2, req.body.rep3, req.body.rep4, req.body.rep5, req.body.rep6, req.body.rep7]  
 
@@ -147,21 +149,23 @@ router.post('/validerQuiz', async  (req, res,next) => {
 
  /////////////////////// TROUVER LA PALETTE EN BDD ////////////////
 
+ if (isConnected === false){
   var userPalette = await paletteModel.findOne(    // find palette dans la bdd 
     {name: resultquizz})
     console.log('userpalette ', userPalette)
-  
+  } else 
 
-  if (req.body.token !== null) {       // si user connecté, on le trouve avec son token 
+   {       // si user connecté, on le trouve avec son token 
+    console.log('token chelou', req.body.token)
     var userConnected = await userModel.findOne(
       {token: req.body.token}
     )
-   // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
-    /*var ajoutPalette = await userConnected.updateOne(
+  console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
+    var ajoutPalette = await userConnected.updateOne(
       {palette: userPalette._id}
     )
-  console.log('ajoutpalette', ajoutPalette)*/
-  }
+  console.log('ajoutpalette', ajoutPalette)
+  } 
   
   if (userPalette) {result = true; res.json({result, userPalette})} 
   else  {res.json({result})}  

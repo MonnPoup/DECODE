@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import NavBar from "./navbar"
-import { Button, Card } from 'antd';
+import { Button } from 'antd';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Carousel, Container, Row, Col } from 'react-bootstrap';
+import {Container, Row, Col } from 'react-bootstrap';
 import { connect } from "react-redux";
 
 
