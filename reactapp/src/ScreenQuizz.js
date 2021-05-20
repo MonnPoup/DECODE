@@ -150,7 +150,6 @@ function Quiz(props) {
             console.log('condition remplie')
             var copy = answersArray 
             copy.push(answer)
-            setButtonValider(true)
             console.log('valider : ', copy)
             const data = await fetch('/myPalette', {
                 method: 'POST',
@@ -162,6 +161,9 @@ function Quiz(props) {
 
             props.addPalette(body.userPalette)
             console.log('add to ', body.userPalette)
+            setButtonValider(true)
+
+            //Vérifier s'il y'a un bon retour du back avec un result true
 
 
            

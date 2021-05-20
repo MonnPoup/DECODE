@@ -65,6 +65,18 @@ h3 {
   letter-spacing: -1.5px;
   padding-top: 1vh;
   margin: 0 0 0 1vw;
+  font-size: 30px;
+}
+
+.textColorPalette {
+  margin-left: 5px;
+  transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -webkit-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+  
 }
 
 .icon {
@@ -296,7 +308,7 @@ h3 {
   background-color: #fcfbf6;
   border-radius: 10px;
   margin-left: 15vw;
-  margin-top: 15vh;
+  margin-top: 10vh;
 }
 
 .descriptionMypalette {
@@ -311,55 +323,15 @@ h3 {
  
 }
 
-.palette1 {
+.palette {
   width: 140px;
   height: 140px;
   margin-top: 4.5vh;
-  margin-left: 4.5vw;
+  margin-left: 3.5vw;
 
-  background: #2c324b;
   transform: matrix(0, -1, -1, 0, 0, 0);
 }
 
-.palette2 {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3vw;
-
-  background: #2c324b;
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
-
-.palette3 {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3vw;
-
-  background: #2c324b;
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
-
-.palette4 {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3vw;
-
-  background: #2c324b;
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
-
-.palette5 {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3vw;
-
-  background: #2c324b;
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
 
 .inputMypalette {
   border-radius: 50px;
