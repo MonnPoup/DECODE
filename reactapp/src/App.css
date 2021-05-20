@@ -312,55 +312,15 @@ h3 {
  
 }
 
-.palette1 {
+.palette {
   width: 140px;
   height: 140px;
   margin-top: 4.5vh;
   margin-left: 4.5vw;
 
-  background: #2c324b;
   transform: matrix(0, -1, -1, 0, 0, 0);
 }
 
-.palette2 {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3vw;
-
-  background: #2c324b;
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
-
-.palette3 {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3vw;
-
-  background: #2c324b;
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
-
-.palette4 {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3vw;
-
-  background: #2c324b;
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
-
-.palette5 {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3vw;
-
-  background: #2c324b;
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
 
 .inputMypalette {
   border-radius: 50px;
