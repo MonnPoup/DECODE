@@ -19,7 +19,7 @@ function Quiz(props) {
   
 
   var dataQuestions = [
-      {question : 'Première question', 
+      {question : 'Si vous étiez un matériau ou un tissu, vous seriez...', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
@@ -33,7 +33,7 @@ function Quiz(props) {
             url: 'image38.png',
             name: 'modernMinimal'}
         },
-        {question : 'Deuxième question', 
+        {question : 'Préférez-vous une décoration...', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
@@ -47,7 +47,7 @@ function Quiz(props) {
             url: 'image38.png',
             name: 'modernMinimal'}
         },
-        {question : 'Troisième question', 
+        {question : 'Parmi les styles de décorations suivants, lequel préférez-vous ?', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
@@ -61,7 +61,7 @@ function Quiz(props) {
             url: 'image38.png',
             name: 'modernMinimal'}
         },
-        {question : 'Quatrième question', 
+        {question : 'Parmi les associations de couleurs suivantes, les quelles préférez-vous pour votre intérieur ?', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
@@ -75,7 +75,7 @@ function Quiz(props) {
             url: 'image38.png',
             name: 'modernMinimal'}
         }, 
-        {question : 'Cinquième question', 
+        {question : 'Vous cherchez un nouveau meuble. Vous allez...', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
@@ -89,7 +89,7 @@ function Quiz(props) {
             url: 'image38.png',
             name: 'modernMinimal'}
         },
-        {question : 'Sixième question', 
+        {question : 'Vous devez choisir un nouveau canapé. Vous choisissez...', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
@@ -103,7 +103,7 @@ function Quiz(props) {
             url: 'image38.png',
             name: 'modernMinimal'}
         },
-        { question: 'Septième question',
+        { question: 'Quel est le revêtement idéal pour le salon selon vous ?',
             photo1: {
             url: 'image35.png', 
             name: 'ethnique'},

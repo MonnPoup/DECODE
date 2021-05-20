@@ -28,8 +28,10 @@ function Login(props) {
         const data = await fetch('/signUp', {
           method: 'POST',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}`
+          body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}&paletteFromStore=${props.userPaletteFromStore._id}`
         })
+
+        console.log('Je suis Sybil', props.userPaletteFromStore._id)
     
         const body = await data.json()
 
@@ -119,7 +121,7 @@ function Login(props) {
 
 
 function mapStateToProps(state){
-    return {userToken: state.token, userPaletteFromStore : state.userPalette}
+    return {userToken: state.token, userPaletteFromStore : state.palette}
   }
   
 function mapDispatchToProps(dispatch){

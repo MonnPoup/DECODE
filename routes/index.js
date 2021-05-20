@@ -14,6 +14,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/signUp', async (req, res, next) => {
+  console.log('req.body.paletteFromStore._id', req.body.paletteFromStore)
   var error = []
   var saveUser = null
   var result = false
@@ -35,6 +36,7 @@ router.post('/signUp', async (req, res, next) => {
     error.push('Champs vides')
   }
 
+  var idPalette  = req.body.paletteFromStore._id
   if(error.length == 0){
 
       var hash = bcrypt.hashSync(req.body.passwordFromFront, 10);
@@ -43,12 +45,13 @@ router.post('/signUp', async (req, res, next) => {
       email: req.body.emailFromFront,
       password: hash,
       token: uid2(32),
-      palette: [], 
+      palette: [idPalette], 
       wishlist: [], 
     })
   
     saveUser = await newUser.save();
-  
+
+    console.log('id recu', saveUser.palette[0])
     
     if(saveUser){
       result = true
