@@ -199,11 +199,13 @@ router.get('/myShoppingList', async (req, res) => {
   var result = false 
   var paletteFromFront = req.body.paletteName 
 
-  var shoppingList = await articlesModel.findOne({
+  var shoppingList = await articlesModel.find({
     paletteName : paletteFromFront }
   )
   // filtrer les objets par palette name 
   // utilisée à l'initialisation du composant 
+
+  console.log(shoppingList)
   
   if (shoppingList) {result = true; res.json({result, shoppingList})} 
   else  {res.json({result})}
