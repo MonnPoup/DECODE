@@ -170,7 +170,7 @@ function Quiz(props) {
       
     }
 
-    if (buttonValider === true) {return <Redirect to='/mypalette' />} 
+    if (buttonValider === true) {return <Redirect to='/mypalette' />}
 
     var clickPhoto1 = async () => {
         if (isPhoto1Selected === false){
