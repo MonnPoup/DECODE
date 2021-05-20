@@ -37,7 +37,7 @@ router.post('/signUp', async (req, res, next) => {
     error.push('Champs vides')
   }
 
-  var idPalette  = req.body.paletteFromStore._id
+  var idPalette  = req.body.paletteFromStore
   if(error.length == 0){
 console.log('error', req.body)
       var hash = bcrypt.hashSync(req.body.passwordFromFront, 10); 
@@ -46,13 +46,22 @@ console.log('error', req.body)
       email: req.body.emailFromFront,
       password: hash,
       token: uid2(32),
-      palette: [idPalette], 
+      palette: [], 
       wishlist: [], 
     })
   
     saveUser = await newUser.save();
 
-    console.log('id recu', saveUser.palette[0])
+
+  /*  if (idPalette !== null){
+      var userPalette = await paletteModel.findOne(  
+        {name: idPalette.name})
+        console.log('userpalette ', userPalette)
+
+      var ajoutPaletteBdd = await saveUser.updateOne({palette: userPalette._id})
+    }
+
+    console.log('id recu', ajoutPaletteBdd)*/
     
     if(saveUser){
       result = true
