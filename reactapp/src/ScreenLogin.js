@@ -120,7 +120,7 @@ function Login(props) {
 
 
 function mapStateToProps(state){
-    return {userToken: state.token}
+    return {userToken: state.token, userPaletteFromStore : state.userPalette}
   }
   
 function mapDispatchToProps(dispatch){
