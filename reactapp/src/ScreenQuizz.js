@@ -19,7 +19,7 @@ function Quiz(props) {
   
 
   var dataQuestions = [
-      {question : 'Si vous étiez un matériau ou un tissu, vous seriez...', 
+      {question : 'Parmi ces matériaux et tissus, lequel préférez-vous ?', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
@@ -61,7 +61,7 @@ function Quiz(props) {
             url: 'image38.png',
             name: 'modernMinimal'}
         },
-        {question : 'Parmi les associations de couleurs suivantes, les quelles préférez-vous pour votre intérieur ?', 
+        {question : 'Parmi les associations de couleurs suivantes, lesquelles préférez-vous pour votre intérieur ?', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},

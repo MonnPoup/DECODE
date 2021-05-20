@@ -51,8 +51,6 @@ console.log('error', req.body)
     })
   
     saveUser = await newUser.save();
-
-
   /*  if (idPalette !== null){
       var userPalette = await paletteModel.findOne(  
         {name: idPalette.name})
@@ -212,7 +210,6 @@ router.post('/myShoppingList', async (req, res) => {
     paletteName : paletteFromFront }
   )
 
-  console.log('resultat bdd', shoppingList)
   
   if (shoppingList) {result = true; res.json({result, shoppingList})} 
   else  {res.json({result})}
