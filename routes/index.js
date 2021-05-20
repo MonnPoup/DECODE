@@ -152,15 +152,15 @@ router.post('/validerQuiz', async  (req, res,next) => {
     console.log('userpalette ', userPalette)
   
 
-  if (req.body.token != null) {       // si user connecté, on le trouve avec son token 
+  if (req.body.token !== null) {       // si user connecté, on le trouve avec son token 
     var userConnected = await userModel.findOne(
       {token: req.body.token}
     )
   console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
-    var ajoutPalette = await userConnected.updateOne(
+    /*var ajoutPalette = await userConnected.updateOne(
       {palette: userPalette._id}
     )
-  console.log('ajoutpalette', ajoutPalette)
+  console.log('ajoutpalette', ajoutPalette)*/
   }
   
   if (userPalette) {result = true; res.json({result, userPalette})} 
