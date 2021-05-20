@@ -1,32 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
   scroll-behavior: smooth;
 }
 
 Link {
-    color: none;
-    text-decoration: none;
+  color: none;
+  text-decoration: none;
 }
 
 body {
   height: 100%;
-  background-color: #203126
+  background-color: #203126;
 }
 
 #root {
   height: 100%;
-  background-color: #203126
+  background-color: #203126;
 }
 
 .background {
   background-color: #203126;
-  height: 100%;
-  width: 100%;
-}
-
-.backgroundWishlist {
-  background-color: #fdfcf7;
   height: 100%;
   width: 100%;
 }
@@ -50,37 +44,58 @@ h3 {
   margin-left: 10px;
 }
 
-.h3title {
+h4 {
   font-family: "Montserrat";
-  padding-top: 15px;
-  margin-bottom: 10px;
-  color: #203126;
-  letter-spacing: -1.5px;
+  font-weight: 800;
+  font-size: 20px;
 }
 
-.h3Mypalette {
-  font-family: "Montserrat";
-  font-weight: 700;
-  color: #203126;
-  letter-spacing: -1.5px;
-  padding-top: 1vh;
-  margin: 0 0 0 1vw;
-  font-size: 30px;
-}
+/* NAVBAR */
 
-.textColorPalette {
-  margin-left: 5px;
-  transform: scale(1, -1);
-  -moz-transform: scale(1, -1);
-  -webkit-transform: scale(1, -1);
-  -o-transform: scale(1, -1);
-  -ms-transform: scale(1, -1);
-  transform: scale(1, -1);
-  
+.navbarNormal {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 120px;
+  background-color: #fcfbf6;
+  padding: 5px;
+  padding-left: 5px;
+  padding-top: 0;
+  color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .icon {
   margin-right: 30px;
+}
+
+/* PAGE HOME */
+
+.mycontainer {
+  height: 100vh;
+  max-width: 100vw;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.navbarHome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 150px;
+  background-color: #fcfbf6;
+  padding: 5px;
+  padding-left: 5px;
+  padding-top: 0;
+  color: #203126;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
 }
 
 .imageBackground {
@@ -228,12 +243,7 @@ h3 {
   cursor: pointer;
 }
 
-.mycontainer {
-  height: 100vh;
-  max-width: 100vw;
-  padding: 0;
-  scroll-behavior: smooth;
-}
+/* PAGE QUIZ */
 
 .questions {
   position: absolute;
@@ -261,158 +271,10 @@ h3 {
   padding-top: 10vh;
 }
 
-.navbarHome {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 150px;
-  background-color: #fcfbf6;
-  padding: 5px;
-  padding-left: 5px;
-  padding-top: 0;
-  color: #203126;
-  display: flex;
-  justify-content: space-between;
-  z-index: 100;
-}
-
-.navbarNormal {
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 120px;
-  background-color: #fcfbf6;
-  padding: 5px;
-  padding-left: 5px;
-  padding-top: 0;
-  color:red;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.containerLogin {
-  height: 65vh;
-  width: 70vw;
-  background-color: #fcfbf6;
-  border-radius: 10px;
-  margin-left: 220px;
-}
-
-.containerMypalette {
-  height: 40vh;
-  width: 70vw;
-  background-color: #fcfbf6;
-  border-radius: 10px;
-  margin-left: 15vw;
-  margin-top: 10vh;
-}
-
-.descriptionMypalette {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-size: 20px;
-  margin-left: 15vw;
-  margin-top: 5vh;
-  color: #fdfcf7;
-  width: 70vw;
-  text-align: justify;
- 
-}
-
-.palette {
-  width: 140px;
-  height: 140px;
-  margin-top: 4.5vh;
-  margin-left: 3.5vw;
-
-  transform: matrix(0, -1, -1, 0, 0, 0);
-}
-
-
-.inputMypalette {
-  border-radius: 50px;
-  border: 0px solid #203126;
-  height: 45px;
-  width: 250px;
-  font-size: 15px;
-  color: #203126;
-  background-color: #fdfcf7;
-  cursor: pointer;
-  margin-left: 42vw;
-}
-
-.login {
-  display: flex;
-  justify-content: space-between;
-}
-
-.connexion {
-  font-family: "Montserrat";
-  font-size: 25px;
-  font-weight: normal;
-  margin-top: 60px;
-  margin-left: 180px;
-  color: #203126;
-}
-
-.inscription {
-  font-family: "Montserrat";
-  font-size: 25px;
-  font-weight: normal;
-  margin-top: 60px;
-  margin-right: 180px;
-  color: #203126;
-}
-
-.trait {
-  margin-top: 80px;
-  width: 180px;
-  transform: rotate(-180deg);
-  margin-left: 60px;
-  margin-right: 60px;
-}
-
-.trait2 {
-  width: 100%;
-  height: 3px;
-  background-color: #203126;
-}
-
-.traitWishlist {
-  width: 100%;
-  height: 5px;
-  background-color: #203126;
-}
-
-.traitMypalette {
-  width: 100%;
-  height: 3px;
-  background-color: #203126;
-}
-
 .ProgressBar {
   width: 100%;
   margin-bottom: 20px;
-  margin-top: -5px
-}
-
-.formLogin {
-  border-radius: 30px;
-}
-
-.input {
-  border-radius: 50px;
-  border: 1px solid #203126;
-  opacity: 50%;
-  margin-top: 2vh;
-  height: 5.5vh;
-  font-size: 15px;
-  padding-left: 0.5vw;
-  width: 18vw;
+  margin-top: -5px;
 }
 
 .inputValider {
@@ -443,63 +305,115 @@ h3 {
 }
 
 .photo {
-  width: 50vw; 
-  margin: 20px
+  width: 50vw;
+  margin: 20px;
 }
-.photo:hover{
-width: 55vw;
-cursor: pointer
-
+.photo:hover {
+  width: 55vw;
+  cursor: pointer;
 }
 
 .arrow-button {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  margin: 10px 15px 0px 15px
+  margin: 10px 15px 0px 15px;
 }
-.arrow-button:hover{
+.arrow-button:hover {
   height: 45px;
   cursor: pointer;
 }
 
-.ErrorQuiz{
-  font-family: 'Montserrat'; 
-  font-size: 15px; 
-  color: #fcfbf6; 
+.ErrorQuiz {
+  font-family: "Montserrat";
+  font-size: 15px;
+  color: #fcfbf6;
   text-align: center;
   margin-top: 5px;
- 
+}
+/* PAGE MYPALETTE */
+
+.containerMypalette {
+  height: 40vh;
+  width: 70vw;
+  background-color: #fcfbf6;
+  border-radius: 10px;
+  margin-left: 15vw;
+  margin-top: 10vh;
 }
 
-h4 {
-  font-family: 'Montserrat';
-  font-weight: 800;
-  font-size: 20px;
+.h3Mypalette {
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: #203126;
+  letter-spacing: -1.5px;
+  padding-top: 1vh;
+  margin: 0 0 0 1vw;
+  font-size: 30px;
 }
 
-/* p {
-  font-family: 'Montserrat';
-  font-weight: 300;
-  font-size: 20px;
-  color: #fcfbf6;
-} */
+.traitMypalette {
+  width: 100%;
+  height: 3px;
+  background-color: #203126;
+}
 
-/* PAGE RESULTAT  */
+.descriptionMypalette {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 20px;
+  margin-left: 15vw;
+  margin-top: 5vh;
+  color: #fdfcf7;
+  width: 70vw;
+  text-align: justify;
+}
+
+.textColorPalette {
+  margin-left: 5px;
+  transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -webkit-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+
+.palette {
+  width: 140px;
+  height: 140px;
+  margin-top: 4.5vh;
+  margin-left: 3.5vw;
+
+  transform: matrix(0, -1, -1, 0, 0, 0);
+}
+
+.inputMypalette {
+  border-radius: 50px;
+  border: 0px solid #203126;
+  height: 45px;
+  width: 250px;
+  font-size: 15px;
+  color: #203126;
+  background-color: #fdfcf7;
+  cursor: pointer;
+  margin-left: 42vw;
+}
+
+/* PAGE SHOPPING LIST */
 
 .articleCardTitle {
-  font-family: 'Montserrat', sans-serif;
-font-weight: 700;
-font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .articleCardBrand {
-  font-family: 'Montserrat', sans-serif;
-font-weight:400;
-font-size: 12px;
-color: #625C51;
-opacity: 0.54;
-
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #625c51;
+  opacity: 0.54;
 }
 
 .scroller {
@@ -509,3 +423,88 @@ opacity: 0.54;
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
 }
+
+/* PAGE LOGIN */
+
+.formLogin {
+  border-radius: 30px;
+}
+
+.input {
+  border-radius: 50px;
+  border: 1px solid #203126;
+  opacity: 50%;
+  margin-top: 2vh;
+  height: 5.5vh;
+  font-size: 15px;
+  padding-left: 0.5vw;
+  width: 18vw;
+}
+
+.containerLogin {
+  height: 65vh;
+  width: 70vw;
+  background-color: #fcfbf6;
+  border-radius: 10px;
+  margin-left: 220px;
+}
+.login {
+  display: flex;
+  justify-content: space-between;
+}
+
+.connexion {
+  font-family: "Montserrat";
+  font-size: 25px;
+  font-weight: normal;
+  margin-top: 60px;
+  margin-left: 180px;
+  color: #203126;
+}
+
+.inscription {
+  font-family: "Montserrat";
+  font-size: 25px;
+  font-weight: normal;
+  margin-top: 60px;
+  margin-right: 180px;
+  color: #203126;
+}
+
+.h3title {
+  font-family: "Montserrat";
+  padding-top: 15px;
+  margin-bottom: 10px;
+  color: #203126;
+  letter-spacing: -1.5px;
+}
+
+.trait {
+  margin-top: 80px;
+  width: 180px;
+  transform: rotate(-180deg);
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.trait2 {
+  width: 100%;
+  height: 3px;
+  background-color: #203126;
+}
+
+/* PAGE WISHLIST */
+
+.backgroundWishlist {
+  background-color: #fdfcf7;
+  height: 100%;
+  width: 100%;
+}
+
+.traitWishlist {
+  width: 100%;
+  height: 5px;
+  background-color: #203126;
+}
+
+/* PAGE ALLPALETTES */

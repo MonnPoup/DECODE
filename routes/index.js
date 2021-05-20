@@ -7,6 +7,7 @@ var bcrypt = require('bcrypt');
 
 var userModel = require('../models/users');
 var paletteModel = require('../models/palettes')
+var articleModel = require('../models/articles')
 
 
 router.get('/', async (req, res, next) => {
@@ -38,8 +39,8 @@ router.post('/signUp', async (req, res, next) => {
 
   var idPalette  = req.body.paletteFromStore._id
   if(error.length == 0){
-
-      var hash = bcrypt.hashSync(req.body.passwordFromFront, 10);
+console.log('error', req.body)
+      var hash = bcrypt.hashSync(req.body.passwordFromFront, 10); 
       var newUser = new userModel({
       firstName: req.body.usernameFromFront,
       email: req.body.emailFromFront,
@@ -181,15 +182,9 @@ router.post('/myPalette', async  (req, res,next) => {
     var userForId = await userModel.findOne(   // trouver l'utilisateur avec son token 
       {token: req.body.token})
 
-      console.log('userforId', userForId)
-
       var user = await userModel.       // populate pour aller récupére la palette 
       findById(userForId._id)
       .populate('palette')
-
-      console.log('user avec palette ajoutée', user) 
-
-    console.log('user palette ', user.palette)
   
     res.json({userPalette: user.palette})}
 
@@ -198,17 +193,17 @@ router.post('/myPalette', async  (req, res,next) => {
     }
 });
 
-router.get('/myShoppingList', async (req, res) => {
+router.post('/myShoppingList', async (req, res) => {
+ 
   var result = false 
   var paletteFromFront = req.body.paletteName 
+ 
 
-  var shoppingList = await articlesModel.find({
+  var shoppingList = await articleModel.find({
     paletteName : paletteFromFront }
   )
-  // filtrer les objets par palette name 
-  // utilisée à l'initialisation du composant 
 
-  console.log(shoppingList)
+  console.log('resultat bdd', shoppingList)
   
   if (shoppingList) {result = true; res.json({result, shoppingList})} 
   else  {res.json({result})}
