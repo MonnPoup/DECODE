@@ -4,20 +4,46 @@ import NavBar from "./navbar";
 import { connect } from "react-redux";
 
 function MyPalette(props) {
-  /* const[token, setToken] = useState(props.token)
 
- /*  useEffect(async()=> {
-    
-    if (token) {
-    const data = await fetch(`/myPalette/:${token}`)
-    const body = await data.json()}
-    else {
-      props.userPaletteFromStore
-    }
-   
-    console.log('hello lucas',body);
-  }) */
-  var palette = props.userPaletteFromStore;
+  const [userExist, setUserExist] = useState(true)
+  const [paletteFromBdd, setPaletteFromBdd] = useState ([]);
+
+  useEffect( async ()=> {
+
+    if (props.token != null) {
+    const data = await fetch('/myPalette', {
+      method: 'POST',
+      headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: `token=${props.token}`
+  });
+   var body = await data.json()
+   console.log('body', body)
+   setPaletteFromBdd(body.userPalette)
+    console.log('état palette', paletteFromBdd)
+  }
+}, [])
+
+  return (
+    <div style ={{height:"110vh"}} className="background">
+  <NavBar />
+  <div className="containerMypalette">
+    <h3 className="h3Mypalette">VOTRE PALETTE : {paletteFromBdd.name}</h3>
+    <div className="traitMypalette"></div>
+    <div style={{ display: "flex", flexDirection: "row" }}>
+      <div className="palette1"></div>
+      <div className="palette2"></div>
+      <div className="palette3"></div>
+      <div className="palette4"></div>
+      <div className="palette5"></div>
+    </div>
+  </div>
+    <p className="descriptionMypalette">{paletteFromBdd.description}</p>
+<Link to="/shoppinglist"><button className="inputMypalette">Découvrir ma shopping-list</button></Link>
+</div>
+  );
+}
+
+  /* var palette = props.userPaletteFromStore;
   if (palette !== '') {
     var tabPaletteColor = palette.colors.map((data, i) => {
       return (
@@ -40,7 +66,7 @@ function MyPalette(props) {
   } else if (paletteName == 'bohème') {
     paletteName = 'Bohème'
   } else if (paletteName == 'modernMinimal') {
-    paletteName = 'Modern'
+    paletteName = 'Modern Minimal'
   }
 
   return (
@@ -63,7 +89,7 @@ function MyPalette(props) {
       </Link>
     </div>
   );
-}
+} */
 
 function mapStateToProps(state) {
   return { userPaletteFromStore: state.palette, token: state.token };
