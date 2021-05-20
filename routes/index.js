@@ -165,11 +165,7 @@ router.post('/validerQuiz', async  (req, res,next) => {
       {palette: userPalette._id}
     )
   console.log('ajoutpalette', ajoutPalette)
-<<<<<<< HEAD
-  }
-=======
   } 
->>>>>>> 991099f3776e4a8687d84bbd3adc27a6f736ec81
   
   if (userPalette) {result = true; res.json({result, userPalette})} 
   else  {res.json({result})}  
