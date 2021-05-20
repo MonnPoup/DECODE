@@ -269,7 +269,6 @@ function Quiz(props) {
 
             <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 
                 <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
-               
             </div>
 
             <div style={{height:"3vh"}}> 
