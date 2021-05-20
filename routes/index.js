@@ -157,10 +157,10 @@ router.post('/validerQuiz', async  (req, res,next) => {
       {token: req.body.token}
     )
   console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
-    /*var ajoutPalette = await userConnected.updateOne(
+    var ajoutPalette = await userConnected.updateOne(
       {palette: userPalette._id}
     )
-  console.log('ajoutpalette', ajoutPalette)*/
+  console.log('ajoutpalette', ajoutPalette)
   }
   
   if (userPalette) {result = true; res.json({result, userPalette})} 
