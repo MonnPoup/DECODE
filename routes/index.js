@@ -46,13 +46,14 @@ console.log('error', req.body)
       email: req.body.emailFromFront,
       password: hash,
       token: uid2(32),
-      palette: [idPalette], 
+      palette: '60a4e817cfb766ab71c0d14a', 
       wishlist: [], 
     })
   
     saveUser = await newUser.save();
-
+   /*  await saveUser.updateOne({palette : idPalette}) */
     console.log('id recu', saveUser.palette[0])
+    console.log('tout palette', saveUser.palette)
     
     if(saveUser){
       result = true
@@ -203,7 +204,6 @@ router.post('/myShoppingList', async (req, res) => {
     paletteName : paletteFromFront }
   )
 
-  console.log('resultat bdd', shoppingList)
   
   if (shoppingList) {result = true; res.json({result, shoppingList})} 
   else  {res.json({result})}
