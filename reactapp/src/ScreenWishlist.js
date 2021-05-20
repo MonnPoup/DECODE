@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import NavBar from "./navbar"
-import {connect} from 'react-redux'
+
 
 
 function wishList(props) {

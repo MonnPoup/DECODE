@@ -104,6 +104,8 @@ router.post('/validerQuiz', async  (req, res,next) => {
   ///////////////// QUESTIONNAIRE ////////////
   var result = false; 
   var userPalette = null;
+  var isConnected = false
+  if (req.body.token === null ) { isConnected = true} 
  
   var responses = [req.body.rep1, req.body.rep2, req.body.rep3, req.body.rep4, req.body.rep5, req.body.rep6, req.body.rep7]  
 
@@ -147,12 +149,14 @@ router.post('/validerQuiz', async  (req, res,next) => {
 
  /////////////////////// TROUVER LA PALETTE EN BDD ////////////////
 
+ if (isConnected === false){
   var userPalette = await paletteModel.findOne(    // find palette dans la bdd 
     {name: resultquizz})
     console.log('userpalette ', userPalette)
-  
+  } else 
 
-  if (req.body.token !== null) {       // si user connecté, on le trouve avec son token 
+   {       // si user connecté, on le trouve avec son token 
+    console.log('token chelou', req.body.token)
     var userConnected = await userModel.findOne(
       {token: req.body.token}
     )
@@ -161,7 +165,11 @@ router.post('/validerQuiz', async  (req, res,next) => {
       {palette: userPalette._id}
     )
   console.log('ajoutpalette', ajoutPalette)
+<<<<<<< HEAD
   }
+=======
+  } 
+>>>>>>> 991099f3776e4a8687d84bbd3adc27a6f736ec81
   
   if (userPalette) {result = true; res.json({result, userPalette})} 
   else  {res.json({result})}  
@@ -195,11 +203,13 @@ router.get('/myShoppingList', async (req, res) => {
   var result = false 
   var paletteFromFront = req.body.paletteName 
 
-  var shoppingList = await articlesModel.findOne({
+  var shoppingList = await articlesModel.find({
     paletteName : paletteFromFront }
   )
   // filtrer les objets par palette name 
   // utilisée à l'initialisation du composant 
+
+  console.log(shoppingList)
   
   if (shoppingList) {result = true; res.json({result, shoppingList})} 
   else  {res.json({result})}
