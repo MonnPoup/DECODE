@@ -99,8 +99,9 @@ router.post('/signIn', async (req, res) => {
 
 
 
-router.post('/myPalette', async  (req, res,next) => {
+router.post('/validerQuiz', async  (req, res,next) => {
   
+  ///////////////// QUESTIONNAIRE ////////////
   var result = false; 
   var userPalette = null;
  
@@ -144,30 +145,50 @@ router.post('/myPalette', async  (req, res,next) => {
 
  var resultquizz = sortedResults[sortedResults.length-1].palette
 
-  var userPalette = await paletteModel.findOne(
+ /////////////////////// TROUVER LA PALETTE EN BDD ////////////////
+
+  var userPalette = await paletteModel.findOne(    // find palette dans la bdd 
     {name: resultquizz})
     console.log('userpalette ', userPalette)
   
+
+  if (req.body.token != null) {       // si user connecté, on le trouve avec son token 
+    var userConnected = await userModel.findOne(
+      {token: req.body.token}
+    )
+  console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
+    var ajoutPalette = await userConnected.updateOne(
+      {palette: userPalette._id}
+    )
+  console.log('ajoutpalette', ajoutPalette)
+  }
   
   if (userPalette) {result = true; res.json({result, userPalette})} 
   else  {res.json({result})}  
 });
 
 
-router.get('/myPalette', async  (req, res,next) => {
+router.post('/myPalette', async  (req, res,next) => {
 
-  
-    var userConnected = await userModel.findOne(
-      {token: req.body.token}
-    )
-    var ajoutPalette = await userConnected.updateOne(
-      {palette: userPalette}
-    )
+  if (req.body.token != null) {
+    var userForId = await userModel.findOne(   // trouver l'utilisateur avec son token 
+      {token: req.body.token})
 
-    var userPalette = await ajoutPalette.populate('palette')
+      console.log('userforId', userForId)
+
+      var user = await userModel.       // populate pour aller récupére la palette 
+      findById(userForId._id)
+      .populate('palette')
+
+      console.log('user avec palette ajoutée', user) 
+
+    console.log('user palette ', user.palette)
   
-    if (userPalette) {result = true; res.json({result, userPalette})} 
-    else  {res.json({result})}  
+    res.json({userPalette: user.palette})}
+
+    else {
+      res.json({userPalette: false})
+    }
 });
 
 router.get('/myShoppingList', async (req, res) => {

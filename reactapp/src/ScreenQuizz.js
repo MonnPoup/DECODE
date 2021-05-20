@@ -152,7 +152,7 @@ function Quiz(props) {
             copy.push(answer)
             setButtonValider(true)
             console.log('valider : ', copy)
-            const data = await fetch('/myPalette', {
+            const data = await fetch('/validerQuiz', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}&token=${props.userToken}` 
@@ -170,7 +170,7 @@ function Quiz(props) {
       
     }
 
-    if (buttonValider === true) {return <Redirect to='/mypalette' />}
+    if (buttonValider === true) {return <Redirect to='/mypalette' />} 
 
     var clickPhoto1 = async () => {
         if (isPhoto1Selected === false){
