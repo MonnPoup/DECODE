@@ -40,7 +40,7 @@ function MyPalette(props) {
   } else if (paletteName == 'bohème') {
     paletteName = 'Bohème'
   } else if (paletteName == 'modernMinimal') {
-    paletteName = 'Modern Minimal'
+    paletteName = 'Modern'
   }
 
   return (

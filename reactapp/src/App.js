@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
 
+
 import token from './reducers/token'
 import palette from './reducers/palette'
 
@@ -19,6 +20,7 @@ import navbar from './navbar'
 const store = createStore(combineReducers({token, palette}))
 
 function App() {
+
   return (
     <Provider store={store}>
     <Router>

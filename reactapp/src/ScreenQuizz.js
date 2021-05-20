@@ -150,8 +150,9 @@ function Quiz(props) {
             console.log('condition remplie')
             var copy = answersArray 
             copy.push(answer)
+            setButtonValider(true)
             console.log('valider : ', copy)
-            const data = await fetch('/myPalette', {
+            const data = await fetch('/validerQuiz', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}&token=${props.userToken}` 
@@ -161,9 +162,6 @@ function Quiz(props) {
 
             props.addPalette(body.userPalette)
             console.log('add to ', body.userPalette)
-            setButtonValider(true)
-
-            //Vérifier s'il y'a un bon retour du back avec un result true
 
 
            
@@ -241,7 +239,7 @@ function Quiz(props) {
 
     if (clickCount === 6 ) {  
     buttons = 
-    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center', alignItems:'center'}}> 
+    <div className= 'quizzButton' style={{display:'flex', justifyContent:'center'}}> 
     <img src='arrow-left.png' alt='arrow left'  className='arrow-button' onClick={() => handleClickDecreaseWidth()}/>
     <button type='button' className='ButtonQuestionnaire' onClick={() => {handleClickValider()}}> Valider</button>
     </div> } 
@@ -252,7 +250,12 @@ function Quiz(props) {
     <img className="arrow-button" src='arrow-right.png' alt='arrow left' 
     onClick={() => handleClickIncreaseWidth()}/>
     </div>; }
-  
+
+  if (error !== null) {
+    <p className="ErrorQuiz"> {error}</p> 
+} else {
+   <div style={{height:"50vh"}}></div>
+}
 
     return (
         <div className='background'> 
@@ -260,7 +263,7 @@ function Quiz(props) {
             <div className='ScreenQuestion'> 
             <p  className='questions'> {currentQuestion.question} </p>
 
-            <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'60vh'}} >  
+            <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'65vh'}} >  
             <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{border: selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} />
             <img className='photo' src={currentQuestion.photo2.url} alt='bohème'   style={{border: selectBorder2}} onClick={()=> {setAnswer('bohème');clickPhoto2()}}/>
             <img className='photo' src={currentQuestion.photo3.url} alt='artDeco' style={{border: selectBorder3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
@@ -269,13 +272,10 @@ function Quiz(props) {
 
             <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 
                 <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
+               
             </div>
-
-            <div style={{height:"3vh"}}> 
             <p className="ErrorQuiz"> {error}</p> 
-            </div>
             {buttons}
-            
             </div>
        
      </div> 
@@ -293,13 +293,11 @@ function Quiz(props) {
   function mapDispatchToProps(dispatch){
     return {
       addPalette: function(palette){
-         
         dispatch({type: 'addPalette', palette: palette})
       }
     }
   }
 
-  
   export default connect(
     mapStateToProps,
     mapDispatchToProps
