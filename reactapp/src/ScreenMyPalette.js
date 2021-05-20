@@ -19,16 +19,28 @@ function MyPalette(props) {
   }) */
   var palette = props.userPaletteFromStore;
   if (palette !== '') {
-    console.log("redux ", palette);
     var tabPaletteColor = palette.colors.map((data, i) => {
       return (
         <div
           key={i}
           style={{ backgroundColor: data }}
           className="palette"
-        ></div>
+        >
+          <p className="textColorPalette">{data}</p>
+        </div>
       );
     });
+  }
+
+  var paletteName = props.userPaletteFromStore.name;
+  if (paletteName == 'artDeco') {
+    paletteName = 'Art Déco'
+  } else if (paletteName == 'ethnique') {
+    paletteName = 'Éthnique'
+  } else if (paletteName == 'bohème') {
+    paletteName = 'Bohème'
+  } else if (paletteName == 'modernMinimal') {
+    paletteName = 'Modern Minimal'
   }
 
   return (
@@ -36,7 +48,7 @@ function MyPalette(props) {
       <NavBar />
       <div className="containerMypalette">
         <h3 className="h3Mypalette">
-          VOTRE PALETTE : {props.userPaletteFromStore.name}
+          VOTRE PALETTE : {paletteName}
         </h3>
         <div className="traitMypalette"></div>
         <div style={{ display: "flex", flexDirection: "row" }}>
