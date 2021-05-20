@@ -37,7 +37,7 @@ router.post('/signUp', async (req, res, next) => {
 
   if(error.length == 0){
 
-      var hash = bcrypt.hashSync(req.body.passwordFromFront, 10);
+      var hash = bcrypt.hashSync(req.body.passwordFromFront, 10); 
       var newUser = new userModel({
       firstName: req.body.usernameFromFront,
       email: req.body.emailFromFront,
@@ -156,7 +156,7 @@ router.post('/validerQuiz', async  (req, res,next) => {
     var userConnected = await userModel.findOne(
       {token: req.body.token}
     )
-  console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
+   // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
     /*var ajoutPalette = await userConnected.updateOne(
       {palette: userPalette._id}
     )
@@ -191,15 +191,15 @@ router.post('/myPalette', async  (req, res,next) => {
     }
 });
 
-router.get('/myShoppingList', async (req, res) => {
+router.post('/myShoppingList', async (req, res) => {
+ 
   var result = false 
   var paletteFromFront = req.body.paletteName 
+  console.log(paletteFromFront)
 
   var shoppingList = await articlesModel.find({
     paletteName : paletteFromFront }
   )
-  // filtrer les objets par palette name 
-  // utilisée à l'initialisation du composant 
 
   console.log(shoppingList)
   

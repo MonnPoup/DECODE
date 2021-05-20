@@ -6,6 +6,12 @@ import { Carousel, Container, Row, Col } from 'react-bootstrap';
 import { connect } from "react-redux";
 
 
+/* p {
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-size: 20px;
+  color: #fcfbf6;
+} */
 
 function ShoppingList(props) {
 const [userPalette, setUserPalette] = useState(props.userPaletteFromStore)

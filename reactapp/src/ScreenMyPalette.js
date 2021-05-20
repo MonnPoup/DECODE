@@ -33,13 +33,13 @@ function MyPalette(props) {
   }
 
   var paletteName = props.userPaletteFromStore.name;
-  if (paletteName == 'artDeco') {
+  if (paletteName === 'artDeco') {
     paletteName = 'Art Déco'
-  } else if (paletteName == 'ethnique') {
+  } else if (paletteName === 'ethnique') {
     paletteName = 'Éthnique'
-  } else if (paletteName == 'bohème') {
+  } else if (paletteName === 'bohème') {
     paletteName = 'Bohème'
-  } else if (paletteName == 'modernMinimal') {
+  } else if (paletteName === 'modernMinimal') {
     paletteName = 'Modern'
   }
 
