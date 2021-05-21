@@ -162,7 +162,7 @@ var displayArticles = articleList.map((article, i) => {
       </a>
     </div>
 
-    <div id='sect2' style={{backgroundColor: '#fcfbf6', height: '100%'}} >
+    <div id='sect2' style={{backgroundColor: '#fcfbf6'}} >
     <div className="ShoppingList-Text" style={{marginLeft:'10%', marginRight:'10%'}}> 
      <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'1px solid #203126', color: '#203126', marginBottom: '15px', paddingTop: '18vh'}}> INSPIRATIONS </h4>
     </div>
