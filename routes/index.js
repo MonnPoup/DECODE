@@ -167,7 +167,7 @@ router.post('/validerQuiz', async  (req, res,next) => {
   } else 
 
    {       // si user connecté, on le trouve avec son token 
-    console.log('token chelou', req.body.token)
+    console.log('token', req.body.token)
     var userConnected = await userModel.findOne(
       {token: req.body.token}
     )
