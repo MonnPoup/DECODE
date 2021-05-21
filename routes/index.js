@@ -153,36 +153,41 @@ router.post("/validerQuiz", async (req, res, next) => {
   ];
 
   var sortedResults = compteursArray.sort(function compare(a, b) {
-    if (a.compteur < b.compteur) return -1;
-    if (a.compteur > b.compteur) return 1;
-    return 0;
-  });
+    if (a.compteur < b.compteur)
+       return -1;
+    if (a.compteur > b.compteur )
+       return 1;
+    return 0;}
+    )
 
-  console.log(
-    "Votre palette est ",
-    sortedResults[sortedResults.length - 1].palette
-  );
+ console.log('Votre palette est ', sortedResults[sortedResults.length-1].palette)   
 
-  var resultquizz = sortedResults[sortedResults.length - 1].palette;
+ var resultquizz = sortedResults[sortedResults.length-1].palette
 
-  /////////////////////// TROUVER LA PALETTE EN BDD ////////////////
+ /////////////////////// TROUVER LA PALETTE EN BDD ////////////////
 
-  if (isConnected === false) {
-    var userPalette = await paletteModel.findOne(
-      // find palette dans la bdd
-      { name: resultquizz }
-    );
-    console.log("userpalette ", userPalette);
-  } else {
-    // si user connecté, on le trouve avec son token
-    console.log("token chelou", req.body.token);
-    var userConnected = await userModel.findOne({ token: req.body.token });
-    console.log("userconnected", userConnected); // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id
-    var ajoutPalette = await userConnected.updateOne({
-      palette: userPalette._id,
-    });
-    console.log("ajoutpalette", ajoutPalette);
-  }
+ if (isConnected === false){
+  var userPalette = await paletteModel.findOne(    // find palette dans la bdd 
+    {name: resultquizz})
+    console.log('userpalette ', userPalette)
+  } else 
+
+   {       // si user connecté, on le trouve avec son token 
+    console.log('token', req.body.token)
+    var userConnected = await userModel.findOne(
+      {token: req.body.token}
+    )
+  console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
+    var ajoutPalette = await userConnected.updateOne(
+      {palette: userPalette._id}
+    )
+  console.log('ajoutpalette', ajoutPalette)
+  } 
+  
+  if (userPalette) {result = true; res.json({result, userPalette})} 
+  else  {res.json({result})}  
+});
+
 
   if (userPalette) {
     result = true;
@@ -190,7 +195,7 @@ router.post("/validerQuiz", async (req, res, next) => {
   } else {
     res.json({ result });
   }
-});
+;
 
 router.post("/myPalette", async (req, res, next) => {
   if (req.body.token != null) {
