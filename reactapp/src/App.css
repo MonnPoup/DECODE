@@ -537,3 +537,63 @@ h4 {
 }
 
 /* PAGE ALLPALETTES */
+
+.containerAllPalettes {
+  height: 25vh;
+  width: 35vw;
+  background-color: #fcfbf6;
+  border-radius: 10px;
+  margin-left: 12vw;
+  margin-top: 8vh;
+}
+
+.h3AllPalettes {
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: #fcfbf6;
+  letter-spacing: -1.5px;
+  padding-top: 1vh;
+  margin: 0 0 0 10vw;
+  font-size: 25px;
+  margin-top: 3vh;
+}
+
+.traitAllPalettes {
+  width: 80%;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  background-color: #fcfbf6;
+  margin-left: 10vw;
+  margin-top: 1vh;
+}
+
+.traitContainerAllPalettes {
+  width: 35vw;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  background-color: #203126;
+
+}
+
+.h3Container {
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: #203126;
+  letter-spacing: -1.5px;
+  padding-top: 1vh;
+  margin: 0 0 0 2vw;
+  font-size: 25px;
+  margin-top: 3vh;
+}
+
+.paletteAllPalettes {
+  width: 70px;
+  height: 70px;
+  margin-top: 4vh;
+  margin-left: 2vw;
+  background-color: #203126;
+
+  transform: matrix(0, -1, -1, 0, 0, 0);
+}

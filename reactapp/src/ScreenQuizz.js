@@ -2,6 +2,8 @@ import React, {useState, } from 'react';
 import {Redirect} from "react-router-dom";
 import NavBar from "./navbar";
 import {connect} from 'react-redux';
+import { propTypes } from 'react-bootstrap/esm/Image';
+import { OmitProps } from 'antd/lib/transfer/ListBody';
 
 
 
@@ -160,6 +162,7 @@ function Quiz(props) {
             const body = await data.json()
 
             console.log('post fetch', body)
+            console.log("props to reducer", props)
 
             props.addPalette(body.userPalette)
             console.log('add to ', body.userPalette)
@@ -228,6 +231,7 @@ function Quiz(props) {
     }
     if (isPhoto4Selected === true) {
         var selectBorder4 = '2px solid white'
+        var borderRadius = '75%'
     }
 
 
@@ -265,10 +269,10 @@ function Quiz(props) {
             <p  className='questions'> {currentQuestion.question} </p>
 
             <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'65vh'}} >  
-            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{border: selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} />
+            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} />
             <img className='photo' src={currentQuestion.photo2.url} alt='bohème'   style={{border: selectBorder2}} onClick={()=> {setAnswer('bohème');clickPhoto2()}}/>
             <img className='photo' src={currentQuestion.photo3.url} alt='artDeco' style={{border: selectBorder3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
-            <img className='photo' src={currentQuestion.photo4.url} alt='modernMinimal' style={{border: selectBorder4}} onClick={()=> {setAnswer('modernMinimal');clickPhoto4()}}/>
+            <img className='photo' src={currentQuestion.photo4.url} alt='modernMinimal' style={{border: selectBorder4, borderRadius: borderRadius}} onClick={()=> {setAnswer('modernMinimal');clickPhoto4()}}/>
             </div>
 
             <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 
@@ -286,8 +290,7 @@ function Quiz(props) {
 
 
   function mapStateToProps(state)
-   {  return {userPaletteFromStore: state.palette},
-    {userToken: state.token}
+   {  return {userPaletteFromStore: state.palette, userToken: state.token}
   }
 
   
