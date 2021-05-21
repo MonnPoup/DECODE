@@ -5,42 +5,42 @@ import { connect } from "react-redux";
 
 function MyPalette(props) {
   const [palette, setPalette] = useState(props.userPaletteFromStore);
-  const [isConnected, setIsConnected] = useState(false);
+  const [token, setToken] = useState(props.token)
+  const [isConnected, setisConnected] = useState(false)
+
 
   useEffect(() => {
     setPalette(props.userPaletteFromStore);
   }, [props.userPaletteFromStore]);
+ 
 
   useEffect(() => {
+    console.log('token', token)
+
+    if (token !== null){
+      setisConnected(true)
     async function fetchData() {
-      if (props.token !== null) {
+        console.log('condition remplie')
         const data = await fetch("/myPalette", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `token=${props.token}`,
+          body: `token=${token}`,
         });
 
         var body = await data.json();
-        setPalette(body.userPalette[0]);
-        props.addPalette(body.userPalette[0])
-      }
+        console.log("body pr palette", body);
+        setPalette(body.userPalette);
     }
-
     fetchData();
+  } 
+  else if (isConnected === false) {
+   console.log('userpasconnecté');
+   console.log('props from reducer', palette)
+  } 
+    
   }, []);
 
-  if (palette !== "") {
-    //Attente réponse enregistrement dans le store
-    var tabPaletteColor = palette.colors.map((data, i) => {
-      return (
-        <div key={i} style={{ backgroundColor: data }} className="palette">
-          <p className="textColorPalette">{data}</p>
-        </div>
-      );
-    });
-  }
-
-  var paletteName = props.userPaletteFromStore.name;
+ /*  var paletteName = palette.name;
   if (paletteName === "artDeco") {
     paletteName = "Art Déco";
   } else if (paletteName === "ethnique") {
@@ -49,25 +49,56 @@ function MyPalette(props) {
     paletteName = "Bohème";
   } else if (paletteName === "modernMinimal") {
     paletteName = "Modern Minimal";
-  }
+  }  */
 
-  return (
+ console.log('token IS HERE ', props.token)
+
+   if (palette) {
+    var tabPaletteColor = palette.colors.map((data, i) => {
+      return (
+        <div key={i} style={{ backgroundColor: data }} className="palette">
+          <p className="textColorPalette">{data}</p>
+        </div>
+      );
+    });
+     return (
     <div style={{ height: "110vh" }} className="background">
       <NavBar />
-      <div className="containerMypalette">
-        <h3 className="h3Mypalette">VOTRE PALETTE : {paletteName}</h3>
+        <div className="containerMypalette">
+        <h3 className="h3Mypalette">VOTRE PALETTE : {/* {paletteName} */}</h3>
         <div className="traitMypalette"></div>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          {tabPaletteColor}
+           {tabPaletteColor}  
         </div>
       </div>
       <p className="descriptionMypalette">{palette.description}</p>
       <Link to="/shoppinglist">
         <button className="inputMypalette">Découvrir ma shopping-list</button>
-      </Link>
+      </Link>  
     </div>
   );
+    //Attente réponse enregistrement dans le store
+  }  else {return (
+    <div style={{ height: "110vh" }} className="background">
+      <NavBar />
+        <div className="containerMypalette">
+        <h3 className="h3Mypalette">VOTRE PALETTE : </h3>
+        <div className="traitMypalette"></div>
+        <div style={{ display: "flex", flexDirection: "row" }}> 
+        </div>
+      </div>
+      <p className="descriptionMypalette"></p>
+      <Link to="/shoppinglist">
+        <button className="inputMypalette">Découvrir ma shopping-list</button>
+      </Link>  
+    </div>
+  ); }
+ 
+  
+
+  
 }
+
 
 function mapStateToProps(state) {
   return { userPaletteFromStore: state.palette, token: state.token };
@@ -75,9 +106,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch){
   return {
     addPalette: function(palette){
-      dispatch({type: 'addPalette', palette: palette})
+      dispatch({type: 'addToken', palette: palette})
     }, 
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyPalette);
+export default connect(mapStateToProps, null)(MyPalette);

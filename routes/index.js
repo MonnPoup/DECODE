@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/signUp', async (req, res, next) => {
-  console.log('req.body.paletteFromStore._id', req.body.paletteFromStore)
+  console.log('req.body.paletteFromStore._id', req.body)
   var error = []
   var saveUser = null
   var result = false
@@ -37,22 +37,22 @@ router.post('/signUp', async (req, res, next) => {
     error.push('Champs vides')
   }
 
-  var idPalette  = req.body.paletteFromStore._id
+  
   if(error.length == 0){
-console.log('error', req.body)
+console.log('body palette', req.body.paletteFromStore)
       var hash = bcrypt.hashSync(req.body.passwordFromFront, 10); 
       var newUser = new userModel({
       firstName: req.body.usernameFromFront,
       email: req.body.emailFromFront,
       password: hash,
       token: uid2(32),
-      palette: '60a4e817cfb766ab71c0d14a', 
+      palette: req.body.paletteFromStore, 
       wishlist: [], 
     })
   
     saveUser = await newUser.save();
    /*  await saveUser.updateOne({palette : idPalette}) */
-    console.log('id recu', saveUser.palette[0])
+    console.log('id recu', saveUser)
     console.log('tout palette', saveUser.palette)
     
     if(saveUser){
@@ -110,7 +110,7 @@ router.post('/validerQuiz', async  (req, res,next) => {
   var result = false; 
   var userPalette = null;
   var isConnected = false
-  if (req.body.token === null ) { isConnected = true} 
+  if (req.body.token !== null ) { isConnected = true} 
  
   var responses = [req.body.rep1, req.body.rep2, req.body.rep3, req.body.rep4, req.body.rep5, req.body.rep6, req.body.rep7]  
 
@@ -154,26 +154,42 @@ router.post('/validerQuiz', async  (req, res,next) => {
 
  /////////////////////// TROUVER LA PALETTE EN BDD ////////////////
 
- if (isConnected === false){
   var userPalette = await paletteModel.findOne(    // find palette dans la bdd 
-    {name: resultquizz})
-    console.log('userpalette ', userPalette)
-  } else 
+  {name: resultquizz})
 
-   {       // si user connecté, on le trouve avec son token 
+ if (isConnected === false){
+    console.log('userpalette ', userPalette)
+    if (userPalette) 
+    {result = true; res.json({result, userPalette})}
+     else {res.json({result})}  
+   } 
+   else  {  
+
+      var userUpdated = await userModel.updateOne( 
+        {token: req.body.token},
+        {palette: userPalette._id}
+      ) 
+        console.log('userUpdated', userUpdated)
+      if (userUpdated) { result = true; res.json({result, userPalette}) }
+      else {res.json({result})} 
+   }
+
+/*    {       // si user connecté, on le trouve avec son token 
     console.log('token chelou', req.body.token)
     var userConnected = await userModel.findOne(
       {token: req.body.token}
     )
+    
   console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
-    var ajoutPalette = await userConnected.updateOne(
+    var ajoutPalette = await userModel.updateOne(
+      {token: req.body.token}
       {palette: userPalette._id}
     )
   console.log('ajoutpalette', ajoutPalette)
-  } 
+  }  */
   
-  if (userPalette) {result = true; res.json({result, userPalette})} 
-  else  {res.json({result})}  
+  
+   
 });
 
 
@@ -186,6 +202,7 @@ router.post('/myPalette', async  (req, res,next) => {
       var user = await userModel.       // populate pour aller récupére la palette 
       findById(userForId._id)
       .populate('palette')
+      console.log('user et sa palette', user.palette)
   
     res.json({userPalette: user.palette})}
 

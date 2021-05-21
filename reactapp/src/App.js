@@ -11,6 +11,7 @@ import palette from './reducers/palette'
 import Home from './ScreenHome';
 import Quiz from './ScreenQuizz';
 import MyPalette from './ScreenMyPalette';
+import MyPalette2 from './Screen2';
 import ShoppingList from './ScreenShoppingList';
 import Login from './ScreenLogin';
 import Wishlist from './ScreenWishlist'
@@ -28,6 +29,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route path="/quiz" component={Quiz}  />
       <Route exact path="/mypalette" component={MyPalette}  />
+      <Route exact path="/mypalette2" component={MyPalette2}  />
       <Route path="/shoppinglist" component={ShoppingList}  />
       <Route path="/login" component={Login}  />
       <Route path="/wishlist" component={Wishlist}  />
