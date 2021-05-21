@@ -25,12 +25,12 @@ function Quiz(props) {
         photo1: {
             url: '1lin.png', 
             name: 'ethnique'},
-        photo2:{
-            url: '1velours.png',
-            name: 'artDeco'},
-        photo3: {
+        photo2: {
             url: '1boisFonce.png',
             name: 'bohème'},
+        photo3:{
+             url: '1velours.png',
+            name: 'artDeco'},
         photo4: {
             url: '1marbre.png',
             name: 'modernMinimal'}
