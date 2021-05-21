@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import NavBar from "./navbar"
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Row, Col } from 'react-bootstrap';
 import { connect } from "react-redux";
+import { Popover } from 'antd';
 
 
 /* p {
@@ -16,6 +16,23 @@ import { connect } from "react-redux";
 function ShoppingList(props) {
 const [userPalette, setUserPalette] = useState(props.userPaletteFromStore)
 const [articleList, setArticleList] = useState([''])
+
+const text = <span>Mon compte</span>;
+const content = (
+  <div>
+    <Link to ='/mypalette'><p>Ma palette</p></Link>
+    <Link to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
+  </div>
+);
+
+if(props.token != null){
+var userNav = <Popover placement="bottomRight" title={text} content={content} trigger="click">
+<img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/>
+</Popover>
+} else {
+userNav =  <Link to='/login'><img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
+}
+
 
 useEffect( () => {
   
@@ -64,15 +81,30 @@ var displayArticles = articleList.map((article, i) => {
    
     var displayInspo = userPalette.inspirations.map((photo, i) => {
       return (
-        <img src={photo} alt='photo'/>
+        <Col md={2}lg={3} style={{backgroundColor:'white', margin:'10px', display:'flex'}}>
+        <div style={{width: '100%', height: '100%',display: 'flex' , justifyContent:'center', alignItems: 'center'}}>
+        <img style={{maxWidth:'100%', maxHeight: '100%'}} src={photo} alt='photo'/>
+        </div>
+        </Col>
       ) }
       ) 
     
   return (
-    <div className='background'>     {/* FOND  */}
-    <NavBar/>
-
-    <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6', marginTop:'1vh', paddingBottom:'3vh' }}> 
+    <div  className="background">     {/* FOND  */}
+      <div className= 'navbarNormalFixe'>
+        <div>
+          <Link style={{textDecoration:"none"}} to ="/">
+          <h2 style={{marginLeft: '20px', color:'#203126', marginTop: '20px', fontSize: '50px'}}>DÉCODE.</h2> 
+          </Link>
+        </div>
+      <div className= 'icon'>  
+        <Link to = '/allpalettes'><img src='palette.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
+        <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+        {userNav}
+      </div>
+    </div>
+    <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
+    <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6', paddingBottom:'3vh' }}> 
 
 
 {/* PALETTE + BOUTON REFAIRE QUIZZ */}
@@ -130,10 +162,25 @@ var displayArticles = articleList.map((article, i) => {
       </a>
     </div>
 
-   <div id='sect2' className="Inspirations" style={{backgroundColor:'#FCFBF6', height:'70%', }}> 
+    <div id='sect2' style={{backgroundColor: '#fcfbf6', height: '100%'}} >
+    <div className="ShoppingList-Text" style={{marginLeft:'10%', marginRight:'10%'}}> 
+     <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'1px solid #203126', color: '#203126', marginBottom: '15px', paddingTop: '18vh'}}> INSPIRATIONS </h4>
+    </div>
 
-   {displayInspo}
+   <div className="Inspirations" style={{backgroundColor:'#FCFBF6', height:'100%', display: 'flex', width: '100%'}}> 
 
+   <Container lg={12} md={12} style={{ display:'flex', justifyContent: 'center', marginBottom: '3px'}} > 
+
+      <Row  lg={12} md={12} style={{ display:'flex', justifyContent: 'center'}}> 
+
+      {displayInspo}
+
+
+      </Row>
+      </Container>
+   
+
+    </div>
     </div>
 
     </div>
