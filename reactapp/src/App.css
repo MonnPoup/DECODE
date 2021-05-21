@@ -453,6 +453,11 @@ h4 {
   margin-left: 42vw;
 }
 
+.pShoppingList {
+  margin-left: 0px;
+  font-size: 15px;
+}
+
 /* PAGE LOGIN */
 
 .formLogin {

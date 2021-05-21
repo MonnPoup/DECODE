@@ -20,8 +20,8 @@ const [articleList, setArticleList] = useState([''])
 const text = <span>Mon compte</span>;
 const content = (
   <div>
-    <Link to ='/mypalette'><p>Ma palette</p></Link>
-    <Link to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
+    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
+    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
   </div>
 );
 
@@ -58,7 +58,7 @@ var displayArticles = articleList.map((article, i) => {
       <img style={{maxWidth:'100%', maxHeight: '100%'}} src={article.imageUrl}  alt='product' /> 
       {/* image + picto coeur  */}
     </div>
-    <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 0px"}}> 
+    <div className="productInfo" style={{display:'flex', justifyContent:'space-between', paddingTop: '20px'}}> 
       <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around', marginRight: '5px'}}> 
        <a href={article.merchantUrl} target="_blank"> <h5 className='articleCardTitle'> {article.name} </h5></a>
         <h6 className='articleCardBrand'> {article.brand} </h6>
@@ -103,7 +103,7 @@ var displayArticles = articleList.map((article, i) => {
         {userNav}
       </div>
     </div>
-    <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
+    <div style={{height: '16vh', backgroundColor: '#203126'}}></div>
     <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6', paddingBottom:'3vh' }}> 
 
 
@@ -152,10 +152,14 @@ var displayArticles = articleList.map((article, i) => {
 
     </div>
 
-    <div className="Scroll" style={{backgroundColor:'#203126', display:'flex', flexDirection:'column', justifyContent:'center', padding:'1%'}}>
+    <div className="Scroll" style={{backgroundColor:'#203126', display:'flex', flexDirection:'column',height:'10vh', justifyContent:'center', alignItems:'center', padding:'1%'}}>
+    <div>
+    <h5 className='pShoppingList' style={{color: 'white', fontFamily: 'Montserrat'}}> Découvrez des photos d'inspiration</h5>
+    </div>
+  
     <a href="#sect2" style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
       <img
-            style={{height:"40px"}}
+            style={{height:"30px"}}
             src="doubleChevron.svg"
             alt="double chevron"
           />
