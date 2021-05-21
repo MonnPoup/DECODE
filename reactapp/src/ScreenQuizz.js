@@ -188,7 +188,8 @@ function Quiz(props) {
         }
     }
     if (isPhoto1Selected === true) {
-        var selectBorder1 = '2px solid white'
+        var selectBorder1 = '4px solid white'
+        var borderRadius1 = '5%'
     }
 
     var clickPhoto2 = async () => {
@@ -202,7 +203,8 @@ function Quiz(props) {
         }
     }
     if (isPhoto2Selected === true) {
-        var selectBorder2 = '2px solid white'
+        var selectBorder2 = '4px solid white'
+        var borderRadius2 = '5%'
     }
 
     var clickPhoto3 = async () => {
@@ -216,7 +218,8 @@ function Quiz(props) {
         }
     }
     if (isPhoto3Selected === true) {
-        var selectBorder3 = '2px solid white'
+        var selectBorder3 = '4px solid white'
+        var borderRadius3 = '5%'
     }
 
     var clickPhoto4 = async () => {
@@ -230,8 +233,8 @@ function Quiz(props) {
         }
     }
     if (isPhoto4Selected === true) {
-        var selectBorder4 = '2px solid white'
-        var borderRadius = '75%'
+        var selectBorder4 = '4px solid white'
+        var borderRadius4 = '5%'
     }
 
 
@@ -269,10 +272,10 @@ function Quiz(props) {
             <p  className='questions'> {currentQuestion.question} </p>
 
             <div className= 'questionsPhoto' style={{display:'flex', justifyContent:'center', height:'65vh'}} >  
-            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{selectBorder1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} />
-            <img className='photo' src={currentQuestion.photo2.url} alt='bohème'   style={{border: selectBorder2}} onClick={()=> {setAnswer('bohème');clickPhoto2()}}/>
-            <img className='photo' src={currentQuestion.photo3.url} alt='artDeco' style={{border: selectBorder3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
-            <img className='photo' src={currentQuestion.photo4.url} alt='modernMinimal' style={{border: selectBorder4, borderRadius: borderRadius}} onClick={()=> {setAnswer('modernMinimal');clickPhoto4()}}/>
+            <img className='photo' src={currentQuestion.photo1.url} alt='ethnique'   style={{border:selectBorder1, borderRadius: borderRadius1}} onClick={()=> {setAnswer('ethnique'); clickPhoto1()}} />
+            <img className='photo' src={currentQuestion.photo2.url} alt='bohème'   style={{border: selectBorder2,borderRadius: borderRadius2 }} onClick={()=> {setAnswer('bohème');clickPhoto2()}}/>
+            <img className='photo' src={currentQuestion.photo3.url} alt='artDeco' style={{border: selectBorder3,  borderRadius: borderRadius3}} onClick={()=> {setAnswer('artDeco');clickPhoto3()}}/>
+            <img className='photo' src={currentQuestion.photo4.url} alt='modernMinimal' style={{border: selectBorder4, borderRadius: borderRadius4}} onClick={()=> {setAnswer('modernMinimal');clickPhoto4()}}/>
             </div>
 
             <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 

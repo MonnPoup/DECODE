@@ -40,7 +40,13 @@ function MyPalette(props) {
     
   }, []);
 
- /*  var paletteName = palette.name;
+ 
+
+ console.log('token IS HERE ', props.token)
+
+   if (palette) {
+
+    var paletteName = palette.name;
   if (paletteName === "artDeco") {
     paletteName = "Art Déco";
   } else if (paletteName === "ethnique") {
@@ -49,11 +55,8 @@ function MyPalette(props) {
     paletteName = "Bohème";
   } else if (paletteName === "modernMinimal") {
     paletteName = "Modern Minimal";
-  }  */
-
- console.log('token IS HERE ', props.token)
-
-   if (palette) {
+  }  
+  
     var tabPaletteColor = palette.colors.map((data, i) => {
       return (
         <div key={i} style={{ backgroundColor: data }} className="palette">
@@ -61,11 +64,12 @@ function MyPalette(props) {
         </div>
       );
     });
+
      return (
     <div style={{ height: "110vh" }} className="background">
       <NavBar />
         <div className="containerMypalette">
-        <h3 className="h3Mypalette">VOTRE PALETTE : {/* {paletteName} */}</h3>
+        <h3 className="h3Mypalette">VOTRE PALETTE :  {paletteName} </h3>
         <div className="traitMypalette"></div>
         <div style={{ display: "flex", flexDirection: "row" }}>
            {tabPaletteColor}  
