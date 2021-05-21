@@ -45,7 +45,7 @@ function MyPalette(props) {
  console.log('token IS HERE ', props.token)
 
    if (palette) {
-
+   
     var paletteName = palette.name;
   if (paletteName === "artDeco") {
     paletteName = "Art Déco";
@@ -56,7 +56,7 @@ function MyPalette(props) {
   } else if (paletteName === "modernMinimal") {
     paletteName = "Modern Minimal";
   }  
-  
+
     var tabPaletteColor = palette.colors.map((data, i) => {
       return (
         <div key={i} style={{ backgroundColor: data }} className="palette">
@@ -108,7 +108,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch){
   return {
     addPalette: function(palette){
-      dispatch({type: 'addToken', palette: palette})
+      dispatch({type: 'addPalette', palette: palette})
     }, 
   }
 }
