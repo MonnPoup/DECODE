@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./navbar";
-import { connect } from "react-redux";
+import AllPaletteModel from "./AllPaletteModel"
 
-function AllPalettes(props) {
+
+function AllPalettes() {
 
 const [allPalettes, setAllPalettes] = useState([])
 const [allArticles, setAllArticles] = useState([])
@@ -28,11 +29,7 @@ console.log('hello', allPalettes);
       <NavBar />
       <h3 className="h3AllPalettes">TOUTES LES PALETTES</h3>
       <div className="traitAllPalettes"></div>
-      <div className="containerAllPalettes">
-        <h3 className="h3Container">Hello</h3>
-        <div className="traitContainerAllPalettes"></div>
-        <div className="paletteAllPalettes"></div>
-      </div>
+     <AllPaletteModel />
     </div>
   );
 }
