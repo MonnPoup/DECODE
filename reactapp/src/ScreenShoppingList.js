@@ -15,25 +15,59 @@ import { connect } from "react-redux";
 
 function ShoppingList(props) {
 const [userPalette, setUserPalette] = useState(props.userPaletteFromStore)
-const [articleList, setArticleList] = useState([])
+const [articleList, setArticleList] = useState([''])
 
 useEffect( () => {
   
   async function loadData() { 
-    const data = await fetch('/signUp', {
+    const data = await fetch('/myShoppingList', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `paletteName=${userPalette}`
+      body: `paletteName=${userPalette.name}`
     })
-    const body = data.json()
-    setArticleList([body.shoppingList])
+    const body = await data.json()
+    setArticleList(body.shoppingList)
   }
   loadData()
-  console.log(articleList)
 
 
  }, []);
 
+  if (articleList !== "") {
+var displayArticles = articleList.map((article, i) => {
+  return ( 
+    <Col md={2}lg={3} style={{backgroundColor:'white', margin:'10px', display:'flex', flexDirection:'column', justifyContent:'center'}}> 
+    <div style={{display:'flex', justifyContent:'center'}} className='productImage' >
+      <img style={{width:'100%'}} src={article.imageUrl}  alt='product' /> 
+      {/* image + picto coeur  */}
+    </div>
+    <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 10px"}}> 
+      <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around'}}> 
+        <h5 className='articleCardTitle'> {article.name} </h5>
+        <h6 className='articleCardBrand'> {article.brand} </h6>
+      </div>
+      <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
+        <img src='heart.svg' alt='heart icon' style={{width: '15px'}}/>
+        <h5 className='articleCardTitle'> {article.price}€ </h5>
+      </div>
+    </div>
+  </Col>
+  )
+})
+  }
+
+  var displayPalette = userPalette.colors.map((color, i) => {
+    return (
+    <div key={i} className='color1' style={{height:'60px', width:'60px', margin:'1%', backgroundColor:`${color}`}}> 
+    </div>) }
+    )
+   
+    var displayInspo = userPalette.inspirations.map((photo, i) => {
+      return (
+        <img src={photo} alt='photo'/>
+      ) }
+      ) 
+    
   return (
     <div className='background'>     {/* FOND  */}
     <NavBar/>
@@ -44,16 +78,9 @@ useEffect( () => {
 {/* PALETTE + BOUTON REFAIRE QUIZZ */}
       <div style={{display:'flex', justifyContent:'space-between', padding:'10px'}}> 
         <div className ='PaletteColors'style={{display:'flex', justifyContent:'space-between', width:'25%'}}> 
-          <div className='color1' style={{height:'60px', width:'60px', backgroundColor:'red'}}> 
-          </div>
-          <div className='color1' style={{height:'60px', width:'60px', backgroundColor:'red'}}>  
-          </div>
-          <div className='color1' style={{height:'60px', width:'60px', backgroundColor:'red'}}> 
-          </div>
-          <div className='color1' style={{height:'60px', width:'60px', backgroundColor:'red'}}>  
-          </div>
-          <div className='color1' style={{height:'60px', width:'60px', backgroundColor:'red'}}>  
-          </div>
+        
+          {displayPalette}
+          
         </div>
         <Button type='button'> Refaire le questionnaire </Button>
     </div>
@@ -81,109 +108,7 @@ useEffect( () => {
       <Row  lg={12} md={12} style={{ display:'flex', justifyContent: 'center'}}> 
    
 
-      <Col md={2}lg={3} style={{backgroundColor:'white', height:'200px', margin:'10px'  }}> 
-        <div style={{display:'flex', justifyContent:'center'}} className='productImage' >
-          <img style={{width:'50%', height:'80%'}} src="https://cdn.laredoute.com/products/680by680/9/e/1/9e104ddb0c0c928cda419c35499147ea.jpg"  alt='product' /> 
-          {/* image + picto coeur  */}
-        </div>
-        <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 10px"}}> 
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around'}}> 
-            <h5 className='articleCardTitle'> Canapé en lin ocre </h5>
-            <h6 className='articleCardBrand'> La Redoute Intérieurs </h6>
-          </div>
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
-            <img src='heart.svg' alt='heart icon' style={{width: '15px'}}/>
-            <h5 className='articleCardTitle'> 995€ </h5>
-          </div>
-        </div>
-      </Col>
-
-      <Col md={2}lg={3} style={{backgroundColor:'white', height:'200px', margin:'10px'  }}> 
-        <div style={{display:'flex', justifyContent:'center'}} className='productImage' >
-          <img style={{width:'50%', height:'80%'}} src="https://cdn.laredoute.com/products/680by680/9/e/1/9e104ddb0c0c928cda419c35499147ea.jpg"  alt='product' /> 
-          {/* image + picto coeur  */}
-        </div>
-        <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 10px"}}> 
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around'}}> 
-            <h5 className='articleCardTitle'> Canapé en lin ocre </h5>
-            <h6 className='articleCardBrand'> La Redoute Intérieurs </h6>
-          </div>
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
-            <img src='heart.svg' alt='heart icon' style={{width: '15px'}}/>
-            <h5 className='articleCardTitle'> 995€ </h5>
-          </div>
-        </div>
-      </Col>
-
-      <Col md={2}lg={3} style={{backgroundColor:'white', height:'200px', margin:'10px'  }}> 
-        <div style={{display:'flex', justifyContent:'center'}} className='productImage' >
-          <img style={{width:'50%', height:'80%'}} src="https://cdn.laredoute.com/products/680by680/9/e/1/9e104ddb0c0c928cda419c35499147ea.jpg"  alt='product' /> 
-          {/* image + picto coeur  */}
-        </div>
-        <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 10px"}}> 
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around'}}> 
-            <h5 className='articleCardTitle'> Canapé en lin ocre </h5>
-            <h6 className='articleCardBrand'> La Redoute Intérieurs </h6>
-          </div>
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
-            <img src='heart.svg' alt='heart icon' style={{width: '15px'}}/>
-            <h5 className='articleCardTitle'> 995€ </h5>
-          </div>
-        </div>
-      </Col>
-
-      <Col md={2}lg={3} style={{backgroundColor:'white', height:'200px', margin:'10px'  }}> 
-        <div style={{display:'flex', justifyContent:'center'}} className='productImage' >
-          <img style={{width:'50%', height:'80%'}} src="https://cdn.laredoute.com/products/680by680/9/e/1/9e104ddb0c0c928cda419c35499147ea.jpg"  alt='product' /> 
-          {/* image + picto coeur  */}
-        </div>
-        <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 10px"}}> 
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around'}}> 
-            <h5 className='articleCardTitle'> Canapé en lin ocre </h5>
-            <h6 className='articleCardBrand'> La Redoute Intérieurs </h6>
-          </div>
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
-            <img src='heart.svg' alt='heart icon' style={{width: '15px'}}/>
-            <h5 className='articleCardTitle'> 995€ </h5>
-          </div>
-        </div>
-      </Col>
-
-      <Col md={2}lg={3} style={{backgroundColor:'white', height:'200px', margin:'10px'  }}> 
-        <div style={{display:'flex', justifyContent:'center'}} className='productImage' >
-          <img style={{width:'50%', height:'80%'}} src="https://cdn.laredoute.com/products/680by680/9/e/1/9e104ddb0c0c928cda419c35499147ea.jpg"  alt='product' /> 
-          {/* image + picto coeur  */}
-        </div>
-        <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 10px"}}> 
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around'}}> 
-            <h5 className='articleCardTitle'> Canapé en lin ocre </h5>
-            <h6 className='articleCardBrand'> La Redoute Intérieurs </h6>
-          </div>
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
-            <img src='heart.svg' alt='heart icon' style={{width: '15px'}}/>
-            <h5 className='articleCardTitle'> 995€ </h5>
-          </div>
-        </div>
-      </Col>
-
-      <Col md={2}lg={3} style={{backgroundColor:'white', height:'200px', margin:'10px'  }}> 
-        <div style={{display:'flex', justifyContent:'center'}} className='productImage' >
-          <img style={{width:'50%', height:'80%'}} src="https://cdn.laredoute.com/products/680by680/9/e/1/9e104ddb0c0c928cda419c35499147ea.jpg"  alt='product' /> 
-          {/* image + picto coeur  */}
-        </div>
-        <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 10px"}}> 
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around'}}> 
-            <h5 className='articleCardTitle'> Canapé en lin ocre </h5>
-            <h6 className='articleCardBrand'> La Redoute Intérieurs </h6>
-          </div>
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
-            <img src='heart.svg' alt='heart icon' style={{width: '15px'}}/>
-            <h5 className='articleCardTitle'> 995€ </h5>
-          </div>
-        </div>
-      </Col>
-
-      
+      {displayArticles}
 
 
       </Row>
@@ -209,7 +134,7 @@ useEffect( () => {
 
    <div className="Inspirations" style={{backgroundColor:'#FCFBF6', marginTop:'3vh', height:'70%', }}> 
 
-    
+   {displayInspo}
 
     </div>
     </div>
