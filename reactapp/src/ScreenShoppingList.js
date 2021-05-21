@@ -60,7 +60,7 @@ var displayArticles = articleList.map((article, i) => {
     </div>
     <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 0px"}}> 
       <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around', marginRight: '5px'}}> 
-       <a href={article.merchantUrl}> <h5 className='articleCardTitle'> {article.name} </h5></a>
+       <a href={article.merchantUrl} target="_blank"> <h5 className='articleCardTitle'> {article.name} </h5></a>
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
       <div style={{display:'flex', flexDirection:'column',marginLeft: '10px', margin: '0px', alignItems:'flex-end', justifyContent: 'flex-start'}}> 
