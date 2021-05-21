@@ -170,6 +170,8 @@ router.post("/validerQuiz", async (req, res, next) => {
       else {res.json({result})} 
    }
 
+  });
+
 /*    {       // si user connecté, on le trouve avec son token 
     console.log('token chelou', req.body.token)
     var userConnected = await userModel.findOne(
@@ -186,7 +188,7 @@ router.post("/validerQuiz", async (req, res, next) => {
   
   
    
-});
+
 
 
 router.post("/myPalette", async (req, res, next) => {
