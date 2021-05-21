@@ -23,6 +23,10 @@ function MyPalette(props) {
         var body = await data.json();
         setPalette(body.userPalette[0]);
         props.addPalette(body.userPalette[0])
+      } else {
+        return (
+          <h1>Veuillez remplir le questionnaire afin d'obtenir votre palette.</h1>
+        )
       }
     }
 
