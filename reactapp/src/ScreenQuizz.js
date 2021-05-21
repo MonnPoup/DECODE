@@ -39,84 +39,85 @@ function Quiz(props) {
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
+        photo2: {
             url: 'image37.png',
             name: 'bohème'},
+        photo3:{
+             url: 'image36.png',
+            name: 'artDeco'},
         photo4: {
             url: 'image38.png',
             name: 'modernMinimal'}
         },
         {question : 'Parmi les styles de décorations suivants, lequel préférez-vous ?', 
         photo1: {
-            url: 'image35.png', 
+            url: 'ambiance-ethnique.png', 
             name: 'ethnique'},
         photo2:{
-            url: 'image36.png',
+            url: 'ambiance-artDeco.png',
             name: 'artDeco'},
         photo3: {
-            url: 'image37.png',
+            url: 'ambiance-boheme.png',
             name: 'bohème'},
         photo4: {
-            url: 'image38.png',
+            url: 'ambiance-minimal.png',
             name: 'modernMinimal'}
         },
         {question : 'Parmi les associations de couleurs suivantes, lesquelles préférez-vous pour votre intérieur ?', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
+        photo2: {
             url: 'image37.png',
             name: 'bohème'},
+        photo3:{
+            url: 'image36.png',
+            name: 'artDeco'},
        photo4: {
             url: 'image38.png',
             name: 'modernMinimal'}
         }, 
         {question : 'Vous cherchez un nouveau meuble. Vous allez...', 
         photo1: {
-            url: 'image35.png', 
+            url: '5boutique.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
-            url: 'image37.png',
+        photo2: {
+            url: '5brocante.png',
             name: 'bohème'},
+        photo3:{
+            url: '5grande-enseigne.png',
+            name: 'artDeco'},    
         photo4: {
-            url: 'image38.png',
+            url: '5designer.png',
             name: 'modernMinimal'}
         },
         {question : 'Vous devez choisir un nouveau canapé. Vous choisissez...', 
         photo1: {
-            url: 'image35.png', 
+            url: '6canape-ethnique.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
-            url: 'image37.png',
+        photo2: {
+            url: '6canape-boheme.png',
             name: 'bohème'},
+        photo3:{
+            url: '6canape-artDeco.png',
+            name: 'artDeco'},
         photo4: {
-            url: 'image38.png',
+            url: '6canape-minimal.png',
             name: 'modernMinimal'}
         },
         { question: 'Quel est le revêtement idéal pour le salon selon vous ?',
             photo1: {
-            url: 'image35.png', 
+            url: '7parquetclair.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
-            url: 'image37.png',
+        photo2: {
+            url: '7tomettes.png',
             name: 'bohème'},
+        photo3:{
+            url: '7parquetfoncé.png',
+            name: 'artDeco'
+        },
         photo4: {
-            url: 'image38.png',
+            url: '7betoncire.png',
             name: 'modernMinimal'}
         },
   ]
