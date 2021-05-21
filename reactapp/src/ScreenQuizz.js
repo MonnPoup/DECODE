@@ -23,16 +23,16 @@ function Quiz(props) {
   var dataQuestions = [
       {question : 'Parmi ces matériaux et tissus, lequel préférez-vous ?', 
         photo1: {
-            url: 'image35.png', 
+            url: '1lin.png', 
             name: 'ethnique'},
         photo2:{
-            url: 'image36.png',
+            url: '1velours.png',
             name: 'artDeco'},
         photo3: {
-            url: 'image37.png',
+            url: '1boisFonce.png',
             name: 'bohème'},
         photo4: {
-            url: 'image38.png',
+            url: '1marbre.png',
             name: 'modernMinimal'}
         },
         {question : 'Préférez-vous une décoration...', 
