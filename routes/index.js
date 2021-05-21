@@ -1,17 +1,15 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-var uid2 = require('uid2')
-var bcrypt = require('bcrypt');
+var uid2 = require("uid2");
+var bcrypt = require("bcrypt");
 
+var userModel = require("../models/users");
+var paletteModel = require("../models/palettes");
+var articleModel = require("../models/articles");
 
-var userModel = require('../models/users');
-var paletteModel = require('../models/palettes')
-var articleModel = require('../models/articles')
-
-
-router.get('/', async (req, res, next) => {
-  res.json()
+router.get("/", async (req, res, next) => {
+  res.json();
 });
 
 router.post('/signUp', async (req, res, next) => {
@@ -22,19 +20,19 @@ router.post('/signUp', async (req, res, next) => {
   var token = null
 
   const data = await userModel.findOne({
-    email: req.body.emailFromFront
-  })
+    email: req.body.emailFromFront,
+  });
 
-
-  if(data != null){
-    error.push('Utilisateur déjà présent')
+  if (data != null) {
+    error.push("Utilisateur déjà présent");
   }
 
-  if(req.body.usernameFromFront == ''
-  || req.body.emailFromFront == ''
-  || req.body.passwordFromFront == ''
-  ){
-    error.push('Champs vides')
+  if (
+    req.body.usernameFromFront == "" ||
+    req.body.emailFromFront == "" ||
+    req.body.passwordFromFront == ""
+  ) {
+    error.push("Champs vides");
   }
 
   
@@ -61,53 +59,43 @@ console.log('body palette', req.body.paletteFromStore)
     }
   }
 
-  res.json({result, error, saveUser, token})
+  res.json({ result, error, saveUser, token });
 });
 
+router.post("/signIn", async (req, res) => {
+  var result = false;
+  var user = null;
+  var error = [];
+  var token = null;
 
-router.post('/signIn', async (req, res) => {
-  var result = false
-  var user = null
-  var error = []
-  var token = null
-  
-  if(req.body.emailFromFront == ''
-  || req.body.passwordFromFront == ''
-  ){
-    error.push('Champs vides')
+  if (req.body.emailFromFront == "" || req.body.passwordFromFront == "") {
+    error.push("Champs vides");
   }
 
-  if(error.length == 0){
+  if (error.length == 0) {
     const user = await userModel.findOne({
       email: req.body.emailFromFront,
-    })
-  
-    
-    if(user){
-      if(bcrypt.compareSync(req.body.passwordFromFront, user.password)){
-        result = true
-        token = user.token
+    });
+
+    if (user) {
+      if (bcrypt.compareSync(req.body.passwordFromFront, user.password)) {
+        result = true;
+        token = user.token;
       } else {
-        result = false
-        error.push('Mot de passe incorrect')
+        result = false;
+        error.push("Mot de passe incorrect");
       }
-      
     } else {
-      error.push('Email incorrect')
+      error.push("Email incorrect");
     }
   }
-  
 
-  res.json({result, user, error, token})
-
+  res.json({ result, user, error, token });
 });
 
-
-
-router.post('/validerQuiz', async  (req, res,next) => {
-  
+router.post("/validerQuiz", async (req, res, next) => {
   ///////////////// QUESTIONNAIRE ////////////
-  var result = false; 
+  var result = false;
   var userPalette = null;
   var isConnected = false
   if (req.body.token !== null ) { isConnected = true} 
@@ -116,29 +104,37 @@ router.post('/validerQuiz', async  (req, res,next) => {
 
   var palette1 = 0;
   var palette2 = 0;
-  var palette3 = 0; 
-  var palette4 = 0; 
-  
+  var palette3 = 0;
+  var palette4 = 0;
 
-  for (var i=0; i < responses.length;i++) {
-    if (responses[i] === 'ethnique') {palette1++} 
-    else if (responses[i] === 'bohème') {palette2++}
-    else if (responses[i] === 'artDeco') {palette3++}
-    else if (responses[i] === 'modernMinimal') {palette4++}
+  for (var i = 0; i < responses.length; i++) {
+    if (responses[i] === "ethnique") {
+      palette1++;
+    } else if (responses[i] === "bohème") {
+      palette2++;
+    } else if (responses[i] === "artDeco") {
+      palette3++;
+    } else if (responses[i] === "modernMinimal") {
+      palette4++;
+    }
   }
 
-  if (responses[2] === 'ethnique') {palette1 += 2} 
-  else if (responses[2] === 'bohème') {palette2 += 2}
-  else if (responses[2] === 'artDeco') {palette3 +=2}
-  else if (responses[2] === 'modernMinimal') {palette4 +=2} 
-
+  if (responses[2] === "ethnique") {
+    palette1 += 2;
+  } else if (responses[2] === "bohème") {
+    palette2 += 2;
+  } else if (responses[2] === "artDeco") {
+    palette3 += 2;
+  } else if (responses[2] === "modernMinimal") {
+    palette4 += 2;
+  }
 
   var compteursArray = [
-    { palette: 'ethnique', compteur : palette1},
-    { palette: 'bohème', compteur : palette2},
-    { palette: 'artDeco', compteur : palette3},
-    { palette: 'modernMinimal', compteur : palette4}
-  ]
+    { palette: "ethnique", compteur: palette1 },
+    { palette: "bohème", compteur: palette2 },
+    { palette: "artDeco", compteur: palette3 },
+    { palette: "modernMinimal", compteur: palette4 },
+  ];
 
   var sortedResults = compteursArray.sort(function compare(a, b) {
     if (a.compteur < b.compteur)
@@ -193,8 +189,7 @@ router.post('/validerQuiz', async  (req, res,next) => {
 });
 
 
-router.post('/myPalette', async  (req, res,next) => {
-
+router.post("/myPalette", async (req, res, next) => {
   if (req.body.token != null) {
     var userForId = await userModel.findOne(   // trouver l'utilisateur avec son token 
       {token: req.body.token})
@@ -211,61 +206,70 @@ router.post('/myPalette', async  (req, res,next) => {
     }
 });
 
-router.post('/myShoppingList', async (req, res) => {
- 
-  var result = false 
-  var paletteFromFront = req.body.paletteName 
- 
+router.post("/myShoppingList", async (req, res) => {
+  var result = false;
+  var paletteFromFront = req.body.paletteName;
 
   var shoppingList = await articleModel.find({
-    paletteName : paletteFromFront }
-  )
+    paletteName: paletteFromFront,
+  });
 
-  
-  if (shoppingList) {result = true; res.json({result, shoppingList})} 
-  else  {res.json({result})}
-});
-
-
-router.post('/addToWishlist', async(req, res) => {
-  article = req.body.id 
-
-  var updateUser = await userModel.findOne({token: req.body.token})
-  updateUser.wishlist.push(article)
-
-  res.json({updateUser})
-}); 
-
-router.get('/wishlist', async (req, res) => {
-  var user = await userModel.
- findById('5b9fb50411e0ac035433ba81')
- .populate('wishlist')
- .exec();
-
- var wishlist = user.wishlist; 
-
- var result; 
- if (wishlist.lenght != 0) {
-   result = true
-   res.json({result, wishlist})
+  if (shoppingList) {
+    result = true;
+    res.json({ result, shoppingList });
+  } else {
+    res.json({ result });
   }
- else {
-   result = false 
-   res.json({result})
+});
+
+router.post("/addToWishlist", async (req, res) => {
+  article = req.body.id;
+
+  var updateUser = await userModel.findOne({ token: req.body.token });
+  updateUser.wishlist.push(article);
+
+  res.json({ updateUser });
+});
+
+router.get("/wishlist", async (req, res) => {
+  var user = await userModel
+    .findById("5b9fb50411e0ac035433ba81")
+    .populate("wishlist")
+    .exec();
+
+  var wishlist = user.wishlist;
+
+  var result;
+  if (wishlist.lenght != 0) {
+    result = true;
+    res.json({ result, wishlist });
+  } else {
+    result = false;
+    res.json({ result });
   }
- 
 });
 
+router.put("/deleteFromWishlist", async (req, res) => {
+  //  put ou delete ??
+  var result = false;
+  var updatedWishlist = req.body.wishlist;
+  var user = await userModel.updateOne(
+    { token: req.body.token },
+    { wishlist: [updatedWishlist] }
+  );
 
-router.put('/deleteFromWishlist', async (req, res) => {   //  put ou delete ?? 
-  var result = false
-  var updatedWishlist = req.body.wishlist
-  var user = await userModel.updateOne({token: req.body.token}, {wishlist : [updatedWishlist]})
-
-  res.json(result)
+  res.json(result);
 });
 
-
+router.get("/AllPalettes", async (req, res, next) => {
+  var result = false;
+  var AllPalettes = await paletteModel.find();
+  if (AllPalettes) {
+    result = true;
+    res.json({ result, AllPalettes });
+  } else {
+    res.json({ result });
+  }
+});
 
 module.exports = router;
-

@@ -33,7 +33,6 @@ h1 {
 
 h2 {
   font-family: "Abril Fatface", cursive;
-  font-size: 50px;
   font-weight: normal;
 }
 
@@ -302,6 +301,7 @@ h4 {
   font-weight: normal;
   font-size: 20px;
   line-height: 28px;
+  margin-top: 10px;
 }
 
 .photo {
@@ -334,7 +334,7 @@ h4 {
 /* PAGE MYPALETTE */
 
 .containerMypalette {
-  height: 40vh;
+  height: 35vh;
   width: 70vw;
   background-color: #fcfbf6;
   border-radius: 10px;
@@ -418,10 +418,22 @@ h4 {
 
 .scroller {
   width: 100%;
-  height: 75vh;
+  height: 55vh;
   overflow-y: scroll;
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
+}
+
+.inputShoppingList {
+  border-radius: 50px;
+  border: 0px solid #203126;
+  height: 45px;
+  width: 15vw;
+  font-size: 15px;
+  color:#fdfcf7;
+  background-color: #203126;
+  cursor: pointer;
+  margin-left: 42vw;
 }
 
 /* PAGE LOGIN */
@@ -508,3 +520,63 @@ h4 {
 }
 
 /* PAGE ALLPALETTES */
+
+.containerAllPalettes {
+  height: 25vh;
+  width: 35vw;
+  background-color: #fcfbf6;
+  border-radius: 10px;
+  margin-left: 12vw;
+  margin-top: 8vh;
+}
+
+.h3AllPalettes {
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: #fcfbf6;
+  letter-spacing: -1.5px;
+  padding-top: 1vh;
+  margin: 0 0 0 10vw;
+  font-size: 25px;
+  margin-top: 3vh;
+}
+
+.traitAllPalettes {
+  width: 80%;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  background-color: #fcfbf6;
+  margin-left: 10vw;
+  margin-top: 1vh;
+}
+
+.traitContainerAllPalettes {
+  width: 35vw;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  background-color: #203126;
+
+}
+
+.h3Container {
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: #203126;
+  letter-spacing: -1.5px;
+  padding-top: 1vh;
+  margin: 0 0 0 2vw;
+  font-size: 25px;
+  margin-top: 3vh;
+}
+
+.paletteAllPalettes {
+  width: 70px;
+  height: 70px;
+  margin-top: 4vh;
+  margin-left: 2vw;
+  background-color: #203126;
+
+  transform: matrix(0, -1, -1, 0, 0, 0);
+}

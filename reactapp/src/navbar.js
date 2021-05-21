@@ -31,7 +31,7 @@ function NavBar(props) {
     <div className= 'navbarNormal'>
         <div>
           <Link style={{textDecoration:"none"}} to ="/">
-          <h2 style={{marginLeft: '20px', color:'#203126', marginTop: '20px'}}>DÉCODE.</h2> 
+          <h2 style={{marginLeft: '20px', color:'#203126', marginTop: '20px', fontSize: '50px'}}>DÉCODE.</h2> 
           </Link>
         </div>
       <div className= 'icon'>  
