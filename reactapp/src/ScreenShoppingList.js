@@ -195,9 +195,17 @@ function mapStateToProps(state) {
   return { userPaletteFromStore: state.palette, token: state.token };
 }
 
-export default connect
-(mapStateToProps,
-   null)
-(ShoppingList);
+function mapDispatchToProps(dispatch){
+  return {
+    suppressionToken: function(){
+        dispatch({type: 'deconnexion'})
+    }
+  }
+}
+
+export default connect (
+  mapStateToProps,
+  mapDispatchToProps)
+  (ShoppingList)
 
 
