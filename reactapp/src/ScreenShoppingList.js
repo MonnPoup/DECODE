@@ -176,7 +176,7 @@ return ( <Redirect to='/' /> )
   {/* SELECTION D'ARTICLE */}
         <div className='Articles' style={{ marginTop:'1%', marginLeft:'10%', marginRight:'10%'}}> 
           <div className="ShoppingList-Text"> 
-            <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'1px solid #203126', color: '#203126', marginBottom: '10px'}}>
+            <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
             VOTRE SHOPPING LIST </h4>
           </div>
   

@@ -73,17 +73,23 @@ var displayWishlist = wishlist.map((article,i) => {
   
 if (wishlist.length !== 0 ){
     return (
-      <div className="background">
+      <div>
       <NavbarFixed />
-    <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-    <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
-       <Container  style={{display:'flex', justifyContent: 'center', marginBottom: '3px', }} > 
-        <Row  style={{ display:'flex', justifyContent: 'center'}}> 
-          {displayWishlist}
-        </Row>
-      </Container>  
-    </div>  
-    </div>
+      
+      <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
+      <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'20vh', height:'100%' }}> 
+      <div className="ShoppingList-Text" style={{paddingLeft:'3em'}}> 
+        <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
+            VOTRE WISHLIST</h4>
+      </div>
+        <Container  style={{display:'flex', justifyContent: 'center', marginBottom: '3px', }} > 
+          <Row  style={{ display:'flex', justifyContent: 'center'}}> 
+            {displayWishlist}
+          </Row>
+        </Container>  
+      </div>  
+      </div>
+      
     );}
     else if (props.token) {
       return ( 
