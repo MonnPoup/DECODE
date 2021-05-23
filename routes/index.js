@@ -45,7 +45,7 @@ console.log('body palette', req.body.paletteFromStore)
       password: hash,
       token: uid2(32),
       palette: req.body.paletteFromStore, 
-      wishlist: [], 
+      wishlist: [] 
     })
   
     saveUser = await newUser.save();
@@ -81,16 +81,19 @@ router.post("/signIn", async (req, res) => {
       if (bcrypt.compareSync(req.body.passwordFromFront, user.password)) {
         result = true;
         token = user.token;
+        res.json({ result, user, token })
       } else {
         result = false;
         error.push("Mot de passe incorrect");
+        res.json({ result, error })
       }
     } else {
       error.push("Email incorrect");
+      res.json({ result, error })
     }
   }
 
-  res.json({ result, user, error, token });
+  ;
 });
 
 router.post("/validerQuiz", async (req, res, next) => {
@@ -225,23 +228,43 @@ router.post("/myShoppingList", async (req, res) => {
 });
 
 router.post("/addToWishlist", async (req, res) => {
-  article = req.body.id;
+  var result = false;
+  article = req.body.articleID;
+  console.log('id article:', article)
+  const findUser = await userModel.findOne({token: req.body.token})
 
-  var updateUser = await userModel.findOne({ token: req.body.token });
-  updateUser.wishlist.push(article);
+  var updateUser = await userModel.updateOne(
+    { token: req.body.token },
+    {$push: 
+    {wishlist: article}
+    } );
 
-  res.json({ updateUser });
-});
-
-router.get("/wishlist", async (req, res) => {
   var user = await userModel
-    .findById("5b9fb50411e0ac035433ba81")
+    .findById(findUser._id)
     .populate("wishlist")
     .exec();
 
   var wishlist = user.wishlist;
 
-  var result;
+  if (updateUser.n !=0){
+    result=true
+    res.json({ result, wishlist })
+  } else { 
+    res.json({result})
+  }
+});
+
+router.post("/wishlist", async (req, res) => {
+  var result = false; 
+  var findUser = await userModel.findOne({token: req.body.token})
+  console.log('find user', findUser)
+  var user = await userModel
+    .findById(findUser._id)
+    .populate("wishlist")
+    .exec();
+
+  var wishlist = user.wishlist;
+  
   if (wishlist.lenght != 0) {
     result = true;
     res.json({ result, wishlist });
@@ -252,15 +275,27 @@ router.get("/wishlist", async (req, res) => {
 });
 
 router.put("/deleteFromWishlist", async (req, res) => {
-  //  put ou delete ??
   var result = false;
-  var updatedWishlist = req.body.wishlist;
-  var user = await userModel.updateOne(
-    { token: req.body.token },
-    { wishlist: [updatedWishlist] }
-  );
+  console.log(req.body.token)
 
-  res.json(result);
+  const myUser = await userModel.findOne(
+    {token : req.body.token}
+  )
+
+  var UserWishlist = myUser.wishlist
+  UserWishlist.splice(req.body.index, 1 )
+
+  const update = await userModel.updateOne(
+    {token: req.body.token},
+     {wishlist : UserWishlist}
+  )
+
+  if (update.n != 0 ){
+    result = true 
+  res.json({result, wishlist:UserWishlist})
+  } else {
+    res.json({result})
+  }
 });
 
 router.get("/AllPalettes", async (req, res, next) => {

@@ -19,7 +19,7 @@ function NavBar(props) {
             </div>
           );
 
-  if(props.userToken != null){
+  if(props.token != null){
     var userNav = <Popover placement="bottomRight" title={text} content={content} trigger="click">
     <img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/>
     </Popover>
@@ -29,10 +29,10 @@ function NavBar(props) {
   
   return (
     <div className= 'navbarNormal'>
-        <div>
+        <div style={{display:"flex", alignItems:'center', justifyContent:'center'}}>
           <Link style={{textDecoration:"none"}} to ="/">
-          <h2 style={{marginLeft: '20px', color:'#203126', marginTop: '20px', fontSize: '50px'}}>DÉCODE.</h2> 
-          </Link>
+          <h2 style={{margin: '0px 0px 0px 20px', color:'#203126', fontSize: '50px'}}>DÉCODE.</h2> 
+           </Link> 
         </div>
       <div className= 'icon'>  
         <Link to = '/allpalettes'><img src='palette.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
@@ -48,7 +48,7 @@ function NavBar(props) {
 
 
 function mapStateToProps(state){
-return {userToken: state.token}
+return {token: state.token}
 }
 
 function mapDispatchToProps(dispatch){
