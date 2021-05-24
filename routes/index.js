@@ -296,6 +296,7 @@ router.put("/deleteFromWishlist", async (req, res) => {
     {token: req.body.token},
      {wishlist : UserWishlist}
   )
+  
 
   var user = await userModel
     .findById(myUser._id)
