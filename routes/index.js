@@ -282,22 +282,32 @@ router.put("/deleteFromWishlist", async (req, res) => {
     {token : req.body.token}
   )
 
-  var UserWishlist = myUser.wishlist
+  var update = await userModel.updateOne(
+    {token : req.body.token}, 
+    {$pull: 
+      {wishlist: req.body.articleID}
+    }
+  )
+
+ /* var UserWishlist = myUser.wishlist
   UserWishlist.splice(req.body.index, 1 )
 
   const update = await userModel.updateOne(
     {token: req.body.token},
      {wishlist : UserWishlist}
-  )
+  ) */
 
   var user = await userModel
     .findById(myUser._id)
     .populate("wishlist")
     .exec();
 
-  if (update.n != 0 ){
+  var wishlist = user.wishlist
+
+  if (update.nModified != 0 ){
+    console.log(update)
     result = true 
-  res.json({result, wishlist:user.wishlist})
+  res.json({result, wishlist})
   } else {
     res.json({result})
   }

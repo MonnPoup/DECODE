@@ -34,16 +34,16 @@ useEffect(() => {
   setWishlist(props.wishlist)
 }, [props.wishlist])
 
- var handleClickDelete = async (paletteIndex) => {
+ var handleClickDelete = async (articleID, index) => {
   const deleteArticle = await fetch('/deleteFromWishlist', {
     method: 'PUT',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: `token=${props.token}&index=${paletteIndex}`
+    body: `token=${props.token}&articleID=${articleID}`
   })
   const response = await deleteArticle.json()
   console.log('update recue ', response)
  
-  props.deleteArticle(paletteIndex)
+  props.deleteArticle(index)
  } 
 
 
@@ -61,7 +61,7 @@ var displayWishlist = wishlist.map((article,i) => {
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
       <div style={{display:'flex', flexDirection:'column',marginLeft: '10px', margin: '0px', alignItems:'flex-end', justifyContent: 'flex-start'}}> 
-        <img src='delete.svg' alt='heart icon' style={{width: '15px'}} onClick={() => handleClickDelete(i)}/>
+        <img src='delete.svg' alt='heart icon' style={{width: '15px'}} onClick={() => handleClickDelete(article._id, i)}/>
         <p className='articleWishList'> {article.price}€ </p>
       </div>
     </div>
@@ -72,11 +72,11 @@ var displayWishlist = wishlist.map((article,i) => {
   
 if (wishlist.length !== 0 ){
     return (
-      <div>
+      <div style={{backgroundColor:'#FCFBF6', height: '100%'}}>
       <NavbarFixed />
       
       <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', height:'100%', paddingTop: '3vh'}}> 
+      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '4vh'}}> 
       <div style={{display: 'flex', justifyContent: 'flex-end'}}>
       <Link to="/shoppinglist">
             <button className="inputWishlist">Voir ma shoppinglist</button>
