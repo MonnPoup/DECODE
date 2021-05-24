@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import NavBar from "./navbar";
 import { connect } from "react-redux";
 import copy from 'copy-to-clipboard';
-import { Popover, Button } from 'antd';
+import { Popover, Button, notification } from 'antd';
+import { useCookies } from 'react-cookie'
 
 
 function MyPalette(props) {
@@ -50,6 +51,16 @@ function MyPalette(props) {
   setMessageCopy('Code hex copié dans le presse-papier')
   }
 
+
+  const openNotification = () => {
+    notification.open({
+      message: 'Code copié !',
+      onClick: () => {
+        console.log('Notification Clicked!');
+      },
+    });
+  };
+  
   const content = (
     <div>
       <p style={{fontSize:'12px', marginBottom: '0px'}}>Cliquez pour copier le code hex</p>
@@ -71,7 +82,7 @@ function MyPalette(props) {
   var tabPaletteColor = palette.colors.map((data, i) => {
     return (
       <Popover key={i} style={{radius:'70%'}} content={content} trigger="hover" placement="bottomRight">
-        <div key={i} style={{ backgroundColor: data , cursor: 'pointer'}} className="palette" onClick={() => { handleClickCopyCode(data)}}>
+        <div key={i} style={{ backgroundColor: data , cursos:'pointer'}} className="palette" onClick={openNotification}>
           <p className="textColorPalette">{data}</p>
         </div>
       </Popover>

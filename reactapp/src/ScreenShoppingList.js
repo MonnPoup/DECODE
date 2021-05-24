@@ -106,7 +106,8 @@ return ( <Redirect to='/' /> )
    
     var wishlistFilter = wishlist.find(wishlist => wishlist.name === article.name)
     
-    if (wishlistFilter) { 
+    console.log('ds map', wishlistFilter)
+    if (wishlistFilter !== undefined) { 
     likeColor =  "#e74c3c"} else {likeColor = ''}
 
   
@@ -156,13 +157,13 @@ return ( <Redirect to='/' /> )
    
   var displayInspo = userPalette.inspirations.map((photo, i) => {
     const content = (
-      <img style={{maxWidth:'100%', maxHeight: '100%'}} src={photo} alt='photo'/>
+      <img style={{minWidth:'400px', minHeight:'400px', maxWidth:'700px', maxHeight: '700px'}} src={photo} alt='inspo'/>
       )
     return (
-      <Popover content={content} placement='right'>
+      <Popover content={content} placement='right' >
       <Col key={i} md={2}lg={3} style={{backgroundColor:'white', margin:'10px', display:'flex'}}>
         <div  style={{height: '100%',display: 'flex' , justifyContent:'center', alignItems: 'center'}}>
-          <img style={{maxWidth:'100%', maxHeight: '100%'}} src={photo} alt='photo'/>
+          <img style={{maxWidth:'100%', maxHeight: '100%'}} src={photo} alt='inspo'/>
         </div>
       </Col>
       </Popover>

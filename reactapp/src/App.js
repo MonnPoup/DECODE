@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -22,11 +21,14 @@ import NavBar from './navbar'
 import NavbarFixed from './navbarFixed'
 import Filter from './filterModule'
 
+import { CookiesProvider } from 'react-cookie'
+
 const store = createStore(combineReducers({token, palette, wishlist}))
 
 function App() {
 
   return (
+    <CookiesProvider> 
     <Provider store={store}>
     <Router>
     <Switch>
@@ -43,6 +45,7 @@ function App() {
     </Switch>
   </Router>
   </Provider>
+  </CookiesProvider>
   );
 }
 
