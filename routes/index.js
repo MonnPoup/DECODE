@@ -19,6 +19,7 @@ router.post('/signUp', async (req, res, next) => {
   var result = false
   var token = null
 
+  
   const data = await userModel.findOne({
     email: req.body.emailFromFront,
   });
@@ -35,6 +36,12 @@ router.post('/signUp', async (req, res, next) => {
     error.push("Champs vides");
   }
 
+  if (
+    req.body.paletteFromStore === 'undefined' 
+    ) {
+      error.push('Répondez au questionnaire avant de vous inscrire')
+    }
+  
   
   if(error.length == 0){
 console.log('body palette', req.body.paletteFromStore)
@@ -316,12 +323,15 @@ router.put("/deleteFromWishlist", async (req, res) => {
 router.get("/AllPalettes", async (req, res, next) => {
   var result = false;
   var AllPalettes = await paletteModel.find();
+
   if (AllPalettes) {
     result = true;
-    res.json({ result, AllPalettes });
+    res.json({ result, AllPalettes});
   } else {
     res.json({ result });
   }
+
+  
 });
 
 module.exports = router;

@@ -16,20 +16,35 @@ async function loadPalette() {
   setAllPalettes(response.AllPalettes)
 } loadPalette();
 
+}, []);
 console.log('hello', allPalettes);
 
-}, []);
+ var TabAllPalettes = allPalettes.map((data, i) => {
 
-/* var paletteColor = allPalettes. */
+  var paletteName = data.name;
+  if (paletteName === "artDeco") {
+    paletteName = "Art Déco";
+  } else if (paletteName === "ethnique") {
+    paletteName = "Éthnique";
+  } else if (paletteName === "bohème") {
+    paletteName = "Bohème";
+  } else if (paletteName === "modernMinimal") {
+    paletteName = "Modern Minimal";
+  } 
 
-
-
+    return (
+      <AllPaletteModel key={i} name= {paletteName} inspirations={data.inspirations} colors={data.colors} /> 
+      )
+   })
+   
+ 
+ 
   return (
     <div className="background">
       <NavBar />
       <h3 className="h3AllPalettes">TOUTES LES PALETTES</h3>
       <div className="traitAllPalettes"></div>
-     <AllPaletteModel />
+     {TabAllPalettes}
     </div>
   );
 }
