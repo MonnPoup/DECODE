@@ -47,18 +47,7 @@ useEffect( () => {
   console.log('wishlist from store', props.wishlist)
  }, [props.wishlist]);
 
- useEffect( () => {
-  async function loadData() { 
-    const rawResponse = await fetch('/myShoppingList', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `paletteName=${userPalette.name}`
-    })
-    const body = await rawResponse.json()
-    setArticleList(body.shoppingList)  // Mettre les articles dans un état ArticleList
-  }
-  loadData()
- }, []);
+
 
  ////////// AJOUTER OU SUPPRIMER UN ARTICLE EN WISHLIST  //////////
  var handleClickWishList = (articleID, index) => {
