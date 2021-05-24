@@ -65,39 +65,39 @@ useEffect( () => {
  ////////// AJOUTER OU SUPPRIMER UN ARTICLE EN WISHLIST  //////////
  var handleClickWishList = (articleID, index) => {
    
-  var resultFilter = wishlist.filter(wishlist => wishlist._id === articleID)
-  if (resultFilter[0] !== undefined) {console.log('is liked', resultFilter[0]);setIsLiked(true)}
-  
-  
-   if (isLiked === false) { 
-   async function addToWishlist() {
-    const rawResponse = await fetch('/addToWishlist', {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `token=${props.token}&articleID=${articleID}`,
-    })
-    const response = await rawResponse.json()
-    console.log('rajouté', response.wishlist)
-    props.addToWishlist(response.wishlist)
-    setIsLiked(true)
-  }
-  addToWishlist()
+  if (!props.token){
+    /////// POP OVER SI PAS CONNECTE ////// 
+  } else { 
+      var resultFilter = wishlist.find(wishlist => wishlist._id === articleID)
 
-  } else if (isLiked === true) { 
-    console.log('supprime')
-   async function deleteArticle() {
-    const deleteArticle = await fetch('/deleteFromWishlist', {
-      method: 'PUT',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `token=${props.token}&index=${index}`
-    })
-    const updateWishlist = await deleteArticle.json()
-    console.log('update', updateWishlist)
-    props.addToWishlist(updateWishlist)
-   }
-   deleteArticle()
-  } 
+      if (!resultFilter) { 
+      async function addToWishlist() {
+        const rawResponse = await fetch('/addToWishlist', {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `token=${props.token}&articleID=${articleID}`,
+        })
+        const response = await rawResponse.json()
+        console.log('rajouté', response.wishlist)
+        props.addToWishlist(response.wishlist)
+      }
+      addToWishlist()
 
+      } else { 
+        console.log('supprime')
+      async function deleteArticle() {
+        const deleteArticle = await fetch('/deleteFromWishlist', {
+          method: 'PUT',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: `token=${props.token}&index=${index}`
+        })
+        const updateWishlist = await deleteArticle.json()
+        console.log('update', updateWishlist)
+        props.addToWishlist(updateWishlist.wishlist)
+      }
+      deleteArticle()
+      } 
+  }  
  }
 
  ////////// MAP DES ARTICLES TROUVES EN BDD //////////
@@ -107,9 +107,11 @@ return ( <Redirect to='/' /> )
 {
   
   var displayArticles = articleList.map((article, i) => {
-
-    var wishlistFilter = wishlist.filter(wishlist => wishlist.name === article.name)
-    if (wishlistFilter[0] !== undefined) {
+    console.log('article', article)
+    console.log('wishlist dans map', wishlist)
+    var wishlistFilter = wishlist.find(wishlist => wishlist.name === article.name)
+    console.log('wishlistFilter', wishlistFilter)
+    if (wishlistFilter) { 
     likeColor =  "#e74c3c"} else {likeColor = ''}
   
   return ( 
