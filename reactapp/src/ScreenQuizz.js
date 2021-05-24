@@ -39,84 +39,85 @@ function Quiz(props) {
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
+        photo2: {
             url: 'image37.png',
             name: 'bohème'},
+        photo3:{
+             url: 'image36.png',
+            name: 'artDeco'},
         photo4: {
             url: 'image38.png',
             name: 'modernMinimal'}
         },
         {question : 'Parmi les styles de décorations suivants, lequel préférez-vous ?', 
         photo1: {
-            url: 'image35.png', 
+            url: 'ambiance-ethnique.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
-            url: 'image37.png',
+        photo2: {
+            url: 'ambiance-boheme.png',
             name: 'bohème'},
+        photo3:{
+            url: 'ambiance-artDeco.png',
+            name: 'artDeco'},
         photo4: {
-            url: 'image38.png',
+            url: 'ambiance-minimal.png',
             name: 'modernMinimal'}
         },
         {question : 'Parmi les associations de couleurs suivantes, lesquelles préférez-vous pour votre intérieur ?', 
         photo1: {
             url: 'image35.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
+        photo2: {
             url: 'image37.png',
             name: 'bohème'},
+        photo3:{
+            url: 'image36.png',
+            name: 'artDeco'},
        photo4: {
             url: 'image38.png',
             name: 'modernMinimal'}
         }, 
         {question : 'Vous cherchez un nouveau meuble. Vous allez...', 
         photo1: {
-            url: 'image35.png', 
+            url: '5boutique.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
-            url: 'image37.png',
+        photo2: {
+            url: '5brocante.png',
             name: 'bohème'},
+        photo3:{
+            url: '5grandeenseigne.png',
+            name: 'artDeco'},    
         photo4: {
-            url: 'image38.png',
+            url: '5designer.png',
             name: 'modernMinimal'}
         },
         {question : 'Vous devez choisir un nouveau canapé. Vous choisissez...', 
         photo1: {
-            url: 'image35.png', 
+            url: '6canape-ethnique.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
-            url: 'image37.png',
+        photo2: {
+            url: '6canape-boheme.png',
             name: 'bohème'},
+        photo3:{
+            url: '6canape-artDeco.png',
+            name: 'artDeco'},
         photo4: {
-            url: 'image38.png',
+            url: '6canape-minimal.png',
             name: 'modernMinimal'}
         },
         { question: 'Quel est le revêtement idéal pour le salon selon vous ?',
             photo1: {
-            url: 'image35.png', 
+            url: '7parquetclair.png', 
             name: 'ethnique'},
-        photo2:{
-            url: 'image36.png',
-            name: 'artDeco'},
-        photo3: {
-            url: 'image37.png',
+        photo2: {
+            url: '7tomettes.png',
             name: 'bohème'},
+        photo3:{
+            url: '7parquetfonce.png',
+            name: 'artDeco'
+        },
         photo4: {
-            url: 'image38.png',
+            url: '7betoncire.png',
             name: 'modernMinimal'}
         },
   ]
@@ -148,6 +149,7 @@ function Quiz(props) {
     } 
 
     var handleClickValider = async () => {
+        props.addPalette('')
         if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto4Selected === true ) {
             console.log('condition remplie')
             var copy = answersArray 
@@ -160,7 +162,7 @@ function Quiz(props) {
                 body: `rep1=${copy[0]}&rep2=${copy[1]}&rep3=${copy[2]}&rep4=${copy[3]}&rep5=${copy[4]}&rep6=${copy[5]}&rep7=${copy[6]}&token=${props.userToken}` 
             });
             const body = await data.json()
-
+            
             console.log('post fetch', body)
             console.log("props to reducer", props)
 
@@ -189,7 +191,7 @@ function Quiz(props) {
     }
     if (isPhoto1Selected === true) {
         var selectBorder1 = '4px solid white'
-        var borderRadius1 = '5%'
+        var borderRadius1 = '7%'
     }
 
     var clickPhoto2 = async () => {
@@ -204,7 +206,7 @@ function Quiz(props) {
     }
     if (isPhoto2Selected === true) {
         var selectBorder2 = '4px solid white'
-        var borderRadius2 = '5%'
+        var borderRadius2 = '7%'
     }
 
     var clickPhoto3 = async () => {
@@ -219,7 +221,7 @@ function Quiz(props) {
     }
     if (isPhoto3Selected === true) {
         var selectBorder3 = '4px solid white'
-        var borderRadius3 = '5%'
+        var borderRadius3 = '7%'
     }
 
     var clickPhoto4 = async () => {
@@ -234,7 +236,7 @@ function Quiz(props) {
     }
     if (isPhoto4Selected === true) {
         var selectBorder4 = '4px solid white'
-        var borderRadius4 = '5%'
+        var borderRadius4 = '7%'
     }
 
 
@@ -282,7 +284,7 @@ function Quiz(props) {
                 <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
                
             </div>
-            <p className="ErrorQuiz"> {error}</p> 
+            <p style={{height:'2vh'}} className="ErrorQuiz"> {error}</p> 
             {buttons}
             </div>
        

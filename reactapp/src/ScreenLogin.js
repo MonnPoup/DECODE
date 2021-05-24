@@ -35,7 +35,7 @@ function Login(props) {
     
         const body = await data.json()
 
-        console.log('body', body)
+      
     
 
         if(body.result === true){
@@ -61,7 +61,6 @@ function Login(props) {
             if(body.result === true){
               setUserExists(true)
               props.addToken(body.token)
-              
             }  else {
               setErrorsSignin(body.error)
             }
@@ -131,10 +130,9 @@ function mapDispatchToProps(dispatch){
       }, 
       suppressionToken: function(){
           dispatch({type: 'deconnexion'})
-      }
+      },
     }
   }
-
 
   
   export default connect(
