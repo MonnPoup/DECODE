@@ -32,7 +32,6 @@ function MyPalette(props) {
     fetchData();
   } 
   else if (isConnected === false) {
-   console.log('userpasconnecté');
   } 
     
   }, []);

@@ -27,8 +27,7 @@ function Wishlist(props) {
    setWishlist(body.wishlist)
    props.addToWishlist(body.wishlist)
   }
-  wishlistData()}
-
+  wishlistData() }
 },[]) 
 
 useEffect(() => {

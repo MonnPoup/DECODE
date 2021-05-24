@@ -23,7 +23,20 @@ const [wishlist, setWishlist] = useState(props.userWishlist)
 
 var likeColor;
 
-
+useEffect(() => {
+  if (props.token) {
+  async function wishlistData() {
+    const rawResponse = await fetch('/wishlist', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: `token=${props.token}`
+    })
+    const body = await rawResponse.json()
+   setWishlist(body.wishlist)
+   props.addToWishlist(body.wishlist)
+  }
+  wishlistData() }
+},[]) 
 
 
 
@@ -53,10 +66,10 @@ useEffect( () => {
  var handleClickWishList = (articleID, index) => {
    
   var resultFilter = wishlist.filter(wishlist => wishlist._id === articleID)
-  if (resultFilter[0] !== undefined) {setIsLiked(true)}
-  console.log('1', isLiked)
-   
-  /* if (isLiked === false) { */
+  if (resultFilter[0] !== undefined) {console.log('is liked', resultFilter[0]);setIsLiked(true)}
+  
+  
+   if (isLiked === false) { 
    async function addToWishlist() {
     const rawResponse = await fetch('/addToWishlist', {
       method: "POST",
@@ -67,11 +80,10 @@ useEffect( () => {
     console.log('rajouté', response.wishlist)
     props.addToWishlist(response.wishlist)
     setIsLiked(true)
-    console.log('2', isLiked)
   }
   addToWishlist()
 
-/*   } else if (isLiked === true) { 
+  } else if (isLiked === true) { 
     console.log('supprime')
    async function deleteArticle() {
     const deleteArticle = await fetch('/deleteFromWishlist', {
@@ -84,7 +96,7 @@ useEffect( () => {
     props.addToWishlist(updateWishlist)
    }
    deleteArticle()
-  } */
+  } 
 
  }
 
@@ -101,7 +113,6 @@ return ( <Redirect to='/' /> )
     likeColor =  "#e74c3c"} else {likeColor = ''}
   
   return ( 
-    
    <Col key={i} md={2}lg={3} style={{backgroundColor:'white', margin:'10px',  display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
     <a href={article.merchantUrl} target="_blank">
     <div style={{display:'flex', justifyContent:'center', alignItems: 'center', width: '100%', height: '35vh'}} className='productImage' >
@@ -222,7 +233,6 @@ function mapDispatchToProps(dispatch){
         dispatch({type: 'deconnexion'})
     },
     addToWishlist: function(wishlist){
-      console.log('wishlist à envoyer:', wishlist)
       dispatch({type: 'addWishlist', wishlist:wishlist})
   },
   }

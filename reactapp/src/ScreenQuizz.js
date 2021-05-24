@@ -151,11 +151,9 @@ function Quiz(props) {
     var handleClickValider = async () => {
         props.addPalette('')
         if (isPhoto1Selected === true || isPhoto2Selected === true || isPhoto3Selected === true || isPhoto4Selected === true ) {
-            console.log('condition remplie')
             var copy = answersArray 
             copy.push(answer)
             setButtonValider(true)
-            console.log('valider : ', copy)
             const data = await fetch('/validerQuiz', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
@@ -163,14 +161,8 @@ function Quiz(props) {
             });
             const body = await data.json()
             
-            console.log('post fetch', body)
-            console.log("props to reducer", props)
 
             props.addPalette(body.userPalette)
-            console.log('add to ', body.userPalette)
-
-
-           
 
         } else  { setError('Merci de sélectionner une réponse') } 
       
@@ -303,7 +295,6 @@ function Quiz(props) {
     return {
        
       addPalette: function(palette){
-        console.log('page quizz to store: ', palette)
         dispatch({type: 'addPalette', palette: palette})
       }
     }
