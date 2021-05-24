@@ -181,25 +181,7 @@ router.post("/validerQuiz", async (req, res, next) => {
    }
 
   });
-
-/*    {       // si user connecté, on le trouve avec son token 
-    console.log('token chelou', req.body.token)
-    var userConnected = await userModel.findOne(
-      {token: req.body.token}
-    )
-    
-  console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
-    var ajoutPalette = await userModel.updateOne(
-      {token: req.body.token}
-      {palette: userPalette._id}
-    )
-  console.log('ajoutpalette', ajoutPalette)
-  }  */
-  
-  
-   
-
-
+ 
 
 router.post("/myPalette", async (req, res, next) => {
   if (req.body.token != null) {
@@ -289,23 +271,32 @@ router.put("/deleteFromWishlist", async (req, res) => {
     {token : req.body.token}
   )
 
-  var UserWishlist = myUser.wishlist
+  var update = await userModel.updateOne(
+    {token : req.body.token}, 
+    {$pull: 
+      {wishlist: req.body.articleID}
+    }
+  )
+
+ /* var UserWishlist = myUser.wishlist
   UserWishlist.splice(req.body.index, 1 )
 
   const update = await userModel.updateOne(
     {token: req.body.token},
      {wishlist : UserWishlist}
-  )
-  
+  ) */
 
   var user = await userModel
     .findById(myUser._id)
     .populate("wishlist")
     .exec();
 
-  if (update.n != 0 ){
+  var wishlist = user.wishlist
+
+  if (update.nModified != 0 ){
+    console.log(update)
     result = true 
-  res.json({result, wishlist:user.wishlist})
+  res.json({result, wishlist})
   } else {
     res.json({result})
   }
