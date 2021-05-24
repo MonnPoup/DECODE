@@ -554,6 +554,25 @@ p {
   background-color: #203126;
 }
 
+.inputWishlist {
+  border-radius: 50px;
+  border: 0px solid #203126;
+  height: 45px;
+  width: 15vw;
+  font-size: 15px;
+  color:#fdfcf7;
+  background-color: #203126;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+.articleWishList {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color:  #203126;
+}
+
 /* PAGE ALLPALETTES */
 
 .containerAllPalettes {

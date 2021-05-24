@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import NavbarFixed from './navbarFixed';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { Popover } from 'antd';
 
 
 /* p {
@@ -61,13 +62,9 @@ useEffect( () => {
  }, [props.wishlist]);
 
 
-
  ////////// AJOUTER OU SUPPRIMER UN ARTICLE EN WISHLIST  //////////
  var handleClickWishList = (articleID, index) => {
-   
-  if (!props.token){
-    /////// POP OVER SI PAS CONNECTE ////// 
-  } else { 
+  
       var resultFilter = wishlist.find(wishlist => wishlist._id === articleID)
 
       if (!resultFilter) { 
@@ -98,7 +95,6 @@ useEffect( () => {
       deleteArticle()
       } 
   }  
- }
 
  ////////// MAP DES ARTICLES TROUVES EN BDD //////////
  if (props.userPaletteFromStore === '' ) {        // si il n'y a rien dans la liste d'article, l'utilsateur n'a pas fait le quizz, donc redirect home
@@ -113,6 +109,16 @@ return ( <Redirect to='/' /> )
     console.log('wishlistFilter', wishlistFilter)
     if (wishlistFilter) { 
     likeColor =  "#e74c3c"} else {likeColor = ''}
+
+  
+ /////// POP OVER SI PAS CONNECTE ////// 
+ if (!props.token){
+  var popoverWishList = <Popover placement="bottomRight" content='Veuillez vous connecter pour ajouter un article à votre Wishlist' trigger="click">
+    <FontAwesomeIcon style={{cursor:'pointer', width: '15px'}} icon={faHeart}/>
+    </Popover>
+} else {
+ popoverWishList = <FontAwesomeIcon onClick={() => handleClickWishList(article._id, i)} style={{cursor:'pointer', width: '15px'}} icon={faHeart} color={likeColor} />
+}  
   
   return ( 
    <Col key={i} md={2}lg={3} style={{backgroundColor:'white', margin:'10px',  display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
@@ -130,7 +136,7 @@ return ( <Redirect to='/' /> )
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
       <div style={{display:'flex', flexDirection:'column',marginLeft: '10px', margin: '0px', alignItems:'flex-end', justifyContent: 'flex-start'}}> 
-      <FontAwesomeIcon onClick={() => handleClickWishList(article._id, i)} style={{cursor:'pointer', width: '15px'}} icon={faHeart} color={likeColor} />
+        {popoverWishList}
         <p className='articleCardTitle'> {article.price}€ </p>
       </div>
     </div>
