@@ -23,21 +23,15 @@ function Login(props) {
     
 
     var handleSubmitSignup = async () => {
-    
-        console.log('fetch')
         const data = await fetch('/signUp', {
           method: 'POST',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}&paletteFromStore=${props.userPaletteFromStore._id}`
         })
-
-        console.log('Je suis Sybil', props.userPaletteFromStore._id)
     
         const body = await data.json()
 
-        console.log('body', body)
     
-
         if(body.result === true){
             setUserExists(true)
             props.addToken(body.token) // envoi au store du token utilisateur 
@@ -61,7 +55,6 @@ function Login(props) {
             if(body.result === true){
               setUserExists(true)
               props.addToken(body.token)
-              
             }  else {
               setErrorsSignin(body.error)
             }
@@ -131,10 +124,9 @@ function mapDispatchToProps(dispatch){
       }, 
       suppressionToken: function(){
           dispatch({type: 'deconnexion'})
-      }
+      },
     }
   }
-
 
   
   export default connect(

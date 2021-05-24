@@ -65,9 +65,9 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
           <p className="pHome">DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
         <a href="#section2">
-          <button type="button" className="inputHome1">
-            Je découvre
-          </button>
+          <div type="button" className="inputHome1" style={{display:"flex", justifyContent:'center', alignItems:'center'}}>
+           <p style={{marginTop:'1em'}}> Je découvre</p> 
+          </div>
         </a>
         <div className="paletteNoire"></div>
         <div className="paletteBrune"></div>
