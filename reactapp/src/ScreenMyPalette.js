@@ -32,7 +32,6 @@ function MyPalette(props) {
     fetchData();
   } 
   else if (isConnected === false) {
-   console.log('userpasconnecté');
   } 
     
   }, []);
@@ -53,7 +52,7 @@ function MyPalette(props) {
 
   const content = (
     <div>
-      <p style={{fontSize:'12px'}}> Cliquez pour copier le code hex</p>
+      <p style={{fontSize:'12px', marginBottom: '0px'}}>Cliquez pour copier le code hex</p>
     </div>
   );
 

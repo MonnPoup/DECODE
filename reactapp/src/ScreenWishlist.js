@@ -27,8 +27,7 @@ function Wishlist(props) {
    setWishlist(body.wishlist)
    props.addToWishlist(body.wishlist)
   }
-  wishlistData()}
-
+  wishlistData() }
 },[]) 
 
 useEffect(() => {
@@ -58,12 +57,12 @@ var displayWishlist = wishlist.map((article,i) => {
     </div>
     <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 0px"}}> 
       <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around', marginRight: '5px'}}> 
-       <a href={article.merchantUrl} target="_blank"> <h5 className='articleCardTitle'> {article.name} </h5></a>
+       <a href={article.merchantUrl} target="_blank"> <h5 className='articleWishList'> {article.name} </h5></a>
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
       <div style={{display:'flex', flexDirection:'column',marginLeft: '10px', margin: '0px', alignItems:'flex-end', justifyContent: 'flex-start'}}> 
         <img src='delete.svg' alt='heart icon' style={{width: '15px'}} onClick={() => handleClickDelete(i)}/>
-        <p className='articleCardTitle'> {article.price}€ </p>
+        <p className='articleWishList'> {article.price}€ </p>
       </div>
     </div>
   </Col>
@@ -77,10 +76,22 @@ if (wishlist.length !== 0 ){
       <NavbarFixed />
       
       <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-      <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'20vh', height:'100%' }}> 
-      <div className="ShoppingList-Text" style={{paddingLeft:'3em'}}> 
-        <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
-            VOTRE WISHLIST</h4>
+      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', height:'100%', paddingTop: '3vh'}}> 
+      <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+      <Link to="/shoppinglist">
+            <button className="inputWishlist">Voir ma shoppinglist</button>
+      </Link>
+      </div>
+       
+     
+  
+      <div className="ShoppingList-Text" style={{padding:'10px', display: 'flex', marginLeft:'10%'}}> 
+        <div style={{width: '70%'}}>
+        <h4 style={{fontWeight:'bold',borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
+            VOTRE WISHLIST
+        </h4>
+        </div>
+
       </div>
         <Container  style={{display:'flex', justifyContent: 'center', marginBottom: '3px', }} > 
           <Row  style={{ display:'flex', justifyContent: 'center'}}> 

@@ -11,8 +11,8 @@ function NavbarFixed(props) {
 const text = <span>Mon compte</span>;
 const content = (
   <div>
-    <Link to ='/mypalette'><p>Ma palette</p></Link>
-    <Link to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
+    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
+    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
   </div>
 );
 if(props.token != null){

@@ -290,9 +290,14 @@ router.put("/deleteFromWishlist", async (req, res) => {
      {wishlist : UserWishlist}
   )
 
+  var user = await userModel
+    .findById(myUser._id)
+    .populate("wishlist")
+    .exec();
+
   if (update.n != 0 ){
     result = true 
-  res.json({result, wishlist:UserWishlist})
+  res.json({result, wishlist:user.wishlist})
   } else {
     res.json({result})
   }

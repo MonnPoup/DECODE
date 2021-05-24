@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import NavbarFixed from './navbarFixed';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { Popover, Button } from 'antd';
 
 
 /* p {
@@ -23,7 +24,20 @@ const [wishlist, setWishlist] = useState(props.userWishlist)
 
 var likeColor;
 
-
+useEffect(() => {
+  if (props.token) {
+  async function wishlistData() {
+    const rawResponse = await fetch('/wishlist', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: `token=${props.token}`
+    })
+    const body = await rawResponse.json()
+   setWishlist(body.wishlist)
+   props.addToWishlist(body.wishlist)
+  }
+  wishlistData() }
+},[]) 
 
 
 
@@ -47,57 +61,40 @@ useEffect( () => {
   console.log('wishlist from store', props.wishlist)
  }, [props.wishlist]);
 
- useEffect( () => {
-  async function loadData() { 
-    const rawResponse = await fetch('/myShoppingList', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `paletteName=${userPalette.name}`
-    })
-    const body = await rawResponse.json()
-    setArticleList(body.shoppingList)  // Mettre les articles dans un état ArticleList
-  }
-  loadData()
- }, []);
 
  ////////// AJOUTER OU SUPPRIMER UN ARTICLE EN WISHLIST  //////////
  var handleClickWishList = (articleID, index) => {
-   
-  var resultFilter = wishlist.filter(wishlist => wishlist._id === articleID)
-  if (resultFilter[0] !== undefined) {setIsLiked(true)}
-  console.log('1', isLiked)
-   
-  /* if (isLiked === false) { */
-   async function addToWishlist() {
-    const rawResponse = await fetch('/addToWishlist', {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `token=${props.token}&articleID=${articleID}`,
-    })
-    const response = await rawResponse.json()
-    console.log('rajouté', response.wishlist)
-    props.addToWishlist(response.wishlist)
-    setIsLiked(true)
-    console.log('2', isLiked)
-  }
-  addToWishlist()
+  
+      var resultFilter = wishlist.find(wishlist => wishlist._id === articleID)
 
-/*   } else if (isLiked === true) { 
-    console.log('supprime')
-   async function deleteArticle() {
-    const deleteArticle = await fetch('/deleteFromWishlist', {
-      method: 'PUT',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: `token=${props.token}&index=${index}`
-    })
-    const updateWishlist = await deleteArticle.json()
-    console.log('update', updateWishlist)
-    props.addToWishlist(updateWishlist)
-   }
-   deleteArticle()
-  } */
+      if (!resultFilter) { 
+      async function addToWishlist() {
+        const rawResponse = await fetch('/addToWishlist', {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `token=${props.token}&articleID=${articleID}`,
+        })
+        const response = await rawResponse.json()
+        console.log('rajouté', response.wishlist)
+        props.addToWishlist(response.wishlist)
+      }
+      addToWishlist()
 
- }
+      } else { 
+        console.log('supprime')
+      async function deleteArticle() {
+        const deleteArticle = await fetch('/deleteFromWishlist', {
+          method: 'PUT',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: `token=${props.token}&index=${index}`
+        })
+        const updateWishlist = await deleteArticle.json()
+        console.log('update', updateWishlist)
+        props.addToWishlist(updateWishlist.wishlist)
+      }
+      deleteArticle()
+      } 
+  }  
 
  ////////// MAP DES ARTICLES TROUVES EN BDD //////////
  if (props.userPaletteFromStore === '' ) {        // si il n'y a rien dans la liste d'article, l'utilsateur n'a pas fait le quizz, donc redirect home
@@ -106,13 +103,23 @@ return ( <Redirect to='/' /> )
 {
   
   var displayArticles = articleList.map((article, i) => {
-
-    var wishlistFilter = wishlist.filter(wishlist => wishlist.name === article.name)
-    if (wishlistFilter[0] !== undefined) {
+   
+    var wishlistFilter = wishlist.find(wishlist => wishlist.name === article.name)
+    
+    if (wishlistFilter) { 
     likeColor =  "#e74c3c"} else {likeColor = ''}
+
+  
+ /////// POP OVER SI PAS CONNECTE ////// 
+ if (!props.token){
+  var popoverWishList = <Popover placement="bottomRight" content='Veuillez vous connecter pour ajouter un article à votre Wishlist' trigger="click">
+    <FontAwesomeIcon style={{cursor:'pointer', width: '15px'}} icon={faHeart}/>
+    </Popover>
+} else {
+ popoverWishList = <FontAwesomeIcon onClick={() => handleClickWishList(article._id, i)} style={{cursor:'pointer', width: '15px'}} icon={faHeart} color={likeColor} />
+}  
   
   return ( 
-    
    <Col key={i} md={2}lg={3} style={{backgroundColor:'white', margin:'10px',  display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
     <a href={article.merchantUrl} target="_blank">
     <div style={{display:'flex', justifyContent:'center', alignItems: 'center', width: '100%', height: '35vh'}} className='productImage' >
@@ -128,7 +135,7 @@ return ( <Redirect to='/' /> )
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
       <div style={{display:'flex', flexDirection:'column',marginLeft: '10px', margin: '0px', alignItems:'flex-end', justifyContent: 'flex-start'}}> 
-      <FontAwesomeIcon onClick={() => handleClickWishList(article._id, i)} style={{cursor:'pointer', width: '15px'}} icon={faHeart} color={likeColor} />
+        {popoverWishList}
         <p className='articleCardTitle'> {article.price}€ </p>
       </div>
     </div>
@@ -144,17 +151,27 @@ return ( <Redirect to='/' /> )
     <div key={i} className='color1' style={{height:'50px', width:'50px', backgroundColor:`${color}`}}> 
     </div>) }
     )
+
+   
    
   var displayInspo = userPalette.inspirations.map((photo, i) => {
+    const content = (
+      <img style={{maxWidth:'100%', maxHeight: '100%'}} src={photo} alt='photo'/>
+      )
     return (
+      <Popover content={content} placement='right'>
       <Col key={i} md={2}lg={3} style={{backgroundColor:'white', margin:'10px', display:'flex'}}>
         <div  style={{height: '100%',display: 'flex' , justifyContent:'center', alignItems: 'center'}}>
           <img style={{maxWidth:'100%', maxHeight: '100%'}} src={photo} alt='photo'/>
         </div>
       </Col>
+      </Popover>
       ) }
       ) 
     
+
+    
+
   return (
     <div  className="background">     {/* FOND  */}
       <NavbarFixed />
@@ -178,6 +195,9 @@ return ( <Redirect to='/' /> )
           <div className="ShoppingList-Text"> 
             <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
             VOTRE SHOPPING LIST </h4>
+
+            
+            
           </div>
   
       {/* SLIDER */}  
@@ -193,9 +213,10 @@ return ( <Redirect to='/' /> )
 
 
   {/* BOUTTON SCROLL */}
-    <div className="Scroll" style={{backgroundColor:'#203126', display:'flex', flexDirection:'column', justifyContent:'center', padding:'1%'}}>
-      <a href="#sect2" style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
-        <img style={{height:"40px"}} src="doubleChevron.svg" alt="double chevron" />
+    <div className="Scroll" style={{backgroundColor:'#203126', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'6px'}}>
+      <h5 className='textShoppingList'>Découvrir des photos d'inspiration</h5>
+      <a href="#sect2">
+        <img style={{height:"30px", marginTop: '6px'}} src="doubleChevron.svg" alt="double chevron" />
       </a>
     </div>
 
@@ -233,7 +254,6 @@ function mapDispatchToProps(dispatch){
         dispatch({type: 'deconnexion'})
     },
     addToWishlist: function(wishlist){
-      console.log('wishlist à envoyer:', wishlist)
       dispatch({type: 'addWishlist', wishlist:wishlist})
   },
   }
