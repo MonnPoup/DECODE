@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import NavbarFixed from './navbarFixed';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { Popover, Button } from 'antd';
 
 
 /* p {
@@ -107,10 +108,9 @@ return ( <Redirect to='/' /> )
 {
   
   var displayArticles = articleList.map((article, i) => {
-    console.log('article', article)
-    console.log('wishlist dans map', wishlist)
+   
     var wishlistFilter = wishlist.find(wishlist => wishlist.name === article.name)
-    console.log('wishlistFilter', wishlistFilter)
+    
     if (wishlistFilter) { 
     likeColor =  "#e74c3c"} else {likeColor = ''}
   
@@ -146,17 +146,27 @@ return ( <Redirect to='/' /> )
     <div key={i} className='color1' style={{height:'50px', width:'50px', backgroundColor:`${color}`}}> 
     </div>) }
     )
+
+   
    
   var displayInspo = userPalette.inspirations.map((photo, i) => {
+    const content = (
+      <img style={{maxWidth:'100%', maxHeight: '100%'}} src={photo} alt='photo'/>
+      )
     return (
+      <Popover content={content} placement='right'>
       <Col key={i} md={2}lg={3} style={{backgroundColor:'white', margin:'10px', display:'flex'}}>
         <div  style={{height: '100%',display: 'flex' , justifyContent:'center', alignItems: 'center'}}>
           <img style={{maxWidth:'100%', maxHeight: '100%'}} src={photo} alt='photo'/>
         </div>
       </Col>
+      </Popover>
       ) }
       ) 
     
+
+    
+
   return (
     <div  className="background">     {/* FOND  */}
       <NavbarFixed />
@@ -180,6 +190,9 @@ return ( <Redirect to='/' /> )
           <div className="ShoppingList-Text"> 
             <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
             VOTRE SHOPPING LIST </h4>
+
+            
+            
           </div>
   
       {/* SLIDER */}  
