@@ -313,12 +313,15 @@ router.put("/deleteFromWishlist", async (req, res) => {
 router.get("/AllPalettes", async (req, res, next) => {
   var result = false;
   var AllPalettes = await paletteModel.find();
+
   if (AllPalettes) {
     result = true;
-    res.json({ result, AllPalettes });
+    res.json({ result, AllPalettes});
   } else {
     res.json({ result });
   }
+
+  
 });
 
 module.exports = router;

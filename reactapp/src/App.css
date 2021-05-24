@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  background-color: #203126;
 }
 
 Link {
@@ -57,7 +59,7 @@ h4 {
 
 p {
   font-family: "Montserrat";
- }
+}
 
 /* NAVBAR */
 
@@ -76,7 +78,6 @@ p {
   align-items: center;
 }
 
-
 .navbarNormalFixe {
   position: fixed;
   top: 0;
@@ -93,10 +94,9 @@ p {
   z-index: 100;
 }
 
-
 .icon {
   margin-right: 30px;
-  display:flex; 
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -279,7 +279,6 @@ p {
   position: absolute;
   margin-left: 30px;
   margin-top: 30px;
-  
 
   font-family: "Montserrat";
   font-style: normal;
@@ -439,14 +438,14 @@ p {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 16px;
-  color:  #203126;
+  color: #203126;
 }
 
 .articleCardBrand {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 12px;
-  color:  #203126;
+  color: #203126;
   opacity: 0.54;
 }
 
@@ -464,12 +463,11 @@ p {
   height: 45px;
   width: 15vw;
   font-size: 15px;
-  color:#fdfcf7;
+  color: #fdfcf7;
   background-color: #203126;
   cursor: pointer;
   margin-left: 42vw;
 }
-
 
 /* PAGE LOGIN */
 
@@ -611,7 +609,6 @@ p {
   display: flex;
   justify-content: center;
   background-color: #203126;
-
 }
 
 .h3Container {
@@ -628,9 +625,26 @@ p {
 .paletteAllPalettes {
   width: 70px;
   height: 70px;
-  margin-top: 4vh;
-  margin-left: 2vw;
-  background-color: #203126;
-
   transform: matrix(0, -1, -1, 0, 0, 0);
 }
+
+.paletteContainer {
+  display: flex;
+  width: 30vw;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 4vh;
+}
+
+.scrollerAllPalettes {
+  width: 100%;
+  height: 45vh;
+  margin-top: 8vh;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+/* .ImgAllPalettes {
+
+} */
