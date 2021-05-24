@@ -193,9 +193,10 @@ return ( <Redirect to='/' /> )
 
 
   {/* BOUTTON SCROLL */}
-    <div className="Scroll" style={{backgroundColor:'#203126', display:'flex', flexDirection:'column', justifyContent:'center', padding:'1%'}}>
-      <a href="#sect2" style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
-        <img style={{height:"40px"}} src="doubleChevron.svg" alt="double chevron" />
+    <div className="Scroll" style={{backgroundColor:'#203126', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'6px'}}>
+      <h5 className='textShoppingList'>Découvrir des photos d'inspiration</h5>
+      <a href="#sect2">
+        <img style={{height:"30px", marginTop: '6px'}} src="doubleChevron.svg" alt="double chevron" />
       </a>
     </div>
 
