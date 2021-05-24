@@ -22,7 +22,7 @@ const [articleList, setArticleList] = useState([])
 const [isLiked, setIsLiked] = useState(false)
 const [wishlist, setWishlist] = useState(props.userWishlist)
 
-var likeColor;
+var likeColor = ''
 
 useEffect(() => {
   if (props.token) {
@@ -63,7 +63,7 @@ useEffect( () => {
 
 
  ////////// AJOUTER OU SUPPRIMER UN ARTICLE EN WISHLIST  //////////
- var handleClickWishList = (articleID, index) => {
+ var handleClickWishList = (articleID) => {
   
       var resultFilter = wishlist.find(wishlist => wishlist._id === articleID)
 
@@ -86,7 +86,7 @@ useEffect( () => {
         const deleteArticle = await fetch('/deleteFromWishlist', {
           method: 'PUT',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          body: `token=${props.token}&index=${index}`
+          body: `token=${props.token}&articleID=${articleID}`,
         })
         const updateWishlist = await deleteArticle.json()
         console.log('update', updateWishlist)
@@ -101,14 +101,16 @@ useEffect( () => {
 return ( <Redirect to='/' /> )
 } else 
 {
-  
   var displayArticles = articleList.map((article, i) => {
    
-    var wishlistFilter = wishlist.find(wishlist => wishlist.name === article.name)
+    var wishlistFilter = props.wishlist.find(wishlist => wishlist.merchantUrl === article.merchantUrl)
     
-    console.log('ds map', wishlistFilter)
-    if (wishlistFilter !== undefined) { 
-    likeColor =  "#e74c3c"} else {likeColor = ''}
+
+    if (wishlistFilter) { 
+      console.log ('test Sybil bouton coeur', wishlistFilter)
+    likeColor =  "#e74c3c"} else {
+      likeColor = "#000000"
+    }
 
   
  /////// POP OVER SI PAS CONNECTE ////// 
@@ -117,7 +119,7 @@ return ( <Redirect to='/' /> )
     <FontAwesomeIcon style={{cursor:'pointer', width: '15px'}} icon={faHeart}/>
     </Popover>
 } else {
- popoverWishList = <FontAwesomeIcon onClick={() => handleClickWishList(article._id, i)} style={{cursor:'pointer', width: '15px'}} icon={faHeart} color={likeColor} />
+ popoverWishList = <FontAwesomeIcon onClick={() => handleClickWishList(article._id)} style={{cursor:'pointer', width: '15px'}} icon={faHeart} color={likeColor} />
 }  
   
   return ( 
