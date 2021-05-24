@@ -1,12 +1,18 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Popover, Button } from 'antd';
+import { Link } from "react-router-dom";
 
 function AllPaletteModel(props) {
   var paletteImg = props.inspirations;
   console.log("palette image", paletteImg);
 
   var tabPaletteImg = paletteImg.map((img, j) => {
+    const content = (
+        <img style={{minWidth:'400px', minHeight:'400px', maxWidth:'700px', maxHeight: '700px'}} src={img} alt='inspo'/>
+        )
     return (
+        <Popover content={content} placement='right' >
       <Col
         md={2}
         lg={2}
@@ -35,6 +41,7 @@ function AllPaletteModel(props) {
           ></img>
         </div>
       </Col>
+      </Popover>
     );
   });
 
