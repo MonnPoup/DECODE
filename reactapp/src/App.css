@@ -143,6 +143,8 @@ p {
   font-family: "Montserrat";
   font-weight: 700;
   font-size: 40px;
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
 
 }
 
@@ -161,6 +163,10 @@ p {
   height: 86.73px;
   left: 47vw;
   top: 85vh;
+  transition: transform .2s
+}
+.chevronBlanc:hover {
+  transform: scale(1.1);
 }
 
 .chevronBlanc2 {
@@ -171,6 +177,11 @@ p {
   top: 105vh;
   transform: rotate(180deg);
   margin-top: 20vh;
+  transition: transform .2s
+}
+
+.chevronBlanc2:hover {
+  transform: scale(1.1) rotate(180deg);
 }
 
 .paletteNoire {
@@ -268,7 +279,7 @@ p {
 transform: scale(1.1)
 }
 
-.inputHome2 {
+.ButtonHome2 {
   border-radius: 50px;
   border: 0px solid #203126;
   position: absolute;
@@ -280,6 +291,11 @@ transform: scale(1.1)
   color: #203126;
   background-color: #fdfcf7;
   cursor: pointer;
+  transition: transform .2s 
+}
+
+.ButtonHome2:hover {
+  transform: scale(1.1)
 }
 
 /* PAGE QUIZ */
