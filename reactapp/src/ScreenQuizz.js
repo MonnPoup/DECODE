@@ -63,21 +63,21 @@ function Quiz(props) {
             url: 'ambiance-minimal.png',
             name: 'modernMinimal'}
         },
-        {question : 'Parmi les associations de couleurs suivantes, lesquelles préférez-vous pour votre intérieur ?', 
+        {question : 'Parmi les éclairages suivants, lequel préférez-vous ?', 
         photo1: {
-            url: 'image35.png', 
+            url: '4ethnique.png', 
             name: 'ethnique'},
         photo2: {
-            url: 'image37.png',
+            url: '4boheme.png',
             name: 'bohème'},
         photo3:{
-            url: 'image36.png',
+            url: '4artdeco.png',
             name: 'artDeco'},
        photo4: {
-            url: 'image38.png',
+            url: '4modern.png',
             name: 'modernMinimal'}
         }, 
-        {question : 'Vous cherchez un nouveau meuble. Vous allez...', 
+        {question : 'Vous cherchez un nouveau meuble. Votre choix se tourne vers...', 
         photo1: {
             url: '5boutique.png', 
             name: 'ethnique'},
@@ -117,7 +117,7 @@ function Quiz(props) {
             name: 'artDeco'
         },
         photo4: {
-            url: '7betoncire.png',
+            url: '7beton.png',
             name: 'modernMinimal'}
         },
   ]

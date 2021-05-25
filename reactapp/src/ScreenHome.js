@@ -7,7 +7,7 @@ import { Popover } from 'antd';
 
 function Home(props) {
 
-  const text = <span>Mon compte</span>;
+  const text = <span>Bonjour {props.userNameFromStore}</span>;
   const content = (
     <div>
       <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
@@ -112,7 +112,7 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
 }
 
 function mapStateToProps(state){
-  return {userToken: state.token}
+  return {userToken: state.token, userNameFromStore: state.userName};
   }
   
   function mapDispatchToProps(dispatch){

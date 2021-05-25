@@ -4,8 +4,8 @@ import "./App.css";
 import NavBar from "./navbar"
 import {connect} from 'react-redux'
 import "antd/dist/antd.css";
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
 
 
 function Login(props) {
@@ -21,7 +21,9 @@ function Login(props) {
 
     const [listErrorsSignup, setErrorsSignup] = useState([])
     const [listErrorsSignin, setErrorsSignin] = useState([])
-    const [iconeOeil, setIconeOeil] = useState("password")
+    const [iconeOeilSignUp, setIconeOeilSignUp] = useState("password")
+    const [iconeOeilSignIn, setIconeOeilSignIn] = useState("password")
+
     
 
     var handleSubmitSignup = async () => {
@@ -37,6 +39,7 @@ function Login(props) {
         if(body.result === true){
             setUserExists(true)
             props.addToken(body.token) // envoi au store du token utilisateur 
+            props.addUserStoreSignUp(signUpUsername)
             
           } else {
             setErrorsSignup(body.error) // si erreur avec sign-up, renvoie une erreur 
@@ -57,16 +60,26 @@ function Login(props) {
             if(body.result === true){
               setUserExists(true)
               props.addToken(body.token)
+              props.addUserStoreSignIn(body.user.firstName)
+              console.log()
             }  else {
               setErrorsSignin(body.error)
             }
           }
 
-          var mdpIsVisible = () => {
-            if (iconeOeil === 'password'){
-            setIconeOeil('text')
-            console.log('text', iconeOeil)} else {
-              setIconeOeil('password')
+          var mdpSignUpIsVisible = () => {
+            if (iconeOeilSignUp === 'password'){
+            setIconeOeilSignUp('text')
+            console.log('text', iconeOeilSignUp)} else {
+              setIconeOeilSignUp('password')
+            }
+          }
+
+          var mdpSignInIsVisible = () => {
+            if (iconeOeilSignIn === 'password'){
+            setIconeOeilSignIn('text')
+            console.log('text', iconeOeilSignIn)} else {
+              setIconeOeilSignIn('password')
             }
           }
       
@@ -97,7 +110,10 @@ function Login(props) {
                 Connexion
                         <div className='formLogin'>
                             <input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input' />
-                            <input onChange={(e) => setSignInPassword(e.target.value)} type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <div style={{display:'flex'}}>
+                            <input onChange={(e) => setSignInPassword(e.target.value)} type={iconeOeilSignIn}  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <FontAwesomeIcon onClick={() => mdpSignInIsVisible()} style={{cursor:'pointer', width: '22px', marginTop: '3vh', marginLeft:'1vw', color:'#203126'}} icon={faEye}/>
+                            </div>
                         </div>
                         {tabErrorsSignin}
                         <input onClick={() => handleSubmitSignin()} type="submit" value="Connexion" className='inputValider'/>
@@ -111,8 +127,8 @@ function Login(props) {
                             <input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input' />
                             <input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input'/>
                             <div style={{display:'flex'}}>
-                            <input onChange={(e) => setSignUpPassword(e.target.value)} type={iconeOeil} name="passwordFromFront" placeholder='Mot de passe' className='input'/>
-                            <img onClick={() => mdpIsVisible()} style={{width: '50px', padding:'10px', paddingTop:'20px'}} src='oeil.png'/>
+                            <input onChange={(e) => setSignUpPassword(e.target.value)} type={iconeOeilSignUp}  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <FontAwesomeIcon onClick={() => mdpSignUpIsVisible()} style={{cursor:'pointer', width: '22px', marginTop: '3vh', marginLeft:'1vw', color:'#203126'}} icon={faEye}/>
                             </div>
                             
                         </div>
@@ -140,6 +156,12 @@ function mapDispatchToProps(dispatch){
       suppressionToken: function(){
           dispatch({type: 'deconnexion'})
       },
+      addUserStoreSignUp: function(userName){
+        dispatch({type: 'userStoreSignUp', userName})
+    },
+    addUserStoreSignIn: function(userName){
+      dispatch({type: 'userStoreSignIn', userName})
+  },
     }
   }
 
