@@ -51,6 +51,8 @@ useEffect( () => {
   
  }, []);
 
+ 
+
  useEffect( () => {
   setWishlist(props.wishlist)
   console.log('wishlist from store', props.wishlist)
