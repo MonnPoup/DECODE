@@ -141,7 +141,7 @@ p {
   margin: 0;
   font-size: 35px;
   font-family: "Montserrat";
-  font-weight: 700;
+  font-weight: 800;
   font-size: 40px;
   animation: fadeInDown 1s;
 }
@@ -184,8 +184,10 @@ p {
   font-family: "Montserrat";
   width: 70vw;
   font-size: 25px;
+
   margin-left: 10px;
   color: white;
+  
 }
 
 .chevronBlanc {

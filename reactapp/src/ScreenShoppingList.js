@@ -5,22 +5,22 @@ import {Container, Row, Col } from 'react-bootstrap';
 import { connect } from "react-redux";
 import NavbarFixed from './navbarFixed';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { Popover, Button } from 'antd';
+import { faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Popover, Button, Checkbox } from 'antd';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 
-/* p {
-  font-family: 'Montserrat';
-  font-weight: 300;
-  font-size: 20px;
-  color: #fcfbf6;
-} */
 
 function ShoppingList(props) {
 const [userPalette, setUserPalette] = useState(props.userPaletteFromStore)
 const [articleList, setArticleList] = useState([])
+const [articleListFromBDD, setArticleListFromBDD] = useState([])
 const [isLiked, setIsLiked] = useState(false)
 const [wishlist, setWishlist] = useState(props.userWishlist)
+const [FilterDeco, setFilterDeco]= useState(true)
+const [FilterMobilier, setFilterMobilier] = useState(false)
+const [stateDeco, setStateDeco] = useState(false)
+const [stateMob, setStateMob] = useState(false)
 
 var likeColor = ''
 
@@ -39,8 +39,6 @@ useEffect(() => {
   wishlistData() }
 },[]) 
 
-
-
 ////////// CHERCHER LES ARTICLES EN BDD  //////////
 useEffect( () => {
   
@@ -51,9 +49,11 @@ useEffect( () => {
       body: `paletteName=${userPalette.name}`
     })
     const body = await rawResponse.json()
-    setArticleList(body.shoppingList)  // Mettre les articles dans un état ArticleList
+    setArticleList(body.shoppingList)
+    setArticleListFromBDD(body.shoppingList)  // Mettre les articles dans un état ArticleList
   }
   loadData()
+  
  }, []);
 
  useEffect( () => {
@@ -96,7 +96,7 @@ useEffect( () => {
       } 
   }  
 
- ////////// MAP DES ARTICLES TROUVES EN BDD //////////
+ ////////////////// MAP DES ARTICLES TROUVES EN BDD /////////////////
  if (props.userPaletteFromStore === '' ) {        // si il n'y a rien dans la liste d'article, l'utilsateur n'a pas fait le quizz, donc redirect home
 return ( <Redirect to='/' /> )
 } else 
@@ -112,7 +112,7 @@ return ( <Redirect to='/' /> )
       likeColor = "#000000"
     }
   
- /////// POP OVER SI PAS CONNECTE ////// 
+      /////// pop over si pas connecté ////// 
  if (!props.token){
   var popoverWishList = <Popover placement="bottomRight" content='Veuillez vous connecter pour ajouter un article à votre Wishlist' trigger="hover">
     <FontAwesomeIcon style={{cursor:'pointer', width: '15px'}} icon={faHeart}/>
@@ -121,6 +121,7 @@ return ( <Redirect to='/' /> )
  popoverWishList = <FontAwesomeIcon onClick={() => handleClickWishList(article._id)} style={{cursor:'pointer', width: '15px'}} icon={faHeart} color={likeColor} />
 }  
   
+
   return ( 
    <Col key={i} md={2}lg={3} style={{backgroundColor:'white', margin:'10px',  display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
     <a href={article.merchantUrl} target="_blank">
@@ -147,7 +148,7 @@ return ( <Redirect to='/' /> )
   )
 })
   
-
+/// Map des couleurs de la palette //// 
   var displayPalette = userPalette.colors.map((color, i) => {
     return (
     <div key={i} className='color1' style={{height:'50px', width:'50px', backgroundColor:`${color}`}}> 
@@ -155,7 +156,7 @@ return ( <Redirect to='/' /> )
     )
 
    
-   
+   /// map des inspirations /// 
   var displayInspo = userPalette.inspirations.map((photo, i) => {
     const content = (
       <img style={{minWidth:'400px', minHeight:'400px', maxWidth:'700px', maxHeight: '700px'}} src={photo} alt='inspo'/>
@@ -168,7 +169,7 @@ return ( <Redirect to='/' /> )
         </div>
       </Col>
       </Popover>
-      ) }
+      )}
       ) 
     
       if (props.userPaletteFromStore) {
@@ -183,13 +184,56 @@ return ( <Redirect to='/' /> )
           paletteName = "Modern Minimal".toUpperCase();
         } }
 
+//////////////// FILTER  ////////////////
+
+function onChangeDécoration(e) {
+  setArticleList(articleListFromBDD)
+  console.log(`checkedDeco = ${e.target.checked}`);
+  setFilterDeco(e.target.checked)
+}
+function onChangeMobilier(e) {
+  setArticleList(articleListFromBDD)
+  console.log(`checkedMobilier = ${e.target.checked}`);
+  setFilterMobilier(e.target.checked)
+  
+}
+
+if (FilterDeco === true ) {
+  setStateMob(false)
+  setStateDeco(true)
+  var resultFilterDeco = articleList.filter(article => article.category === "décoration")
+  setArticleList(resultFilterDeco)
+  console.log( 'result filter', resultFilterDeco)
+  setFilterDeco(false)
+  
+
+}
+
+if (FilterMobilier === true ) {
+  setStateDeco(false)
+  setStateMob(true)
+  var resultFilterMob = articleList.filter(article => article.category === "mobilier")
+  setArticleList(resultFilterMob)
+  console.log( 'result filter', resultFilterMob)
+  setFilterMobilier(false)
+}
+
+var content = (
+  <div> 
+    <h6 style={{backgroundColor:'#203126', borderRadius:'5%', color:'white'}}> Catégorie </h6>
+  <Checkbox  checked={stateMob} onChange={onChangeMobilier}>Mobilier</Checkbox>
+  <Checkbox  checked={stateDeco} onChange={onChangeDécoration}>Décoration</Checkbox>
+  </div>
+)
+
+
 
   return (
     <div  className="background">     {/* FOND  */}
       <NavbarFixed />
     <div style={{height: '17vh', backgroundColor: '#203126'}}></div>  {/* trait vert */}
 
-{/* CONTAINER ARTICLES */}
+  {/* CONTAINER ARTICLES */}
     <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6', paddingBottom:'3vh' }}>  
 
   {/* PALETTE + BOUTON REFAIRE QUIZZ */}
@@ -207,6 +251,14 @@ return ( <Redirect to='/' /> )
           <div className="ShoppingList-Text"> 
             <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
             VOTRE SHOPPING LIST {paletteName}</h4>
+
+            {/* FILTRER  */}
+            <Popover content={content} placement='bottom' >
+            <Button id="Popover1" type="button" style={{backgroundColor:'#FCFBF6', border:'1px solid black', color:'#203126'}}> 
+              <FontAwesomeIcon style={{cursor:'pointer', width: '15px', paddingRight:'10px'}} icon={faSearch}/>
+              Filtrer
+            </Button>
+            </Popover>
           </div>
   
       {/* SLIDER */}  

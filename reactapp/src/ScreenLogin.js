@@ -98,16 +98,15 @@ function Login(props) {
           })
 
           const handleKeypress = e => {
-            //it triggers by pressing the enter key
-          if (e.keyCode === 13) {
+          if (e.charCode === 13) {
             handleSubmitSignin();
+
           }
         };
-        const handleKeypress2 = e => {
-          //it triggers by pressing the enter key
-        if (e.keyCode === 13) {
-          handleSubmitSignup();
-        }
+          const handleKeypress2 = e => {
+          if (e.charCode === 13) {
+            handleSubmitSignup();
+          }
       };
 
     return (
