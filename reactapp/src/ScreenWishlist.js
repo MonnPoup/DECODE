@@ -10,7 +10,7 @@ import NavbarFixed from './navbarFixed';
 function Wishlist(props) {
   
   const [wishlist, setWishlist] = useState([props.wishlist])
-
+  console.log(props.token)
   
 
  useEffect(() => {
@@ -103,7 +103,7 @@ if (wishlist.length !== 0 ){
       </div>
       
     );}
-    else if (props.token) {
+    else if (props.token !== null) {
       return ( 
       <div className="background">
       <NavbarFixed />
@@ -117,7 +117,7 @@ if (wishlist.length !== 0 ){
     </div>  
     </div>
     ) 
-    } else { 
+    } else  { 
       return (
   <div className="background">
     <NavbarFixed />
