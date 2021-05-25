@@ -35,7 +35,6 @@ useEffect(() => {
   wishlistData() }
 },[]) 
 
-
 ////////// CHERCHER LES ARTICLES EN BDD  //////////
 useEffect( () => {
   
@@ -49,6 +48,7 @@ useEffect( () => {
     setArticleList(body.shoppingList)  // Mettre les articles dans un état ArticleList
   }
   loadData()
+  
  }, []);
 
  useEffect( () => {

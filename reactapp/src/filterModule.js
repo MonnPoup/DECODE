@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { connect } from "react-redux";
 
@@ -50,16 +50,12 @@ function mapStateToProps(state){
 return {token: state.token, paletteFromStore: state.palette}
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
   return {
-    suppressionToken: function(){
-        dispatch({type: 'deconnexion'})
-    }
-  }
+    suppressionToken: function () {
+      dispatch({ type: "deconnexion" });
+    },
+  };
 }
 
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Filter)
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
