@@ -140,7 +140,12 @@ p {
 .pHome {
   margin: 0;
   font-size: 35px;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 40px;
+
 }
+
 
 .pHome1 {
   font-family: "Montserrat";
@@ -244,7 +249,7 @@ p {
   padding-top: 40vh;
 }
 
-.inputHome1 {
+.ButtonHome1 {
   border-radius: 50px;
   opacity: 90%;
   border: 1px solid #203126;
@@ -257,7 +262,12 @@ p {
   color: white;
   background-color: #203126;
   cursor: pointer;
+  transition: transform .2s 
 }
+.ButtonHome1:hover{
+transform: scale(1.1)
+}
+
 .inputHome2 {
   border-radius: 50px;
   border: 0px solid #203126;
@@ -331,15 +341,20 @@ p {
   font-size: 20px;
   line-height: 28px;
   margin-top: 10px;
+ transition: transform .2s 
+}
+.ButtonQuestionnaire:hover{
+transform: scale(1.1)
 }
 
 .photo {
   width: 50vw;
   margin: 20px;
+  transition: transform .2s 
 }
 .photo:hover {
-  width: 55vw;
-  cursor: pointer;
+cursor: pointer; 
+transform: scale(1.1)
 }
 
 .arrow-button {
@@ -347,11 +362,13 @@ p {
   height: 40px;
   cursor: pointer;
   margin: 10px 15px 0px 15px;
+  transition: transform .2s 
 }
+
 .arrow-button:hover {
-  height: 45px;
+  transform: scale(1.2);
   cursor: pointer;
-}
+} 
 
 .ErrorQuiz {
   font-family: "Montserrat";
@@ -635,11 +652,10 @@ p {
   margin-top: 3vh;
 }
 
-.scrollerAllPalettes {
-  width: 100%;
-  height: 45vh;
-  margin-top: 8vh;
-  overflow-y: scroll;
-  scrollbar-color: rebeccapurple green;
-  scrollbar-width: thin;
+.carouselAllPalettes {
+background-color: #203126;
+max-width: 80%;
+margin-left: 10%;
+padding-left: 10%;
 }
+

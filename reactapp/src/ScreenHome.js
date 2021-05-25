@@ -62,10 +62,10 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
       </div>
       <div id="section1" className="imageBackground" style={{display:'flex', justifyContent:'center'}}>
       <div  className="titreHomeSection1" style={{width: '50vw', display:'flex', textAlign:'center', justifyContent:'center'}}>
-          <p className="pHome">DÉCOUVREZ L'INTÉRIEUR DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
+          <p className="pHome animate__fadeInDown">DÉCOUVREZ L'INTÉRIEUR DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
         <a href="#section2">
-          <div type="button" className="inputHome1" style={{display:"flex", justifyContent:'center', alignItems:'center'}}>
+          <div type="button" className="ButtonHome1" style={{display:"flex", justifyContent:'center', alignItems:'center'}}>
            <p style={{marginTop:'1em'}}> Je découvre</p> 
           </div>
         </a>

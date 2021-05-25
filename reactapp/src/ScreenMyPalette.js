@@ -11,7 +11,7 @@ function MyPalette(props) {
   const [palette, setPalette] = useState();
   const [token, setToken] = useState(props.token)
   const [isConnected, setisConnected] = useState(false)
-  const [messageCopy, setMessageCopy] = useState('')
+  
 
 
 
@@ -48,7 +48,7 @@ function MyPalette(props) {
       debug: true,
       message: 'Press #{key} to copy',
     });
-  setMessageCopy('Code hex copié dans le presse-papier')
+ 
   }
 
 
@@ -59,6 +59,8 @@ function MyPalette(props) {
         console.log('Notification Clicked!');
       },
     });
+
+    
   };
   
   const content = (
@@ -82,7 +84,7 @@ function MyPalette(props) {
   var tabPaletteColor = palette.colors.map((data, i) => {
     return (
       <Popover key={i} style={{radius:'70%'}} content={content} trigger="hover" placement="bottomRight">
-        <div key={i} style={{ backgroundColor: data , cursor:'pointer'}} className="palette" onClick={openNotification}>
+        <div key={i} style={{ backgroundColor: data , cursos:'pointer'}} className="palette" onClick={()=> {handleClickCopyCode(data);openNotification()}}>
           <p className="textColorPalette">{data}</p>
         </div>
       </Popover>
@@ -98,7 +100,6 @@ function MyPalette(props) {
         <div style={{ display: "flex", flexDirection: "row" }}>
            {tabPaletteColor}
         </div>
-        <p style={{textAlign:'center', padding:'5px'}}>{messageCopy}</p> 
       </div>
       <p className="descriptionMypalette">{palette.description}</p>
       <Link to="/shoppinglist">
