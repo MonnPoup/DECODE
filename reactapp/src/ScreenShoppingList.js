@@ -14,9 +14,11 @@ import { Form, FormGroup, Label, Input } from 'reactstrap';
 function ShoppingList(props) {
 const [userPalette, setUserPalette] = useState(props.userPaletteFromStore)
 const [articleList, setArticleList] = useState([])
+const [articleListFromBDD, setArticleListFromBDD] = useState([])
 const [isLiked, setIsLiked] = useState(false)
 const [wishlist, setWishlist] = useState(props.userWishlist)
-const [popoverOpen, setPopoverOpen] = useState(false);
+const [FilterDeco, setFilterDeco]= useState(false)
+const [FilterMobilier, setFilterMobilier] = useState(false)
 
 var likeColor = ''
 
@@ -45,7 +47,8 @@ useEffect( () => {
       body: `paletteName=${userPalette.name}`
     })
     const body = await rawResponse.json()
-    setArticleList(body.shoppingList)  // Mettre les articles dans un état ArticleList
+    setArticleList(body.shoppingList)
+    setArticleListFromBDD(body.shoppingList)  // Mettre les articles dans un état ArticleList
   }
   loadData()
   
@@ -180,12 +183,35 @@ return ( <Redirect to='/' /> )
         } }
 
 //////////////// FILTER  ////////////////
+
 function onChangeDécoration(e) {
-  console.log(`checked = ${e.target.checked}`);
+  setArticleList(articleListFromBDD)
+  console.log(`checkedDeco = ${e.target.checked}`);
+  setFilterDeco(e.target.checked)
 }
 function onChangeMobilier(e) {
-  console.log(`checked = ${e.target.checked}`);
+  setArticleList(articleListFromBDD)
+  console.log(`checkedMobilier = ${e.target.checked}`);
+  setFilterMobilier(e.target.checked)
 }
+
+if (FilterDeco === true ) {
+  
+  var resultFilterDeco = articleList.filter(article => article.category === "décoration")
+  setArticleList(resultFilterDeco)
+  console.log( 'result filter', resultFilterDeco)
+  setFilterDeco(false)
+
+}
+
+if (FilterMobilier === true ) {
+  
+  var resultFilterMob = articleList.filter(article => article.category === "mobilier")
+  setArticleList(resultFilterMob)
+  console.log( 'result filter', resultFilterMob)
+  setFilterMobilier(false)
+}
+
 var content = (
   <div> 
     <h4 style={{backgroundColor:'#203126'}}> Catégorie </h4>
