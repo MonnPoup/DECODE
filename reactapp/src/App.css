@@ -497,7 +497,41 @@ transform: scale(1.1)
   margin-left: 42vw;
 }
 
+
+
 /* PAGE SHOPPING LIST */
+
+.PaletteColors {
+  display:flex;
+  justify-content: space-around;
+  width:25%
+}
+
+.ArticleShoppingList {  
+margin-top: 1%;
+margin-left: 100px;
+margin-right: 10%;
+}
+
+.ShoppingList-Text {
+  padding-left:5%
+}
+
+.TitleShoppingListContainer{
+font-weight: bold;
+width: 95%;
+border-bottom: 3px solid #203126;
+color:#203126;
+margin-bottom: 10px;
+}
+
+#Popover1 {
+background-color: #fcfbf6;
+border: 1px solid #203126;
+color:#203126;
+border-radius: 7%
+}
+
 
 .articleCardTitle {
   font-family: "Montserrat", sans-serif;
@@ -514,13 +548,105 @@ transform: scale(1.1)
   opacity: 0.54;
 }
 
-.scroller {
+.scrollerShoppingList {
+  display:flex;
+  justify-content: center;
   width: 100%;
-  height: 55vh;
+  height: 53vh;
   overflow-y: scroll;
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
 }
+
+.containerArticles {
+  display:flex;
+  justify-content: center;
+  margin-bottom: 3px;
+}
+
+.rowArticles {
+  display: flex;
+  justify-content: center;
+}
+
+.scrollShoppingList {
+background-color: #203126;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 6px;
+}
+
+.articleCard{
+  /* style={{backgroundColor:'white', margin:'10px',  display:'flex', flexDirection:'column', justifyContent:'space-between'}} */
+  background-color: white;
+  margin:10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productImage{
+  /* style={{display:'flex', justifyContent:'center', alignItems: 'center', width: '100%', height: '35vh'}} */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35vh;
+}
+
+.productInfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 10px 5px 0px
+}
+
+.cardPartLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 5px;
+}
+.cardPartRight{
+  display: flex;
+  flex-direction: column;
+  margin:0px;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.arrowShoppingList {
+height: 30px;
+margin-top:6px ;
+}
+
+.ContainerInspi {
+  background-color: #fcfbf6;
+}
+
+.Inpiration-Text {
+margin-left: 10%;
+margin-right: 10%;
+}
+
+.Inspirations-DisplayPhoto {
+background-color: #fcfbf6;
+height: 100%;
+display: flex;
+width: 100%;
+}
+
+.containerPhotoInspi{
+display:flex;
+justify-content: center;
+margin-bottom: 30px;
+}
+
+.rowPhotoInspi {
+  display: flex;
+  justify-content: center;
+}
+
 
 .inputShoppingList {
   border-radius: 50px;
