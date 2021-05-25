@@ -7,6 +7,7 @@ import {createStore, combineReducers} from 'redux';
 import token from './reducers/token'
 import palette from './reducers/palette'
 import wishlist from './reducers/wishlist'
+import userName from './reducers/user'
 
 
 import Home from './ScreenHome';
@@ -23,7 +24,7 @@ import Filter from './filterModule'
 
 import { CookiesProvider } from 'react-cookie'
 
-const store = createStore(combineReducers({token, palette, wishlist}))
+const store = createStore(combineReducers({token, palette, wishlist, userName}))
 
 function App() {
 

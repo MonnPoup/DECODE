@@ -11,7 +11,7 @@ import { Popover } from 'antd';
 
 function NavBar(props) {
 
-  const text = <span>Mon compte</span>;
+  const text = <span>Bonjour {props.userNameFromStore}</span>;
           const content = (
             <div>
               <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
@@ -49,7 +49,7 @@ function NavBar(props) {
 
 
 function mapStateToProps(state){
-return {token: state.token}
+return {token: state.token, userNameFromStore: state.userName};
 }
 
 function mapDispatchToProps(dispatch){

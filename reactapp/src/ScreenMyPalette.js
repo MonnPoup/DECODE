@@ -72,13 +72,13 @@ function MyPalette(props) {
   if (palette) {
     var paletteName = palette.name;
       if (paletteName === "artDeco") {
-        paletteName = "Art Déco";
+        paletteName = "Art Déco".toUpperCase();
       } else if (paletteName === "ethnique") {
-        paletteName = "Éthnique";
+        paletteName = "Éthnique".toUpperCase();
       } else if (paletteName === "bohème") {
-        paletteName = "Bohème";
+        paletteName = "Bohème".toUpperCase();
       } else if (paletteName === "modernMinimal") {
-        paletteName = "Modern Minimal";
+        paletteName = "Modern Minimal".toUpperCase();
       }  
 
   var tabPaletteColor = palette.colors.map((data, i) => {

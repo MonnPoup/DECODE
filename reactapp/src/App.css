@@ -143,6 +143,8 @@ p {
   font-family: "Montserrat";
   font-weight: 700;
   font-size: 40px;
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
 
 }
 
@@ -533,7 +535,7 @@ transform: scale(1.1)
   font-size: 25px;
   font-weight: normal;
   margin-top: 60px;
-  margin-left: 180px;
+  margin-left: 150px;
   color: #203126;
 }
 
