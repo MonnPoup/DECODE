@@ -88,7 +88,7 @@ router.post("/signIn", async (req, res) => {
       if (bcrypt.compareSync(req.body.passwordFromFront, user.password)) {
         result = true;
         token = user.token;
-        res.json({ result, user, token })
+        res.json({ result, user, token})
       } else {
         result = false;
         error.push("Mot de passe incorrect");
@@ -96,7 +96,7 @@ router.post("/signIn", async (req, res) => {
       }
     } else {
       error.push("Email incorrect");
-      res.json({ result, error })
+      res.json({ result, error})
     }
   }
 

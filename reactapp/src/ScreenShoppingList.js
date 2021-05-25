@@ -111,7 +111,6 @@ return ( <Redirect to='/' /> )
     likeColor =  "#e74c3c"} else {
       likeColor = "#000000"
     }
-
   
  /////// POP OVER SI PAS CONNECTE ////// 
  if (!props.token){
@@ -172,8 +171,18 @@ return ( <Redirect to='/' /> )
       ) }
       ) 
     
+      if (props.userPaletteFromStore) {
+        var paletteName = props.userPaletteFromStore.name;
+        if (paletteName === "artDeco") {
+          paletteName = "Art Déco".toUpperCase();
+        } else if (paletteName === "ethnique") {
+          paletteName = "Éthnique".toUpperCase();
+        } else if (paletteName === "bohème") {
+          paletteName = "Bohème".toUpperCase();
+        } else if (paletteName === "modernMinimal") {
+          paletteName = "Modern Minimal".toUpperCase();
+        } }
 
-    
 
   return (
     <div  className="background">     {/* FOND  */}
@@ -197,7 +206,7 @@ return ( <Redirect to='/' /> )
         <div className='Articles' style={{ marginTop:'1%', marginLeft:'10%', marginRight:'10%'}}> 
           <div className="ShoppingList-Text"> 
             <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
-            VOTRE SHOPPING LIST {props.userPaletteFromStore.name.toUpperCase()}</h4>
+            VOTRE SHOPPING LIST {paletteName}</h4>
           </div>
   
       {/* SLIDER */}  
