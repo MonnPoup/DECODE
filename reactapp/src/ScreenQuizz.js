@@ -274,7 +274,7 @@ function Quiz(props) {
             </div>
 
             <div className="ProgressBar" style={{ height:"3vh", display:'flex', justifyContent:'center'}} > 
-                <div style={{borderBottom:'1px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
+                <div style={{borderBottom:'3px solid #FCFBF6', width:`${progressBarWidth}px`}}> </div>
                
             </div>
             <p style={{height:'2vh'}} className="ErrorQuiz"> {error}</p> 
