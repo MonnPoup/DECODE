@@ -13,8 +13,6 @@ function MyPalette(props) {
   const [isConnected, setisConnected] = useState(false)
   
 
-
-
   useEffect(() => {
     props.addPalette('')
     if (token !== null){
