@@ -8,7 +8,7 @@ import { useCookies } from 'react-cookie'
 
 
 function MyPalette(props) {
-  const [palette, setPalette] = useState();
+  const [palette, setPalette] = useState(props.userPaletteFromStore);
   const [token, setToken] = useState(props.token)
   const [isConnected, setisConnected] = useState(false)
   
@@ -18,6 +18,7 @@ function MyPalette(props) {
   useEffect(() => {
     props.addPalette('')
     if (token !== null){
+      console.log('on a un token')
       setisConnected(true)
     async function fetchData() {
         const data = await fetch("/myPalette", {
@@ -29,6 +30,7 @@ function MyPalette(props) {
         var body = await data.json();
         setPalette(body.userPalette);
         props.addPalette(body.userPalette)
+        console.log('pops', props.addPalette)
     }
     fetchData();
   } 
@@ -39,7 +41,8 @@ function MyPalette(props) {
 
   useEffect(() => {
     setPalette(props.userPaletteFromStore);
-  }, [props.userPaletteFromStore]);
+
+  }, [props.userPaletteFromStore, props.token]);
  
   
   var handleClickCopyCode = (data) => {

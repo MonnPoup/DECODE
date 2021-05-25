@@ -18,7 +18,7 @@ function AllPaletteModel(props) {
   
 
   return (
-    <div>
+    <div style={{paddingBottom:'1vh'}}>
       <div className="containerAllPalettes">
         <h3 className="h3Container"> {props.name}</h3>
         <div className="traitContainerAllPalettes">

@@ -114,7 +114,7 @@ return ( <Redirect to='/' /> )
   
  /////// POP OVER SI PAS CONNECTE ////// 
  if (!props.token){
-  var popoverWishList = <Popover placement="bottomRight" content='Veuillez vous connecter pour ajouter un article à votre Wishlist' trigger="click">
+  var popoverWishList = <Popover placement="bottomRight" content='Veuillez vous connecter pour ajouter un article à votre Wishlist' trigger="hover">
     <FontAwesomeIcon style={{cursor:'pointer', width: '15px'}} icon={faHeart}/>
     </Popover>
 } else {
@@ -231,7 +231,7 @@ return ( <Redirect to='/' /> )
 
 
 {/* PARTIE INSPIRATION */}
-    <div id='sect2' style={{backgroundColor: '#fcfbf6'}} >
+    <div id='sect2' style={{backgroundColor: '#fcfbf6', paddingBottom:'3vh'}} >
       <div className="ShoppingList-Text" style={{marginLeft:'10%', marginRight:'10%'}}> 
       <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'1px solid #203126', color: '#203126', marginBottom: '15px', paddingTop: '18vh'}}> INSPIRATIONS </h4>
       </div>

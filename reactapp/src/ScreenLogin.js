@@ -23,6 +23,7 @@ function Login(props) {
     const [listErrorsSignin, setErrorsSignin] = useState([])
     const [iconeOeilSignUp, setIconeOeilSignUp] = useState("password")
     const [iconeOeilSignIn, setIconeOeilSignIn] = useState("password")
+   
 
     
 
@@ -47,7 +48,7 @@ function Login(props) {
         }
 
 
-        var handleSubmitSignin = async () => {
+        var handleSubmitSignin = async () => {   // CONNEXION 
  
             const data = await fetch('/signIn', {
               method: 'POST',
@@ -61,7 +62,6 @@ function Login(props) {
               setUserExists(true)
               props.addToken(body.token)
               props.addUserStoreSignIn(body.user.firstName)
-              console.log()
             }  else {
               setErrorsSignin(body.error)
             }
