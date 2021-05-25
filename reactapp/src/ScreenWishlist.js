@@ -10,7 +10,7 @@ import NavbarFixed from './navbarFixed';
 function Wishlist(props) {
   
   const [wishlist, setWishlist] = useState([props.wishlist])
-
+  console.log(props.token)
   
 
  useEffect(() => {
@@ -76,7 +76,7 @@ if (wishlist.length !== 0 ){
       <NavbarFixed />
       
       <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '4vh', height: '100%', minHeight: '83vh'}}> 
+      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '13vh', height: '100%', minHeight: '8vh'}}> 
       <div style={{display: 'flex', justifyContent: 'flex-end'}}>
       <Link to="/shoppinglist">
             <button className="inputWishlist">Voir ma shoppinglist</button>
@@ -98,26 +98,26 @@ if (wishlist.length !== 0 ){
           <Row  style={{ display:'flex', justifyContent: 'center'}}> 
             {displayWishlist}
           </Row>
-        </Container>  
+        </Container> 
       </div>  
       </div>
       
     );}
-    else if (props.token) {
+    else if (props.token !== null) {
       return ( 
       <div className="background">
       <NavbarFixed />
     <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
     <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
       <p style={{fontSize:'30px', textAlign:'center'}}>Wishlist vide</p> 
-      <Link to="/shoppinglist">
-          <button className="inputShoppingList">Voir ma shopping list</button>
+      <Link to="/mypalette">
+          <button className="inputShoppingList">Voir ma palette</button>
       </Link>
       
     </div>  
     </div>
     ) 
-    } else { 
+    } else  { 
       return (
   <div className="background">
     <NavbarFixed />

@@ -37,16 +37,16 @@ function Quiz(props) {
         },
         {question : "Vous souhaitez avoir une ambiance..." ,
         photo1: {
-            url: '2cocooning.png', 
+            url: '2ethnique.png', 
             name: 'ethnique'},
         photo2: {
-            url: '2chaleureuse.png',
+            url: '2boheme.png',
             name: 'bohème'},
         photo3:{
-             url: '2coloree.png',
+             url: '2artdeco.png',
             name: 'artDeco'},
         photo4: {
-            url: '2epuree.png',
+            url: '2modern.png',
             name: 'modernMinimal'}
         },
         {question : 'Parmi les styles de décorations suivants, lequel préférez-vous ?', 

@@ -4,6 +4,7 @@ import "./App.css";
 import {connect} from 'react-redux';
 import { Popover } from 'antd';
 import Texty from 'rc-texty';
+import 'rc-texty/assets/index.css';
 
 
 function Home(props) {
@@ -12,7 +13,6 @@ function Home(props) {
   const content = (
     <div>
       <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
-      <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/shoppinglist'><p>Ma shopping list</p></Link>
       <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
     </div>
   );
@@ -63,7 +63,7 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
       </div>
       <div id="section1" className="imageBackground" style={{display:'flex', justifyContent:'center'}}>
       <div  className="titreHomeSection1" style={{width: '50vw', display:'flex', textAlign:'center', justifyContent:'center'}}>
-          <p className='pHome'>DÉCOUVREZ L'INTÉRIEUR DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
+          <p id='pHome' data-mdb-toggle="animation" data-mdb-animation-reset="true" data-mdb-animation="fade-in-down">DÉCOUVREZ L'INTÉRIEUR DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
         <a href="#section2">
           <div type="button" className="ButtonHome1" style={{display:"flex", justifyContent:'center', alignItems:'center'}}>
@@ -95,7 +95,7 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
         <div className="titreHomeSection2" style={{display: 'flex', flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
           <p className="pHome1">
             DÉCODE vous offre des conseils de décoration personnalisés et
-            gratuits afin de vous aider dans la décoration de votre intérieur.
+            gratuits afin de vous accompagner dans vos projets déco.
           </p>
           <p className="pHome1">
             Répondez au questionnaire pour découvrir votre palette de couleurs et accéder à

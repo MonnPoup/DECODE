@@ -5,7 +5,7 @@ import {Container, Row, Col } from 'react-bootstrap';
 import { connect } from "react-redux";
 import NavbarFixed from './navbarFixed';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Popover, Button, Checkbox } from 'antd';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 
@@ -17,8 +17,10 @@ const [articleList, setArticleList] = useState([])
 const [articleListFromBDD, setArticleListFromBDD] = useState([])
 const [isLiked, setIsLiked] = useState(false)
 const [wishlist, setWishlist] = useState(props.userWishlist)
-const [FilterDeco, setFilterDeco]= useState(false)
+const [FilterDeco, setFilterDeco]= useState(true)
 const [FilterMobilier, setFilterMobilier] = useState(false)
+const [stateDeco, setStateDeco] = useState(false)
+const [stateMob, setStateMob] = useState(false)
 
 var likeColor = ''
 
@@ -114,7 +116,7 @@ return ( <Redirect to='/' /> )
   
       /////// pop over si pas connecté ////// 
  if (!props.token){
-  var popoverWishList = <Popover placement="bottomRight" content='Veuillez vous connecter pour ajouter un article à votre Wishlist' trigger="click">
+  var popoverWishList = <Popover placement="bottomRight" content='Veuillez vous connecter pour ajouter un article à votre Wishlist' trigger="hover">
     <FontAwesomeIcon style={{cursor:'pointer', width: '15px'}} icon={faHeart}/>
     </Popover>
 } else {
@@ -169,7 +171,7 @@ return ( <Redirect to='/' /> )
         </div>
       </Col>
       </Popover>
-      ) }
+      )}
       ) 
     
       if (props.userPaletteFromStore) {
@@ -195,19 +197,23 @@ function onChangeMobilier(e) {
   setArticleList(articleListFromBDD)
   console.log(`checkedMobilier = ${e.target.checked}`);
   setFilterMobilier(e.target.checked)
+  
 }
 
 if (FilterDeco === true ) {
-  
+  setStateMob(false)
+  setStateDeco(true)
   var resultFilterDeco = articleList.filter(article => article.category === "décoration")
   setArticleList(resultFilterDeco)
   console.log( 'result filter', resultFilterDeco)
   setFilterDeco(false)
+  
 
 }
 
 if (FilterMobilier === true ) {
-  
+  setStateDeco(false)
+  setStateMob(true)
   var resultFilterMob = articleList.filter(article => article.category === "mobilier")
   setArticleList(resultFilterMob)
   console.log( 'result filter', resultFilterMob)
@@ -216,9 +222,9 @@ if (FilterMobilier === true ) {
 
 var content = (
   <div> 
-    <h4 style={{backgroundColor:'#203126'}}> Catégorie </h4>
-  <Checkbox onChange={onChangeMobilier}>Mobilier</Checkbox>
-  <Checkbox onChange={onChangeDécoration}>Décoration</Checkbox>
+    <h6 style={{backgroundColor:'#203126', borderRadius:'5%', color:'white'}}> Catégorie </h6>
+  <Checkbox  checked={stateMob} onChange={onChangeMobilier}>Mobilier</Checkbox>
+  <Checkbox  checked={stateDeco} onChange={onChangeDécoration}>Décoration</Checkbox>
   </div>
 )
 
@@ -249,8 +255,11 @@ var content = (
             VOTRE SHOPPING LIST {paletteName}</h4>
 
             {/* FILTRER  */}
-            <Popover content={content} placement='right' >
-            <Button id="Popover1" type="button" className='ButtonHome'> Filter </Button>
+            <Popover content={content} placement='bottom' >
+            <Button id="Popover1" type="button" style={{backgroundColor:'#FCFBF6', border:'1px solid black', color:'#203126'}}> 
+              <FontAwesomeIcon style={{cursor:'pointer', width: '15px', paddingRight:'10px'}} icon={faSearch}/>
+              Filtrer
+            </Button>
             </Popover>
           </div>
   
@@ -276,7 +285,7 @@ var content = (
 
 
 {/* PARTIE INSPIRATION */}
-    <div id='sect2' style={{backgroundColor: '#fcfbf6'}} >
+    <div id='sect2' style={{backgroundColor: '#fcfbf6', paddingBottom:'3vh'}} >
       <div className="ShoppingList-Text" style={{marginLeft:'10%', marginRight:'10%'}}> 
       <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'1px solid #203126', color: '#203126', marginBottom: '15px', paddingTop: '18vh'}}> INSPIRATIONS </h4>
       </div>
