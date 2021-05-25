@@ -102,7 +102,7 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
           </p>
         </div>
         <Link to="/quiz">
-          <button type="button" className="inputHome2">
+          <button type="button" className="ButtonHome2">
             Répondre au questionnaire
           </button>
         </Link>

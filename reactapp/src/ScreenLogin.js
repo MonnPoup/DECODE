@@ -84,7 +84,12 @@ function Login(props) {
             return(<p style={{fontSize: '15px'}}>{error}</p>)
           })
 
-      
+          const handleKeypress = e => {
+            //it triggers by pressing the enter key
+          if (e.keyCode === 13) {
+            handleSubmitSignin();
+          }
+        };
 
     return (
     <div className='background'>
@@ -97,7 +102,7 @@ function Login(props) {
                 Connexion
                         <div className='formLogin'>
                             <input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input' />
-                            <input onChange={(e) => setSignInPassword(e.target.value)} type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <input onKeyPress={handleKeypress} onChange={(e) => setSignInPassword(e.target.value)} type="password"  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
                         </div>
                         {tabErrorsSignin}
                         <input onClick={() => handleSubmitSignin()} type="submit" value="Connexion" className='inputValider'/>
