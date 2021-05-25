@@ -182,7 +182,7 @@ function Quiz(props) {
         }
     }
     if (isPhoto1Selected === true) {
-        var selectBorder1 = '4px solid white'
+        var selectBorder1 = '4px solid #FBFCF6'
         var borderRadius1 = '7%'
     }
 
@@ -197,7 +197,7 @@ function Quiz(props) {
         }
     }
     if (isPhoto2Selected === true) {
-        var selectBorder2 = '4px solid white'
+        var selectBorder2 = '4px solid #FBFCF6'
         var borderRadius2 = '7%'
     }
 
@@ -212,7 +212,7 @@ function Quiz(props) {
         }
     }
     if (isPhoto3Selected === true) {
-        var selectBorder3 = '4px solid white'
+        var selectBorder3 = '4px solid #FBFCF6'
         var borderRadius3 = '7%'
     }
 
@@ -227,7 +227,7 @@ function Quiz(props) {
         }
     }
     if (isPhoto4Selected === true) {
-        var selectBorder4 = '4px solid white'
+        var selectBorder4 = '4px solid #FBFCF6'
         var borderRadius4 = '7%'
     }
 
