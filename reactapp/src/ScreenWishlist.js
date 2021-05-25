@@ -15,7 +15,6 @@ function Wishlist(props) {
 
  useEffect(() => {
   if (props.token) {
-    console.log('user connected wishlist')
   async function wishlistData() {
     const rawResponse = await fetch('/wishlist', {
       method: 'POST',
@@ -70,7 +69,7 @@ var displayWishlist = wishlist.map((article,i) => {
 
 })
   
-if (wishlist.length !== 0 ){
+if (wishlist.length !== 0){
     return (
       <div style={{backgroundColor:'#FCFBF6'}}>
       <NavbarFixed />

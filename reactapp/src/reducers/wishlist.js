@@ -8,6 +8,10 @@ export default function(wishlist = [], action){
     if( position != null){
         wishlistCopy.splice(position,1)
         return wishlistCopy
+    } else if (action.type === "deleteWishlist") {
+        console.log('wishlist vidée')
+        var wishlistCopy = []
+        return wishlistCopy
     }
      else {
         return wishlist

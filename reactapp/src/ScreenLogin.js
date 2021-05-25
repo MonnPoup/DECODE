@@ -62,6 +62,7 @@ function Login(props) {
               setUserExists(true)
               props.addToken(body.token)
               props.addUserStoreSignIn(body.user.firstName)
+              props.addPalette(body.user.palette)
             }  else {
               setErrorsSignin(body.error)
             }
@@ -86,7 +87,7 @@ function Login(props) {
 
         
          if(userExists){
-            return <Redirect to='/' /> 
+            return <Redirect to='/mypalette' /> 
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
@@ -170,6 +171,9 @@ function mapDispatchToProps(dispatch){
     },
     addUserStoreSignIn: function(userName){
       dispatch({type: 'userStoreSignIn', userName})
+  },
+  addPalette: function(palette){
+    dispatch({type: 'addPalette', palette: palette})
   },
     }
   }

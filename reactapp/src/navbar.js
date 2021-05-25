@@ -15,7 +15,7 @@ function NavBar(props) {
           const content = (
             <div>
               <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
-              <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
+              <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => {props.suppressionToken(); props.deleteWishlist()}}>Déconnexion</p></Link>
             </div>
           );
 
@@ -56,6 +56,9 @@ function mapDispatchToProps(dispatch){
     suppressionToken: function(){
         dispatch({type: 'deconnexion'})
     },
+    deleteWishlist : function(){
+      dispatch({type: 'deleteWishlist'}) 
+    }
   }
 }
 

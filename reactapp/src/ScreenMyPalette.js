@@ -9,35 +9,36 @@ import { useCookies } from 'react-cookie'
 
 function MyPalette(props) {
   const [palette, setPalette] = useState(props.userPaletteFromStore);
-  const [token, setToken] = useState(props.token)
   const [isConnected, setisConnected] = useState(false)
   
 
-  useEffect(() => {
+  /* useEffect(() => {
+    console.log('dans state', props.token)
     props.addPalette('')
-    if (token !== null){
+    if (props.token !== null){
       console.log('on a un token')
       setisConnected(true)
     async function fetchData() {
         const data = await fetch("/myPalette", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `token=${token}`,
+          body: `token=${props.token}`,
         });
 
         var body = await data.json();
         setPalette(body.userPalette);
         props.addPalette(body.userPalette)
-        console.log('pops', props.addPalette)
     }
     fetchData();
   } 
   else if (isConnected === false) {
+    console.log('pas connecté')
   } 
     
-  }, []);
+  }, []); */
 
   useEffect(() => {
+    console.log('palette ds useeffet',props.userPaletteFromStore)
     setPalette(props.userPaletteFromStore);
 
   }, [props.userPaletteFromStore, props.token]);
@@ -82,7 +83,7 @@ function MyPalette(props) {
         paletteName = "Modern Minimal".toUpperCase();
       }  
 
-  var tabPaletteColor = palette.colors.map((data, i) => {
+  var tabPaletteColor = props.userPaletteFromStore.colors.map((data, i) => {
     return (
       <Popover key={i} style={{radius:'70%'}} content={content} trigger="hover" placement="bottomRight">
         <div key={i} style={{ backgroundColor: data , cursos:'pointer'}} className="palette" onClick={()=> {handleClickCopyCode(data);openNotification()}}>
@@ -131,6 +132,7 @@ function MyPalette(props) {
 
 function mapStateToProps(state) {
   return { userPaletteFromStore: state.palette, token: state.token };
+ 
 }
 function mapDispatchToProps(dispatch){
   return {

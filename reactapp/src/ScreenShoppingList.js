@@ -58,7 +58,6 @@ useEffect( () => {
 
  useEffect( () => {
   setWishlist(props.wishlist)
-  console.log('wishlist from store', props.wishlist)
  }, [props.wishlist]);
 
 
@@ -75,13 +74,11 @@ useEffect( () => {
           body: `token=${props.token}&articleID=${articleID}`,
         })
         const response = await rawResponse.json()
-        console.log('rajouté', response.wishlist)
         props.addToWishlist(response.wishlist)
       }
       addToWishlist()
 
       } else { 
-        console.log('supprime')
       async function deleteArticle() {
         const deleteArticle = await fetch('/deleteFromWishlist', {
           method: 'PUT',
@@ -107,7 +104,6 @@ return ( <Redirect to='/' /> )
     
 
     if (wishlistFilter) { 
-      console.log ('test Sybil bouton coeur', wishlistFilter)
     likeColor =  "#e74c3c"} else {
       likeColor = "#000000"
     }
@@ -188,12 +184,10 @@ return ( <Redirect to='/' /> )
 
 function onChangeDécoration(e) {
   setArticleList(articleListFromBDD)
-  console.log(`checkedDeco = ${e.target.checked}`);
   setFilterDeco(e.target.checked)
 }
 function onChangeMobilier(e) {
   setArticleList(articleListFromBDD)
-  console.log(`checkedMobilier = ${e.target.checked}`);
   setFilterMobilier(e.target.checked)
   
 }
@@ -203,7 +197,6 @@ if (FilterDeco === true ) {
   setStateDeco(true)
   var resultFilterDeco = articleList.filter(article => article.category === "décoration")
   setArticleList(resultFilterDeco)
-  console.log( 'result filter', resultFilterDeco)
   setFilterDeco(false)
   
 
@@ -214,7 +207,6 @@ if (FilterMobilier === true ) {
   setStateMob(true)
   var resultFilterMob = articleList.filter(article => article.category === "mobilier")
   setArticleList(resultFilterMob)
-  console.log( 'result filter', resultFilterMob)
   setFilterMobilier(false)
 }
 

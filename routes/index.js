@@ -80,12 +80,17 @@ router.post("/signIn", async (req, res) => {
   }
 
   if (error.length == 0) {
-    const user = await userModel.findOne({
+    const userIsFound = await userModel.findOne({
       email: req.body.emailFromFront,
     });
 
-    if (user) {
-      if (bcrypt.compareSync(req.body.passwordFromFront, user.password)) {
+    if (userIsFound) {
+      if (bcrypt.compareSync(req.body.passwordFromFront, userIsFound.password)) {
+        var user = await userModel
+          .findById(userIsFound._id)
+          .populate("palette")
+          .exec()
+
         result = true;
         token = user.token;
         res.json({ result, user, token})
