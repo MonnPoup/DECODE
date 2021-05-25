@@ -7,20 +7,16 @@ import NavbarFixed from './navbarFixed';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Popover, Button } from 'antd';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 
-/* p {
-  font-family: 'Montserrat';
-  font-weight: 300;
-  font-size: 20px;
-  color: #fcfbf6;
-} */
 
 function ShoppingList(props) {
 const [userPalette, setUserPalette] = useState(props.userPaletteFromStore)
 const [articleList, setArticleList] = useState([])
 const [isLiked, setIsLiked] = useState(false)
 const [wishlist, setWishlist] = useState(props.userWishlist)
+const [popoverOpen, setPopoverOpen] = useState(false);
 
 var likeColor = ''
 
@@ -38,7 +34,6 @@ useEffect(() => {
   }
   wishlistData() }
 },[]) 
-
 
 
 ////////// CHERCHER LES ARTICLES EN BDD  //////////
@@ -96,7 +91,7 @@ useEffect( () => {
       } 
   }  
 
- ////////// MAP DES ARTICLES TROUVES EN BDD //////////
+ ////////////////// MAP DES ARTICLES TROUVES EN BDD /////////////////
  if (props.userPaletteFromStore === '' ) {        // si il n'y a rien dans la liste d'article, l'utilsateur n'a pas fait le quizz, donc redirect home
 return ( <Redirect to='/' /> )
 } else 
@@ -112,7 +107,7 @@ return ( <Redirect to='/' /> )
       likeColor = "#000000"
     }
   
- /////// POP OVER SI PAS CONNECTE ////// 
+      /////// pop over si pas connecté ////// 
  if (!props.token){
   var popoverWishList = <Popover placement="bottomRight" content='Veuillez vous connecter pour ajouter un article à votre Wishlist' trigger="click">
     <FontAwesomeIcon style={{cursor:'pointer', width: '15px'}} icon={faHeart}/>
@@ -121,6 +116,7 @@ return ( <Redirect to='/' /> )
  popoverWishList = <FontAwesomeIcon onClick={() => handleClickWishList(article._id)} style={{cursor:'pointer', width: '15px'}} icon={faHeart} color={likeColor} />
 }  
   
+
   return ( 
    <Col key={i} md={2}lg={3} style={{backgroundColor:'white', margin:'10px',  display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
     <a href={article.merchantUrl} target="_blank">
@@ -147,7 +143,7 @@ return ( <Redirect to='/' /> )
   )
 })
   
-
+/// Map des couleurs de la palette //// 
   var displayPalette = userPalette.colors.map((color, i) => {
     return (
     <div key={i} className='color1' style={{height:'50px', width:'50px', backgroundColor:`${color}`}}> 
@@ -155,7 +151,7 @@ return ( <Redirect to='/' /> )
     )
 
    
-   
+   /// map des inspirations /// 
   var displayInspo = userPalette.inspirations.map((photo, i) => {
     const content = (
       <img style={{minWidth:'400px', minHeight:'400px', maxWidth:'700px', maxHeight: '700px'}} src={photo} alt='inspo'/>
@@ -183,6 +179,24 @@ return ( <Redirect to='/' /> )
           paletteName = "Modern Minimal".toUpperCase();
         } }
 
+//////////////// FILTER  ////////////////
+const toggle = () => setPopoverOpen(!popoverOpen);
+var content = (
+  <Form>
+                    <FormGroup check inline>
+                      <Label check>
+                        <Input type="checkbox" /> Mobilier
+                      </Label>
+                    </FormGroup>
+                    <FormGroup check inline>
+                      <Label check>
+                        <Input type="checkbox" /> Décoration
+                      </Label>
+                      </FormGroup>
+                  </Form>
+)
+
+
 
   return (
     <div  className="background">     {/* FOND  */}
@@ -207,6 +221,11 @@ return ( <Redirect to='/' /> )
           <div className="ShoppingList-Text"> 
             <h4 style={{fontWeight:'bold', width:'90%', borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
             VOTRE SHOPPING LIST {paletteName}</h4>
+
+            {/* FILTRER  */}
+            <Popover content={content} placement='right' >
+            <Button id="Popover1" type="button" className='ButtonHome'> Filter </Button>
+            </Popover>
           </div>
   
       {/* SLIDER */}  
