@@ -76,7 +76,7 @@ if (wishlist.length !== 0 ){
       <NavbarFixed />
       
       <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '13vh', height: '100%', minHeight: '8vh'}}> 
+      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '15vh', height: '100%', minHeight: '8vh'}}> 
       <div style={{display: 'flex', justifyContent: 'flex-end'}}>
       <Link to="/shoppinglist">
             <button className="inputWishlist">Voir ma shoppinglist</button>
