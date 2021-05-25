@@ -35,18 +35,18 @@ function Quiz(props) {
             url: '1marbre.png',
             name: 'modernMinimal'}
         },
-        {question : 'Préférez-vous une décoration...', 
+        {question : "Vous souhaitez avoir une ambiance..." ,
         photo1: {
-            url: 'image35.png', 
+            url: '2cocooning.png', 
             name: 'ethnique'},
         photo2: {
-            url: 'image37.png',
+            url: '2chaleureuse.png',
             name: 'bohème'},
         photo3:{
-             url: 'image36.png',
+             url: '2coloree.png',
             name: 'artDeco'},
         photo4: {
-            url: 'image38.png',
+            url: '2epuree.png',
             name: 'modernMinimal'}
         },
         {question : 'Parmi les styles de décorations suivants, lequel préférez-vous ?', 
