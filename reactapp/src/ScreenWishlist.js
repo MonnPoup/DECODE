@@ -72,11 +72,11 @@ var displayWishlist = wishlist.map((article,i) => {
   
 if (wishlist.length !== 0 ){
     return (
-      <div style={{backgroundColor:'#FCFBF6', height: '100%'}}>
+      <div style={{backgroundColor:'#FCFBF6'}}>
       <NavbarFixed />
       
       <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '4vh'}}> 
+      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '4vh', height: '100%', minHeight: '83vh'}}> 
       <div style={{display: 'flex', justifyContent: 'flex-end'}}>
       <Link to="/shoppinglist">
             <button className="inputWishlist">Voir ma shoppinglist</button>
@@ -90,6 +90,7 @@ if (wishlist.length !== 0 ){
         <h4 style={{fontWeight:'bold',borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
             VOTRE WISHLIST
         </h4>
+        <h4 style={{fontSize: '15px'}}>{props.wishlist.length} articles</h4>
         </div>
 
       </div>

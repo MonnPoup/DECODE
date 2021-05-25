@@ -60,10 +60,9 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
           {popover}
         </div>
       </div>
-      <div id="section1" className="imageBackground">
-        <div  className="titreHomeSection1">
-          <p className="pHome">DÉCOUVREZ L'INTÉRIEUR </p>
-          <p className="pHome">DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
+      <div id="section1" className="imageBackground" style={{display:'flex', justifyContent:'center'}}>
+      <div  className="titreHomeSection1" style={{width: '50vw', display:'flex', textAlign:'center', justifyContent:'center'}}>
+          <p className="pHome">DÉCOUVREZ L'INTÉRIEUR DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
         </div>
         <a href="#section2">
           <div type="button" className="inputHome1" style={{display:"flex", justifyContent:'center', alignItems:'center'}}>
@@ -92,19 +91,19 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
             alt="double chevron"
           />
         </a>
-        <div className="titreHomeSection2">
+        <div className="titreHomeSection2" style={{display: 'flex', flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
           <p className="pHome1">
             DÉCODE vous offre des conseils de décoration personnalisés et
-            gratuits.
+            gratuits afin de vous aider dans la décoration de votre intérieur.
           </p>
           <p className="pHome1">
-            Répondez au questionnaire pour dévouvrir votre palette et accéder à
-            la shopping list !
+            Répondez au questionnaire pour découvrir votre palette de couleurs et accéder à
+            votre shopping list sur-mesure !
           </p>
         </div>
         <Link to="/quiz">
           <button type="button" className="inputHome2">
-            Faire le questionnaire
+            Répondre au questionnaire
           </button>
         </Link>
       </div>

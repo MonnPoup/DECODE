@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./navbar"
 import {connect} from 'react-redux'
 import "antd/dist/antd.css";
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -20,6 +21,7 @@ function Login(props) {
 
     const [listErrorsSignup, setErrorsSignup] = useState([])
     const [listErrorsSignin, setErrorsSignin] = useState([])
+    const [iconeOeil, setIconeOeil] = useState("password")
     
 
     var handleSubmitSignup = async () => {
@@ -60,6 +62,15 @@ function Login(props) {
             }
           }
 
+          var mdpIsVisible = () => {
+            if (iconeOeil === 'password'){
+            setIconeOeil('text')
+            console.log('text', iconeOeil)} else {
+              setIconeOeil('password')
+            }
+          }
+      
+
         
          if(userExists){
             return <Redirect to='/' /> 
@@ -99,7 +110,11 @@ function Login(props) {
                         <div className='formLogin'>
                             <input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input' />
                             <input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input'/>
-                            <input onChange={(e) => setSignUpPassword(e.target.value)} type="password" name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <div style={{display:'flex'}}>
+                            <input onChange={(e) => setSignUpPassword(e.target.value)} type={iconeOeil} name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <img onClick={() => mdpIsVisible()} style={{width: '50px', padding:'10px', paddingTop:'20px'}} src='oeil.png'/>
+                            </div>
+                            
                         </div>
                         {tabErrorsSignup}
                         <input onClick={() => handleSubmitSignup()} type="submit" value="Connexion" className='inputValider'/>

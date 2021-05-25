@@ -1,42 +1,8 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Carousel, Container, Row, Col} from 'react-bootstrap';
 
 function AllPaletteModel(props) {
-  var paletteImg = props.inspirations;
-  console.log("palette image", paletteImg);
-
-  var tabPaletteImg = paletteImg.map((img, j) => {
-    return (
-      <Col
-        md={2}
-        lg={2}
-        style={{
-          backgroundColor: "#fcfbf6",
-          margin: "10px",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            height: "35vh",
-          }}
-        >
-          <img
-            key={j}
-            style={{ maxWidth: "100%", maxHeight: "100%" }}
-            classname="ImgAllPalettes"
-            src={img}
-          ></img>
-        </div>
-      </Col>
-    );
-  });
+ 
 
   var paletteColor = props.colors;
   var tabPaletteColor = paletteColor.map((color, i) => {
@@ -48,6 +14,7 @@ function AllPaletteModel(props) {
       ></div>
     );
   });
+  
 
   return (
     <div>
@@ -57,29 +24,61 @@ function AllPaletteModel(props) {
           <div className="paletteContainer">{tabPaletteColor}</div>
         </div>
       </div>
-      <div className="scrollerAllPalettes">
-        <Container
-          lg={12}
-          md={12}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "3px",
-            backgroundColor: "#fcfbf6",
-            borderRadius: "10px"
-          }}
-        >
-          <Row
-            lg={12}
-            md={12}
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            {tabPaletteImg}
-          </Row>
-        </Container>
+      <div style={{backgroundColor: '#203126', marginBottom:'50px', marginTop: '25px'}}>
+      <Carousel style={{width: '100%', paddingLeft: '20vw', justifyContent: 'center'}} >
+      <Carousel.Item >
+              <div style={{padding: '10px',height:'350px', width:'300px', backgroudColor: 'white', display: 'flex'}}>
+              <div>
+              <img
+               style={{marginRight: '20px', height:'100%', maxWidth: '500px',maxHeight:'4000'}}
+               key={1}
+                src={props.inspirations[0]}
+                alt="First slide"
+              />
+              </div>
+              <div>
+              <img
+               style={{marginRight: '20px', height:'100%', maxWidth: '500px',maxHeight:'4000'}}
+               key={1}
+                src={props.inspirations[1]}
+                alt="First slide"
+              />
+              </div>
+              <div>
+              <img
+               style={{marginRight: '20px', height:'100%', maxWidth: '500px',maxHeight:'4000'}}
+               key={1}
+                src={props.inspirations[4]}
+                alt="First slide"
+              />
+              </div>
+              </div>
+            </Carousel.Item>
+            <Carousel.Item >
+              <div style={{padding: '10px',height:'350px', backgroudColor: 'white', display: 'flex'}}>
+              <div>
+              <img
+               style={{marginRight: '20px', height:'100%', maxWidth: '500px',maxHeight:'4000'}}
+               key={1}
+                src={props.inspirations[2]}
+                alt="First slide"
+              />
+              </div>
+              <div>
+              <img
+               style={{marginRight: '20px', height:'100%', maxWidth: '500px',maxHeight:'4000'}}
+               key={1}
+                src={props.inspirations[3]}
+                alt="First slide"
+              />
+              </div>
+              </div>
+            </Carousel.Item>
+      </Carousel>
       </div>
     </div>
   );
 }
 
 export default AllPaletteModel;
+
