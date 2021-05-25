@@ -129,8 +129,7 @@ function Login(props) {
                             <div style={{display:'flex'}}>
                             <input onChange={(e) => setSignUpPassword(e.target.value)} type={iconeOeilSignUp}  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
                             <FontAwesomeIcon onClick={() => mdpSignUpIsVisible()} style={{cursor:'pointer', width: '22px', marginTop: '3vh', marginLeft:'1vw', color:'#203126'}} icon={faEye}/>
-                            </div>
-                            
+                            </div>        
                         </div>
                         {tabErrorsSignup}
                         <input onClick={() => handleSubmitSignup()} type="submit" value="Connexion" className='inputValider'/>
