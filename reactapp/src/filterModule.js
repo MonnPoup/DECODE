@@ -30,7 +30,7 @@ function Filter(props) {
             <Checkbox value="A">rouge</Checkbox>
             <Checkbox value="B">vert</Checkbox>
             <Checkbox value="B">bleu</Checkbox>
-            </div>
+            </div> 
       </div>
     );
  

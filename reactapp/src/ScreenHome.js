@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import {connect} from 'react-redux';
 import { Popover } from 'antd';
+import Texty from 'rc-texty';
 
 
 function Home(props) {
+
+
 
   const text = <span>Mon compte</span>;
   const content = (
@@ -30,7 +33,7 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
       <div className="navbarHome">
         <div>
           <Link style={{textDecoration:"none"}} to="/">
-            <h1
+            <h1  type='alpha' duration='150' mode="random" 
               style={{
                 marginLeft: "20px",
                 marginTop: "50px",
@@ -62,7 +65,7 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
       </div>
       <div id="section1" className="imageBackground" style={{display:'flex', justifyContent:'center'}}>
       <div  className="titreHomeSection1" style={{width: '50vw', display:'flex', textAlign:'center', justifyContent:'center'}}>
-          <p className="pHome animate__fadeInDown">DÉCOUVREZ L'INTÉRIEUR DONT VOUS AVEZ TOUJOURS RÊVÉ</p>
+          <Texty className='pHome'>DÉCOUVREZ L'INTÉRIEUR DONT VOUS AVEZ TOUJOURS RÊVÉ</Texty>
         </div>
         <a href="#section2">
           <div type="button" className="ButtonHome1" style={{display:"flex", justifyContent:'center', alignItems:'center'}}>
