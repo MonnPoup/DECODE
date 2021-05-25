@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import NavbarFixed from './navbarFixed';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { Popover, Button } from 'antd';
+import { Popover, Button, Checkbox } from 'antd';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 
@@ -182,20 +182,18 @@ return ( <Redirect to='/' /> )
         } }
 
 //////////////// FILTER  ////////////////
-const toggle = () => setPopoverOpen(!popoverOpen);
+function onChangeDécoration(e) {
+  console.log(`checked = ${e.target.checked}`);
+}
+function onChangeMobilier(e) {
+  console.log(`checked = ${e.target.checked}`);
+}
 var content = (
-  <Form>
-                    <FormGroup check inline>
-                      <Label check>
-                        <Input type="checkbox" /> Mobilier
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check inline>
-                      <Label check>
-                        <Input type="checkbox" /> Décoration
-                      </Label>
-                      </FormGroup>
-                  </Form>
+  <div> 
+    <h4 style={{backgroundColor:'#203126'}}> Catégorie </h4>
+  <Checkbox onChange={onChangeMobilier}>Mobilier</Checkbox>
+  <Checkbox onChange={onChangeDécoration}>Décoration</Checkbox>
+  </div>
 )
 
 
@@ -205,7 +203,7 @@ var content = (
       <NavbarFixed />
     <div style={{height: '17vh', backgroundColor: '#203126'}}></div>  {/* trait vert */}
 
-{/* CONTAINER ARTICLES */}
+  {/* CONTAINER ARTICLES */}
     <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6', paddingBottom:'3vh' }}>  
 
   {/* PALETTE + BOUTON REFAIRE QUIZZ */}
