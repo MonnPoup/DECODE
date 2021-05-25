@@ -82,7 +82,7 @@ function MyPalette(props) {
   var tabPaletteColor = palette.colors.map((data, i) => {
     return (
       <Popover key={i} style={{radius:'70%'}} content={content} trigger="hover" placement="bottomRight">
-        <div key={i} style={{ backgroundColor: data , cursos:'pointer'}} className="palette" onClick={openNotification}>
+        <div key={i} style={{ backgroundColor: data , cursor:'pointer'}} className="palette" onClick={openNotification}>
           <p className="textColorPalette">{data}</p>
         </div>
       </Popover>

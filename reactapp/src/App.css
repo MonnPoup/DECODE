@@ -16,6 +16,10 @@ body {
   background-color: #fcfbf6;
 }
 
+#root {
+  height: 100%;
+  background-color: #203126;
+}
 
 .background {
   background-color: #203126;
@@ -614,7 +618,7 @@ p {
   padding-top: 1vh;
   margin: 0 0 0 2vw;
   font-size: 25px;
-  margin-top: 3vh;
+  margin-top: 1vh;
 }
 
 .paletteAllPalettes {
@@ -639,7 +643,3 @@ p {
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
 }
-
-/* .ImgAllPalettes {
-
-} */

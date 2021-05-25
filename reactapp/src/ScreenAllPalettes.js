@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./navbar";
-import AllPaletteModel from "./AllPaletteModel"
+import AllPaletteModel from "./AllPaletteModel";
 
 
 function AllPalettes() {
@@ -33,7 +33,9 @@ console.log('hello', allPalettes);
   } 
 
     return (
-      <AllPaletteModel key={i} name= {paletteName} inspirations={data.inspirations} colors={data.colors} /> 
+      <div>
+      <AllPaletteModel key={i} name= {paletteName} inspirations={data.inspirations} colors={data.colors}/>
+      </div>
       )
    })
    

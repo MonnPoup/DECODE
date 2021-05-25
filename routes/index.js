@@ -181,25 +181,7 @@ router.post("/validerQuiz", async (req, res, next) => {
    }
 
   });
-
-/*    {       // si user connecté, on le trouve avec son token 
-    console.log('token chelou', req.body.token)
-    var userConnected = await userModel.findOne(
-      {token: req.body.token}
-    )
-    
-  console.log('userconnected', userConnected);  // et on ajoute sa palette en bdd   REVOIR ICI peut ê _id 
-    var ajoutPalette = await userModel.updateOne(
-      {token: req.body.token}
-      {palette: userPalette._id}
-    )
-  console.log('ajoutpalette', ajoutPalette)
-  }  */
-  
-  
-   
-
-
+ 
 
 router.post("/myPalette", async (req, res, next) => {
   if (req.body.token != null) {
