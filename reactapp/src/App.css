@@ -664,9 +664,10 @@ margin-bottom: 30px;
 
 .formLogin {
   border-radius: 30px;
+  z-index: 50; 
 }
 
-.input {
+.input_login {
   border-radius: 50px;
   border: 1px solid #203126;
   opacity: 50%;
@@ -683,6 +684,7 @@ margin-bottom: 30px;
   background-color: #fcfbf6;
   border-radius: 10px;
   margin-left: 220px;
+  z-index:20
 }
 .login {
   display: flex;

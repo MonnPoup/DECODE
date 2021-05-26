@@ -58,6 +58,7 @@ useEffect( () => {
 
  useEffect( () => {
   setWishlist(props.wishlist)
+  console.log('wishlist from store', props.wishlist)
  }, [props.wishlist]);
 
 
@@ -74,11 +75,13 @@ useEffect( () => {
           body: `token=${props.token}&articleID=${articleID}`,
         })
         const response = await rawResponse.json()
+        console.log('rajouté', response.wishlist)
         props.addToWishlist(response.wishlist)
       }
       addToWishlist()
 
       } else { 
+        console.log('supprime')
       async function deleteArticle() {
         const deleteArticle = await fetch('/deleteFromWishlist', {
           method: 'PUT',
