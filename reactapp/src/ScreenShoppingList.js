@@ -216,8 +216,8 @@ if (FilterMobilier === true ) {
 }
 
 var content = (
-  <div> 
-    <h6 style={{backgroundColor:'#203126', borderRadius:'5%', color:'white'}}> Catégorie </h6>
+  <div style={{backgroundColor:'#fcfbf6'}}> 
+    <h6 className="h6filter"> CATÉGORIES </h6>
   <Checkbox  checked={stateMob} onChange={onChangeMobilier}>Mobilier</Checkbox>
   <Checkbox  checked={stateDeco} onChange={onChangeDécoration}>Décoration</Checkbox>
   </div>
@@ -250,7 +250,7 @@ var content = (
             VOTRE SHOPPING LIST {paletteName}</h4>
 
             {/* FILTRER  */}
-            <Popover content={content} placement='bottom' >
+            <Popover overlayStyle={{backgroundColor:"#fcfbf6"}} content={content} placement='bottom' >
             <Button id="Popover1" type="button" > 
               <FontAwesomeIcon style={{cursor:'pointer', width: '15px'}} icon={faSearch}/>
               Filtrer

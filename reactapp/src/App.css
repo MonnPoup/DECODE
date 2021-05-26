@@ -497,6 +497,15 @@ transform: scale(1.1)
   margin-left: 42vw;
 }
 
+.notifcopy {
+  background-color: #fcfbf6 !important;
+  font-family: "Montserrat";
+  font-weight: bold !important;
+  color: red !important;
+  border-radius: 15px !important;
+
+}
+
 
 
 /* PAGE SHOPPING LIST */
@@ -529,9 +538,26 @@ margin-bottom: 10px;
 background-color: #fcfbf6;
 border: 1px solid #203126;
 color:#203126;
-border-radius: 7%
+border-radius: 15px
 }
 
+.h6filter {
+  background-color: #fcfbf6;
+  color: #203126;
+  border-bottom: 1px solid #203126;
+  font-weight: 700;
+  font-family: "Montserrat";
+
+}
+
+.ant-popover-inner-content {
+  background-color: #fcfbf6;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #203126 !important;
+  border-color: #203126 !important;
+}
 
 .articleCardTitle {
   font-family: "Montserrat", sans-serif;
