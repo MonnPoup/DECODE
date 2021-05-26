@@ -645,7 +645,7 @@ padding: 6px 6px 15px 6px;
   flex-direction: column;
   margin:0px;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 .arrowShoppingList {
 height: 30px;
@@ -764,6 +764,7 @@ margin-bottom: 30px;
   transform: rotate(-180deg);
   margin-left: 60px;
   margin-right: 60px;
+  margin-bottom: 50px
 }
 
 .trait2 {
@@ -872,9 +873,8 @@ height: 35vh;
 .priceWishlist {
 display: flex;
 flex-direction: column;
-margin: 0px;
 align-items: flex-end;
-justify-content: flex-start;
+justify-content: flex-end;
 }
 
 /* PAGE ALLPALETTES */

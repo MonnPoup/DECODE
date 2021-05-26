@@ -50,17 +50,19 @@ var displayWishlist = wishlist.map((article,i) => {
  
   return (
     <Col md={2}lg={2} className="cardWishlist" > 
+    <a href={article.merchantUrl} target="_blank">
     <div  className='productImage' >
       <img style={{maxWidth:'100%', maxHeight: '100%'}} src={article.imageUrl}  alt='product' /> 
       {/* image + picto coeur  */}
     </div>
+    </a>
     <div className="productInfo"> 
       <div className="infoWishlist"> 
        <a href={article.merchantUrl} target="_blank"> <h5 className='articleWishList'> {article.name} </h5></a>
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
       <div className="priceWishlist" > 
-        <img src='delete.svg' alt='bin icon' style={{width: '15px'}} onClick={() => handleClickDelete(article._id, i)}/>
+        <img src='delete.svg' alt='bin icon' style={{width: '15px', cursor:'pointer'}} onClick={() => handleClickDelete(article._id, i)}/>
         <p className='articleWishList'> {article.price}€ </p>
       </div>
     </div>
