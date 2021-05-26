@@ -61,10 +61,12 @@ function Login(props) {
             const body = await data.json()
         
             if(body.result === true){
+              console.log('body', body.user)
               setUserExists(true)
               props.addToken(body.token)
               props.addUserStoreSignIn(body.user.firstName)
               props.addPalette(body.user.palette)
+              props.addToWishlist(body.user.wishlist)
             }  else {
               setErrorsSignin(body.error)
             }
@@ -176,6 +178,9 @@ function mapDispatchToProps(dispatch){
   addPalette: function(palette){
     dispatch({type: 'addPalette', palette: palette})
   },
+  addToWishlist: function(wishlist){
+    dispatch({type: 'addWishlist', wishlist:wishlist})
+},
     }
   }
 

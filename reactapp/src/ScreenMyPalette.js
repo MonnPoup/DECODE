@@ -38,7 +38,7 @@ function MyPalette(props) {
   }, []); */
 
   useEffect(() => {
-    console.log('palette ds useeffet',props.userPaletteFromStore)
+    console.log('palette ds useeffect',props.userPaletteFromStore)
     setPalette(props.userPaletteFromStore);
 
   }, [props.userPaletteFromStore, props.token]);
@@ -57,6 +57,10 @@ function MyPalette(props) {
   const openNotification = () => {
     notification.open({
       message: 'Code copié !',
+      className:"notifcopy",
+      style: {
+        width: 200
+      },
       onClick: () => {
         console.log('Notification Clicked!');
       },
@@ -85,8 +89,8 @@ function MyPalette(props) {
 
   var tabPaletteColor = props.userPaletteFromStore.colors.map((data, i) => {
     return (
-      <Popover key={i} style={{radius:'70%'}} content={content} trigger="hover" placement="bottomRight">
-        <div key={i} style={{ backgroundColor: data , cursos:'pointer'}} className="palette" onClick={()=> {handleClickCopyCode(data);openNotification()}}>
+      <Popover key={i} content={content} trigger="hover" placement="bottomRight">
+        <div key={i} style={{ backgroundColor: data , cursor:'pointer'}} className="palette" onClick={()=> {handleClickCopyCode(data);openNotification()}}>
           <p className="textColorPalette">{data}</p>
         </div>
       </Popover>
