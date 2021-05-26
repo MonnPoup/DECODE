@@ -234,7 +234,7 @@ var content = (
     <div className="ContainerShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6', paddingBottom:'3vh', justifyContent:'center' }}>  
 
   {/* PALETTE + BOUTON REFAIRE QUIZZ */}
-        <div style={{display:'flex', justifyContent:'space-between', padding:'10px 10px 0px 10px'}}> 
+        <div style={{display:'flex', justifyContent:'space-between', paddingTop:'11px'}}> 
           <div className="PaletteColors"> 
             {displayPalette}
           </div>
