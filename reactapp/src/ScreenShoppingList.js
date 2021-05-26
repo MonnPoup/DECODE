@@ -215,11 +215,20 @@ if (FilterMobilier === true ) {
   setFilterMobilier(false)
 }
 
+var handleClickReset = () => {
+  setArticleList(articleListFromBDD)
+  setStateDeco(false)
+  setStateMob(false)
+  setFilterMobilier(false)
+  setFilterDeco(false)
+}
+
 var content = (
   <div style={{backgroundColor:'#fcfbf6'}}> 
     <h6 className="h6filter"> CATÉGORIES </h6>
   <Checkbox  checked={stateMob} onChange={onChangeMobilier}>Mobilier</Checkbox>
   <Checkbox  checked={stateDeco} onChange={onChangeDécoration}>Décoration</Checkbox>
+  <p style={{color: 'grey', textDecoration: 'underline grey', marginBottom:'0px', textAlign:'center', cursor:'pointer'}} onClick={()=> handleClickReset()}> Réinitialiser le filtre </p>
   </div>
 )
 
