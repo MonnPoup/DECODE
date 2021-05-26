@@ -65,7 +65,10 @@ function Login(props) {
               setUserExists(true)
               props.addToken(body.token)
               props.addUserStoreSignIn(body.user.firstName)
-              props.addPalette(body.user.palette)
+              if (props.userPaletteFromStore === '')
+              {
+                props.addPalette(body.user.palette)
+              } 
               props.addToWishlist(body.user.wishlist)
             }  else {
               setErrorsSignin(body.error)
@@ -90,7 +93,7 @@ function Login(props) {
       
         
          if(userExists){
-            return <Redirect to='/mypalette' /> 
+            return <Redirect to='/' /> 
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
