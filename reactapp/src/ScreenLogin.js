@@ -62,6 +62,7 @@ function Login(props) {
               setUserExists(true)
               props.addToken(body.token)
               props.addUserStoreSignIn(body.user.firstName)
+              props.addPalette(body.user.palette)
             }  else {
               setErrorsSignin(body.error)
             }
@@ -86,7 +87,7 @@ function Login(props) {
 
         
          if(userExists){
-            return <Redirect to='/' /> 
+            return <Redirect to='/mypalette' /> 
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
@@ -119,9 +120,9 @@ function Login(props) {
                 <div className='connexion'>
                 Connexion
                         <div className='formLogin'>
-                            <input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input' />
+                            <input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input_login' />
                             <div style={{display:'flex'}}>
-                            <input onKeyPress={handleKeypress} onChange={(e) => setSignInPassword(e.target.value)} type={iconeOeilSignIn}  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <input onKeyPress={handleKeypress} onChange={(e) => setSignInPassword(e.target.value)} type={iconeOeilSignIn}  name="passwordFromFront" placeholder='Mot de passe' className='input_login'/>
                             <FontAwesomeIcon onClick={() => mdpSignInIsVisible()} style={{cursor:'pointer', width: '22px', marginTop: '3vh', marginLeft:'1vw', color:'#203126'}} icon={faEye}/>
                             </div>
                         </div>
@@ -134,10 +135,10 @@ function Login(props) {
                 <div className='inscription'>
                     Inscription
                         <div className='formLogin'>
-                            <input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input' />
-                            <input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input'/>
+                            <input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input_login' />
+                            <input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input_login'/>
                             <div style={{display:'flex'}}>
-                            <input onKeyPress={handleKeypress2} onChange={(e) => setSignUpPassword(e.target.value)} type={iconeOeilSignUp}  name="passwordFromFront" placeholder='Mot de passe' className='input'/>
+                            <input onKeyPress={handleKeypress2} onChange={(e) => setSignUpPassword(e.target.value)} type={iconeOeilSignUp}  name="passwordFromFront" placeholder='Mot de passe' className='input_login'/>
                             <FontAwesomeIcon onClick={() => mdpSignUpIsVisible()} style={{cursor:'pointer', width: '22px', marginTop: '3vh', marginLeft:'1vw', color:'#203126'}} icon={faEye}/>
                             </div>        
                         </div>
@@ -170,6 +171,9 @@ function mapDispatchToProps(dispatch){
     },
     addUserStoreSignIn: function(userName){
       dispatch({type: 'userStoreSignIn', userName})
+  },
+  addPalette: function(palette){
+    dispatch({type: 'addPalette', palette: palette})
   },
     }
   }

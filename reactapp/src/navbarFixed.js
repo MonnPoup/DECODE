@@ -12,7 +12,7 @@ const text = <span>Bonjour {props.userNameFromStore}</span>;
 const content = (
   <div>
     <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
-    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => props.suppressionToken()}>Déconnexion</p></Link>
+    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => {props.suppressionToken(); props.deleteWishlist()}}>Déconnexion</p></Link>
   </div>
 );
 if(props.token != null){
@@ -51,10 +51,12 @@ userNav =  <Link to='/login'><img src='user.svg' alt='user icon' style={{width: 
       return {
         suppressionToken: function(){
             dispatch({type: 'deconnexion'})
+        },
+        deleteWishlist : function(){
+          dispatch({type: 'deleteWishlist'}) 
         }
       }
     }
-    
     
     export default connect(
       mapStateToProps,

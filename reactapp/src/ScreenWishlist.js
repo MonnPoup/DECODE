@@ -15,7 +15,6 @@ function Wishlist(props) {
 
  useEffect(() => {
   if (props.token) {
-    console.log('user connected wishlist')
   async function wishlistData() {
     const rawResponse = await fetch('/wishlist', {
       method: 'POST',
@@ -50,17 +49,17 @@ useEffect(() => {
 var displayWishlist = wishlist.map((article,i) => {
  
   return (
-    <Col md={2}lg={2} style={{backgroundColor:'white', margin:'10px', minWidth:"200px", display:'flex', flexDirection:'column', justifyContent:'space-between'}}> 
-    <div style={{display:'flex', justifyContent:'center', alignItems: 'center', width: '100%', height: '35vh'}} className='productImage' >
+    <Col md={2}lg={2} className="cardWishlist" > 
+    <div  className='productImage' >
       <img style={{maxWidth:'100%', maxHeight: '100%'}} src={article.imageUrl}  alt='product' /> 
       {/* image + picto coeur  */}
     </div>
-    <div className="productInfo" style={{display:'flex', justifyContent:'space-between', margin:"5px 10px 5px 0px"}}> 
-      <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around', marginRight: '5px'}}> 
+    <div className="productInfo"> 
+      <div className="infoWishlist"> 
        <a href={article.merchantUrl} target="_blank"> <h5 className='articleWishList'> {article.name} </h5></a>
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
-      <div style={{display:'flex', flexDirection:'column',marginLeft: '10px', margin: '0px', alignItems:'flex-end', justifyContent: 'flex-start'}}> 
+      <div className="priceWishlist" > 
         <img src='delete.svg' alt='heart icon' style={{width: '15px'}} onClick={() => handleClickDelete(article._id, i)}/>
         <p className='articleWishList'> {article.price}€ </p>
       </div>
@@ -70,31 +69,31 @@ var displayWishlist = wishlist.map((article,i) => {
 
 })
   
-if (wishlist.length !== 0 ){
+if (wishlist.length !== 0){
     return (
       <div style={{backgroundColor:'#FCFBF6'}}>
       <NavbarFixed />
       
       <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-      <div className="ShoppingList" style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '13vh', height: '100%', minHeight: '8vh'}}> 
+      <div  style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '15vh', height: '100%', minHeight: '8vh'}}> 
       <div style={{display: 'flex', justifyContent: 'flex-end'}}>
       <Link to="/shoppinglist">
-            <button className="inputWishlist">Voir ma shoppinglist</button>
+            <button className="inputWishlist">Voir ma shopping list</button>
       </Link>
       </div>
        
      
   
-      <div className="ShoppingList-Text" style={{padding:'10px', display: 'flex', marginLeft:'10%'}}> 
+      <div className="wishlist-text" > 
         <div style={{width: '70%'}}>
-        <h4 style={{fontWeight:'bold',borderBottom:'3px solid #203126', color: '#203126', marginBottom: '10px'}}>
+        <h4 className="wishlist-title" >
             VOTRE WISHLIST
         </h4>
         <h4 style={{fontSize: '15px'}}>{props.wishlist.length} articles</h4>
         </div>
 
       </div>
-        <Container  style={{display:'flex', justifyContent: 'center', marginBottom: '3px', }} > 
+        <Container className="containerWishlistCard" > 
           <Row  style={{ display:'flex', justifyContent: 'center'}}> 
             {displayWishlist}
           </Row>
@@ -108,7 +107,7 @@ if (wishlist.length !== 0 ){
       <div className="background">
       <NavbarFixed />
     <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-    <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
+    <div style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
       <p style={{fontSize:'30px', textAlign:'center'}}>Wishlist vide</p> 
       <Link to="/mypalette">
           <button className="inputShoppingList">Voir ma palette</button>
@@ -122,7 +121,7 @@ if (wishlist.length !== 0 ){
   <div className="background">
     <NavbarFixed />
     <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-    <div className="ShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
+    <div  style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
       <p style={{fontSize:'30px', textAlign:'center'}}>Connectez vous pour accéder à votre wishlist</p> 
       <Link to="/login">
             <button className="inputShoppingList">Connectez-vous</button>

@@ -24,7 +24,7 @@ function Filter(props) {
       <Button id="Popover1" type="button" className='ButtonHome'> 
         Filter
       </Button>
-      <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle} style={{backgroundColor:'#FBFCF6'}}>
+      <Popover placement="bottom"trigger="hover" isOpen={popoverOpen} target="Popover1" toggle={toggle} style={{backgroundColor:'#FBFCF6'}}>
         <PopoverHeader style={{backgroundColor:'#203126', margin:'0px', color:'white'}}>  Catégorie </PopoverHeader>
         <PopoverBody>
         <Form>

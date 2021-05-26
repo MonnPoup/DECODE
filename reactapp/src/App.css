@@ -295,7 +295,7 @@ p {
 
 .ButtonHome1 {
   border-radius: 50px;
-  opacity: 90%;
+  opacity: 0.8;
   border: 1px solid #203126;
   position: absolute;
   left: 40vw;
@@ -497,7 +497,41 @@ transform: scale(1.1)
   margin-left: 42vw;
 }
 
+
+
 /* PAGE SHOPPING LIST */
+
+.PaletteColors {
+  display:flex;
+  justify-content: space-around;
+  width:25%
+}
+
+.ArticleShoppingList {  
+margin-top: 1%;
+margin-left: 100px;
+margin-right: 10%;
+}
+
+.ShoppingList-Text {
+  padding-left:5%
+}
+
+.TitleShoppingListContainer{
+font-weight: bold;
+width: 95%;
+border-bottom: 3px solid #203126;
+color:#203126;
+margin-bottom: 10px;
+}
+
+#Popover1 {
+background-color: #fcfbf6;
+border: 1px solid #203126;
+color:#203126;
+border-radius: 7%
+}
+
 
 .articleCardTitle {
   font-family: "Montserrat", sans-serif;
@@ -514,13 +548,105 @@ transform: scale(1.1)
   opacity: 0.54;
 }
 
-.scroller {
+.scrollerShoppingList {
+  display:flex;
+  justify-content: center;
   width: 100%;
-  height: 55vh;
+  height: 53vh;
   overflow-y: scroll;
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
 }
+
+.containerArticles {
+  display:flex;
+  justify-content: center;
+  margin-bottom: 3px;
+}
+
+.rowArticles {
+  display: flex;
+  justify-content: center;
+}
+
+.scrollShoppingList {
+background-color: #203126;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 6px;
+}
+
+.articleCard{
+  /* style={{backgroundColor:'white', margin:'10px',  display:'flex', flexDirection:'column', justifyContent:'space-between'}} */
+  background-color: white;
+  margin:10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productImage{
+  /* style={{display:'flex', justifyContent:'center', alignItems: 'center', width: '100%', height: '35vh'}} */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35vh;
+}
+
+.productInfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 10px 5px 0px
+}
+
+.cardPartLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 5px;
+}
+.cardPartRight{
+  display: flex;
+  flex-direction: column;
+  margin:0px;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.arrowShoppingList {
+height: 30px;
+margin-top:6px ;
+}
+
+.ContainerInspi {
+  background-color: #fcfbf6;
+}
+
+.Inpiration-Text {
+margin-left: 10%;
+margin-right: 10%;
+}
+
+.Inspirations-DisplayPhoto {
+background-color: #fcfbf6;
+height: 100%;
+display: flex;
+width: 100%;
+}
+
+.containerPhotoInspi{
+display:flex;
+justify-content: center;
+margin-bottom: 30px;
+}
+
+.rowPhotoInspi {
+  display: flex;
+  justify-content: center;
+}
+
 
 .inputShoppingList {
   border-radius: 50px;
@@ -538,12 +664,13 @@ transform: scale(1.1)
 
 .formLogin {
   border-radius: 30px;
+  z-index: 50; 
 }
 
-.input {
+.input_login {
   border-radius: 50px;
   border: 1px solid #203126;
-  opacity: 50%;
+  opacity: 0.5;
   margin-top: 2vh;
   height: 5.5vh;
   font-size: 15px;
@@ -557,6 +684,7 @@ transform: scale(1.1)
   background-color: #fcfbf6;
   border-radius: 10px;
   margin-left: 220px;
+  z-index:20
 }
 .login {
   display: flex;
@@ -611,6 +739,19 @@ transform: scale(1.1)
   padding: 20px;
 }
 
+.wishlist-text {
+  padding:10px;
+  display: flex;
+  margin-left: 10%;
+}
+
+.wishlist-title{
+font-weight: bold;
+border-bottom: 3px solid #203126;
+color: #203126;
+margin-bottom: 10px;
+}
+
 .traitWishlist {
   width: 100%;
   height: 5px;
@@ -629,11 +770,48 @@ transform: scale(1.1)
   margin-right: 30px;
 }
 
+.containerWishlistCard{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3px;
+}
 .articleWishList {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 13px;
   color:  #203126;
+}
+
+.cardWishlist {
+ background-color:white;
+ margin: 10px;
+ min-width: 200px;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+}
+
+.imageWishlist {
+display:flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 35vh;
+}
+
+.infoWishlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 5px;
+}
+
+.priceWishlist {
+display: flex;
+flex-direction: column;
+margin: 0px;
+align-items: flex-end;
+justify-content: flex-start;
 }
 
 /* PAGE ALLPALETTES */
