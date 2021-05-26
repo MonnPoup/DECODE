@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Popover } from 'antd';
 import './App.css';
+import { Badge } from 'antd';
+
 
 
 
@@ -12,6 +14,7 @@ const text = <span>Bonjour {props.userNameFromStore}</span>;
 const content = (
   <div>
     <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
+    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/shoppinglist'><p>Ma shopping list</p></Link>
     <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => {props.suppressionToken(); props.deleteWishlist()}}>Déconnexion</p></Link>
   </div>
 );
@@ -23,7 +26,8 @@ var userNav = <Popover placement="bottomRight" title={text} content={content} tr
 userNav =  <Link to='/login'><img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
 }
 
-
+var count = props.wishlist.length
+console.log('count', count)
 
     return (
       <div className= 'navbarNormalFixe'>
@@ -34,7 +38,11 @@ userNav =  <Link to='/login'><img src='user.svg' alt='user icon' style={{width: 
         </div>
       <div className= 'icon'>  
         <Link to = '/allpalettes'><img src='palette.svg' alt='palette icon' style={{width: '30px', margin: '20px'}}/></Link>
-        <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
+        <div style={{margin:'20px'}}> 
+          <Badge count={count} style={{backgroundColor:'#A7430A', }}>
+            <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px'}}/></Link>
+          </Badge>
+       </div>
         {userNav}
       </div>
     </div>
@@ -44,7 +52,7 @@ userNav =  <Link to='/login'><img src='user.svg' alt='user icon' style={{width: 
   
 
   function mapStateToProps(state){
-    return {token: state.token, userNameFromStore: state.userName};
+    return {token: state.token, userNameFromStore: state.userName,  wishlist: state.wishlist};
     }
     
     function mapDispatchToProps(dispatch){

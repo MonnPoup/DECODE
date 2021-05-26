@@ -13,7 +13,7 @@ function Wishlist(props) {
   console.log(props.token)
   
 
- useEffect(() => {
+/*  useEffect(() => {
   if (props.token) {
   async function wishlistData() {
     const rawResponse = await fetch('/wishlist', {
@@ -27,7 +27,7 @@ function Wishlist(props) {
    props.addToWishlist(body.wishlist)
   }
   wishlistData() }
-},[]) 
+},[])  */
 
 useEffect(() => {
   setWishlist(props.wishlist)
@@ -60,7 +60,7 @@ var displayWishlist = wishlist.map((article,i) => {
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
       <div className="priceWishlist" > 
-        <img src='delete.svg' alt='heart icon' style={{width: '15px'}} onClick={() => handleClickDelete(article._id, i)}/>
+        <img src='delete.svg' alt='bin icon' style={{width: '15px'}} onClick={() => handleClickDelete(article._id, i)}/>
         <p className='articleWishList'> {article.price}€ </p>
       </div>
     </div>
@@ -71,11 +71,11 @@ var displayWishlist = wishlist.map((article,i) => {
   
 if (wishlist.length !== 0){
     return (
-      <div style={{backgroundColor:'#FCFBF6'}}>
+      <div className='backgroundWishlist'>
       <NavbarFixed />
       
       <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-      <div  style={{backgroundColor:'#FCFBF6', paddingTop: '2vh', paddingBottom: '15vh', height: '100%', minHeight: '8vh'}}> 
+      <div  style={{backgroundColor:'#FCFBF6', paddingTop: '11px'}}> 
       <div style={{display: 'flex', justifyContent: 'flex-end'}}>
       <Link to="/shoppinglist">
             <button className="inputWishlist">Voir ma shopping list</button>
@@ -109,8 +109,8 @@ if (wishlist.length !== 0){
     <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
     <div style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
       <p style={{fontSize:'30px', textAlign:'center'}}>Wishlist vide</p> 
-      <Link to="/mypalette">
-          <button className="inputShoppingList">Voir ma palette</button>
+      <Link style={{display: 'flex', justifyContent:'center', alignItems: 'center'}} to="/shoppinglist">
+          <button className="inputWishlistNonConnecte">Voir ma shopping list</button>
       </Link>
       
     </div>  
@@ -121,11 +121,11 @@ if (wishlist.length !== 0){
   <div className="background">
     <NavbarFixed />
     <div style={{height: '17vh', backgroundColor: '#203126'}}></div>
-    <div  style={{dislpay:'flex', backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
+    <div  style={{dislpay:'flex', justifyContent:'center', alignItems: 'center',backgroundColor:'#FCFBF6',paddingTop:'3vh', paddingBottom:'3vh', height:'100vh' }}> 
       <p style={{fontSize:'30px', textAlign:'center'}}>Connectez vous pour accéder à votre wishlist</p> 
-      <Link to="/login">
-            <button className="inputShoppingList">Connectez-vous</button>
-          </Link>
+      <Link style={{display: 'flex', justifyContent:'center', alignItems: 'center'}} to="/login">
+            <button className="inputWishlistNonConnecte">Connectez-vous</button>
+      </Link>
     </div>  
     </div>
       )

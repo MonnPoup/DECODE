@@ -89,6 +89,7 @@ router.post("/signIn", async (req, res) => {
         var user = await userModel
           .findById(userIsFound._id)
           .populate("palette")
+          .populate('wishlist')
           .exec()
 
         result = true;

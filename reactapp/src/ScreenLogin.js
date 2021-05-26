@@ -6,6 +6,8 @@ import {connect} from 'react-redux'
 import "antd/dist/antd.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
+import { Input } from 'antd';
+
 
 
 function Login(props) {
@@ -59,10 +61,12 @@ function Login(props) {
             const body = await data.json()
         
             if(body.result === true){
+              console.log('body', body.user)
               setUserExists(true)
               props.addToken(body.token)
               props.addUserStoreSignIn(body.user.firstName)
               props.addPalette(body.user.palette)
+              props.addToWishlist(body.user.wishlist)
             }  else {
               setErrorsSignin(body.error)
             }
@@ -84,18 +88,17 @@ function Login(props) {
             }
           }
       
-
         
          if(userExists){
             return <Redirect to='/mypalette' /> 
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
-            return(<p style={{fontSize: '15px'}}>{error}</p>)
+            return(<p style={{fontSize: '15px', marginBottom:'0px', marginTop:'10px'}}>{error}</p>)
           })
 
         var tabErrorsSignin = listErrorsSignin.map((error,i) => {
-            return(<p style={{fontSize: '15px'}}>{error}</p>)
+            return(<p style={{fontSize: '15px', marginBottom:'0px', marginTop:'10px'}}>{error}</p>)
           })
 
           const handleKeypress = e => {
@@ -120,13 +123,14 @@ function Login(props) {
                 <div className='connexion'>
                 Connexion
                         <div className='formLogin'>
-                            <input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input_login' />
+                            <Input onChange={(e) => setSignInEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input_login' />
                             <div style={{display:'flex'}}>
-                            <input onKeyPress={handleKeypress} onChange={(e) => setSignInPassword(e.target.value)} type={iconeOeilSignIn}  name="passwordFromFront" placeholder='Mot de passe' className='input_login'/>
-                            <FontAwesomeIcon onClick={() => mdpSignInIsVisible()} style={{cursor:'pointer', width: '22px', marginTop: '3vh', marginLeft:'1vw', color:'#203126'}} icon={faEye}/>
+                            <Input.Password onKeyPress={handleKeypress} onChange={(e) => setSignInPassword(e.target.value)} type={iconeOeilSignIn}  name="passwordFromFront" placeholder='Mot de passe' className='input_login'/>
                             </div>
                         </div>
+                        <div>
                         {tabErrorsSignin}
+                        </div>
                         <input onClick={() => handleSubmitSignin()} type="submit" value="Connexion" className='inputValider'/>
                 </div>
 
@@ -135,14 +139,13 @@ function Login(props) {
                 <div className='inscription'>
                     Inscription
                         <div className='formLogin'>
-                            <input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input_login' />
-                            <input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input_login'/>
-                            <div style={{display:'flex'}}>
-                            <input onKeyPress={handleKeypress2} onChange={(e) => setSignUpPassword(e.target.value)} type={iconeOeilSignUp}  name="passwordFromFront" placeholder='Mot de passe' className='input_login'/>
-                            <FontAwesomeIcon onClick={() => mdpSignUpIsVisible()} style={{cursor:'pointer', width: '22px', marginTop: '3vh', marginLeft:'1vw', color:'#203126'}} icon={faEye}/>
-                            </div>        
+                            <Input onChange={(e) => setSignUpUsername(e.target.value)} type="text" name="usernameFromFront" placeholder='Prénom' className='input_login' />
+                            <Input onChange={(e) => setSignUpEmail(e.target.value)} type="text" name="emailFromFront" placeholder='Email' className='input_login'/>
+                            <Input.Password onKeyPress={handleKeypress2} onChange={(e) => setSignUpPassword(e.target.value)} name="passwordFromFront" placeholder='Mot de passe' className='input_login' />
                         </div>
+                        <div>
                         {tabErrorsSignup}
+                        </div>
                         <input onClick={() => handleSubmitSignup()} type="submit" value="Connexion" className='inputValider'/>
                 </div>
 
@@ -175,6 +178,9 @@ function mapDispatchToProps(dispatch){
   addPalette: function(palette){
     dispatch({type: 'addPalette', palette: palette})
   },
+  addToWishlist: function(wishlist){
+    dispatch({type: 'addWishlist', wishlist:wishlist})
+},
     }
   }
 

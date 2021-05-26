@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import { Popover } from 'antd';
 import Texty from 'rc-texty';
 import 'rc-texty/assets/index.css';
+import { Badge } from 'antd';
 
 
 function Home(props) {
@@ -13,6 +14,7 @@ function Home(props) {
   const content = (
     <div>
       <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
+      <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/shoppinglist'><p>Ma shopping list</p></Link>
       <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => {props.suppressionToken(); props.deleteWishlist()}}>Déconnexion</p></Link>
     </div>
   );
@@ -25,6 +27,8 @@ var popover = <Popover placement="bottomRight" title={text} content={content} tr
 popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/></Link>
 }
 
+var count = props.wishlist.length
+console.log('count', count)
 
   return (
     <div className="mycontainer" style={{ scrollBehavior: "smooth" }}>
@@ -51,13 +55,11 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
               style={{ width: "30px", margin: "20px" }}
             />
           </Link>
-          <Link to="/wishlist">
-            <img
-              src="heart.svg"
-              alt="heart icon"
-              style={{ width: "30px", margin: "20px" }}
-            />
-          </Link>
+          <div style={{margin:'20px'}}> 
+          <Badge count={count} style={{backgroundColor:'#A7430A', }}>
+            <Link to = '/wishlist'><img src='heart.svg' alt='heart icon' style={{width: '30px'}}/></Link>
+          </Badge>
+          </div>
           {popover}
         </div>
       </div>
@@ -113,7 +115,7 @@ popover =  <Link to='/login'><img src='user.svg' alt='heart icon' style={{width:
 }
 
 function mapStateToProps(state){
-  return {userToken: state.token, userNameFromStore: state.userName};
+  return {userToken: state.token, userNameFromStore: state.userName, wishlist: state.wishlist};
   }
   
   function mapDispatchToProps(dispatch){
