@@ -23,9 +23,10 @@ body {
 
 .background {
   background-color: #203126;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
+
 
 h1 {
   font-family: "Abril Fatface", cursive;
@@ -495,7 +496,13 @@ transform: scale(1.1)
   background-color: #fdfcf7;
   cursor: pointer;
   margin-left: 42vw;
+  cursor: pointer;
+  transition: transform .2s 
 }
+
+.inputMypalette:hover{
+  transform: scale(1.05)
+  }
 
 
 
@@ -657,7 +664,7 @@ margin-bottom: 30px;
   color: #fdfcf7;
   background-color: #203126;
   cursor: pointer;
-  margin-left: 43vw;
+  margin-right: 2vw;
 }
 
 /* PAGE LOGIN */
@@ -668,14 +675,14 @@ margin-bottom: 30px;
 }
 
 .input_login {
-  border-radius: 50px;
-  border: 1px solid #203126;
-  opacity: 0.5;
-  margin-top: 2vh;
-  height: 5.5vh;
-  font-size: 15px;
-  padding-left: 0.5vw;
-  width: 18vw;
+  border-radius: 50px !important;
+  border: 1px solid #203126 !important;
+  opacity: 0.8 !important;
+  margin-top: 2vh !important;
+  height: 5.5vh !important;
+  font-size: 15px !important;
+  padding-left: 0.5vw!important;
+  width: 18vw !important;
 }
 
 .containerLogin {
@@ -718,8 +725,7 @@ margin-bottom: 30px;
 }
 
 .trait {
-  margin-top: 80px;
-  width: 180px;
+  margin-top: 70px;
   transform: rotate(-180deg);
   margin-left: 60px;
   margin-right: 60px;
@@ -733,10 +739,22 @@ margin-bottom: 30px;
 
 /* PAGE WISHLIST */
 
+
 .backgroundWishlist {
-  background-color: #fdfcf7;
+  background-color: #fcfbf6;
   width: 100%;
-  padding: 20px;
+  padding-bottom: 19vh;
+}
+
+.inputWishlistNonConnecte {
+  border-radius: 50px;
+  border: 0px solid #203126;
+  height: 45px;
+  width: 15vw;
+  font-size: 15px;
+  color: #fdfcf7;
+  background-color: #203126;
+  cursor: pointer;
 }
 
 .wishlist-text {
@@ -785,7 +803,7 @@ margin-bottom: 10px;
 .cardWishlist {
  background-color:white;
  margin: 10px;
- min-width: 200px;
+ min-width: 210px;
  display: flex;
  flex-direction: column;
  justify-content: space-between;
