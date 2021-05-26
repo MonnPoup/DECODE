@@ -17,7 +17,7 @@ const [articleList, setArticleList] = useState([])
 const [articleListFromBDD, setArticleListFromBDD] = useState([])
 const [isLiked, setIsLiked] = useState(false)
 const [wishlist, setWishlist] = useState(props.userWishlist)
-const [FilterDeco, setFilterDeco]= useState(true)
+const [FilterDeco, setFilterDeco]= useState(false)
 const [FilterMobilier, setFilterMobilier] = useState(false)
 const [stateDeco, setStateDeco] = useState(false)
 const [stateMob, setStateMob] = useState(false)
@@ -109,7 +109,7 @@ return ( <Redirect to='/' /> )
     
 
     if (wishlistFilter) { 
-    likeColor =  "#e74c3c"} else {
+    likeColor =  "#A7430A"} else {
       likeColor = "#000000"
     }
   
@@ -234,7 +234,7 @@ var content = (
     <div className="ContainerShoppingList" style={{dislpay:'flex', backgroundColor:'#FCFBF6', paddingBottom:'3vh', justifyContent:'center' }}>  
 
   {/* PALETTE + BOUTON REFAIRE QUIZZ */}
-        <div style={{display:'flex', justifyContent:'space-between', paddingTop:'10px'}}> 
+        <div style={{display:'flex', justifyContent:'space-between', padding:'10px 10px 0px 10px'}}> 
           <div className="PaletteColors"> 
             {displayPalette}
           </div>

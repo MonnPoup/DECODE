@@ -13,7 +13,7 @@ function Wishlist(props) {
   console.log(props.token)
   
 
- useEffect(() => {
+/*  useEffect(() => {
   if (props.token) {
   async function wishlistData() {
     const rawResponse = await fetch('/wishlist', {
@@ -27,7 +27,7 @@ function Wishlist(props) {
    props.addToWishlist(body.wishlist)
   }
   wishlistData() }
-},[]) 
+},[])  */
 
 useEffect(() => {
   setWishlist(props.wishlist)
@@ -60,7 +60,7 @@ var displayWishlist = wishlist.map((article,i) => {
         <h6 className='articleCardBrand'> {article.brand} </h6>
       </div>
       <div className="priceWishlist" > 
-        <img src='delete.svg' alt='heart icon' style={{width: '15px'}} onClick={() => handleClickDelete(article._id, i)}/>
+        <img src='delete.svg' alt='bin icon' style={{width: '15px'}} onClick={() => handleClickDelete(article._id, i)}/>
         <p className='articleWishList'> {article.price}€ </p>
       </div>
     </div>
