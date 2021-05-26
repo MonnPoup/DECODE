@@ -645,7 +645,7 @@ padding: 6px 6px 15px 6px;
   flex-direction: column;
   margin:0px;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 .arrowShoppingList {
 height: 30px;
@@ -853,9 +853,8 @@ height: 35vh;
 .priceWishlist {
 display: flex;
 flex-direction: column;
-margin: 0px;
 align-items: flex-end;
-justify-content: flex-start;
+justify-content: flex-end;
 }
 
 /* PAGE ALLPALETTES */
