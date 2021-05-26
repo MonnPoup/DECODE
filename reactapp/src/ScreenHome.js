@@ -20,7 +20,7 @@ function Home(props) {
   );
 
 if(props.userToken != null){
-var popover = <Popover placement="bottomRight" title={text} content={content} trigger="click">
+var popover = <Popover placement="bottomRight" title={text} content={content} trigger="hover">
 <img src='user.svg' alt='heart icon' style={{width: '30px', margin: '20px'}}/>
 </Popover>
 } else {

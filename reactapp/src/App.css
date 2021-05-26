@@ -650,6 +650,11 @@ padding: 6px 6px 15px 6px;
 .arrowShoppingList {
 height: 30px;
 margin-top:6px ;
+transition: transform .2s
+}
+
+.arrowShoppingList:hover {
+  transform: scale(1.1);
 }
 
 .ContainerInspi {
@@ -690,6 +695,11 @@ margin-bottom: 30px;
   background-color: #203126;
   cursor: pointer;
   margin-right: 2vw;
+  transition: transform .2s
+}
+
+.inputShoppingList:hover {
+  transform: scale(1.1)
 }
 
 /* PAGE LOGIN */
@@ -780,6 +790,11 @@ margin-bottom: 30px;
   color: #fdfcf7;
   background-color: #203126;
   cursor: pointer;
+  transition: transform .2s
+}
+
+.inputWishlistNonConnecte:hover {
+  transform: scale(1.1)
 }
 
 .wishlist-text {
@@ -811,6 +826,11 @@ margin-bottom: 10px;
   background-color: #203126;
   cursor: pointer;
   margin-right: 30px;
+  transition: transform .2s
+}
+
+.inputWishlist:hover {
+  transform: scale(1.1)
 }
 
 .containerWishlistCard{

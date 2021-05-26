@@ -19,11 +19,11 @@ const content = (
   </div>
 );
 if(props.token != null){
-var userNav = <Popover placement="bottomRight" title={text} content={content} trigger="click">
+var userNav = <Popover placement="bottomRight" title={text} content={content} trigger="hover">
 <img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/>
 </Popover>
 } else {
-userNav =  <Link to='/login'><img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px'}}/></Link>
+userNav =  <Link to='/login'><img src='user.svg' alt='user icon' style={{width: '30px', margin: '20px', cursor:'pointer'}}/></Link>
 }
 
 var count = props.wishlist.length
