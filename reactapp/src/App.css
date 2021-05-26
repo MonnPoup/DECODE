@@ -295,7 +295,7 @@ p {
 
 .ButtonHome1 {
   border-radius: 50px;
-  opacity: 0.8;
+  opacity: 0.9;
   border: 1px solid #203126;
   position: absolute;
   left: 40vw;
@@ -366,7 +366,7 @@ transform: scale(1.1)
 
 .inputValider {
   border-radius: 50px;
-  opacity: 80%;
+  opacity: 0.5;
   border: 1px solid #203126;
   margin-top: 2vh;
   margin-left: 11.5vw;
@@ -670,7 +670,7 @@ margin-bottom: 30px;
 .input_login {
   border-radius: 50px;
   border: 1px solid #203126;
-  opacity: 0.5;
+  opacity: 0.9;
   margin-top: 2vh;
   height: 5.5vh;
   font-size: 15px;
