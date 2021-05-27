@@ -38,7 +38,7 @@ console.log('count', count)
             <h1  type='alpha' duration='150' mode="random" 
               style={{
                 marginLeft: "20px",
-                marginTop: "50px",
+                marginTop: "60px",
                 fontSize: "70px",
                 color:"#203126"
               }}
