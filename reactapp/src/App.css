@@ -510,7 +510,7 @@ transform: scale(1.1)
   font-weight: bold !important;
   color: red !important;
   border-radius: 15px !important;
-
+  padding-bottom: 0px !important;
 }
 
 
@@ -631,7 +631,6 @@ padding: 6px 6px 15px 6px;
 .productInfo {
   display: flex;
   justify-content: space-between;
-  margin: 5px 10px 5px 0px
 }
 
 .cardPartLeft {
