@@ -178,7 +178,7 @@ return ( <Redirect to='/' /> )
         if (paletteName === "artDeco") {
           paletteName = "Art Déco".toUpperCase();
         } else if (paletteName === "ethnique") {
-          paletteName = "Éthnique".toUpperCase();
+          paletteName = "Ethnique".toUpperCase();
         } else if (paletteName === "bohème") {
           paletteName = "Bohème".toUpperCase();
         } else if (paletteName === "modernMinimal") {

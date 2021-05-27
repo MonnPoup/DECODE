@@ -161,8 +161,9 @@ function Quiz(props) {
             });
             const body = await data.json()
             
-
+           
             props.addPalette(body.userPalette)
+    
 
         } else  { setError('Merci de sélectionner une réponse') } 
       
