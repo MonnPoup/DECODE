@@ -93,7 +93,7 @@ function Login(props) {
       
         
          if(userExists){
-            return <Redirect to='/' /> 
+            return <Redirect to='/mypalette' /> 
           }
 
         var tabErrorsSignup = listErrorsSignup.map((error,i) => {
