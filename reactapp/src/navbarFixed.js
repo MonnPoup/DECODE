@@ -15,7 +15,7 @@ const content = (
   <div>
     <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/mypalette'><p>Ma palette</p></Link>
     <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/shoppinglist'><p>Ma shopping list</p></Link>
-    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => {props.suppressionToken(); props.deleteWishlist()}}>Déconnexion</p></Link>
+    <Link style={{color: 'grey', textDecoration: 'underline grey'}} to ='/'><p onClick={() => {props.suppressionToken(); props.deleteWishlist();props.deletePalette()}}>Déconnexion</p></Link>
   </div>
 );
 if(props.token != null){
@@ -62,7 +62,10 @@ console.log('count', count)
         },
         deleteWishlist : function(){
           dispatch({type: 'deleteWishlist'}) 
-        }
+        },
+        deletePalette : function(){
+          dispatch({type: 'deletePalette'}) 
+        },
       }
     }
     
