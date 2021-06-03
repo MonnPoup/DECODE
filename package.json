@@ -23,5 +23,8 @@
     "reactstrap": "^8.9.0",
     "redux": "^4.1.0",
     "uid2": "0.0.3"
+  },
+  "devDependencies": {
+    "supertest": "^6.1.3"
   }
 }
