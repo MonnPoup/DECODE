@@ -20,7 +20,7 @@ import Wishlist from './ScreenWishlist'
 import AllPalettes from './ScreenAllPalettes'
 import NavBar from './navbar'
 import NavbarFixed from './navbarFixed'
-import Filter from './filterModule'
+
 
 import { CookiesProvider } from 'react-cookie'
 
@@ -42,7 +42,7 @@ function App() {
       <Route path="/allpalettes" component={AllPalettes}  />
       <Route path="/navbar" component={NavBar}  />
       <Route path="/navbarFixed" component={NavbarFixed}  />
-      <Route path='/filter' component={Filter} />
+
     </Switch>
   </Router>
   </Provider>

@@ -3,22 +3,22 @@ var request = require("supertest")
 
 test("Sign Up - Body correct", async (done) => {
  await request(app).post('/signUp')
-   .send({ usernameFromFront: "Sybil", emailFromFront: "sybil@sybil", passwordFromFront:'1234', paletteFromStore:'03848282482' })
+   .send({ token: "xz8MvRRe0xWdH22REDuDZCpUfdNBDifu", usernameFromFront: "Sybil", emailFromFront: "sybil@sybil", passwordFromFront:'1234', paletteFromStore:'60a4e7c5cfb766ab71c0d148' })
    .expect(200)
-   .expect({ result: true, error:[]});
+   .expect({ result: true, error:[], saveUser:{firstName: 'Sybil', email: 'sybil@sybil', password: '$2b$10$7mnvJFrPy.DJEDdy0UJoFOY0Q6ji5As7iMo1yPx6opGFjDU.UxmvO', token: 'xz8MvRRe0xWdH22REDuDZCpUfdNBDifu', palette: '60a4e7c5cfb766ab71c0d148', wishlist:'[]'}, token:'xz8MvRRe0xWdH22REDuDZCpUfdNBDifu'});
  done();
 });
 
 
-
-test("Sign Up - Body incomplet", async (done) => {
+ test("Sign Up - Body incomplet", async (done) => {
   await request(app).post('/signUp')
-    .send({ usernameFromFront: "", emailFromFront: "sybil@sybil", paspasswordFromFront:'1234', paletteFromStore:'03848282482' })
+   .send({ usernameFromFront: "", emailFromFront: "sybil@sybil", passwordFromFront:'1234', paletteFromStore:'60a4e7c5cfb766ab71c0d148' })
     .expect(200)
-    .expect({ result: false, error:["Champs vides"] });
+    .expect({ result: false, error:["Champs vides"], saveUser: "undefined", token:"undefined",  });
   done();
  });
 
+ /*
  test("Sign Up - Pas de Palette", async (done) => {
   await request(app).post('/signUp')
     .send({ usernameFromFront: "Sybil", emailFromFront: "sybil@sybil", paspasswordFromFront:'1234', paletteFromStore:'undefined' })
@@ -45,3 +45,4 @@ test("Sign Up - Body incomplet", async (done) => {
  });
  
 
+ */
